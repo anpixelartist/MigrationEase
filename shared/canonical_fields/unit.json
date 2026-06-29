@@ -1,0 +1,81 @@
+{
+  "entity": "unit",
+  "schema_version": 1,
+  "tally_element": "UNIT",
+  "identity": { "scope": "class", "key": ["name"] },
+  "create_order": 1,
+  "fields": [
+    {
+      "key": "name",
+      "label": "Unit Symbol",
+      "tally_tag": "NAME",
+      "dtype": "string",
+      "required": true,
+      "unique": true,
+      "synonyms": ["unit", "uom", "symbol", "unit name", "unit of measure"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Pcs"
+    },
+    {
+      "key": "is_simple",
+      "label": "Simple Unit?",
+      "tally_tag": "ISSIMPLEUNIT",
+      "dtype": "bool",
+      "required": false,
+      "unique": false,
+      "synonyms": ["simple", "is simple"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Yes"
+    },
+    {
+      "key": "decimal_places",
+      "label": "Decimal Places",
+      "tally_tag": "DECIMALPLACES",
+      "dtype": "integer",
+      "required": false,
+      "unique": false,
+      "synonyms": ["decimals", "decimal places", "precision"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "0"
+    },
+    {
+      "key": "base_units",
+      "label": "Base Unit (compound)",
+      "tally_tag": "BASEUNITS",
+      "dtype": "unit_ref",
+      "required": false,
+      "unique": false,
+      "synonyms": ["base unit", "base"],
+      "value_set_ref": "tally_units",
+      "regex": null,
+      "example": "Pcs"
+    },
+    {
+      "key": "additional_units",
+      "label": "Additional Unit (compound)",
+      "tally_tag": "ADDITIONALUNITS",
+      "dtype": "unit_ref",
+      "required": false,
+      "unique": false,
+      "synonyms": ["additional unit", "secondary unit"],
+      "value_set_ref": "tally_units",
+      "regex": null,
+      "example": "Box"
+    },
+    {
+      "key": "conversion",
+      "label": "Conversion (compound)",
+      "tally_tag": "CONVERSION",
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["conversion", "factor", "ratio"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "12"
+    }
+  ]
+}

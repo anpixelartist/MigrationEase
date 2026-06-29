@@ -1,0 +1,153 @@
+{
+  "entity": "voucher",
+  "schema_version": 1,
+  "tally_element": "VOUCHER",
+  "identity": { "scope": "voucher_number", "key": ["voucher_number"] },
+  "create_order": 5,
+  "fields": [
+    {
+      "key": "voucher_number",
+      "label": "Voucher No.",
+      "tally_tag": "VOUCHERNUMBER",
+      "dtype": "string",
+      "required": true,
+      "unique": false,
+      "synonyms": ["voucher no", "vch no", "voucher number", "invoice no", "invoice number", "bill no", "document no", "doc no", "ref no", "reference", "number", "txn id", "transaction id", "id"],
+      "example": "INV-001"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "tally_tag": "DATE",
+      "dtype": "date",
+      "required": true,
+      "unique": false,
+      "synonyms": ["date", "voucher date", "transaction date", "txn date", "invoice date", "bill date", "entry date"],
+      "example": "2026-04-01"
+    },
+    {
+      "key": "voucher_type",
+      "label": "Voucher Type",
+      "tally_tag": "VOUCHERTYPENAME",
+      "dtype": "string",
+      "required": true,
+      "unique": false,
+      "synonyms": ["voucher type", "vch type", "type", "transaction type", "entry type"],
+      "example": "Receipt"
+    },
+    {
+      "key": "ledger_name",
+      "label": "Ledger",
+      "tally_tag": "LEDGERNAME",
+      "dtype": "ledger_ref",
+      "required": true,
+      "unique": false,
+      "synonyms": ["ledger", "account", "ledger name", "account name", "particulars", "party", "head"],
+      "value_set_ref": "tally_ledgers",
+      "example": "Customer 1"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "tally_tag": "AMOUNT",
+      "dtype": "amount",
+      "required": false,
+      "unique": false,
+      "synonyms": ["amount", "value", "total", "line amount", "entry amount"],
+      "example": "5000.00"
+    },
+    {
+      "key": "dr_cr",
+      "label": "Dr/Cr",
+      "tally_tag": null,
+      "dtype": "enum",
+      "required": false,
+      "unique": false,
+      "synonyms": ["dr/cr", "dr cr", "debit/credit", "type", "drcr", "side"],
+      "example": "Dr",
+      "enum_values": ["Dr", "Cr"]
+    },
+    {
+      "key": "debit",
+      "label": "Debit Amount",
+      "tally_tag": null,
+      "dtype": "amount",
+      "required": false,
+      "unique": false,
+      "synonyms": ["debit", "debit amount", "dr amount", "dr"],
+      "example": "5000.00"
+    },
+    {
+      "key": "credit",
+      "label": "Credit Amount",
+      "tally_tag": null,
+      "dtype": "amount",
+      "required": false,
+      "unique": false,
+      "synonyms": ["credit", "credit amount", "cr amount", "cr"],
+      "example": "5000.00"
+    },
+    {
+      "key": "narration",
+      "label": "Narration",
+      "tally_tag": "NARRATION",
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["narration", "description", "remarks", "notes", "memo", "details"],
+      "example": "Being amount received"
+    },
+    {
+      "key": "party_ledger",
+      "label": "Party Ledger",
+      "tally_tag": "PARTYLEDGERNAME",
+      "dtype": "ledger_ref",
+      "required": false,
+      "unique": false,
+      "synonyms": ["party", "party name", "party ledger", "customer", "vendor", "supplier"],
+      "value_set_ref": "tally_ledgers",
+      "example": "Customer 1"
+    },
+    {
+      "key": "stock_item",
+      "label": "Stock Item",
+      "tally_tag": "STOCKITEMNAME",
+      "dtype": "stockitem_ref",
+      "required": false,
+      "unique": false,
+      "synonyms": ["item", "stock item", "product", "item name", "sku", "goods", "material"],
+      "value_set_ref": "tally_stock_items",
+      "example": "Widget-1"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "tally_tag": "ACTUALQTY",
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["qty", "quantity", "units", "nos", "count"],
+      "example": "100"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "tally_tag": "RATE",
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["rate", "price", "unit price", "unit rate", "rate per unit"],
+      "example": "50.00"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["unit", "uom", "units", "unit of measure", "uqc"],
+      "example": "Nos"
+    }
+  ]
+}

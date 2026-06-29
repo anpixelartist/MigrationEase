@@ -1,0 +1,81 @@
+{
+  "entity": "group",
+  "schema_version": 1,
+  "tally_element": "GROUP",
+  "identity": { "scope": "class", "key": ["name"] },
+  "create_order": 2,
+  "fields": [
+    {
+      "key": "name",
+      "label": "Group Name",
+      "tally_tag": "NAME",
+      "dtype": "string",
+      "required": true,
+      "unique": true,
+      "synonyms": ["group", "group name", "account group"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Trade Debtors"
+    },
+    {
+      "key": "parent",
+      "label": "Under (Parent Group)",
+      "tally_tag": "PARENT",
+      "dtype": "group_ref",
+      "required": true,
+      "unique": false,
+      "synonyms": ["under", "parent", "parent group", "primary"],
+      "value_set_ref": "tally_groups",
+      "regex": null,
+      "example": "Sundry Debtors"
+    },
+    {
+      "key": "is_revenue",
+      "label": "Is Revenue (P&L)?",
+      "tally_tag": "ISREVENUE",
+      "dtype": "bool",
+      "required": false,
+      "unique": false,
+      "synonyms": ["revenue", "p&l", "profit and loss"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "No"
+    },
+    {
+      "key": "is_deemed_positive",
+      "label": "Debit Nature?",
+      "tally_tag": "ISDEEMEDPOSITIVE",
+      "dtype": "bool",
+      "required": false,
+      "unique": false,
+      "synonyms": ["nature", "dr nature", "debit nature"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Yes"
+    },
+    {
+      "key": "is_billwise",
+      "label": "Maintain Bill-wise?",
+      "tally_tag": "ISBILLWISEON",
+      "dtype": "bool",
+      "required": false,
+      "unique": false,
+      "synonyms": ["bill wise", "billwise", "maintain bill-wise"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Yes"
+    },
+    {
+      "key": "affects_gross_profit",
+      "label": "Affects Gross Profit?",
+      "tally_tag": "AFFECTSGROSSPROFIT",
+      "dtype": "bool",
+      "required": false,
+      "unique": false,
+      "synonyms": ["gross profit", "affects gross profit"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "No"
+    }
+  ]
+}

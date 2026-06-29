@@ -1,0 +1,141 @@
+{
+  "entity": "stock_item",
+  "schema_version": 1,
+  "tally_element": "STOCKITEM",
+  "identity": { "scope": "class", "key": ["name"] },
+  "create_order": 3,
+  "fields": [
+    {
+      "key": "name",
+      "label": "Item Name",
+      "tally_tag": "NAME",
+      "dtype": "string",
+      "required": true,
+      "unique": true,
+      "synonyms": ["item", "product", "stock item", "sku", "item name"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Red Striped Shirt"
+    },
+    {
+      "key": "parent",
+      "label": "Under (Stock Group)",
+      "tally_tag": "PARENT",
+      "dtype": "group_ref",
+      "required": false,
+      "unique": false,
+      "synonyms": ["stock group", "category", "group", "under"],
+      "value_set_ref": "tally_stock_groups",
+      "regex": null,
+      "example": "Apparel"
+    },
+    {
+      "key": "base_units",
+      "label": "Base Units",
+      "tally_tag": "BASEUNITS",
+      "dtype": "unit_ref",
+      "required": true,
+      "unique": false,
+      "synonyms": ["unit", "uom", "units", "base unit"],
+      "value_set_ref": "tally_units",
+      "regex": null,
+      "example": "Pcs"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "tally_tag": "CATEGORY",
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["category"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Shirts"
+    },
+    {
+      "key": "description",
+      "label": "Description",
+      "tally_tag": "DESCRIPTION",
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["description", "desc"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Cotton red striped formal shirt"
+    },
+    {
+      "key": "opening_qty",
+      "label": "Opening Quantity",
+      "tally_tag": "OPENINGBALANCE",
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["opening qty", "opening stock", "qty", "quantity"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "25"
+    },
+    {
+      "key": "opening_rate",
+      "label": "Opening Rate",
+      "tally_tag": "OPENINGRATE",
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["rate", "opening rate", "cost"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "490.00"
+    },
+    {
+      "key": "opening_value",
+      "label": "Opening Value",
+      "tally_tag": "OPENINGVALUE",
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["opening value", "value"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "12250.00"
+    },
+    {
+      "key": "hsn",
+      "label": "HSN Code",
+      "tally_tag": "HSNCODE",
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["hsn", "hsn code", "sac"],
+      "value_set_ref": null,
+      "regex": "^[0-9]{4,8}$",
+      "example": "61052010"
+    },
+    {
+      "key": "gst_rate",
+      "label": "GST Rate (%)",
+      "tally_tag": null,
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["gst %", "tax rate", "gst rate", "igst"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "5"
+    },
+    {
+      "key": "gst_applicable",
+      "label": "GST Applicable?",
+      "tally_tag": "GSTAPPLICABLE",
+      "dtype": "bool",
+      "required": false,
+      "unique": false,
+      "synonyms": ["gst applicable", "taxable"],
+      "value_set_ref": null,
+      "regex": null,
+      "example": "Yes"
+    }
+  ]
+}

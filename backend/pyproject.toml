@@ -1,0 +1,106 @@
+[project]
+name = "tallymigration-backend"
+version = "0.1.0"
+description = "TallyMigration backend — FastAPI API + taskiq workers for CSV/Excel -> Tally master import."
+requires-python = ">=3.12"
+
+# Core runtime dependencies. Versions reflect the vetted, web-verified stack in docs/ (plan §3).
+# Hard CVE-remediation pins are NON-NEGOTIABLE (plan §3.3): lxml>=6.1.1, starlette>=0.47,
+# python-multipart>=0.0.19.
+dependencies = [
+  # web / api
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "starlette>=0.47",            # CVE-2024-47874 / CVE-2025-54121 (multipart DoS chain)
+  "python-multipart>=0.0.19",  # CVE-2024-27313 / CVE-2024-53981
+  "sse-starlette>=2.1",
+  "slowapi>=0.1.9",
+  "httpx>=0.27",
+
+  # data model / validation
+  "pydantic>=2.7",
+  "pydantic-settings>=2.3",
+  "pandera>=0.20",             # row/column validation (NOT Great Expectations — plan §3.1)
+
+  # xml (safety-critical) — build with lxml, parse untrusted responses hardened
+  "lxml>=6.1.1",               # CVE-2026-41066 (XXE in iterparse/ETCompatXMLParser)
+  "defusedxml>=0.7",           # fallback safe-parse for stdlib paths
+
+  # parsing / profiling
+  "pandas>=2.2",
+  "python-calamine>=0.2",      # primary XLSX/XLS/ODS reader (Rust, no XXE) — plan §3.1
+  "openpyxl>=3.1",             # fallback: styles/write only
+  "charset-normalizer>=3.3",
+  "skrub>=0.3",                # hot-path profiling signals (BSD)
+
+  # intelligence layer
+  "rapidfuzz>=3.9",            # replaces GPL thefuzz/fuzzywuzzy — plan §3.2
+  "jellyfish>=1.0",
+  "scipy>=1.13",               # Hungarian assignment for one-to-one mapping
+
+  # persistence / queue / storage
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "asyncpg>=0.29",
+  "taskiq>=0.11",              # asyncio queue w/ Redis Streams + acks (not arq) — plan §3.1
+  "taskiq-redis>=1.0",
+  "boto3>=1.34",
+  "aioboto3>=13.0",
+
+  # auth
+  "fastapi-users[sqlalchemy]>=13.0",
+  "authlib>=1.3",
+  "argon2-cffi>=23.1",
+  "pyjwt>=2.9",                # replaces abandoned python-jose — plan §3.2
+
+  # upload security
+  "filetype>=1.2",             # magic-byte sniffing (pure-Python, no libmagic)
+  "clamd>=1.0",
+
+  # observability
+  "structlog>=24.1",
+  "sentry-sdk>=2.7",
+  "prometheus-fastapi-instrumentator>=7.0",
+  "opentelemetry-sdk>=1.25",
+  "opentelemetry-instrumentation-fastapi>=0.46b0",
+]
+
+[project.optional-dependencies]
+# Semantic auto-mapping (heavy model weights). Pulled ONCE at build time, pinned SHA,
+# safetensors, HF_HUB_OFFLINE=1 (plan §3.1). Optional so the core image stays lean.
+ml = [
+  "sentence-transformers>=3.0",
+]
+# Upper-scale probabilistic record linkage (optional; never the silent auto-Alter authority).
+linkage = [
+  "splink>=4.0",
+]
+dev = [
+  "pytest>=8.2",
+  "pytest-asyncio>=0.23",
+  "ruff>=0.5",
+  "mypy>=1.10",
+  "pip-audit>=2.7",
+  "bandit>=1.7",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+warn_unused_ignores = true

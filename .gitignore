@@ -1,0 +1,94 @@
+# ============================================================
+# TallyMigration / Ledgerbridge — .gitignore
+# ============================================================
+
+# ---- Python (backend) ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+dist/
+build/
+pip-wheel-metadata/
+
+# ---- Databases / local dev state ----
+*.db
+*.sqlite
+*.sqlite3
+qa*.db
+
+# ---- Object storage (runtime-generated job artifacts) ----
+backend/storage/
+
+# ---- Env files & secrets (keep the example) ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+!**/golden_xml/*.key
+*.p12
+*.pfx
+*.crt
+id_rsa*
+infra/.secrets/
+secrets.*
+
+# ---- Node / frontend ----
+node_modules/
+frontend/dist/
+frontend/.vite/
+.vite/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- Go / bridge ----
+bridge/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# ---- Large local datasets (too big for GitHub; small CSV samples are kept) ----
+tally-datasets/
+
+# ---- Editors / OS ----
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Claude Code / tooling (local, transient) ----
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
+.claude/projects/
+.claude/todos/
+
+# ---- Misc / accidental output ----
+*.log

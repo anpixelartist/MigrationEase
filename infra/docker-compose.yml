@@ -1,0 +1,43 @@
+# Local prod-like services for the TallyMigration backend.
+#   docker compose -f infra/docker-compose.yml up -d
+# Then run the backend with infra config (see backend/.env.example) and Alembic:
+#   conda run -n tally --cwd backend alembic upgrade head
+#
+# NOTE: Tally's own gateway uses localhost:9000, so MinIO's S3 API is mapped to 9100 here.
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: tally
+      POSTGRES_PASSWORD: tally
+      POSTGRES_DB: tallymigration
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tally"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: ["redisdata:/data"]
+
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio12345
+    ports:
+      - "9100:9000"  # S3 API (Tally owns 9000 on the host)
+      - "9101:9001"  # MinIO console
+    volumes: ["miniodata:/data"]
+
+volumes:
+  pgdata:
+  redisdata:
+  miniodata:
