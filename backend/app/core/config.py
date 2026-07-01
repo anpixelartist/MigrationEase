@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -28,6 +29,12 @@ class Settings(BaseSettings):
     # >=32 bytes for HMAC-SHA256. This is a DEV placeholder — OVERRIDE in prod via TM_JWT_SECRET.
     jwt_secret: str = "dev-only-insecure-secret-change-me-via-TM_JWT_SECRET-env"
     jwt_expire_minutes: int = 60 * 24
+
+    @model_validator(mode="after")
+    def enforce_prod_secret(self) -> Settings:
+        if self.environment == "prod" and self.jwt_secret == "dev-only-insecure-secret-change-me-via-TM_JWT_SECRET-env":
+            raise ValueError("TM_JWT_SECRET must be explicitly set in 'prod' environment.")
+        return self
 
     # ---- object storage (uploads + generated XML) ----
     storage_backend: str = "local"  # local | memory | s3
