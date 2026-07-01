@@ -23,6 +23,10 @@ from app.services import pipeline_service as svc
 from app.services.job_repo import get_db_store
 from app.services.job_store import JobStatus
 from app.workers.broker import broker
+from app.db.base import new_session
+from app.db.models import StagedRecord
+from sqlalchemy import delete
+import datetime as _dt
 
 
 def _done(result: dict[str, Any]) -> dict[str, Any]:
@@ -134,3 +138,21 @@ async def push_task(org_id: str, job_id: str) -> dict[str, Any]:
         return _done({"status": "pushed", **result.model_dump(exclude={"raw_xml"})})
     except AppError as exc:
         return _error(exc)
+
+
+@broker.task(schedule=[{"cron": "0 3 * * *"}])  # runs daily at 3am
+async def cleanup_staged_records_task() -> dict[str, Any]:
+    """Cron task enforcing the DPDP 30-day auto-erasure policy for staging data."""
+    def _run() -> dict[str, Any]:
+        cutoff_date = _dt.datetime.now(_dt.timezone.utc) - _dt.timedelta(days=30)
+        try:
+            with new_session() as db:
+                stmt = delete(StagedRecord).where(StagedRecord.created_at < cutoff_date)
+                result = db.execute(stmt)
+                db.commit()
+                deleted_count = result.rowcount
+                return _done({"deleted_staged_records": deleted_count})
+        except Exception as exc:
+            return {"state": "error", "problem": str(exc)}
+
+    return await asyncio.to_thread(_run)

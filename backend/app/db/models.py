@@ -99,3 +99,18 @@ class JobRecord(Base):
     updated_at: Mapped[_dt.datetime] = mapped_column(
         DateTime(timezone=True), default=_now, onupdate=_now
     )
+
+
+class StagedRecord(Base):
+    __tablename__ = "staged_records"
+    __table_args__ = (
+        Index("ix_staged_records_job_order", "job_id", "order_id"),
+        Index("ix_staged_records_created_at", "created_at"),
+    )
+
+    id: Mapped[str] = mapped_column(String(32), primary_key=True, default=_uuid)
+    org_id: Mapped[str] = mapped_column(ForeignKey("organizations.id"), index=True)
+    job_id: Mapped[str] = mapped_column(ForeignKey("jobs.id", ondelete="CASCADE"), index=True)
+    order_id: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    data: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[_dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
