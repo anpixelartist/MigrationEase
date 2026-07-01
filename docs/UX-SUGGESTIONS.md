@@ -38,11 +38,11 @@ This document tracks ideas and improvements for the Ledgerbridge application fro
 - [ ] **Sandbox Gate:** The Go adapter must enforce routing the first push into a designated Test Company by verifying `SVCURRENTCOMPANY`.
 - [ ] **DPDP Data Erasure:** Implement an async worker task enforcing a strict 30-day auto-erasure policy for staging data and uploaded files.
 
-## E-commerce Financial Logic (Shopify MVP)
+## E-commerce Financial Logic (Universal App)
 - [ ] **Cutover Logic & Opening Balances:** Transactions prior to the project Cutover Date must NOT be generated as vouchers. Instead, they must be aggregated into an `<OPENINGBALANCE>` tag within the respective `<LEDGER>` XML node.
 - [ ] **B2B vs B2C Split:** Aggregate B2C sales into daily summaries. Generate B2B invoices (with a GSTIN) as individual vouchers for GSTR-1 compliance.
 - [ ] **Marketplace Settlements (Multi-leg Journals):** Model settlements dynamically as multi-leg entries: Gross Sales (Cr) against Commission (Dr), Fulfillment Fees (Dr), TCS (Dr), and Bank Deposit (Dr).
-- [ ] **Refund Matching (Credit Notes):** Map refunds as Credit Notes and inject the original Shopify Order ID into the `<NARRATION>` to link them properly for tax reversal.
+- [ ] **Refund Matching (Credit Notes):** Map refunds as Credit Notes and inject the original Platform Order ID into the `<NARRATION>` to link them properly for tax reversal.
 
 ## GST & Tax Compliance Engine
 - [ ] **Place of Supply (IGST vs CGST/SGST):** Calculate tax splits dynamically based on Shipping State vs Home State. Ensure B2B invoices populate `PARTYGSTIN` properly.
