@@ -2,14 +2,14 @@
 
 ## 1. Current State vs. Target Architecture
 
-The current application (as documented in `TEST-REPORT.md` and the existing `app/pipeline/`) implements a generalized CSV-to-Tally migration tool. It follows a direct 1:1 row-to-voucher parsing mechanism with manual column mapping. The new PRD significantly shifts the scope toward a specialized **E-commerce (Shopify) Financial Engine** with strict compliance, tax routing, and idempotency guarantees.
+The current application (as documented in `TEST-REPORT.md` and the existing `app/pipeline/`) implements a generalized CSV-to-Tally migration tool. It follows a direct 1:1 row-to-voucher parsing mechanism with manual column mapping. The new PRD significantly shifts the scope toward a specialized **E-commerce Financial Engine (Universal)** with strict compliance, tax routing, and idempotency guarantees.
 
 ### Key Architectural Shifts
 
 | Component / Feature | Current Implementation (Status Quo) | Target Implementation (PRD Requirements) |
 | :--- | :--- | :--- |
 | **Voucher Grouping** | **Naive 1:1 Mapping:** 1 CSV row = 1 Ledger entry. Grouped strictly by explicit `voucher_number` column. | **N-to-1 Aggregation:** Rows are grouped by `order-id`. E-commerce entries (Sales, Fees, Taxes) are mapped to multi-leg journals. |
-| **Mapping UX** | **Manual Column Mapping:** User manually maps CSV columns to Tally fields. | **Pre-Built Templates:** Auto-mapped based on platform (e.g. Shopify). Eradicate the mapping step for standard inputs. |
+| **Mapping UX** | **Manual Column Mapping:** User manually maps CSV columns to Tally fields. | **Pre-Built Templates:** Auto-mapped based on the source platform. Eradicate the mapping step for standard inputs. |
 | **Balancing Logic** | **Strict Match:** Asserts Debits == Credits. Fails if unmatched. | **Zero-Sum Routing:** Calculates totals, auto-routes fractional paisa discrepancies to a designated "Round Off" ledger. |
 | **Tax & GST** | **Manual/None:** Relies on user to provide explicit GST/IGST ledgers in CSV. | **Dynamic Engine:** Calculates Place of Supply (Shipping vs Home state), splits IGST vs CGST/SGST, and flags B2B vs B2C. |
 | **Tally Export Flow** | **Separated/Monolithic:** Masters and Vouchers are separate jobs. Bridge relays single monolithic XML payload. | **Unified & Chunked:** Emits Master envelope *then* Voucher envelope. Bridge slices payloads into chunks (e.g. 200 vouchers) and reports progress via WS. |
@@ -24,7 +24,7 @@ To transform the codebase without breaking the existing pipeline, we must implem
 
 ### Phase 1: Pipeline Overhaul (The Aggregation Layer)
 1. **Database Schema Update:** Introduce a `staged_records` table to hold raw parsed rows securely. Implement the 30-day auto-erasure cron job for DPDP compliance.
-2. **Template Engine:** Replace `MappingGuide.tsx` and manual mapping logic with `ShopifyTemplate`. Hardcode expected columns and automatically route Gross Sales, Commissions, and Payouts to standard Tally ledgers.
+2. **Template Engine:** Replace `MappingGuide.tsx` and manual mapping logic with a universal `PlatformTemplate` system. Pre-define expected columns for supported platforms and automatically route Gross Sales, Commissions, and Payouts to standard Tally ledgers.
 3. **Aggregation & Balancing:**
    - Group parsed rows by `order-id`.
    - Calculate Place of Supply (tax split).
