@@ -113,11 +113,11 @@ def rows_to_vouchers(
     groups: "OrderedDict[str, dict]" = OrderedDict()
 
     for i, row in enumerate(df.to_dict("records"), start=1):
-        vnum = coerce_str(row.get("voucher_number"))
+        vnum = coerce_str(row.get("order_id")) or coerce_str(row.get("voucher_number"))
         ledger = coerce_str(row.get("ledger_name"))
         if not vnum:
             errors.append(_err(i, "voucher_number", ErrorCode.REQUIRED_MISSING,
-                               "Voucher number is required — it groups lines into one voucher.", stage))
+                               "Voucher number or Order ID is required — it groups lines into one voucher.", stage))
             continue
         if not ledger:
             errors.append(_err(i, "ledger_name", ErrorCode.REQUIRED_MISSING,
@@ -162,10 +162,33 @@ def rows_to_vouchers(
             errors.append(_err(i, "unit", ErrorCode.INVENTORY_MISMATCH,
                                f"Item '{stock_item}' needs a Unit (e.g. Nos); Tally rejects an inventory "
                                "line without one.", stage))
-        g["lines"].append(VoucherLine(
-            ledger_name=ledger, is_debit=amount[1], amount=amount[0], source_row=i,
-            stock_item=stock_item, quantity=qty, rate=rate, unit=unit_val,
-        ))
+        # Place of supply tax routing
+        shipping_state = coerce_str(row.get("shipping_state"))
+        home_state = coerce_str(row.get("home_state"))
+        is_tax = ledger.upper() in ["GST", "TAX", "IGST", "CGST", "SGST"]
+
+        if is_tax and shipping_state and home_state:
+            from decimal import Decimal
+            if shipping_state.lower() != home_state.lower():
+                g["lines"].append(VoucherLine(
+                    ledger_name="IGST", is_debit=amount[1], amount=amount[0], source_row=i,
+                    stock_item=stock_item, quantity=qty, rate=rate, unit=unit_val,
+                ))
+            else:
+                half = (amount[0] / Decimal("2")).quantize(Decimal("0.01"))
+                g["lines"].append(VoucherLine(
+                    ledger_name="CGST", is_debit=amount[1], amount=half, source_row=i,
+                    stock_item=stock_item, quantity=qty, rate=rate, unit=unit_val,
+                ))
+                g["lines"].append(VoucherLine(
+                    ledger_name="SGST", is_debit=amount[1], amount=amount[0] - half, source_row=i,
+                    stock_item=stock_item, quantity=qty, rate=rate, unit=unit_val,
+                ))
+        else:
+            g["lines"].append(VoucherLine(
+                ledger_name=ledger, is_debit=amount[1], amount=amount[0], source_row=i,
+                stock_item=stock_item, quantity=qty, rate=rate, unit=unit_val,
+            ))
 
     vouchers: list[Voucher] = []
     for g in groups.values():
@@ -204,6 +227,20 @@ def rows_to_vouchers(
             voucher_type=vtype, date=vdate, lines=g["lines"], reference=vnum,
             narration=g["narration"], party_ledger=party, source_row=src,
         )
+
+        diff = voucher.debit_total - voucher.credit_total
+        from decimal import Decimal
+        if abs(diff) > Decimal("0") and abs(diff) <= Decimal("0.99"):
+            is_debit = diff < 0
+            voucher.lines.append(
+                VoucherLine(
+                    ledger_name="Round Off",
+                    is_debit=is_debit,
+                    amount=abs(diff),
+                    source_row=src
+                )
+            )
+
         if not voucher.is_balanced:
             errors.append(_err(src, "amount", ErrorCode.VOUCHER_UNBALANCED,
                                f"Voucher '{vnum}' is unbalanced — debits ({voucher.debit_total}) "

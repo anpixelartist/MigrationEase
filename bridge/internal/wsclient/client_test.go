@@ -35,7 +35,7 @@ func TestRelaysPushJobToTally(t *testing.T) {
 		_ = wsjson.Write(ctx, c, protocol.PushJob{
 			Type:   protocol.TypePushJob,
 			JobID:  "j1",
-			XMLB64: base64.StdEncoding.EncodeToString([]byte("<ENVELOPE/>")),
+			XMLB64: base64.StdEncoding.EncodeToString([]byte("<ENVELOPE><TALLYMESSAGE>Some Payload</TALLYMESSAGE></ENVELOPE>")),
 		})
 		var res protocol.JobResult
 		if err := wsjson.Read(ctx, c, &res); err == nil {

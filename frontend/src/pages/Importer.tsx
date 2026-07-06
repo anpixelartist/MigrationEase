@@ -1,6 +1,7 @@
-import { useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ApiError, api, downloadArtifact, pollTask } from "../api/client";
 import type {
+  BridgeStatus,
   EntityType,
   GenerateSummary,
   MappingProposal,
@@ -54,14 +55,32 @@ export default function Importer() {
   const [proposal, setProposal] = useState<MappingProposal | null>(null);
   const [mapping, setMapping] = useState<Record<string, string | null>>({});
   const [constants, setConstants] = useState<Record<string, string>>({});
+  const [template, setTemplate] = useState<string>("");
+  const [cutoverDate, setCutoverDate] = useState<string>(() => localStorage.getItem("tm_cutover") || "");
   const [validation, setValidation] = useState<ValidationResult | null>(null);
   const [vpreview, setVpreview] = useState<VoucherPreview | null>(null);
-  const [company, setCompany] = useState("");
+  const [company, setCompany] = useState(() => localStorage.getItem("tm_company") || "");
   const [gen, setGen] = useState<GenerateSummary | null>(null);
   const [push, setPush] = useState<PushResult | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [showGuide, setShowGuide] = useState(false);
+  const [bridgeStatus, setBridgeStatus] = useState<BridgeStatus | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem("tm_company", company);
+  }, [company]);
+
+  useEffect(() => {
+    localStorage.setItem("tm_cutover", cutoverDate);
+  }, [cutoverDate]);
+
+  useEffect(() => {
+    const load = () => api.bridgeStatus().then(setBridgeStatus).catch(() => {});
+    load();
+    const iv = setInterval(load, 5000);
+    return () => clearInterval(iv);
+  }, []);
 
   const curIdx = STEPS.findIndex((s) => s.key === step);
   const fail = (e: unknown) => {
@@ -111,7 +130,7 @@ export default function Importer() {
       const cleanConsts = Object.fromEntries(
         Object.entries(constants).filter(([, v]) => v.trim() !== ""),
       );
-      await api.postMapping(jobId, mapping, cleanConsts);
+      await api.postMapping(jobId, mapping, cleanConsts, template || undefined);
       const t = await api.enqueueValidate(jobId);
       const r = await pollTask<ValidationResult>(jobId, t.task_id);
       if (r.state === "error") { fail(new ApiError(r.problem!)); return; }
@@ -128,7 +147,7 @@ export default function Importer() {
     if (!jobId) return;
     setBusy(true); setErr(null);
     try {
-      const t = await api.enqueueGenerate(jobId, company || undefined);
+      const t = await api.enqueueGenerate(jobId, company || undefined, cutoverDate || undefined);
       const r = await pollTask<GenerateSummary>(jobId, t.task_id);
       if (r.state === "error") { fail(new ApiError(r.problem!)); return; }
       setGen(r.result!);
@@ -193,6 +212,20 @@ export default function Importer() {
                 border: entity === e.key ? "1px solid #1c1c1a" : "1px solid rgba(0,0,0,.1)",
               }}>{e.label}</div>
             ))}
+          </div>
+
+          <div style={{ display: "flex", gap: 14, marginBottom: 22 }}>
+            <div style={{ flex: 1 }}>
+              <label style={{ fontSize: 12.5, fontWeight: 600, color: T.muted, display: "block", marginBottom: 6 }}>Pre-built Template</label>
+              <select value={template} onChange={(e) => setTemplate(e.target.value)} style={input}>
+                <option value="">None (Manual Mapping)</option>
+                <option value="shopify">Shopify</option>
+              </select>
+            </div>
+            <div style={{ flex: 1 }}>
+              <label style={{ fontSize: 12.5, fontWeight: 600, color: T.muted, display: "block", marginBottom: 6 }}>Cutover Date (Optional)</label>
+              <input type="date" value={cutoverDate} onChange={(e) => setCutoverDate(e.target.value)} style={input} />
+            </div>
           </div>
 
           <div onClick={() => fileInput.current?.click()} style={{ ...card, border: `1.5px dashed rgba(79,70,229,.32)`, padding: "44px 32px", textAlign: "center", cursor: "pointer" }}>
@@ -351,10 +384,13 @@ export default function Importer() {
               <div style={{ ...card, padding: 20, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
                 <div style={{ fontSize: 13.5, color: T.muted, maxWidth: 460 }}>
                   Download a Tally-ready XML to import manually, or push it straight into <b>{company}</b> via your connected bridge.
+                  {bridgeStatus && !bridgeStatus.online && (
+                     <div style={{ color: T.err, marginTop: 4, fontWeight: 600 }}>⚠️ Bridge is currently offline. Connect it via the Bridge tab.</div>
+                  )}
                 </div>
                 <div style={{ display: "flex", gap: 11 }}>
                   <Button onClick={download}>Download XML</Button>
-                  <Button variant="primary" loading={busy} onClick={runPush}>Push to Tally</Button>
+                  <Button variant="primary" loading={busy} disabled={!bridgeStatus?.online} onClick={runPush}>Push to Tally</Button>
                 </div>
               </div>
             </>

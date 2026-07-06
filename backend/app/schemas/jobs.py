@@ -25,6 +25,7 @@ class JobResponse(BaseModel):
 
 
 class MappingRequest(BaseModel):
+    template: str | None = None
     mapping: dict[str, str | None] = Field(default_factory=dict)
     constants: dict[str, str] = Field(default_factory=dict)
 
@@ -42,3 +43,4 @@ class ResolveRequest(BaseModel):
 
 class GenerateRequest(BaseModel):
     company: str | None = None
+    cutover_date: str | None = None

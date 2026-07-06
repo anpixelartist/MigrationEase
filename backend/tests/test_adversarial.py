@@ -55,10 +55,19 @@ def test_multiple_party_ledgers_warns_loudly_but_proceeds() -> None:
 
 # ---------------------------------------------------------------- balance edge cases
 def test_penny_imbalance_is_loud() -> None:
+    # A penny imbalance <= 0.99 should be auto-routed to Round Off.
+    # We will test an imbalance > 0.99 to ensure the loud error still works.
+    df = _vdf({"voucher_number": ["A", "A"], "date": ["2026-04-01"] * 2, "voucher_type": ["Journal"] * 2,
+               "ledger_name": ["X", "Y"], "amount": ["100.00", "101.50"], "dr_cr": ["Dr", "Cr"]})
+    vouchers, errors = rows_to_vouchers(df)
+    assert vouchers == [] and ErrorCode.VOUCHER_UNBALANCED in _codes(errors)
+
+def test_fractional_imbalance_auto_round_off() -> None:
     df = _vdf({"voucher_number": ["A", "A"], "date": ["2026-04-01"] * 2, "voucher_type": ["Journal"] * 2,
                "ledger_name": ["X", "Y"], "amount": ["100.00", "100.01"], "dr_cr": ["Dr", "Cr"]})
     vouchers, errors = rows_to_vouchers(df)
-    assert vouchers == [] and ErrorCode.VOUCHER_UNBALANCED in _codes(errors)
+    assert len(vouchers) == 1
+    assert any(line.ledger_name == "Round Off" and line.amount == Decimal("0.01") and line.is_debit for line in vouchers[0].lines)
 
 
 def test_decimal_split_that_balances_exactly_is_accepted() -> None:

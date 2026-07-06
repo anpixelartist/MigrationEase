@@ -142,7 +142,7 @@ async def apply_mapping(
 ) -> JobResponse:
     def _op() -> JobResponse:
         with store.lock(principal.org_id, job_id) as job:
-            svc.apply_mapping(job, body.mapping, body.constants)
+            svc.apply_mapping(job, body.mapping, body.constants, template=body.template)
             return _view(job)
 
     return await run_in_threadpool(_op)
@@ -290,7 +290,7 @@ async def generate_job(
 ) -> dict:
     await run_in_threadpool(lambda: store.get(principal.org_id, job_id).require("generate"))
     await ensure_started()
-    task = await tasks.generate_task.kiq(principal.org_id, job_id, company=body.company)
+    task = await tasks.generate_task.kiq(principal.org_id, job_id, company=body.company, cutover_date=body.cutover_date)
     return {"task_id": task.task_id, "state": "pending"}
 
 
@@ -300,11 +300,17 @@ async def get_artifact(
     principal: Principal = Depends(get_principal),
     store: DbJobStore = Depends(get_db_store),
 ) -> Response:
+    import datetime
+
     def _op() -> Response:
         job = store.get(principal.org_id, job_id)
         if job.xml is None:
             raise InvalidState("Generate the XML before downloading it.")
-        filename = f"{job.entity_type.value}_{job.id[:8]}.xml"
+
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M")
+        company_slug = "".join(c if c.isalnum() else "_" for c in (job.company or "Company"))
+        filename = f"{company_slug}_{job.entity_type.value.capitalize()}_{timestamp}.xml"
+
         return Response(
             content=job.xml,
             media_type="application/xml",

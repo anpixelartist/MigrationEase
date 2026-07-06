@@ -30,6 +30,7 @@ from app.pipeline.entities import EntityType, Group, Ledger, StockItem, Unit
 from app.pipeline.voucher import rows_to_vouchers
 from app.pipeline.mapping import MappingProposal, auto_map
 from app.pipeline.mapping.catalog import load_catalog
+from app.pipeline.mapping.templates import apply_template
 from app.pipeline.parsing import parse_file
 from app.pipeline.profiling import profile
 from app.pipeline.push.response_parser import XMLSecurityError, parse_import_response
@@ -104,6 +105,26 @@ def ingest(job: Job, content: bytes, filename: str | None, settings: Settings) -
     job.upload_bytes = content  # kept durable so working state can be rebuilt on a cache miss
     job.notes = notes
     _reset_from(job, mapping=True)
+
+    # Store rows into StagedRecord database table as the core pipeline aggregation layer
+    from app.db.base import new_session
+    from app.db.models import StagedRecord
+
+    with new_session() as db:
+        records = []
+        for i, row in enumerate(df.to_dict("records")):
+            order_id = row.get("order_id") or row.get("voucher_number") or row.get("Name")
+            records.append(
+                StagedRecord(
+                    org_id=job.org_id,
+                    job_id=job.id,
+                    order_id=str(order_id).strip() if order_id else None,
+                    data=row,
+                )
+            )
+        db.add_all(records)
+        db.commit()
+
     job.advance(JobStatus.PARSED)
     log.info("parse.ok", job_id=job.id, rows=int(df.shape[0]), columns=int(df.shape[1]), notes=notes)
 
@@ -121,10 +142,18 @@ def suggest_mapping(job: Job) -> MappingProposal:
     return proposal
 
 
-def apply_mapping(job: Job, mapping: dict[str, str | None], constants: dict[str, str]) -> None:
+def apply_mapping(job: Job, mapping: dict[str, str | None], constants: dict[str, str], template: str | None = None) -> None:
     job.require("map")
     if job.df is None:
         raise InvalidState("Upload a file before mapping.")
+
+    if template:
+        try:
+            tmpl_mapping, tmpl_constants = apply_template(template)
+            mapping = {**tmpl_mapping, **(mapping or {})}
+            constants = {**tmpl_constants, **(constants or {})}
+        except ValueError as exc:
+            raise BadRequest(str(exc), code="invalid_template")
 
     clean = {t: s for t, s in (mapping or {}).items() if s}
     unknown = sorted({s for s in clean.values() if s not in job.df.columns})
@@ -213,7 +242,7 @@ def run_resolution(job: Job, existing: list[dict[str, Any]] | None) -> Any:
     return verdicts
 
 
-def run_generation(job: Job, company: str | None) -> dict[str, Any]:
+def run_generation(job: Job, company: str | None, cutover_date: str | None = None) -> dict[str, Any]:
     job.require("generate")
     if job.mapped_df is None or job.validation is None:
         raise InvalidState("Map and validate before generating.")
@@ -225,7 +254,7 @@ def run_generation(job: Job, company: str | None) -> dict[str, Any]:
         )
 
     if job.entity_type == EntityType.VOUCHER:
-        return _generate_vouchers(job, company)
+        return _generate_vouchers(job, company, cutover_date)
 
     verdict_by_row = {v.source_row: v for v in (job.resolution or [])}
     units: list[Unit] = []
@@ -290,28 +319,92 @@ def run_generation(job: Job, company: str | None) -> dict[str, Any]:
     return {"generated": total, "held": held, "skipped": skipped, "errors": conv_errors, "bytes": len(xml)}
 
 
-def _generate_vouchers(job: Job, company: str | None) -> dict[str, Any]:
+def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None = None) -> dict[str, Any]:
     """Group the mapped rows into balanced vouchers and build the Tally "Vouchers" envelope."""
-    vouchers, conv_errors = rows_to_vouchers(job.mapped_df)
-    total = len(vouchers)
-    if total == 0:
-        raise UnprocessableData(
-            "No importable vouchers after grouping (all rows skipped or unbalanced).",
-            errors=conv_errors, code="nothing_to_generate",
+    df = job.mapped_df
+
+    opening_balances = {}
+    if cutover_date and "date" in df.columns:
+        from datetime import datetime
+        try:
+            cutover = datetime.strptime(cutover_date, "%Y-%m-%d").date()
+            from app.pipeline.coercion import coerce_date, coerce_amount_drcr
+            from decimal import Decimal
+
+            def is_post_cutover(val):
+                try:
+                    d = coerce_date(val)
+                    return d is None or d >= cutover
+                except ValueError:
+                    return True
+
+            mask = df["date"].apply(is_post_cutover)
+            pre_df = df[~mask]
+            df = df[mask]
+
+            for _, row in pre_df.iterrows():
+                ledger = str(row.get("ledger_name", "")).strip()
+                party = str(row.get("party_ledger", "")).strip()
+                if not ledger:
+                    continue
+                ad = coerce_amount_drcr(row.get("amount"), row.get("dr_cr"))
+                if ad is None:
+                    continue
+                mag, is_debit = ad
+
+                # Accrue main ledger
+                current_net = opening_balances.get(ledger, Decimal("0"))
+                change = mag if is_debit else -mag
+                opening_balances[ledger] = current_net + change
+
+                # Accrue counter-party ledger to maintain Double-Entry integrity
+                if party:
+                    current_party_net = opening_balances.get(party, Decimal("0"))
+                    party_change = -mag if is_debit else mag
+                    opening_balances[party] = current_party_net + party_change
+
+        except ValueError:
+            pass # ignore bad cutover date format
+
+    vouchers, conv_errors = rows_to_vouchers(df)
+
+    ledgers = []
+    from app.pipeline.entities import Ledger, TallyAction
+
+    # We extracted both `ledger_name` and `party_ledger` into `opening_balances`.
+    # `party_ledger` represents the customer leg and safely belongs in "Sundry Debtors".
+    # All other ledgers (Sales, Taxes) should default to "Primary" to prevent breaking the CoAs.
+    party_ledgers = {str(row.get("party_ledger", "")).strip() for _, row in df.iterrows() if str(row.get("party_ledger", "")).strip()}
+
+    for name, net_balance in opening_balances.items():
+        if net_balance == 0:
+            continue
+        parent_group = "Sundry Debtors" if name in party_ledgers else "Primary"
+        ledgers.append(
+            Ledger(
+                name=name,
+                parent=parent_group,
+                action=TallyAction.ALTER, # Update existing master
+                opening_balance=abs(net_balance),
+                opening_is_debit=net_balance > 0,
+            )
         )
+
+    total = len(vouchers)
     company_name = company or job.company or "Company"
     try:
-        xml = build_and_serialize_vouchers(company_name, vouchers)
+        from app.pipeline.conversion.builder import build_and_serialize
+        xml = build_and_serialize(company_name, vouchers=vouchers, ledgers=ledgers)
     except ValueError as exc:  # an unbalanced voucher slipping past validation
-        raise UnprocessableData(f"Could not build voucher XML: {exc}", code="xml_build_failed") from exc
+        raise UnprocessableData(f"Could not build unified XML: {exc}", code="xml_build_failed") from exc
 
     lines = sum(len(v.lines) for v in vouchers)
     job.company = company_name
     job.xml = xml
     job.push_result = None
-    job.notes = [f"generated={total}", f"voucher_lines={lines}", f"convert_errors={len(conv_errors)}"]
+    job.notes = [f"generated={total}", f"voucher_lines={lines}", f"convert_errors={len(conv_errors)}", f"opening_balances={len(ledgers)}"]
     job.advance(JobStatus.GENERATED)
-    log.info("generate.vouchers.ok", job_id=job.id, vouchers=total, lines=lines, bytes=len(xml))
+    log.info("generate.vouchers.ok", job_id=job.id, vouchers=total, lines=lines, bytes=len(xml), ob=len(ledgers))
     return {"generated": total, "held": 0, "skipped": 0, "errors": conv_errors, "bytes": len(xml)}
 
 
