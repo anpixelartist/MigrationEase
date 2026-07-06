@@ -74,6 +74,10 @@ def _read_csv(content: bytes) -> pd.DataFrame:
     best = from_bytes(content).best()
     encoding = best.encoding if best is not None else "utf-8"
     text = content.decode(encoding, errors="replace")
+    # Strip a leading BOM (U+FEFF) — str.strip() does NOT remove it, so an undetected UTF-8 BOM
+    # would otherwise corrupt the first header (e.g. "﻿Ledger Name") and break its mapping.
+    if text and text[0] == "﻿":
+        text = text[1:]
     return pd.read_csv(
         io.StringIO(text),
         sep=_detect_delimiter(text),

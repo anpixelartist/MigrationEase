@@ -51,8 +51,14 @@ class AuthedClient:
     def post(self, url, **kwargs):
         return self.tc.post(url, **self._merge(kwargs))
 
+    def delete(self, url, **kwargs):
+        return self.tc.delete(url, **self._merge(kwargs))
+
     def raw(self) -> TestClient:
         return self.tc
+
+    def org_id(self) -> str:
+        return self.get("/auth/me").json()["orgs"][0]["org_id"]
 
 
 def make_authed(tc: TestClient, email: str | None = None, password: str = "password123") -> AuthedClient:

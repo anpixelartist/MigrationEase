@@ -11,6 +11,7 @@ import (
 	"io"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/coder/websocket"
@@ -125,6 +126,10 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 	hasError := false
 	currentReportName := "All Masters" // Default assumption
 	currentImportDups := ""
+	// Honor the company the BACKEND selected (Plan step) via the payload's SVCURRENTCOMPANY; the
+	// CLI --company flag is only a fallback. Otherwise every push would land in the operator's
+	// flag/currently-open company regardless of what the user chose — a data-integrity bug.
+	currentCompany := cfg.Company
 
 	for {
 		t, err := decoder.Token()
@@ -142,11 +147,16 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 				if err := decoder.DecodeElement(&dups, &se); err == nil {
 					currentImportDups = dups
 				}
+			} else if se.Name.Local == "SVCURRENTCOMPANY" {
+				var co string
+				if err := decoder.DecodeElement(&co, &se); err == nil && strings.TrimSpace(co) != "" {
+					currentCompany = strings.TrimSpace(co)
+				}
 			} else if se.Name.Local == "REPORTNAME" {
 				var rName string
 				if err := decoder.DecodeElement(&rName, &se); err == nil {
 					if rName != currentReportName && count > 0 {
-						chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+						chunk := buildEnvelopeShell(currentCompany, currentReportName, currentImportDups, buffer.Bytes())
 						resp, postErr := cfg.Tally.Post(ctx, chunk)
 						if postErr != nil {
 							hasError = true
@@ -174,7 +184,7 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 				count++
 
 				if count >= 200 {
-					chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+					chunk := buildEnvelopeShell(currentCompany, currentReportName, currentImportDups, buffer.Bytes())
 					resp, postErr := cfg.Tally.Post(ctx, chunk)
 					if postErr != nil {
 						hasError = true
@@ -203,7 +213,7 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 
 	// Flush remaining buffer
 	if count > 0 {
-		chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+		chunk := buildEnvelopeShell(currentCompany, currentReportName, currentImportDups, buffer.Bytes())
 		resp, postErr := cfg.Tally.Post(ctx, chunk)
 		if postErr != nil {
 			_ = wsjson.Write(ctx, conn, protocol.JobError{

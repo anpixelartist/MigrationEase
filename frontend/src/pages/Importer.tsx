@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { Link } from "react-router-dom";
 import { ApiError, api, downloadArtifact, pollTask } from "../api/client";
 import type {
-  BridgeStatus,
   EntityType,
   GenerateSummary,
   MappingProposal,
@@ -12,6 +12,7 @@ import type {
 } from "../api/types";
 import { Button, Spinner, useToast } from "../components/ui";
 import { MappingGuide } from "../components/MappingGuide";
+import { useBridgeStatus } from "../hooks/useBridgeStatus";
 import { T, card, confColor } from "../theme";
 
 type Step = "upload" | "preview" | "map" | "validate" | "plan" | "import" | "done";
@@ -65,7 +66,7 @@ export default function Importer() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [showGuide, setShowGuide] = useState(false);
-  const [bridgeStatus, setBridgeStatus] = useState<BridgeStatus | null>(null);
+  const bridgeStatus = useBridgeStatus();
 
   useEffect(() => {
     localStorage.setItem("tm_company", company);
@@ -74,13 +75,6 @@ export default function Importer() {
   useEffect(() => {
     localStorage.setItem("tm_cutover", cutoverDate);
   }, [cutoverDate]);
-
-  useEffect(() => {
-    const load = () => api.bridgeStatus().then(setBridgeStatus).catch(() => {});
-    load();
-    const iv = setInterval(load, 5000);
-    return () => clearInterval(iv);
-  }, []);
 
   const curIdx = STEPS.findIndex((s) => s.key === step);
   const fail = (e: unknown) => {
@@ -119,8 +113,32 @@ export default function Importer() {
       const m: Record<string, string | null> = {};
       p.suggestions.forEach((s) => { m[s.target_field] = s.source_column; });
       setMapping(m);
+      // A saved template that matched this file rides in via applied_constants — pre-fill them
+      // (user edits still win, so merge template constants UNDER any the user already set).
+      if (p.applied_constants && Object.keys(p.applied_constants).length) {
+        setConstants((c) => ({ ...p.applied_constants, ...c }));
+      }
       setStep("map");
     } catch (e) { fail(e); } finally { setBusy(false); }
+  };
+
+  const saveAsTemplate = async () => {
+    if (!jobId || !profile) return;
+    const name = window.prompt(
+      "Save this column mapping as a reusable template.\nNext time you import a file with these columns, it auto-maps.\n\nTemplate name:",
+    );
+    if (!name || !name.trim()) return;
+    try {
+      const cleanConsts = Object.fromEntries(Object.entries(constants).filter(([, v]) => v.trim() !== ""));
+      await api.saveTemplate({
+        name: name.trim(),
+        entity_type: entity,
+        mapping,
+        constants: cleanConsts,
+        source_columns: profile.columns.map((c) => c.name),
+      });
+      toast.show(`Saved “${name.trim()}” — it'll auto-apply to matching ${entity} files next time`);
+    } catch (e) { fail(e); }
   };
 
   const runValidate = async () => {
@@ -203,13 +221,32 @@ export default function Importer() {
           <h1 style={h1}>Import to Tally</h1>
           <p style={sub}>Pick what you're importing, then drop a CSV or Excel file. We profile it, map the columns, and flag anything off before it touches your books.</p>
 
-          <div style={{ ...card, padding: "14px 18px", background: "rgba(79,70,229,.04)", border: "1px solid rgba(79,70,229,.15)", marginBottom: 22 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: T.accent, marginBottom: 4 }}>Export Guide: Shopify</div>
-            <div style={{ fontSize: 12.5, color: T.text, lineHeight: 1.5 }}>
-              To ensure all taxes and multi-leg settlements are calculated correctly, navigate to your Shopify Admin Panel:
-              <b> Analytics &gt; Reports &gt; Sales over time</b>. Export the report as a CSV and upload it below.
+          {/* Automatic Tally-push facility — always visible so users know the local bridge (Tally gateway on port 9000) exists. */}
+          <div style={{ ...card, padding: "13px 17px", marginBottom: 16, display: "flex", alignItems: "flex-start", gap: 12 }}>
+            <span style={{ marginTop: 4, width: 8, height: 8, flex: "none", borderRadius: "50%", background: bridgeStatus?.online ? "#22c55e" : "#cfcfc8", boxShadow: bridgeStatus?.online ? "0 0 0 3px rgba(34,197,94,.18)" : "none" }} />
+            <div style={{ flex: 1, fontSize: 12.5, color: T.text, lineHeight: 1.5 }}>
+              <div style={{ fontWeight: 600, marginBottom: 2 }}>
+                {bridgeStatus?.online ? "Direct-to-Tally push is active" : "Automatic push to Tally Prime"}
+              </div>
+              Ledgerbridge connects to <b>Tally Prime</b> through a small agent on the machine running Tally
+              (its gateway on <b>port 9000</b>) — so you can push imports straight into your company, no manual XML.
+              {bridgeStatus?.online ? " A bridge is connected and ready." : " No bridge is connected yet."}{" "}
+              <Link to="/bridge" style={{ color: T.accent, fontWeight: 500, whiteSpace: "nowrap" }}>
+                {bridgeStatus?.online ? "Manage bridge →" : "Set up the bridge →"}
+              </Link>
             </div>
           </div>
+
+          {/* Template-specific export help — only relevant once a source template is picked (e.g. Shopify). */}
+          {template === "shopify" && (
+            <div style={{ ...card, padding: "14px 18px", background: "rgba(79,70,229,.04)", border: "1px solid rgba(79,70,229,.15)", marginBottom: 22 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: T.accent, marginBottom: 4 }}>Export Guide: Shopify</div>
+              <div style={{ fontSize: 12.5, color: T.text, lineHeight: 1.5 }}>
+                To ensure all taxes and multi-leg settlements are calculated correctly, navigate to your Shopify Admin Panel:
+                <b> Analytics &gt; Reports &gt; Sales over time</b>. Export the report as a CSV and upload it below.
+              </div>
+            </div>
+          )}
 
           <div style={{ display: "flex", gap: 8, marginBottom: 18, flexWrap: "wrap" }}>
             {ENTITIES.map((e) => (
@@ -295,11 +332,22 @@ export default function Importer() {
         <div className="fadeIn">
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
             <h1 style={h1}>Map columns to Tally fields</h1>
-            <Button onClick={() => setShowGuide(true)}>❓ Mapping help</Button>
+            <div style={{ display: "flex", gap: 8 }}>
+              <Button onClick={saveAsTemplate} disabled={mapAttention > 0}
+                title={mapAttention > 0 ? "Map the required fields first" : "Save this mapping to auto-apply on future imports"}>
+                💾 Save as template
+              </Button>
+              <Button onClick={() => setShowGuide(true)}>❓ Mapping help</Button>
+            </div>
           </div>
+          {proposal.applied_template && (
+            <div style={{ ...card, padding: "10px 14px", background: T.okBg, border: "1px solid rgba(34,197,94,.28)", marginBottom: 14, fontSize: 12.5, color: T.ok }}>
+              ✓ Applied your saved template <b>“{proposal.applied_template}”</b> — these columns were auto-mapped from a previous import. Adjust anything below if needed.
+            </div>
+          )}
           <p style={sub}>
             {proposal.suggestions.filter((s) => s.status === "auto_accept").length} auto-mapped · {mapAttention} required field(s) need your attention.
-            <br />No column for a required field (e.g. a group/parent)? Choose <b>“Set a fixed value”</b> to apply one value to every row.
+            <br />No column for a required field (e.g. a group/parent)? Choose <b>“Set a fixed value”</b> to apply one value to every row. Happy with this mapping? <b>Save it as a template</b> to skip this step next time.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
             {proposal.suggestions.map((s) => {

@@ -6,6 +6,7 @@ import type {
   EntityType,
   Job,
   MappingProposal,
+  MappingTemplate,
   Problem,
   ProfileSignals,
   TaskEnqueued,
@@ -135,6 +136,18 @@ export const api = {
   // ---- bridge ----
   createBridge: (name?: string) => request<BridgeResponse>("POST", "/bridges", { name }),
   bridgeStatus: () => request<BridgeStatus>("GET", "/bridge/status"),
+
+  // ---- saved mapping templates ----
+  listTemplates: (entity_type: EntityType) =>
+    request<MappingTemplate[]>("GET", `/templates?entity_type=${encodeURIComponent(entity_type)}`),
+  saveTemplate: (t: {
+    name: string;
+    entity_type: EntityType;
+    mapping: Record<string, string | null>;
+    constants: Record<string, string>;
+    source_columns: string[];
+  }) => request<MappingTemplate>("POST", "/templates", t),
+  deleteTemplate: (id: string) => request<void>("DELETE", `/templates/${id}`),
 };
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

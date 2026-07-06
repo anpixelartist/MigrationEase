@@ -17,7 +17,7 @@ from app.core.config import get_settings
 from app.core.errors import register_exception_handlers
 from app.core.logging import bind_context, clear_context, configure_logging, get_logger
 from app.db.base import init_db
-from app.api.routers import auth, bridge, health, jobs
+from app.api.routers import auth, bridge, health, jobs, templates
 
 _PROBLEM_MEDIA = "application/problem+json"
 
@@ -116,6 +116,7 @@ def create_app() -> FastAPI:
     app.include_router(auth.router)
     app.include_router(bridge.router)
     app.include_router(jobs.router)
+    app.include_router(templates.router)
 
     log.info("app.started", environment=settings.environment, direct_push=settings.direct_tally_push)
     return app

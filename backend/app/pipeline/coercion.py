@@ -265,6 +265,7 @@ def row_to_master(
                 opening_qty=num("opening_qty"),
                 opening_rate=num("opening_rate"),
                 opening_value=num("opening_value"),
+                hsn_code=coerce_str(row.get("hsn")) or None,
                 gst_applicable=bool(flag("gst_applicable")),
             )
         else:  # pragma: no cover - guarded earlier

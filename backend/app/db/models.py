@@ -125,6 +125,39 @@ class JobRecord(Base):
     )
 
 
+class MappingTemplate(Base):
+    """A reusable, org-scoped column mapping a user saved from a manual mapping.
+
+    Feeds two places: the template picker on the Upload step, and the auto-mapper —
+    ``suggest_mapping`` overlays the best-matching saved template (by source-column overlap) so a
+    repeat import of the same export shape auto-maps with high confidence instead of re-doing the
+    manual mapping. Uniqueness is per ``(org_id, entity_type, name)`` so a name can be reused across
+    entity types and saving the same name upserts.
+    """
+
+    __tablename__ = "mapping_templates"
+    __table_args__ = (
+        UniqueConstraint("org_id", "entity_type", "name", name="uq_mapping_template_org_entity_name"),
+        Index("ix_mapping_templates_org_entity", "org_id", "entity_type"),
+    )
+
+    id: Mapped[str] = mapped_column(String(32), primary_key=True, default=_uuid)
+    org_id: Mapped[str] = mapped_column(ForeignKey("organizations.id"), index=True)
+    created_by: Mapped[str] = mapped_column(ForeignKey("users.id"))
+    entity_type: Mapped[str] = mapped_column(String(20))
+    name: Mapped[str] = mapped_column(String(200))
+    # {canonical_target_field: source_column} — the accepted column mapping.
+    mapping_json: Mapped[dict] = mapped_column(JSON, default=dict)
+    # {canonical_target_field: fixed_value} — the "set a fixed value" constants.
+    constants_json: Mapped[dict] = mapped_column(JSON, default=dict)
+    # the source columns present in the file when saved — used to score auto-match against new files.
+    source_columns_json: Mapped[list] = mapped_column(JSON, default=list)
+    created_at: Mapped[_dt.datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    updated_at: Mapped[_dt.datetime] = mapped_column(
+        DateTime(timezone=True), default=_now, onupdate=_now
+    )
+
+
 class StagedRecord(Base):
     __tablename__ = "staged_records"
     __table_args__ = (

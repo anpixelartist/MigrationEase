@@ -50,13 +50,30 @@ class SlidingWindowLimiter:
 _limiter = SlidingWindowLimiter()
 
 
+def _client_ip(request: Request, settings) -> str:
+    """Real client IP for keying the limiter.
+
+    Behind a TLS-terminating proxy, ``request.client.host`` is the proxy, so all clients share one
+    bucket. When ``trust_forwarded_for`` is set, take the entry ``forwarded_for_depth`` from the RIGHT
+    of X-Forwarded-For — the address the OUTERMOST trusted proxy observed. Entries further left are
+    client-supplied and untrusted, so this can't be spoofed past the trusted-proxy count.
+    """
+    if settings.trust_forwarded_for:
+        parts = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
+        depth = max(1, settings.forwarded_for_depth)
+        if len(parts) >= depth:
+            return parts[-depth]
+    return request.client.host if request.client else "unknown"
+
+
 def auth_rate_limit(request: Request) -> None:
     """FastAPI dependency: throttle password-auth endpoints per client IP."""
-    parsed = _parse(get_settings().auth_rate_limit)
+    settings = get_settings()
+    parsed = _parse(settings.auth_rate_limit)
     if parsed is None:
         return
     limit, window = parsed
-    client_ip = request.client.host if request.client else "unknown"
+    client_ip = _client_ip(request, settings)
     if not _limiter.check(f"auth:{client_ip}", limit, window):
         raise TooManyRequests(
             "Too many authentication attempts.",

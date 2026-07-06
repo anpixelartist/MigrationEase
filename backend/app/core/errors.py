@@ -73,6 +73,11 @@ class JobNotFound(AppError):
     code = "job_not_found"
 
 
+class NotFound(AppError):
+    status_code = 404
+    code = "not_found"
+
+
 class InvalidEntityType(AppError):
     status_code = 422
     code = "invalid_entity_type"

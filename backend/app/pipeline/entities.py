@@ -101,6 +101,7 @@ class StockItem(MasterBase):
     opening_qty: Decimal | None = None
     opening_rate: Decimal | None = None
     opening_value: Decimal | None = None
+    hsn_code: str | None = None  # emitted as <HSNCODE> when the user maps an HSN column
     gst_applicable: bool = False  # full GST RATEDETAILS deferred past the masters spine (plan §11.10)
 
 

@@ -66,6 +66,14 @@ def resolve_user_identity(claims: dict[str, Any]) -> tuple[str, str]:
             raise Forbidden("No account for this identity.", code="no_account")
         if not email:
             raise Unauthorized("Token is missing the email claim.", code="missing_email")
+        if settings.oidc_require_verified_email and not email_verified:
+            # Don't mint a first-class identity (+ workspace) for an unverified email — it would let
+            # anyone self-register any address and poison verified-email linking / invites later.
+            raise Unauthorized(
+                "Email not verified.",
+                detail="Verify your email with the identity provider, then sign in again.",
+                code="email_unverified",
+            )
 
         user = User(email=email, password_hash=None, full_name=claims.get("name"), idp_sub=sub)
         session.add(user)
@@ -117,6 +125,15 @@ def register_service_account(*, org_id: str, actor_role: str, client_id: str, na
         raise BadRequest("Invalid client_id.", code="invalid_client_id")
     if role not in ("admin", "member"):
         raise BadRequest("role must be 'admin' or 'member'.", code="invalid_role")
+    # A public/standard-flow client (the SPA) must never become a service account: every end-user
+    # token carries azp=<web client id>, so registering it would map ALL those tokens onto one org
+    # (auth-confusion hijack). Reject the configured web client id.
+    settings = get_settings()
+    if settings.oidc_web_client_id and client_id.lower() == settings.oidc_web_client_id.strip().lower():
+        raise BadRequest(
+            "That client id is the public login client and cannot be a service account.",
+            code="public_client_forbidden",
+        )
 
     with new_session() as session:
         if session.scalar(select(ServiceAccount).where(ServiceAccount.client_id == client_id)) is not None:

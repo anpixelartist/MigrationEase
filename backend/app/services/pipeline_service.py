@@ -133,13 +133,52 @@ def suggest_mapping(job: Job) -> MappingProposal:
     if job.df is None:
         raise InvalidState("Upload a file before requesting mapping suggestions.")
     proposal = auto_map(job.df, job.entity_type).data
+    _overlay_saved_template(job, proposal)
     log.info(
         "map.suggested",
         job_id=job.id,
         unmapped_required=proposal.unmapped_required,
         sources=len(job.df.columns),
+        applied_template=proposal.applied_template,
     )
     return proposal
+
+
+def _overlay_saved_template(job: Job, proposal: MappingProposal) -> None:
+    """Strengthen the fuzzy proposal with the org's best-matching saved template (if any).
+
+    A user who once mapped this export shape by hand and saved it gets it auto-applied on the next
+    import: the template's columns win (method=template, auto-accepted), and its constants ride along
+    for the UI to pre-fill. Never fails the request — a template lookup error just leaves the fuzzy
+    proposal untouched.
+    """
+    try:
+        from app.services import template_service
+
+        tmpl = template_service.best_match(job.org_id, job.entity_type, list(job.df.columns))
+    except Exception:  # pragma: no cover - template overlay is best-effort, never blocks mapping
+        log.warning("map.template_overlay_failed", job_id=job.id, exc_info=True)
+        return
+    if tmpl is None:
+        return
+
+    present = set(job.df.columns)
+    by_field = {s.target_field: s for s in proposal.suggestions}
+    for field, col in tmpl.mapping.items():
+        if col in present and field in by_field:
+            s = by_field[field]
+            s.source_column = col
+            s.method = "template"
+            s.confidence = max(s.confidence, 0.99)
+            s.status = "auto_accept"
+
+    used = {s.source_column for s in proposal.suggestions if s.source_column}
+    proposal.unmapped_sources = [c for c in job.df.columns if c not in used]
+    proposal.unmapped_required = [
+        s.target_field for s in proposal.suggestions if s.required and s.source_column is None
+    ]
+    proposal.applied_template = tmpl.name
+    proposal.applied_constants = dict(tmpl.constants)
 
 
 def apply_mapping(job: Job, mapping: dict[str, str | None], constants: dict[str, str], template: str | None = None) -> None:

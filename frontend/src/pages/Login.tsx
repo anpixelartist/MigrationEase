@@ -133,6 +133,14 @@ export default function Login() {
             </>
           )}
         </form>
+
+        {/* Make the Keycloak/OIDC integration discoverable even when the deployment runs in password-only mode. */}
+        {authConfig && !ssoEnabled && (
+          <p style={{ margin: "16px 4px 0", fontSize: 12, color: T.faint, textAlign: "center", lineHeight: 1.55 }}>
+            🔒 Enterprise single sign-on (Keycloak / OIDC) is supported.<br />
+            Ask your admin to enable SSO for your workspace.
+          </p>
+        )}
       </div>
     </div>
   );

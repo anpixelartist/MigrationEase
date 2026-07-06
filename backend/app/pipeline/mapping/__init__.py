@@ -53,6 +53,10 @@ class MappingProposal(BaseModel):
     suggestions: list[FieldSuggestion]
     unmapped_sources: list[str] = Field(default_factory=list)
     unmapped_required: list[str] = Field(default_factory=list)
+    # Set when a saved org template matched the file and was overlaid onto the suggestions above.
+    applied_template: str | None = None
+    # Constants carried by that template (target_field -> fixed value) for the UI to pre-fill.
+    applied_constants: dict[str, str] = Field(default_factory=dict)
 
     def to_plan(self) -> MappingPlan:
         """A MappingPlan of the currently-assigned columns (caller confirms before use)."""

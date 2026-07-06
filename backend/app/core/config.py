@@ -53,6 +53,17 @@ class Settings(BaseSettings):
     oidc_link_by_email: bool = True
     # First OIDC login with no matching account: create user + personal org (like signup).
     oidc_jit_provisioning: bool = True
+    # Require a verified email before JIT-provisioning a brand-new identity. Prod default = True so
+    # ``users.email`` stays trustworthy for later verified-email linking / invites (needs the realm's
+    # ``verifyEmail=true``). Set False only for dev/demo realms without SMTP.
+    oidc_require_verified_email: bool = True
+
+    # ---- reverse-proxy awareness (rate limiting / client IP) ----
+    # When the API sits behind a TLS-terminating proxy/LB, request.client.host is the PROXY, so every
+    # client collapses into one rate-limit bucket. Enable this ONLY when a trusted proxy sets
+    # X-Forwarded-For, and set the number of trusted proxies between the client and the app.
+    trust_forwarded_for: bool = False
+    forwarded_for_depth: int = 1
 
     @model_validator(mode="after")
     def enforce_prod_secret(self) -> Settings:

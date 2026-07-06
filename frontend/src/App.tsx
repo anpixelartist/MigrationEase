@@ -1,11 +1,35 @@
 import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "./auth/AuthContext";
 import { Spinner } from "./components/ui";
+import { useBridgeStatus } from "./hooks/useBridgeStatus";
 import AuthCallback from "./pages/AuthCallback";
 import BridgeSettings from "./pages/BridgeSettings";
 import Importer from "./pages/Importer";
 import Login from "./pages/Login";
+import Status from "./pages/Status";
 import { T } from "./theme";
+
+/** Always-visible pill so users know the automatic Tally push facility (local bridge → Tally on port 9000) is live. */
+function TallyStatusPill() {
+  const status = useBridgeStatus();
+  const online = Boolean(status?.online);
+  return (
+    <Link
+      to="/bridge"
+      title={online ? "A Tally bridge is connected — you can push imports straight into Tally." : "No Tally bridge connected. Click to set one up."}
+      style={{
+        display: "inline-flex", alignItems: "center", gap: 7, textDecoration: "none",
+        padding: "5px 11px", borderRadius: 999, fontSize: 12, fontWeight: 500,
+        background: online ? T.okBg : "rgba(0,0,0,.04)",
+        color: online ? T.ok : T.faint,
+        border: `1px solid ${online ? "rgba(34,197,94,.28)" : T.line}`,
+      }}
+    >
+      <span style={{ width: 7, height: 7, borderRadius: "50%", background: online ? "#22c55e" : "#cfcfc8", boxShadow: online ? "0 0 0 3px rgba(34,197,94,.18)" : "none" }} />
+      {online ? "Tally connected" : "Tally not connected"}
+    </Link>
+  );
+}
 
 function TopBar() {
   const { user, logout } = useAuth();
@@ -28,8 +52,10 @@ function TopBar() {
         <nav style={{ display: "flex", gap: 18, flex: 1 }}>
           <Link to="/" style={linkStyle(loc.pathname === "/")}>Import</Link>
           <Link to="/bridge" style={linkStyle(loc.pathname === "/bridge")}>Bridge</Link>
+          <Link to="/status" style={linkStyle(loc.pathname === "/status")}>Status</Link>
         </nav>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <TallyStatusPill />
           <span style={{ fontSize: 12.5, color: T.faint, fontFamily: T.mono }}>{user?.email}</span>
           <span onClick={logout} style={{ fontSize: 12.5, color: T.muted, cursor: "pointer", fontWeight: 500 }}>Sign out</span>
         </div>
@@ -64,6 +90,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Importer />} />
         <Route path="/bridge" element={<BridgeSettings />} />
+        <Route path="/status" element={<Status />} />
         <Route path="/auth/callback" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
