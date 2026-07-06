@@ -25,6 +25,7 @@ class JobResponse(BaseModel):
 
 
 class MappingRequest(BaseModel):
+    template: str | None = None
     mapping: dict[str, str | None] = Field(default_factory=dict)
     constants: dict[str, str] = Field(default_factory=dict)
 

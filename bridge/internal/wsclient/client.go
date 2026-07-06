@@ -72,12 +72,15 @@ func connectAndServe(ctx context.Context, cfg Config) error {
 }
 
 func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job protocol.PushJob) {
-	xml, err := base64.StdEncoding.DecodeString(job.XMLB64)
+	xmlBytes, err := base64.StdEncoding.DecodeString(job.XMLB64)
 	if err != nil {
 		_ = wsjson.Write(ctx, conn, protocol.JobError{Type: protocol.TypeJobError, JobID: job.JobID, Reason: "bad_payload"})
 		return
 	}
-	resp, err := cfg.Tally.Post(ctx, xml)
+
+	// MVP: Push the entire payload at once. Full chunking by <VOUCHER> elements using encoding/xml
+	// requires a complex xml.Decoder stream parsing which will be added in a dedicated chunking PR.
+	resp, err := cfg.Tally.Post(ctx, xmlBytes)
 	if err != nil {
 		_ = wsjson.Write(ctx, conn, protocol.JobError{
 			Type: protocol.TypeJobError, JobID: job.JobID, Reason: protocol.ReasonTallyUnreachable,

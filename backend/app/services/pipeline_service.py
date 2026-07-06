@@ -30,6 +30,7 @@ from app.pipeline.entities import EntityType, Group, Ledger, StockItem, Unit
 from app.pipeline.voucher import rows_to_vouchers
 from app.pipeline.mapping import MappingProposal, auto_map
 from app.pipeline.mapping.catalog import load_catalog
+from app.pipeline.mapping.templates import apply_template
 from app.pipeline.parsing import parse_file
 from app.pipeline.profiling import profile
 from app.pipeline.push.response_parser import XMLSecurityError, parse_import_response
@@ -121,10 +122,18 @@ def suggest_mapping(job: Job) -> MappingProposal:
     return proposal
 
 
-def apply_mapping(job: Job, mapping: dict[str, str | None], constants: dict[str, str]) -> None:
+def apply_mapping(job: Job, mapping: dict[str, str | None], constants: dict[str, str], template: str | None = None) -> None:
     job.require("map")
     if job.df is None:
         raise InvalidState("Upload a file before mapping.")
+
+    if template:
+        try:
+            tmpl_mapping, tmpl_constants = apply_template(template)
+            mapping = {**tmpl_mapping, **(mapping or {})}
+            constants = {**tmpl_constants, **(constants or {})}
+        except ValueError as exc:
+            raise BadRequest(str(exc), code="invalid_template")
 
     clean = {t: s for t, s in (mapping or {}).items() if s}
     unknown = sorted({s for s in clean.values() if s not in job.df.columns})

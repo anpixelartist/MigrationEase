@@ -204,6 +204,20 @@ def rows_to_vouchers(
             voucher_type=vtype, date=vdate, lines=g["lines"], reference=vnum,
             narration=g["narration"], party_ledger=party, source_row=src,
         )
+
+        diff = voucher.debit_total - voucher.credit_total
+        from decimal import Decimal
+        if abs(diff) > Decimal("0") and abs(diff) <= Decimal("0.99"):
+            is_debit = diff < 0
+            voucher.lines.append(
+                VoucherLine(
+                    ledger_name="Round Off",
+                    is_debit=is_debit,
+                    amount=abs(diff),
+                    source_row=src
+                )
+            )
+
         if not voucher.is_balanced:
             errors.append(_err(src, "amount", ErrorCode.VOUCHER_UNBALANCED,
                                f"Voucher '{vnum}' is unbalanced — debits ({voucher.debit_total}) "

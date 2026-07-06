@@ -17,7 +17,8 @@ from decimal import ROUND_HALF_UP, Decimal
 from lxml import etree
 
 from app.pipeline.conversion.serialize import list_marker_value, serialize
-from app.pipeline.entities import Group, Ledger, StockItem, TallyAction, Unit
+from app.pipeline.conversion.voucher_builder import _build_voucher
+from app.pipeline.entities import Group, Ledger, StockItem, TallyAction, Unit, Voucher
 
 # ---------------------------------------------------------------------------
 # Tally conventions
@@ -273,6 +274,48 @@ def build_masters_envelope(
     return env
 
 
+def build_unified_envelope(
+    company: str,
+    *,
+    units: Sequence[Unit] = (),
+    groups: Sequence[Group] = (),
+    stock_items: Sequence[StockItem] = (),
+    ledgers: Sequence[Ledger] = (),
+    vouchers: Sequence[Voucher] = (),
+    import_dups: str | None = DEFAULT_IMPORT_DUPS,
+) -> etree._Element:
+    """Assemble a single unified `<ENVELOPE>` containing both 'All Masters' and 'Vouchers'."""
+    env = etree.Element("ENVELOPE")
+    header = _sub(env, "HEADER")
+    _sub(header, "TALLYREQUEST", "Import Data")
+
+    body = _sub(env, "BODY")
+    importdata = _sub(body, "IMPORTDATA")
+
+    reqdesc = _sub(importdata, "REQUESTDESC")
+    _sub(reqdesc, "REPORTNAME", "All Masters")
+    static = _sub(reqdesc, "STATICVARIABLES")
+    _sub(static, "SVCURRENTCOMPANY", company)
+    if import_dups:
+        _sub(static, "IMPORTDUPS", import_dups)
+
+    reqdata = _sub(importdata, "REQUESTDATA")
+    for unit in units:
+        _build_unit(reqdata, unit)
+    for group in topological_sort_groups(list(groups)):
+        _build_group(reqdata, group)
+    for item in stock_items:
+        _build_stock_item(reqdata, item)
+    for ledger in ledgers:
+        _build_ledger(reqdata, ledger)
+
+    if vouchers:
+        _sub(reqdesc, "REPORTNAME", "Vouchers") # Change context to vouchers immediately
+        for voucher in vouchers:
+            _build_voucher(reqdata, voucher)
+
+    return env
+
 def build_and_serialize(
     company: str,
     *,
@@ -280,15 +323,17 @@ def build_and_serialize(
     groups: Sequence[Group] = (),
     stock_items: Sequence[StockItem] = (),
     ledgers: Sequence[Ledger] = (),
+    vouchers: Sequence[Voucher] = (),
     import_dups: str | None = DEFAULT_IMPORT_DUPS,
 ) -> bytes:
     """Convenience: build the envelope and serialize it to Tally-ready bytes."""
-    envelope = build_masters_envelope(
+    envelope = build_unified_envelope(
         company,
         units=units,
         groups=groups,
         stock_items=stock_items,
         ledgers=ledgers,
+        vouchers=vouchers,
         import_dups=import_dups,
     )
     return serialize(envelope)

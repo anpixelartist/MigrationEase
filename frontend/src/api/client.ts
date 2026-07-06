@@ -76,8 +76,8 @@ export const api = {
   getProfile: (id: string) => request<ProfileSignals>("GET", `/jobs/${id}/profile`),
   getSuggestions: (id: string) => request<MappingProposal>("GET", `/jobs/${id}/mapping/suggestions`),
   getVoucherPreview: (id: string) => request<VoucherPreview>("GET", `/jobs/${id}/vouchers/preview`),
-  postMapping: (id: string, mapping: Record<string, string | null>, constants: Record<string, string> = {}) =>
-    request<Job>("POST", `/jobs/${id}/mapping`, { mapping, constants }),
+  postMapping: (id: string, mapping: Record<string, string | null>, constants: Record<string, string> = {}, template?: string) =>
+    request<Job>("POST", `/jobs/${id}/mapping`, { mapping, constants, template: template || null }),
 
   // long stages return a task; poll with pollTask
   enqueueValidate: (id: string, known_groups?: string[]) =>
