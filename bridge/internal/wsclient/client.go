@@ -142,7 +142,10 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 							hasError = true
 							break
 						}
-						fullResponse.Write(resp)
+						inner := bytes.TrimSpace(resp)
+						inner = bytes.TrimPrefix(inner, []byte("<RESPONSE>"))
+						inner = bytes.TrimSuffix(inner, []byte("</RESPONSE>"))
+						fullResponse.Write(inner)
 						buffer.Reset()
 						count = 0
 					}
@@ -167,7 +170,10 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 						hasError = true
 						break
 					}
-					fullResponse.Write(resp)
+					inner := bytes.TrimSpace(resp)
+					inner = bytes.TrimPrefix(inner, []byte("<RESPONSE>"))
+					inner = bytes.TrimSuffix(inner, []byte("</RESPONSE>"))
+					fullResponse.Write(inner)
 					buffer.Reset()
 					count = 0
 				}
@@ -195,7 +201,10 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 			})
 			return
 		}
-		fullResponse.Write(resp)
+		inner := bytes.TrimSpace(resp)
+		inner = bytes.TrimPrefix(inner, []byte("<RESPONSE>"))
+		inner = bytes.TrimSuffix(inner, []byte("</RESPONSE>"))
+		fullResponse.Write(inner)
 	}
 
 	fullResponse.WriteString("</RESPONSE>")

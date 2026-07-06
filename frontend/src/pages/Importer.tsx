@@ -203,6 +203,14 @@ export default function Importer() {
           <h1 style={h1}>Import to Tally</h1>
           <p style={sub}>Pick what you're importing, then drop a CSV or Excel file. We profile it, map the columns, and flag anything off before it touches your books.</p>
 
+          <div style={{ ...card, padding: "14px 18px", background: "rgba(79,70,229,.04)", border: "1px solid rgba(79,70,229,.15)", marginBottom: 22 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: T.accent, marginBottom: 4 }}>Export Guide: Shopify</div>
+            <div style={{ fontSize: 12.5, color: T.text, lineHeight: 1.5 }}>
+              To ensure all taxes and multi-leg settlements are calculated correctly, navigate to your Shopify Admin Panel:
+              <b> Analytics &gt; Reports &gt; Sales over time</b>. Export the report as a CSV and upload it below.
+            </div>
+          </div>
+
           <div style={{ display: "flex", gap: 8, marginBottom: 18, flexWrap: "wrap" }}>
             {ENTITIES.map((e) => (
               <div key={e.key} onClick={() => setEntity(e.key)} style={{
@@ -381,6 +389,24 @@ export default function Importer() {
                 <Stat n={gen.held_conflicts} label="Held (conflicts)" color={T.warn} />
                 <Stat n={gen.skipped_rows} label="Skipped rows" color={T.faint} />
               </div>
+              {gen.debit_total && gen.credit_total && (
+                <div style={{ ...card, padding: "16px 20px", display: "flex", justifyContent: "space-between", marginBottom: 18, background: "#fafafa" }}>
+                  <div>
+                    <div style={{ fontSize: 12.5, color: T.faint, fontWeight: 600, textTransform: "uppercase" }}>Trial Balance Check</div>
+                    <div style={{ fontSize: 13, color: T.muted, marginTop: 4 }}>Compare these totals against your platform's financial reports.</div>
+                  </div>
+                  <div style={{ display: "flex", gap: 30, textAlign: "right" }}>
+                    <div>
+                      <div style={{ fontSize: 11.5, color: T.faint, fontWeight: 600, marginBottom: 2 }}>Total Debits</div>
+                      <div style={{ fontSize: 15, fontFamily: T.mono, fontWeight: 600, color: T.text }}>₹{Number(gen.debit_total).toLocaleString()}</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 11.5, color: T.faint, fontWeight: 600, marginBottom: 2 }}>Total Credits</div>
+                      <div style={{ fontSize: 15, fontFamily: T.mono, fontWeight: 600, color: T.text }}>₹{Number(gen.credit_total).toLocaleString()}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div style={{ ...card, padding: 20, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
                 <div style={{ fontSize: 13.5, color: T.muted, maxWidth: 460 }}>
                   Download a Tally-ready XML to import manually, or push it straight into <b>{company}</b> via your connected bridge.
@@ -439,10 +465,22 @@ export default function Importer() {
                 )}
               </div>
             )}
-            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center", marginBottom: 24 }}>
               {!ok && <Button onClick={download}>Download XML</Button>}
               <Button variant="primary" onClick={reset}>Import another file</Button>
             </div>
+
+            {(!ok || !push) && (
+              <div style={{ textAlign: "left", padding: 18, background: "#fafafa", border: `1px solid ${T.line}`, borderRadius: 10 }}>
+                <div style={{ fontSize: 13, fontWeight: 600, color: T.text, marginBottom: 6 }}>Manual Tally Import Steps</div>
+                <ol style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, color: T.muted, lineHeight: 1.6 }}>
+                  <li>Open <b>Tally Prime</b> and load <b>{company || "your company"}</b>.</li>
+                  <li>Go to <b>Gateway of Tally &gt; Import &gt; Transactions</b>.</li>
+                  <li>Enter the path to the downloaded XML file.</li>
+                  <li>Check the Tally Calculator Panel (Ctrl+N) or <code>Tally.imp</code> for any errors.</li>
+                </ol>
+              </div>
+            )}
           </div>
         );
       })()}

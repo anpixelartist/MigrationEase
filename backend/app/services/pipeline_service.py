@@ -24,7 +24,6 @@ from app.core.errors import (
 from app.core.logging import get_logger
 from app.pipeline.contracts import ErrorCode
 from app.pipeline.conversion import build_and_serialize
-from app.pipeline.conversion.voucher_builder import build_and_serialize_vouchers
 from app.pipeline.coercion import row_to_master
 from app.pipeline.entities import EntityType, Group, Ledger, StockItem, Unit
 from app.pipeline.voucher import rows_to_vouchers
@@ -374,7 +373,8 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
     # We extracted both `ledger_name` and `party_ledger` into `opening_balances`.
     # `party_ledger` represents the customer leg and safely belongs in "Sundry Debtors".
     # All other ledgers (Sales, Taxes) should default to "Primary" to prevent breaking the CoAs.
-    party_ledgers = {str(row.get("party_ledger", "")).strip() for _, row in df.iterrows() if str(row.get("party_ledger", "")).strip()}
+    # We check job.mapped_df to ensure we capture parties that only existed prior to cutover.
+    party_ledgers = {str(row.get("party_ledger", "")).strip() for _, row in job.mapped_df.iterrows() if str(row.get("party_ledger", "")).strip()}
 
     for name, net_balance in opening_balances.items():
         if net_balance == 0:
@@ -384,7 +384,7 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
             Ledger(
                 name=name,
                 parent=parent_group,
-                action=TallyAction.ALTER, # Update existing master
+                action=TallyAction.CREATE, # IMPORTDUPS handles the upsert/alter logic safely
                 opening_balance=abs(net_balance),
                 opening_is_debit=net_balance > 0,
             )
@@ -399,13 +399,25 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
         raise UnprocessableData(f"Could not build unified XML: {exc}", code="xml_build_failed") from exc
 
     lines = sum(len(v.lines) for v in vouchers)
+    from decimal import Decimal
+    debit_total = sum((v.debit_total for v in vouchers), Decimal("0"))
+    credit_total = sum((v.credit_total for v in vouchers), Decimal("0"))
+
     job.company = company_name
     job.xml = xml
     job.push_result = None
     job.notes = [f"generated={total}", f"voucher_lines={lines}", f"convert_errors={len(conv_errors)}", f"opening_balances={len(ledgers)}"]
     job.advance(JobStatus.GENERATED)
     log.info("generate.vouchers.ok", job_id=job.id, vouchers=total, lines=lines, bytes=len(xml), ob=len(ledgers))
-    return {"generated": total, "held": 0, "skipped": 0, "errors": conv_errors, "bytes": len(xml)}
+    return {
+        "generated": total,
+        "held": 0,
+        "skipped": 0,
+        "errors": conv_errors,
+        "bytes": len(xml),
+        "debit_total": str(debit_total),
+        "credit_total": str(credit_total),
+    }
 
 
 def run_push(job: Job, settings: Settings) -> Any:

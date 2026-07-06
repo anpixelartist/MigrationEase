@@ -82,6 +82,8 @@ async def generate_task(org_id: str, job_id: str, company: str | None = None, cu
                         "held_conflicts": summary["held"],
                         "skipped_rows": summary["skipped"],
                         "bytes": summary["bytes"],
+                        "debit_total": summary.get("debit_total"),
+                        "credit_total": summary.get("credit_total"),
                         "convert_errors": [e.model_dump() for e in summary["errors"]],
                     }
                 )

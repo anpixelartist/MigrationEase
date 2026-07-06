@@ -108,6 +108,8 @@ export interface GenerateSummary {
   held_conflicts: number;
   skipped_rows: number;
   bytes: number;
+  debit_total?: string;
+  credit_total?: string;
   convert_errors: ErrorEnvelope[];
 }
 export interface PushResult {
