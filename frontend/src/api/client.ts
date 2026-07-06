@@ -82,8 +82,8 @@ export const api = {
   // long stages return a task; poll with pollTask
   enqueueValidate: (id: string, known_groups?: string[]) =>
     request<TaskEnqueued>("POST", `/jobs/${id}/validate`, { known_groups: known_groups ?? null }),
-  enqueueGenerate: (id: string, company?: string) =>
-    request<TaskEnqueued>("POST", `/jobs/${id}/generate`, { company: company ?? null }),
+  enqueueGenerate: (id: string, company?: string, cutover_date?: string) =>
+    request<TaskEnqueued>("POST", `/jobs/${id}/generate`, { company: company ?? null, cutover_date: cutover_date ?? null }),
   enqueuePush: (id: string) => request<TaskEnqueued>("POST", `/jobs/${id}/push`),
   getTask: <T>(id: string, taskId: string) => request<TaskResult<T>>("GET", `/jobs/${id}/tasks/${taskId}`),
   artifactUrl: (id: string) => `${BASE}/jobs/${id}/artifact`,

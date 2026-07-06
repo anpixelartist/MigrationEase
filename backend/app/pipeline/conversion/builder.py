@@ -290,29 +290,36 @@ def build_unified_envelope(
     _sub(header, "TALLYREQUEST", "Import Data")
 
     body = _sub(env, "BODY")
-    importdata = _sub(body, "IMPORTDATA")
 
-    reqdesc = _sub(importdata, "REQUESTDESC")
-    _sub(reqdesc, "REPORTNAME", "All Masters")
-    static = _sub(reqdesc, "STATICVARIABLES")
-    _sub(static, "SVCURRENTCOMPANY", company)
-    if import_dups:
-        _sub(static, "IMPORTDUPS", import_dups)
+    if units or groups or stock_items or ledgers:
+        importdata = _sub(body, "IMPORTDATA")
+        reqdesc = _sub(importdata, "REQUESTDESC")
+        _sub(reqdesc, "REPORTNAME", "All Masters")
+        static = _sub(reqdesc, "STATICVARIABLES")
+        _sub(static, "SVCURRENTCOMPANY", company)
+        if import_dups:
+            _sub(static, "IMPORTDUPS", import_dups)
 
-    reqdata = _sub(importdata, "REQUESTDATA")
-    for unit in units:
-        _build_unit(reqdata, unit)
-    for group in topological_sort_groups(list(groups)):
-        _build_group(reqdata, group)
-    for item in stock_items:
-        _build_stock_item(reqdata, item)
-    for ledger in ledgers:
-        _build_ledger(reqdata, ledger)
+        reqdata = _sub(importdata, "REQUESTDATA")
+        for unit in units:
+            _build_unit(reqdata, unit)
+        for group in topological_sort_groups(list(groups)):
+            _build_group(reqdata, group)
+        for item in stock_items:
+            _build_stock_item(reqdata, item)
+        for ledger in ledgers:
+            _build_ledger(reqdata, ledger)
 
     if vouchers:
-        _sub(reqdesc, "REPORTNAME", "Vouchers") # Change context to vouchers immediately
+        importdata_v = _sub(body, "IMPORTDATA")
+        reqdesc_v = _sub(importdata_v, "REQUESTDESC")
+        _sub(reqdesc_v, "REPORTNAME", "Vouchers")
+        static_v = _sub(reqdesc_v, "STATICVARIABLES")
+        _sub(static_v, "SVCURRENTCOMPANY", company)
+
+        reqdata_v = _sub(importdata_v, "REQUESTDATA")
         for voucher in vouchers:
-            _build_voucher(reqdata, voucher)
+            _build_voucher(reqdata_v, voucher)
 
     return env
 

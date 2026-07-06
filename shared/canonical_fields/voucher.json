@@ -148,6 +148,36 @@
       "unique": false,
       "synonyms": ["unit", "uom", "units", "unit of measure", "uqc"],
       "example": "Nos"
+    },
+    {
+      "key": "order_id",
+      "label": "Order ID",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["order id", "order no", "order_name", "name"],
+      "example": "#1001"
+    },
+    {
+      "key": "shipping_state",
+      "label": "Shipping State",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["shipping province", "shipping state", "state"],
+      "example": "Karnataka"
+    },
+    {
+      "key": "home_state",
+      "label": "Home State",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["home state", "origin state"],
+      "example": "Maharashtra"
     }
   ]
 }

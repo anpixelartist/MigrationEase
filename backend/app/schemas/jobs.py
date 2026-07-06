@@ -43,3 +43,4 @@ class ResolveRequest(BaseModel):
 
 class GenerateRequest(BaseModel):
     company: str | None = None
+    cutover_date: str | None = None

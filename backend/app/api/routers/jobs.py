@@ -290,7 +290,7 @@ async def generate_job(
 ) -> dict:
     await run_in_threadpool(lambda: store.get(principal.org_id, job_id).require("generate"))
     await ensure_started()
-    task = await tasks.generate_task.kiq(principal.org_id, job_id, company=body.company)
+    task = await tasks.generate_task.kiq(principal.org_id, job_id, company=body.company, cutover_date=body.cutover_date)
     return {"task_id": task.task_id, "state": "pending"}
 
 

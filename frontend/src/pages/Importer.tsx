@@ -147,7 +147,7 @@ export default function Importer() {
     if (!jobId) return;
     setBusy(true); setErr(null);
     try {
-      const t = await api.enqueueGenerate(jobId, company || undefined);
+      const t = await api.enqueueGenerate(jobId, company || undefined, cutoverDate || undefined);
       const r = await pollTask<GenerateSummary>(jobId, t.task_id);
       if (r.state === "error") { fail(new ApiError(r.problem!)); return; }
       setGen(r.result!);

@@ -3,9 +3,12 @@
 package wsclient
 
 import (
+	"bytes"
 	"context"
 	"encoding/base64"
+	"encoding/xml"
 	"fmt"
+	"io"
 	"math/rand"
 	"time"
 
@@ -71,6 +74,31 @@ func connectAndServe(ctx context.Context, cfg Config) error {
 	}
 }
 
+func buildEnvelopeShell(company string, reportName string, importDups string, innerXML []byte) []byte {
+	dupsTag := ""
+	if importDups != "" {
+		dupsTag = fmt.Sprintf("\n          <IMPORTDUPS>%s</IMPORTDUPS>", importDups)
+	}
+	return []byte(fmt.Sprintf(`<ENVELOPE>
+  <HEADER>
+    <TALLYREQUEST>Import Data</TALLYREQUEST>
+  </HEADER>
+  <BODY>
+    <IMPORTDATA>
+      <REQUESTDESC>
+        <REPORTNAME>%s</REPORTNAME>
+        <STATICVARIABLES>
+          <SVCURRENTCOMPANY>%s</SVCURRENTCOMPANY>%s
+        </STATICVARIABLES>
+      </REQUESTDESC>
+      <REQUESTDATA>
+%s
+      </REQUESTDATA>
+    </IMPORTDATA>
+  </BODY>
+</ENVELOPE>`, reportName, company, dupsTag, string(innerXML)))
+}
+
 func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job protocol.PushJob) {
 	xmlBytes, err := base64.StdEncoding.DecodeString(job.XMLB64)
 	if err != nil {
@@ -78,17 +106,102 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 		return
 	}
 
-	// MVP: Push the entire payload at once. Full chunking by <VOUCHER> elements using encoding/xml
-	// requires a complex xml.Decoder stream parsing which will be added in a dedicated chunking PR.
-	resp, err := cfg.Tally.Post(ctx, xmlBytes)
-	if err != nil {
+	decoder := xml.NewDecoder(bytes.NewReader(xmlBytes))
+	var buffer bytes.Buffer
+	var fullResponse bytes.Buffer
+	fullResponse.WriteString("<RESPONSE>")
+
+	count := 0
+	hasError := false
+	currentReportName := "All Masters" // Default assumption
+	currentImportDups := ""
+
+	for {
+		t, err := decoder.Token()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			break
+		}
+
+		switch se := t.(type) {
+		case xml.StartElement:
+			if se.Name.Local == "IMPORTDUPS" {
+				var dups string
+				if err := decoder.DecodeElement(&dups, &se); err == nil {
+					currentImportDups = dups
+				}
+			} else if se.Name.Local == "REPORTNAME" {
+				var rName string
+				if err := decoder.DecodeElement(&rName, &se); err == nil {
+					if rName != currentReportName && count > 0 {
+						chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+						resp, postErr := cfg.Tally.Post(ctx, chunk)
+						if postErr != nil {
+							hasError = true
+							break
+						}
+						fullResponse.Write(resp)
+						buffer.Reset()
+						count = 0
+					}
+					currentReportName = rName
+				}
+			} else if se.Name.Local == "TALLYMESSAGE" {
+				// If it's a TALLYMESSAGE containing a VOUCHER or Master, encode the whole token tree
+				var msgNode struct {
+					InnerXML []byte `xml:",innerxml"`
+				}
+				_ = decoder.DecodeElement(&msgNode, &se)
+
+				buffer.WriteString("<TALLYMESSAGE xmlns:UDF=\"TallyUDF\">")
+				buffer.Write(msgNode.InnerXML)
+				buffer.WriteString("</TALLYMESSAGE>\n")
+				count++
+
+				if count >= 200 {
+					chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+					resp, postErr := cfg.Tally.Post(ctx, chunk)
+					if postErr != nil {
+						hasError = true
+						break
+					}
+					fullResponse.Write(resp)
+					buffer.Reset()
+					count = 0
+				}
+			}
+		}
+		if hasError {
+			break
+		}
+	}
+
+	if hasError {
 		_ = wsjson.Write(ctx, conn, protocol.JobError{
 			Type: protocol.TypeJobError, JobID: job.JobID, Reason: protocol.ReasonTallyUnreachable,
 		})
 		return
 	}
+
+	// Flush remaining buffer
+	if count > 0 {
+		chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+		resp, postErr := cfg.Tally.Post(ctx, chunk)
+		if postErr != nil {
+			_ = wsjson.Write(ctx, conn, protocol.JobError{
+				Type: protocol.TypeJobError, JobID: job.JobID, Reason: protocol.ReasonTallyUnreachable,
+			})
+			return
+		}
+		fullResponse.Write(resp)
+	}
+
+	fullResponse.WriteString("</RESPONSE>")
+
 	_ = wsjson.Write(ctx, conn, protocol.JobResult{
-		Type: protocol.TypeJobResult, JobID: job.JobID, HTTPStatus: 200, TallyXML: string(resp),
+		Type: protocol.TypeJobResult, JobID: job.JobID, HTTPStatus: 200, TallyXML: fullResponse.String(),
 	})
 }
 
