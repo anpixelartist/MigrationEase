@@ -108,7 +108,6 @@ def parse_file(
 
     suffix = PurePath(filename).suffix.lower()
     is_excel = _looks_like_excel(content, suffix)
-    is_csv = suffix in _CSV_EXTS or (not is_excel)
 
     try:
         df = _read_excel(content, sheet) if is_excel else _read_csv(content)

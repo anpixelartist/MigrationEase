@@ -12,7 +12,6 @@ import math
 from collections.abc import Iterable
 
 import pandas as pd
-import pandera.pandas as pa
 from pandera.errors import SchemaErrors
 from rapidfuzz import process
 
