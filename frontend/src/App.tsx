@@ -1,6 +1,7 @@
 import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "./auth/AuthContext";
 import { Spinner } from "./components/ui";
+import AuthCallback from "./pages/AuthCallback";
 import BridgeSettings from "./pages/BridgeSettings";
 import Importer from "./pages/Importer";
 import Login from "./pages/Login";
@@ -51,6 +52,7 @@ export default function App() {
   if (!user) {
     return (
       <Routes>
+        <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="*" element={<Login />} />
       </Routes>
     );
@@ -62,6 +64,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Importer />} />
         <Route path="/bridge" element={<BridgeSettings />} />
+        <Route path="/auth/callback" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

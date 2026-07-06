@@ -112,6 +112,11 @@ class TooManyJobs(AppError):
     code = "too_many_jobs"
 
 
+class TooManyRequests(AppError):
+    status_code = 429
+    code = "rate_limited"
+
+
 class ServiceUnavailable(AppError):
     status_code = 503
     code = "service_unavailable"

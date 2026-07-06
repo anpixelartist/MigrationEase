@@ -12,6 +12,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/tallymigration/bridge/internal/tally"
@@ -76,7 +77,7 @@ func run(args []string) int {
 		return 2
 	}
 
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM) // SIGTERM: docker stop / service managers
 	defer cancel()
 
 	fmt.Printf("bridge: connecting to %s (Tally at %s)\n", *relay, *tallyURL)

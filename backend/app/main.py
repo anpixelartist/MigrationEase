@@ -27,17 +27,48 @@ def create_app() -> FastAPI:
     configure_logging(level=settings.log_level, json_output=settings.log_json)
     log = get_logger("api.request")
 
+    if settings.sentry_dsn:
+        import sentry_sdk
+
+        sentry_sdk.init(
+            dsn=settings.sentry_dsn,
+            environment=settings.environment,
+            traces_sample_rate=0.1,
+            send_default_pii=False,  # tenant data must never leave the system
+        )
+
     init_db()  # create tables for dev (SQLite); prod uses Alembic migrations
 
-    app = FastAPI(title=settings.app_name, version="0.1.0")
+    # Cross-process bridge relay: every API replica answers Redis dispatch requests for the
+    # bridge sockets IT holds (no-op without a Redis broker).
+    from contextlib import asynccontextmanager
 
+    from app.relay import redis_relay
+
+    @asynccontextmanager
+    async def _lifespan(_: FastAPI):
+        await redis_relay.start_responder()
+        yield
+        await redis_relay.stop_responder()
+
+    app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=_lifespan)
+
+    # The API is bearer-token (no cookies), so credentialed CORS is only enabled when explicit
+    # origins are configured — "*" + credentials is an invalid, insecure combination.
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,
-        allow_credentials=True,
+        allow_credentials=settings.cors_origins != ["*"],
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    if settings.metrics_enabled:
+        from prometheus_fastapi_instrumentator import Instrumentator
+
+        Instrumentator(excluded_handlers=["/metrics", "/healthz"]).instrument(app).expose(
+            app, endpoint="/metrics", include_in_schema=False
+        )
 
     @app.middleware("http")
     async def context_and_logging(request: Request, call_next):

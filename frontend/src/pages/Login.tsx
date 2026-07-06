@@ -19,7 +19,7 @@ const input: CSSProperties = {
 const label: CSSProperties = { fontSize: 12.5, fontWeight: 600, color: T.muted, marginBottom: 6, display: "block" };
 
 export default function Login() {
-  const { login, signup } = useAuth();
+  const { login, signup, loginSso, authConfig } = useAuth();
   const nav = useNavigate();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
@@ -27,6 +27,20 @@ export default function Login() {
   const [orgName, setOrgName] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  const ssoEnabled = authConfig?.mode === "hybrid" || authConfig?.mode === "keycloak";
+  const passwordEnabled = authConfig?.mode !== "keycloak"; // hidden when the IdP owns credentials
+
+  const sso = async () => {
+    setErr(null);
+    setBusy(true);
+    try {
+      await loginSso(); // redirects away on success
+    } catch (ex) {
+      setErr(ex instanceof Error ? ex.message : "Something went wrong");
+      setBusy(false);
+    }
+  };
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -59,38 +73,65 @@ export default function Login() {
             {mode === "login" ? "Sign in to import data into Tally." : "Start importing CSV/Excel into Tally."}
           </p>
 
-          {mode === "signup" && (
+          {ssoEnabled && (
+            <>
+              <Button variant="primary" type="button" loading={busy} onClick={sso} style={{ width: "100%", padding: "11px 18px" }}>
+                Continue with SSO
+              </Button>
+              {!passwordEnabled && err && (
+                <div style={{ background: T.errBg, color: T.err, fontSize: 12.5, padding: "9px 12px", borderRadius: 8, marginTop: 14 }}>{err}</div>
+              )}
+              {!passwordEnabled && (
+                <p style={{ margin: "14px 0 0", fontSize: 12.5, color: T.muted, textAlign: "center" }}>
+                  Sign-in and registration are managed by your identity provider.
+                </p>
+              )}
+              {passwordEnabled && (
+                <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "16px 0" }}>
+                  <div style={{ flex: 1, height: 1, background: T.line }} />
+                  <span style={{ fontSize: 11.5, color: T.faint }}>or with email</span>
+                  <div style={{ flex: 1, height: 1, background: T.line }} />
+                </div>
+              )}
+            </>
+          )}
+
+          {passwordEnabled && mode === "signup" && (
             <div style={{ marginBottom: 14 }}>
               <label style={label}>Workspace name</label>
               <input style={input} value={orgName} onChange={(e) => setOrgName(e.target.value)} placeholder="Acme Books" />
             </div>
           )}
-          <div style={{ marginBottom: 14 }}>
-            <label style={label}>Email</label>
-            <input style={input} type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" />
-          </div>
-          <div style={{ marginBottom: 18 }}>
-            <label style={label}>Password</label>
-            <input style={input} type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="At least 8 characters" />
-          </div>
+          {passwordEnabled && (
+            <>
+              <div style={{ marginBottom: 14 }}>
+                <label style={label}>Email</label>
+                <input style={input} type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" />
+              </div>
+              <div style={{ marginBottom: 18 }}>
+                <label style={label}>Password</label>
+                <input style={input} type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="At least 8 characters" />
+              </div>
 
-          {err && (
-            <div style={{ background: T.errBg, color: T.err, fontSize: 12.5, padding: "9px 12px", borderRadius: 8, marginBottom: 14 }}>{err}</div>
+              {err && (
+                <div style={{ background: T.errBg, color: T.err, fontSize: 12.5, padding: "9px 12px", borderRadius: 8, marginBottom: 14 }}>{err}</div>
+              )}
+
+              <Button variant="primary" type="submit" loading={busy} style={{ width: "100%", padding: "11px 18px" }}>
+                {mode === "login" ? "Sign in" : "Create workspace"}
+              </Button>
+
+              <div style={{ marginTop: 16, fontSize: 13, color: T.muted, textAlign: "center" }}>
+                {mode === "login" ? "New here? " : "Already have an account? "}
+                <span
+                  onClick={() => { setMode(mode === "login" ? "signup" : "login"); setErr(null); }}
+                  style={{ color: T.accent, fontWeight: 500, cursor: "pointer" }}
+                >
+                  {mode === "login" ? "Create a workspace" : "Sign in"}
+                </span>
+              </div>
+            </>
           )}
-
-          <Button variant="primary" type="submit" loading={busy} style={{ width: "100%", padding: "11px 18px" }}>
-            {mode === "login" ? "Sign in" : "Create workspace"}
-          </Button>
-
-          <div style={{ marginTop: 16, fontSize: 13, color: T.muted, textAlign: "center" }}>
-            {mode === "login" ? "New here? " : "Already have an account? "}
-            <span
-              onClick={() => { setMode(mode === "login" ? "signup" : "login"); setErr(null); }}
-              style={{ color: T.accent, fontWeight: 500, cursor: "pointer" }}
-            >
-              {mode === "login" ? "Create a workspace" : "Sign in"}
-            </span>
-          </div>
         </form>
       </div>
     </div>

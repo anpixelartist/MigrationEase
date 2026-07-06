@@ -132,11 +132,31 @@ cd frontend && npm run build
 
 ---
 
+## Authentication (built-in or Keycloak)
+
+Out of the box the app uses its built-in email/password auth (`TM_AUTH_MODE=legacy`). For SaaS
+deployments it integrates **self-hosted Keycloak** (OAuth2/OIDC): browser login via Authorization
+Code + PKCE, machine-to-machine API access via client credentials, and org-scoped tenant isolation
+enforced server-side.
+
+```bash
+docker compose -f infra/docker-compose.yml up -d keycloak   # dev realm auto-imported
+# backend/.env:
+#   TM_AUTH_MODE=hybrid            # accept both token types while migrating; 'keycloak' = OIDC only
+#   TM_OIDC_ISSUER=http://localhost:8080/realms/tallymigration
+cd backend && alembic upgrade head                          # adds idp_sub / service_accounts
+```
+
+The login page then offers **Continue with SSO**. Existing accounts are linked automatically on
+first SSO login by verified email. Details — realm bootstrap, M2M setup, migration steps, prod
+checklist, and the tenant-isolation trust model: [docs/AUTH-KEYCLOAK.md](docs/AUTH-KEYCLOAK.md).
+
 ## Configuration
 
 All backend settings are env vars prefixed `TM_` (e.g. `TM_DATABASE_URL`, `TM_BROKER_URL`,
-`TM_STORAGE_BACKEND`, `TM_JWT_SECRET`, `TM_DIRECT_TALLY_PUSH`). Full list + dev/prod values:
-[backend/.env.example](backend/.env.example). The frontend reads `VITE_API_BASE` (defaults to `/api`).
+`TM_STORAGE_BACKEND`, `TM_JWT_SECRET`, `TM_AUTH_MODE`, `TM_OIDC_ISSUER`, `TM_DIRECT_TALLY_PUSH`).
+Full list + dev/prod values: [backend/.env.example](backend/.env.example). The frontend reads
+`VITE_API_BASE` (defaults to `/api`).
 
 ## Troubleshooting
 - **Frontend can't reach the API** → make sure the backend is on :8000, or run `TM_BACKEND=... npm run dev`.

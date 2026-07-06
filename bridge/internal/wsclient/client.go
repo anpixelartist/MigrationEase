@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"math/rand"
+	"net/http"
 	"time"
 
 	"github.com/coder/websocket"
@@ -32,11 +33,17 @@ type Config struct {
 func Run(ctx context.Context, cfg Config) error {
 	backoff := time.Second
 	for ctx.Err() == nil {
+		started := time.Now()
 		if err := connectAndServe(ctx, cfg); err != nil && ctx.Err() == nil {
 			fmt.Println("bridge: connection lost:", err)
 		}
 		if ctx.Err() != nil {
 			return ctx.Err()
+		}
+		// a connection that held for a while was healthy — start the backoff over,
+		// so a drop after hours of uptime reconnects in ~1s instead of ~30s
+		if time.Since(started) > time.Minute {
+			backoff = time.Second
 		}
 		wait := backoff + time.Duration(rand.Int63n(int64(time.Second)))
 		select {
@@ -52,7 +59,10 @@ func Run(ctx context.Context, cfg Config) error {
 }
 
 func connectAndServe(ctx context.Context, cfg Config) error {
-	conn, _, err := websocket.Dial(ctx, cfg.RelayURL+"?key="+cfg.APIKey, nil)
+	// key travels in a header, not the URL — query strings land in proxy/access logs
+	header := http.Header{}
+	header.Set("Authorization", "Bearer "+cfg.APIKey)
+	conn, _, err := websocket.Dial(ctx, cfg.RelayURL, &websocket.DialOptions{HTTPHeader: header})
 	if err != nil {
 		return err
 	}

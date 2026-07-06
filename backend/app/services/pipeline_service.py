@@ -7,6 +7,7 @@ machine, logs start/outcome with the job id and counts, and converts stage failu
 
 from __future__ import annotations
 
+import datetime as _dt
 import re
 import urllib.error
 import urllib.request
@@ -35,7 +36,7 @@ from app.pipeline.profiling import profile
 from app.pipeline.push.response_parser import XMLSecurityError, parse_import_response
 from app.pipeline.resolution import resolve
 from app.pipeline.validation import validate
-from app.services.job_store import Job, JobStatus
+from app.services.job_store import STALE_PUSH_SECONDS, Job, JobStatus
 
 log = get_logger("pipeline")
 
@@ -420,10 +421,82 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
     }
 
 
-def run_push(job: Job, settings: Settings) -> Any:
-    job.require("push")
+def ensure_pushable(job: Job) -> None:
+    """Raise unless a push may start now (also used by the router as a fast pre-check)."""
+    if job.status is JobStatus.PUSHING:
+        age = (_dt.datetime.now(_dt.timezone.utc) - job.updated_at).total_seconds()
+        if age < STALE_PUSH_SECONDS:
+            raise InvalidState(
+                "A push is already in progress for this job.",
+                code="push_in_progress",
+                detail=f"Claimed {int(age)}s ago; retry allowed after {STALE_PUSH_SECONDS}s.",
+            )
+        log.warning("push.reclaim_stale", job_id=job.id, stale_seconds=int(age))
+    else:
+        job.require("push")
     if job.xml is None:
-        raise InvalidState("Generate XML before pushing.")
+        raise InvalidState("Generate the XML before pushing.")
+
+
+def claim_push(job: Job) -> None:
+    """Atomically claim the push (call under the job lock) — the idempotency guard.
+
+    Concurrent/duplicate pushes get a 409 instead of silently double-importing into Tally. A
+    ``PUSHING`` claim whose worker died is reclaimable after ``STALE_PUSH_SECONDS``.
+    """
+    ensure_pushable(job)
+    job.advance(JobStatus.PUSHING)
+
+
+def record_push_result(job: Job, result: Any) -> JobStatus:
+    """Persist Tally's verdict and pick the terminal status (call under the job lock).
+
+    - all rows accepted            -> PUSHED       (re-push blocked: would duplicate everything)
+    - nothing imported             -> PUSH_FAILED  (safe to retry)
+    - some imported, some errored  -> PUSHED_PARTIAL (re-push blocked: would duplicate the
+      successes; recovery = fix data -> re-generate -> push)
+    """
+    job.push_result = result
+    imported = result.created + result.altered + result.combined
+    if result.is_success:
+        status = JobStatus.PUSHED
+    elif imported == 0:
+        status = JobStatus.PUSH_FAILED
+    else:
+        status = JobStatus.PUSHED_PARTIAL
+        job.notes.append(
+            f"partial import: {imported} row(s) already in Tally, {result.errors} error(s), "
+            f"{len(result.line_errors)} line error(s) — re-push blocked to avoid duplicates"
+        )
+    job.advance(status)
+    log.info(
+        "push.done",
+        job_id=job.id,
+        status=status.value,
+        created=result.created,
+        altered=result.altered,
+        errors=result.errors,
+        exceptions=result.exceptions,
+        line_errors=len(result.line_errors),
+    )
+    return status
+
+
+def record_push_failure(job: Job, reason: str) -> None:
+    """Mark a push whose response never arrived (call under the job lock).
+
+    Retry is allowed, but if the transport died AFTER Tally received the XML the import may have
+    happened — the note tells the user to verify in Tally before re-pushing.
+    """
+    job.notes.append(f"push failed: {reason} — verify in Tally before re-pushing")
+    job.advance(JobStatus.PUSH_FAILED)
+    log.warning("push.failed", job_id=job.id, reason=reason)
+
+
+def run_push(job: Job, settings: Settings) -> Any:
+    """Direct dev push to a local Tally gateway. Caller must have claimed via ``claim_push``."""
+    if job.xml is None:
+        raise InvalidState("Generate the XML before pushing.")
     if not settings.direct_tally_push:
         raise ServiceUnavailable(
             "Direct push is disabled; connect a bridge agent to relay to Tally.",
@@ -452,15 +525,4 @@ def run_push(job: Job, settings: Settings) -> Any:
             "Tally returned a response that could not be parsed.", code="bad_tally_response", detail=str(exc)
         ) from exc
 
-    job.push_result = result
-    job.advance(JobStatus.PUSHED)
-    log.info(
-        "push.done",
-        job_id=job.id,
-        created=result.created,
-        altered=result.altered,
-        errors=result.errors,
-        exceptions=result.exceptions,
-        line_errors=len(result.line_errors),
-    )
     return result

@@ -18,6 +18,11 @@ export interface TokenResponse {
   token_type: string;
   user: User;
 }
+export interface AuthConfig {
+  mode: "legacy" | "hybrid" | "keycloak";
+  issuer: string | null;
+  client_id: string | null;
+}
 
 export interface Job {
   id: string;

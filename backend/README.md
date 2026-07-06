@@ -17,8 +17,13 @@ Open http://127.0.0.1:8000/docs for the interactive API.
 | Var | Default | Notes |
 |---|---|---|
 | `TM_DATABASE_URL` | `sqlite:///./tallymigration.db` | dev SQLite; prod `postgresql+psycopg://...` |
-| `TM_JWT_SECRET` | dev placeholder | **override in prod** (HMAC-SHA256, ≥32 bytes) |
-| `TM_JWT_EXPIRE_MINUTES` | 1440 | access-token lifetime |
+| `TM_AUTH_MODE` | `legacy` | `legacy` (built-in HS256) \| `hybrid` \| `keycloak` (OIDC only) — see [docs/AUTH-KEYCLOAK.md](../docs/AUTH-KEYCLOAK.md) |
+| `TM_JWT_SECRET` | dev placeholder | **override in prod** (HMAC-SHA256, ≥32 bytes; unused in `keycloak` mode) |
+| `TM_JWT_EXPIRE_MINUTES` | 1440 | legacy access-token lifetime |
+| `TM_AUTH_RATE_LIMIT` | *(off)* | throttle `/auth/login\|signup` per IP, e.g. `20/minute` |
+| `TM_OIDC_ISSUER` | *(unset)* | Keycloak realm URL (required for `hybrid`/`keycloak`) |
+| `TM_OIDC_AUDIENCE` | `tallymigration-api` | audience the API requires in OIDC tokens |
+| `TM_OIDC_WEB_CLIENT_ID` | `tallymigration-web` | public SPA client (PKCE), served via `/auth/config` |
 | `TM_MAX_UPLOAD_BYTES` | 25 MB | request/upload size cap (413 over) |
 | `TM_MAX_ROWS` / `TM_MAX_COLUMNS` | 200000 / 1000 | data guards |
 | `TM_DIRECT_TALLY_PUSH` | false | **dev only** — POST generated XML straight to `TM_TALLY_URL` (bypasses the bridge) |
@@ -27,12 +32,18 @@ Open http://127.0.0.1:8000/docs for the interactive API.
 
 ### Auth (all `/jobs` endpoints require a bearer token)
 ```
-POST /auth/signup  {email, password, full_name?, org_name?}  -> 201 {access_token, user}
-POST /auth/login   {email, password}                          -> {access_token, user}
+GET  /auth/config                                             -> {mode, issuer, client_id}  (public)
+POST /auth/signup  {email, password, full_name?, org_name?}  -> 201 {access_token, user}   (legacy|hybrid)
+POST /auth/login   {email, password}                          -> {access_token, user}       (legacy|hybrid)
 GET  /auth/me                                                 -> current user + orgs
+POST /auth/service-accounts {client_id, name?, role?}         -> 201  (org owner/admin: authorize an
+                                                                 OAuth2 client-credentials caller for this org)
 ```
 Send `Authorization: Bearer <token>` (and optionally `X-Org-Id` to pick an org). Jobs are
-**org-scoped** — a job from another org is a 404.
+**org-scoped** — a job from another org is a 404. In `hybrid`/`keycloak` mode the same header
+carries Keycloak OIDC access tokens (RS256, verified against the realm JWKS with issuer +
+audience checks); tenant context always comes from server-side membership lookups, never from
+token claims — see [docs/AUTH-KEYCLOAK.md](../docs/AUTH-KEYCLOAK.md).
 
 ## Lifecycle (REST)
 
@@ -79,10 +90,26 @@ stage and imports (`created=2, errors=0`).
 - **Async workers** (`app/workers`, taskiq): validate/generate/push run as tasks → `202 {task_id}`,
   poll `GET /jobs/{id}/tasks/{task_id}`. Dev runs inline; prod = Redis + `taskiq worker app.workers.broker:broker app.workers.tasks`.
 - **Cloud↔bridge WSS relay**: pair a bridge (`POST /bridges` → API key), the Go agent dials
-  `/bridge/ws`, and `push` relays the XML over WSS to the bridge (when `TM_DIRECT_TALLY_PUSH` is off).
+  `/bridge/ws` (key in the `Authorization` header), and `push` relays the XML over WSS to the
+  bridge (when `TM_DIRECT_TALLY_PUSH` is off).
+- **Multi-process relay** (`app/relay/redis_relay.py`): with `TM_BROKER_URL` set, the worker
+  publishes push requests over Redis pub/sub; the API replica holding the bridge socket claims
+  each request (SET-NX — exactly-once even with several replicas), relays over the local WS, and
+  publishes Tally's response back. Bridge presence is tracked fleet-wide
+  (`bridge:online:{org}`, refreshed by heartbeats), so `/bridge/status` and fail-fast checks work
+  across replicas.
+- **Push idempotency**: pushes are claimed atomically (`pushing`), and Tally's actual verdict
+  picks the terminal state — `pushed` (all rows in; re-push blocked), `pushed_partial` (some rows
+  in; re-push blocked — fix data and re-generate), `push_failed` (nothing imported; retry
+  allowed). Duplicate/concurrent pushes get a 409 instead of double-importing accounting entries.
+- **Observability**: structured JSON logs with request ids, Prometheus `/metrics`
+  (`TM_METRICS_ENABLED`), optional Sentry error tracking (`TM_SENTRY_DSN`).
 
 Run real services: `docker compose -f ../infra/docker-compose.yml up -d` and copy `.env.example` → `.env`.
+For RLS to actually apply in prod, the app must connect as the non-owner `tally_app` role
+(created by `infra/postgres-init/01-app-role.sql`) — table owners bypass RLS.
 
 ## Not yet wired (next)
-Multi-process relay (Redis pub/sub so a separate worker can reach the bridge socket — plan §10.8),
-the device-pairing UX + Windows Credential Manager storage on the bridge, and the **React frontend**.
+Device-pairing UX + Windows Credential Manager storage on the bridge, and per-chunk resume for
+partially imported voucher batches (today a partial import blocks re-push and requires a
+re-generate, which is safe but manual).

@@ -79,7 +79,8 @@ def login(email: str, password: str) -> TokenResponse:
     email = (email or "").strip().lower()
     with new_session() as session:
         user = session.scalar(select(User).where(User.email == email))
-        if user is None or not verify_password(user.password_hash, password):
+        # IdP-only identities (password_hash is NULL) can never log in with a password.
+        if user is None or not user.password_hash or not verify_password(user.password_hash, password):
             log.warning("login.failed", email=email)
             raise Unauthorized("Invalid email or password.", code="invalid_credentials")
         token = create_access_token(user_id=user.id, email=user.email)

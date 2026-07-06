@@ -326,7 +326,8 @@ async def push_job(
     principal: Principal = Depends(get_principal),
     store: DbJobStore = Depends(get_db_store),
 ) -> dict:
-    await run_in_threadpool(lambda: store.get(principal.org_id, job_id).require("push"))
+    # Fast, advisory pre-check (the task's claim under the job lock is the real guard).
+    await run_in_threadpool(lambda: svc.ensure_pushable(store.get(principal.org_id, job_id)))
     await ensure_started()
     task = await tasks.push_task.kiq(principal.org_id, job_id)
     return {"task_id": task.task_id, "state": "pending"}
