@@ -1,0 +1,2001 @@
+Order ID,Date,Voucher Type,Ledger,Amount,Dr/Cr,Party,GST Rate,Shipping State,Home State,Party GSTIN,Transaction Type
+SO-00001,2026-05-04,Sales,Sales,22753.72,Cr,Rohan Singh 0001,18,Kerala,Maharashtra,,refund
+SO-00002,2026-07-18,Sales,Sales,11707.78,Cr,Prime Marketing 0002,18,Kerala,Maharashtra,32NWLKF3092B1ZG,sale
+SO-00003,2026-07-22,Sales,Sales,11489.9,Cr,Anjali Gupta 0003,5,Karnataka,Maharashtra,,sale
+SO-00004,2026-10-02,Sales,Sales,10368.27,Cr,Priya Desai 0004,18,Madhya Pradesh,Maharashtra,,sale
+SO-00005,2026-11-14,Sales,Sales,13581.43,Cr,Sneha Reddy 0005,12,Kerala,Maharashtra,,sale
+SO-00006,2026-08-13,Sales,Sales,444.95,Cr,Amit Patel 0006,12,Karnataka,Maharashtra,,sale
+SO-00007,2026-10-29,Sales,Sales,17901.71,Cr,Myra Pillai 0007,18,Madhya Pradesh,Maharashtra,,sale
+SO-00008,2026-09-21,Sales,Sales,8598.66,Cr,Anjali Das 0008,12,Telangana,Maharashtra,,sale
+SO-00009,2026-07-25,Sales,Sales,9625.04,Cr,Karan Verma 0009,18,Gujarat,Maharashtra,,sale
+SO-00010,2026-04-30,Sales,Sales,21999.71,Cr,Myra Iyer 0010,18,West Bengal,Maharashtra,,sale
+SO-00011,2026-12-23,Sales,Sales,1032.59,Cr,Crescent Agencies 0011,18,Madhya Pradesh,Maharashtra,23UEJBG0616Z6ZB,sale
+SO-00012,2026-11-17,Sales,Sales,8890.88,Cr,Global & Sons 0012,18,Karnataka,Maharashtra,29VINGM8162Y6ZJ,sale
+SO-00013,2026-09-05,Sales,Sales,22890.87,Cr,Prime Exports 0013,12,Kerala,Maharashtra,32GIUBT3584P3ZP,sale
+SO-00014,2026-05-02,Sales,Sales,2181.72,Cr,Kavya Verma 0014,5,Rajasthan,Maharashtra,,sale
+SO-00015,2026-11-16,Sales,Sales,22465.01,Cr,Myra Gupta 0015,5,Uttar Pradesh,Maharashtra,,refund
+SO-00016,2026-11-26,Sales,Sales,16903.63,Cr,Sai Bose 0016,18,Maharashtra,Maharashtra,,sale
+SO-00017,2026-12-03,Sales,Sales,15932.31,Cr,Star Agencies 0017,5,Telangana,Maharashtra,36PCDHZ7729J4ZW,sale
+SO-00018,2026-12-02,Sales,Sales,11949.75,Cr,Meera Verma 0018,18,Telangana,Maharashtra,,sale
+SO-00019,2026-10-24,Sales,Sales,19012.98,Cr,Nikhil Das 0019,18,Telangana,Maharashtra,,sale
+SO-00020,2026-05-22,Sales,Sales,18827.14,Cr,Deepak Sharma 0020,12,Maharashtra,Maharashtra,,sale
+SO-00021,2026-08-21,Sales,Sales,1564.56,Cr,Nova Solutions 0021,18,Karnataka,Maharashtra,29QEMCL0363Y4Z2,sale
+SO-00022,2026-05-25,Sales,Sales,4316.03,Cr,Reyansh Desai 0022,18,Tamil Nadu,Maharashtra,,sale
+SO-00023,2026-04-01,Sales,Sales,23560.01,Cr,Meera Menon 0023,18,Kerala,Maharashtra,,sale
+SO-00024,2026-07-30,Sales,Sales,22522.07,Cr,Royal Retail 0024,12,Tamil Nadu,Maharashtra,33OWGMV8146G3Z7,sale
+SO-00025,2026-11-14,Sales,Sales,2687.74,Cr,Sunrise Exports 0025,18,Punjab,Maharashtra,03IJSZW3953N3ZV,sale
+SO-00026,2026-08-19,Sales,Sales,24165.44,Cr,Priya Nair 0026,12,Delhi,Maharashtra,,sale
+SO-00027,2026-08-01,Sales,Sales,11627.0,Cr,Star Trading Co 0027,18,Uttar Pradesh,Maharashtra,09TMTIU0046H4ZD,sale
+SO-00028,2026-04-27,Sales,Sales,12791.03,Cr,Anjali Chowdhury 0028,18,Telangana,Maharashtra,,sale
+SO-00029,2026-04-02,Sales,Sales,15920.33,Cr,Ishaan Joshi 0029,18,Tamil Nadu,Maharashtra,,sale
+SO-00030,2026-10-10,Sales,Sales,2413.26,Cr,Prime Marketing 0030,18,Rajasthan,Maharashtra,08GLGVL1187R2Z8,sale
+SO-00031,2026-05-25,Sales,Sales,12992.66,Cr,Amit Verma 0031,12,Madhya Pradesh,Maharashtra,,sale
+SO-00032,2026-11-19,Sales,Sales,21829.45,Cr,Neha Shah 0032,18,Telangana,Maharashtra,,sale
+SO-00033,2026-06-12,Sales,Sales,22516.45,Cr,Amit Iyer 0033,18,Madhya Pradesh,Maharashtra,,sale
+SO-00034,2026-06-09,Sales,Sales,6802.64,Cr,Saanvi Verma 0034,12,West Bengal,Maharashtra,,sale
+SO-00035,2026-04-24,Sales,Sales,13377.69,Cr,Sunrise Wholesale 0035,12,Delhi,Maharashtra,07LLUNH7308J9Z7,sale
+SO-00036,2026-08-25,Sales,Sales,10424.49,Cr,Ananya Sharma 0036,18,Punjab,Maharashtra,,sale
+SO-00037,2026-08-05,Sales,Sales,23371.38,Cr,Neha Patel 0037,12,Gujarat,Maharashtra,,sale
+SO-00038,2026-09-16,Sales,Sales,439.45,Cr,Sneha Bose 0038,18,Punjab,Maharashtra,,sale
+SO-00039,2026-07-17,Sales,Sales,24982.35,Cr,Everest Traders 0039,5,Madhya Pradesh,Maharashtra,23MRNLX4774L4ZP,sale
+SO-00040,2026-09-02,Sales,Sales,22666.5,Cr,Aadhya Desai 0040,18,Tamil Nadu,Maharashtra,,sale
+SO-00041,2026-06-24,Sales,Sales,8124.68,Cr,Riya Gupta 0041,18,Punjab,Maharashtra,,sale
+SO-00042,2026-04-16,Sales,Sales,21335.09,Cr,Ishaan Verma 0042,12,Punjab,Maharashtra,,sale
+SO-00043,2026-09-13,Sales,Sales,11224.91,Cr,Reyansh Pillai 0043,18,Punjab,Maharashtra,,sale
+SO-00044,2026-09-30,Sales,Sales,18590.51,Cr,Meera Rao 0044,5,Gujarat,Maharashtra,,sale
+SO-00045,2026-10-07,Sales,Sales,11039.55,Cr,Diya Bose 0045,5,Tamil Nadu,Maharashtra,,sale
+SO-00046,2026-11-13,Sales,Sales,13952.72,Cr,Apex Enterprises 0046,18,Rajasthan,Maharashtra,08YYPWF8036S8Z9,sale
+SO-00047,2026-08-22,Sales,Sales,20950.23,Cr,Neha Singh 0047,18,Gujarat,Maharashtra,,refund
+SO-00048,2026-09-27,Sales,Sales,15901.59,Cr,Ganga Exports 0048,5,Delhi,Maharashtra,07LBBJD0393X6ZK,sale
+SO-00049,2026-07-12,Sales,Sales,826.49,Cr,Ganga Agencies 0049,18,Tamil Nadu,Maharashtra,33CXBXV6934J4ZG,sale
+SO-00050,2026-08-20,Sales,Sales,17980.06,Cr,Saanvi Menon 0050,12,Tamil Nadu,Maharashtra,,sale
+SO-00051,2026-04-12,Sales,Sales,18945.73,Cr,Aadhya Mehta 0051,18,Delhi,Maharashtra,,sale
+SO-00052,2026-05-18,Sales,Sales,15269.97,Cr,Neha Nair 0052,18,Maharashtra,Maharashtra,,sale
+SO-00053,2026-12-18,Sales,Sales,11232.22,Cr,Ananya Nair 0053,18,Tamil Nadu,Maharashtra,,sale
+SO-00054,2026-08-01,Sales,Sales,21435.91,Cr,Vertex Enterprises 0054,18,Punjab,Maharashtra,03ZZDZU3180Y5ZE,sale
+SO-00055,2026-04-25,Sales,Sales,15596.85,Cr,Amit Kulkarni 0055,5,Madhya Pradesh,Maharashtra,,sale
+SO-00056,2026-10-31,Sales,Sales,2086.58,Cr,Vertex Traders 0056,12,Karnataka,Maharashtra,29YIJUM3003H6ZA,sale
+SO-00057,2026-10-26,Sales,Sales,14531.82,Cr,Vihaan Kulkarni 0057,18,Tamil Nadu,Maharashtra,,sale
+SO-00058,2026-05-26,Sales,Sales,22126.77,Cr,Myra Mehta 0058,18,Delhi,Maharashtra,,sale
+SO-00059,2026-05-11,Sales,Sales,24110.49,Cr,Everest Enterprises 0059,12,West Bengal,Maharashtra,19SVJKC5387N2ZA,sale
+SO-00060,2026-11-18,Sales,Sales,6013.32,Cr,Amit Singh 0060,18,Gujarat,Maharashtra,,sale
+SO-00061,2026-07-24,Sales,Sales,2428.85,Cr,Aarav Rao 0061,5,Maharashtra,Maharashtra,,sale
+SO-00062,2026-11-22,Sales,Sales,18205.72,Cr,Pari Joshi 0062,5,Maharashtra,Maharashtra,,refund
+SO-00063,2026-09-21,Sales,Sales,3458.51,Cr,Karan Iyer 0063,18,Telangana,Maharashtra,,sale
+SO-00064,2026-11-18,Sales,Sales,11153.14,Cr,Pooja Das 0064,12,Rajasthan,Maharashtra,,sale
+SO-00065,2026-06-20,Sales,Sales,14737.58,Cr,Shakti Marketing 0065,18,Maharashtra,Maharashtra,27HEMNU8389D4ZG,sale
+SO-00066,2026-09-28,Sales,Sales,3378.03,Cr,Amit Das 0066,18,Madhya Pradesh,Maharashtra,,sale
+SO-00067,2026-05-15,Sales,Sales,11030.34,Cr,Karan Menon 0067,18,Karnataka,Maharashtra,,sale
+SO-00068,2026-09-05,Sales,Sales,10187.75,Cr,Unity Traders 0068,18,Madhya Pradesh,Maharashtra,23GKHMM2627Y9ZG,sale
+SO-00069,2026-05-04,Sales,Sales,11985.56,Cr,Riya Pillai 0069,18,Gujarat,Maharashtra,,sale
+SO-00070,2026-07-31,Sales,Sales,10802.21,Cr,Sai Mehta 0070,18,Maharashtra,Maharashtra,,sale
+SO-00071,2026-08-13,Sales,Sales,9611.29,Cr,Ishaan Sharma 0071,18,Uttar Pradesh,Maharashtra,,sale
+SO-00072,2026-12-11,Sales,Sales,13237.33,Cr,Vihaan Menon 0072,18,Gujarat,Maharashtra,,sale
+SO-00073,2026-10-09,Sales,Sales,12157.56,Cr,Arjun Joshi 0073,5,Gujarat,Maharashtra,,sale
+SO-00074,2026-04-16,Sales,Sales,7524.02,Cr,Priya Sharma 0074,12,Telangana,Maharashtra,,sale
+SO-00075,2026-06-25,Sales,Sales,24570.29,Cr,Arjun Bose 0075,18,Maharashtra,Maharashtra,,sale
+SO-00076,2026-11-17,Sales,Sales,2564.98,Cr,Myra Das 0076,18,Kerala,Maharashtra,,sale
+SO-00077,2026-08-10,Sales,Sales,17120.99,Cr,Apex Traders 0077,12,Tamil Nadu,Maharashtra,33EMABP2318U4ZD,sale
+SO-00078,2026-11-30,Sales,Sales,4543.28,Cr,Aarav Desai 0078,12,Telangana,Maharashtra,,sale
+SO-00079,2026-04-01,Sales,Sales,6879.85,Cr,Bharat Industries 0079,5,Kerala,Maharashtra,32AIQHQ2025Z9ZR,refund
+SO-00080,2026-04-29,Sales,Sales,19074.44,Cr,Deepak Joshi 0080,12,Madhya Pradesh,Maharashtra,,sale
+SO-00081,2026-09-17,Sales,Sales,6836.9,Cr,Crescent Exports 0081,12,Uttar Pradesh,Maharashtra,09EVVDW8346T8ZD,sale
+SO-00082,2026-11-19,Sales,Sales,11460.31,Cr,Vivaan Das 0082,18,Rajasthan,Maharashtra,,sale
+SO-00083,2026-11-12,Sales,Sales,18201.0,Cr,Diya Verma 0083,18,West Bengal,Maharashtra,,sale
+SO-00084,2026-05-23,Sales,Sales,3357.48,Cr,Prime & Sons 0084,18,Telangana,Maharashtra,36GUVKD7101G5ZU,sale
+SO-00085,2026-07-05,Sales,Sales,23308.69,Cr,Priya Shah 0085,12,Uttar Pradesh,Maharashtra,,sale
+SO-00086,2026-12-05,Sales,Sales,12628.77,Cr,Riya Desai 0086,18,Uttar Pradesh,Maharashtra,,sale
+SO-00087,2026-12-05,Sales,Sales,19730.29,Cr,Nova Enterprises 0087,12,Uttar Pradesh,Maharashtra,09USYLB5503C5Z8,sale
+SO-00088,2026-11-19,Sales,Sales,17673.07,Cr,Vivaan Nair 0088,18,Kerala,Maharashtra,,sale
+SO-00089,2026-09-10,Sales,Sales,6619.6,Cr,Kavya Verma 0089,18,Madhya Pradesh,Maharashtra,,refund
+SO-00090,2026-11-22,Sales,Sales,22661.99,Cr,Pioneer Wholesale 0090,18,West Bengal,Maharashtra,19ALMUZ9776O2ZH,sale
+SO-00091,2026-07-09,Sales,Sales,12169.18,Cr,Diya Desai 0091,18,West Bengal,Maharashtra,,sale
+SO-00092,2026-06-01,Sales,Sales,17578.76,Cr,Pooja Gupta 0092,5,Madhya Pradesh,Maharashtra,,sale
+SO-00093,2026-08-25,Sales,Sales,11833.48,Cr,Pooja Shah 0093,18,Rajasthan,Maharashtra,,sale
+SO-00094,2026-09-11,Sales,Sales,3566.83,Cr,Apex Exports 0094,18,Punjab,Maharashtra,03XZZCZ0674W4ZG,sale
+SO-00095,2026-11-10,Sales,Sales,13550.42,Cr,Kavya Mehta 0095,18,Maharashtra,Maharashtra,,sale
+SO-00096,2026-04-23,Sales,Sales,19417.1,Cr,Priya Gupta 0096,18,Telangana,Maharashtra,,refund
+SO-00097,2026-07-11,Sales,Sales,10319.88,Cr,Vertex Agencies 0097,18,West Bengal,Maharashtra,19GBXZR5480O7ZA,refund
+SO-00098,2026-09-20,Sales,Sales,20151.17,Cr,Crescent Agencies 0098,18,Uttar Pradesh,Maharashtra,09OWCYS2524L9Z2,sale
+SO-00099,2026-11-14,Sales,Sales,21057.98,Cr,Ganga Industries 0099,18,Gujarat,Maharashtra,24ODUKS6893G2ZT,refund
+SO-00100,2026-06-13,Sales,Sales,15774.79,Cr,Orbit Retail 0100,5,Delhi,Maharashtra,07JASSK6153X9ZV,sale
+SO-00101,2026-12-20,Sales,Sales,850.71,Cr,Ganga Exports 0101,5,Kerala,Maharashtra,32PMMBT2926K8Z3,sale
+SO-00102,2026-11-14,Sales,Sales,5601.31,Cr,Pooja Menon 0102,12,Tamil Nadu,Maharashtra,,sale
+SO-00103,2026-04-01,Sales,Sales,3240.06,Cr,Myra Patel 0103,18,Tamil Nadu,Maharashtra,,sale
+SO-00104,2026-05-29,Sales,Sales,16658.17,Cr,Meera Desai 0104,18,Kerala,Maharashtra,,sale
+SO-00105,2026-08-26,Sales,Sales,19502.48,Cr,Saanvi Kulkarni 0105,18,Punjab,Maharashtra,,sale
+SO-00106,2026-07-24,Sales,Sales,17256.01,Cr,Riya Sharma 0106,18,West Bengal,Maharashtra,,sale
+SO-00107,2026-12-11,Sales,Sales,18331.56,Cr,Nikhil Patel 0107,5,Kerala,Maharashtra,,sale
+SO-00108,2026-09-19,Sales,Sales,3152.57,Cr,Ananya Gupta 0108,18,Madhya Pradesh,Maharashtra,,refund
+SO-00109,2026-07-17,Sales,Sales,1635.97,Cr,Pooja Iyer 0109,5,Delhi,Maharashtra,,sale
+SO-00110,2026-07-29,Sales,Sales,1281.18,Cr,Vihaan Verma 0110,12,Uttar Pradesh,Maharashtra,,sale
+SO-00111,2026-09-30,Sales,Sales,2075.88,Cr,Pooja Menon 0111,18,Madhya Pradesh,Maharashtra,,sale
+SO-00112,2026-10-01,Sales,Sales,2274.72,Cr,Myra Menon 0112,18,Karnataka,Maharashtra,,sale
+SO-00113,2026-09-03,Sales,Sales,11094.01,Cr,Sneha Rao 0113,12,Kerala,Maharashtra,,sale
+SO-00114,2026-06-14,Sales,Sales,10285.58,Cr,Orbit Distributors 0114,18,Maharashtra,Maharashtra,27URKZV9947B9ZM,sale
+SO-00115,2026-07-11,Sales,Sales,8316.47,Cr,Ira Desai 0115,12,Delhi,Maharashtra,,refund
+SO-00116,2026-09-16,Sales,Sales,13073.05,Cr,Metro Marketing 0116,18,Kerala,Maharashtra,32VQOME9958B4ZT,sale
+SO-00117,2026-05-27,Sales,Sales,9541.82,Cr,Rahul Das 0117,12,Gujarat,Maharashtra,,sale
+SO-00118,2026-09-13,Sales,Sales,19248.75,Cr,Pioneer Traders 0118,5,West Bengal,Maharashtra,19DUHZR1032L3ZS,sale
+SO-00119,2026-05-13,Sales,Sales,1060.99,Cr,Pooja Das 0119,18,Kerala,Maharashtra,,sale
+SO-00120,2026-07-31,Sales,Sales,17396.83,Cr,Diya Patel 0120,12,Punjab,Maharashtra,,sale
+SO-00121,2026-11-26,Sales,Sales,2878.75,Cr,Everest Wholesale 0121,18,Punjab,Maharashtra,03FYRFF5626Y7Z6,refund
+SO-00122,2026-05-23,Sales,Sales,13090.49,Cr,Sunrise Agencies 0122,18,Rajasthan,Maharashtra,08WRBJG4276O8Z9,sale
+SO-00123,2026-08-28,Sales,Sales,15234.59,Cr,Vivaan Bose 0123,12,Punjab,Maharashtra,,sale
+SO-00124,2026-12-09,Sales,Sales,14601.1,Cr,Ira Desai 0124,18,Karnataka,Maharashtra,,sale
+SO-00125,2026-08-03,Sales,Sales,15690.82,Cr,Pioneer & Sons 0125,5,Madhya Pradesh,Maharashtra,23GUNTA3203I9Z8,sale
+SO-00126,2026-04-14,Sales,Sales,17742.37,Cr,Ishaan Mehta 0126,12,Maharashtra,Maharashtra,,sale
+SO-00127,2026-12-04,Sales,Sales,821.47,Cr,Orbit Industries 0127,18,Gujarat,Maharashtra,24JCVBS1528B2ZB,sale
+SO-00128,2026-09-04,Sales,Sales,1457.66,Cr,Rohan Sharma 0128,18,Karnataka,Maharashtra,,sale
+SO-00129,2026-09-15,Sales,Sales,12236.12,Cr,Kavya Singh 0129,12,Karnataka,Maharashtra,,sale
+SO-00130,2026-04-28,Sales,Sales,14518.45,Cr,Global & Sons 0130,18,Kerala,Maharashtra,32GEOMA2841J7Z7,sale
+SO-00131,2026-11-06,Sales,Sales,4594.45,Cr,Amit Shah 0131,5,Tamil Nadu,Maharashtra,,sale
+SO-00132,2026-05-31,Sales,Sales,10266.69,Cr,Reyansh Chowdhury 0132,12,Maharashtra,Maharashtra,,sale
+SO-00133,2026-11-18,Sales,Sales,9103.24,Cr,Ira Iyer 0133,18,Tamil Nadu,Maharashtra,,sale
+SO-00134,2026-09-30,Sales,Sales,12048.26,Cr,Ananya Gupta 0134,12,Uttar Pradesh,Maharashtra,,sale
+SO-00135,2026-12-17,Sales,Sales,6761.52,Cr,Aditya Reddy 0135,12,Delhi,Maharashtra,,sale
+SO-00136,2026-05-03,Sales,Sales,22854.93,Cr,Apex Marketing 0136,12,Madhya Pradesh,Maharashtra,23FYCCO7169W8ZS,sale
+SO-00137,2026-04-28,Sales,Sales,5226.52,Cr,Sunrise Industries 0137,18,Punjab,Maharashtra,03YPFTE1831G4ZC,sale
+SO-00138,2026-04-12,Sales,Sales,6018.76,Cr,Vertex Enterprises 0138,18,Rajasthan,Maharashtra,08RHTIV4321B6ZC,sale
+SO-00139,2026-11-19,Sales,Sales,24409.73,Cr,Nikhil Rao 0139,12,West Bengal,Maharashtra,,sale
+SO-00140,2026-12-01,Sales,Sales,20583.94,Cr,Aadhya Chowdhury 0140,12,Maharashtra,Maharashtra,,sale
+SO-00141,2026-12-15,Sales,Sales,3589.76,Cr,Rahul Verma 0141,18,Rajasthan,Maharashtra,,sale
+SO-00142,2026-06-07,Sales,Sales,8015.35,Cr,Deepak Chowdhury 0142,18,Rajasthan,Maharashtra,,sale
+SO-00143,2026-09-12,Sales,Sales,5318.98,Cr,Amit Kumar 0143,18,Kerala,Maharashtra,,sale
+SO-00144,2026-10-10,Sales,Sales,4202.66,Cr,Ira Shah 0144,18,Telangana,Maharashtra,,sale
+SO-00145,2026-12-17,Sales,Sales,20492.81,Cr,Ishaan Bose 0145,5,Punjab,Maharashtra,,sale
+SO-00146,2026-07-19,Sales,Sales,7681.02,Cr,Myra Menon 0146,5,Maharashtra,Maharashtra,,sale
+SO-00147,2026-11-03,Sales,Sales,5485.45,Cr,Metro Marketing 0147,12,Madhya Pradesh,Maharashtra,23LEWTD8729Y5ZJ,sale
+SO-00148,2026-08-10,Sales,Sales,8255.83,Cr,Aadhya Pillai 0148,5,Rajasthan,Maharashtra,,sale
+SO-00149,2026-12-25,Sales,Sales,488.03,Cr,Neha Singh 0149,18,Rajasthan,Maharashtra,,sale
+SO-00150,2026-12-10,Sales,Sales,21126.8,Cr,Saanvi Kumar 0150,18,Gujarat,Maharashtra,,sale
+SO-00151,2026-07-06,Sales,Sales,12353.27,Cr,Meera Das 0151,18,Kerala,Maharashtra,,sale
+SO-00152,2026-06-26,Sales,Sales,19297.87,Cr,Reyansh Patel 0152,18,Karnataka,Maharashtra,,sale
+SO-00153,2026-04-26,Sales,Sales,20189.65,Cr,Sai Sharma 0153,12,Uttar Pradesh,Maharashtra,,sale
+SO-00154,2026-09-30,Sales,Sales,2464.85,Cr,Prime Traders 0154,18,Rajasthan,Maharashtra,08AWOFO1685L8ZX,sale
+SO-00155,2026-12-01,Sales,Sales,20048.78,Cr,Shakti Exports 0155,18,Punjab,Maharashtra,03VCPFV8768V6Z8,sale
+SO-00156,2026-04-17,Sales,Sales,2473.04,Cr,Myra Rao 0156,12,Rajasthan,Maharashtra,,sale
+SO-00157,2026-05-02,Sales,Sales,22121.82,Cr,Prime Distributors 0157,18,Kerala,Maharashtra,32NDJWY0981C1ZJ,sale
+SO-00158,2026-11-06,Sales,Sales,18966.72,Cr,Apex Wholesale 0158,18,Telangana,Maharashtra,36TGLUI5388R8ZR,refund
+SO-00159,2026-04-16,Sales,Sales,19790.75,Cr,Bharat Distributors 0159,18,Madhya Pradesh,Maharashtra,23LUAQV7637P5Z2,sale
+SO-00160,2026-08-23,Sales,Sales,10753.9,Cr,Rohan Patel 0160,18,Punjab,Maharashtra,,sale
+SO-00161,2026-07-27,Sales,Sales,10536.47,Cr,Ira Verma 0161,12,Punjab,Maharashtra,,sale
+SO-00162,2026-10-19,Sales,Sales,14695.92,Cr,Myra Joshi 0162,12,Kerala,Maharashtra,,sale
+SO-00163,2026-06-16,Sales,Sales,2754.04,Cr,Rahul Das 0163,12,Uttar Pradesh,Maharashtra,,sale
+SO-00164,2026-12-05,Sales,Sales,20846.77,Cr,Anjali Sharma 0164,5,Telangana,Maharashtra,,sale
+SO-00165,2026-12-24,Sales,Sales,17949.34,Cr,Pari Kulkarni 0165,18,Maharashtra,Maharashtra,,sale
+SO-00166,2026-11-11,Sales,Sales,2655.27,Cr,Deepak Singh 0166,5,Telangana,Maharashtra,,sale
+SO-00167,2026-11-09,Sales,Sales,5715.58,Cr,Pioneer Traders 0167,12,Delhi,Maharashtra,07MZDOQ7473Y1Z0,sale
+SO-00168,2026-05-17,Sales,Sales,18050.65,Cr,Pioneer Retail 0168,5,Tamil Nadu,Maharashtra,33ZWWQU3650Z5ZL,sale
+SO-00169,2026-07-21,Sales,Sales,3759.7,Cr,Aditya Gupta 0169,12,West Bengal,Maharashtra,,sale
+SO-00170,2026-11-04,Sales,Sales,22588.33,Cr,Ishaan Rao 0170,12,Maharashtra,Maharashtra,,sale
+SO-00171,2026-07-13,Sales,Sales,948.11,Cr,Metro Industries 0171,12,Maharashtra,Maharashtra,27DORRG9911M8ZP,sale
+SO-00172,2026-06-29,Sales,Sales,1837.81,Cr,Orbit Solutions 0172,5,Rajasthan,Maharashtra,08PKHPP0016F7ZC,refund
+SO-00173,2026-07-16,Sales,Sales,18620.84,Cr,Orbit Industries 0173,5,Delhi,Maharashtra,07TTMRK6293S4ZR,sale
+SO-00174,2026-12-18,Sales,Sales,3688.76,Cr,Riya Iyer 0174,12,West Bengal,Maharashtra,,sale
+SO-00175,2026-11-10,Sales,Sales,23385.36,Cr,Sai Bose 0175,18,West Bengal,Maharashtra,,sale
+SO-00176,2026-10-11,Sales,Sales,23065.9,Cr,Nova Trading Co 0176,18,Karnataka,Maharashtra,29WNWBL6159C1ZT,sale
+SO-00177,2026-12-04,Sales,Sales,21716.49,Cr,Ira Iyer 0177,18,Kerala,Maharashtra,,sale
+SO-00178,2026-05-07,Sales,Sales,24390.61,Cr,Crescent Agencies 0178,18,Gujarat,Maharashtra,24BOBJK4133C1ZB,sale
+SO-00179,2026-09-17,Sales,Sales,9527.11,Cr,Everest Wholesale 0179,12,Maharashtra,Maharashtra,27WLBSZ9217F4ZW,sale
+SO-00180,2026-11-24,Sales,Sales,23900.65,Cr,Ira Sharma 0180,18,Karnataka,Maharashtra,,sale
+SO-00181,2026-10-06,Sales,Sales,15363.73,Cr,Prime Solutions 0181,5,Delhi,Maharashtra,07LQVGA6798S9ZQ,sale
+SO-00182,2026-08-22,Sales,Sales,11424.09,Cr,Diya Kulkarni 0182,18,Rajasthan,Maharashtra,,refund
+SO-00183,2026-04-10,Sales,Sales,15119.33,Cr,Ananya Verma 0183,12,Gujarat,Maharashtra,,sale
+SO-00184,2026-11-08,Sales,Sales,9478.16,Cr,Ganga Agencies 0184,12,Karnataka,Maharashtra,29MEKOE3936N4ZH,refund
+SO-00185,2026-07-28,Sales,Sales,11309.12,Cr,Ganga Traders 0185,5,Uttar Pradesh,Maharashtra,09GJKUO9405O4ZP,sale
+SO-00186,2026-05-15,Sales,Sales,4751.66,Cr,Reyansh Singh 0186,12,Madhya Pradesh,Maharashtra,,refund
+SO-00187,2026-06-16,Sales,Sales,14865.79,Cr,Unity Wholesale 0187,18,Karnataka,Maharashtra,29LGYED3606D6ZZ,sale
+SO-00188,2026-08-29,Sales,Sales,15402.81,Cr,Riya Joshi 0188,5,Kerala,Maharashtra,,sale
+SO-00189,2026-08-30,Sales,Sales,3187.5,Cr,Everest & Sons 0189,12,Tamil Nadu,Maharashtra,33WMQQT0993N8ZI,sale
+SO-00190,2026-06-12,Sales,Sales,1454.78,Cr,Prime Industries 0190,18,Delhi,Maharashtra,07EJGKU8067E5ZJ,sale
+SO-00191,2026-08-26,Sales,Sales,2339.25,Cr,Ishaan Shah 0191,18,West Bengal,Maharashtra,,sale
+SO-00192,2026-04-01,Sales,Sales,19503.74,Cr,Ananya Kulkarni 0192,5,West Bengal,Maharashtra,,sale
+SO-00193,2026-06-05,Sales,Sales,761.6,Cr,Arjun Shah 0193,18,Uttar Pradesh,Maharashtra,,sale
+SO-00194,2026-12-23,Sales,Sales,6755.85,Cr,Metro Trading Co 0194,18,Uttar Pradesh,Maharashtra,09PMHQO7395J6ZX,sale
+SO-00195,2026-11-13,Sales,Sales,3742.29,Cr,Vivaan Kulkarni 0195,5,West Bengal,Maharashtra,,refund
+SO-00196,2026-08-31,Sales,Sales,1043.49,Cr,Vihaan Nair 0196,18,Rajasthan,Maharashtra,,sale
+SO-00197,2026-07-11,Sales,Sales,317.52,Cr,Royal Trading Co 0197,18,Maharashtra,Maharashtra,27BFSGZ4868P2ZL,sale
+SO-00198,2026-08-11,Sales,Sales,5880.54,Cr,Vihaan Desai 0198,18,West Bengal,Maharashtra,,sale
+SO-00199,2026-10-01,Sales,Sales,7723.4,Cr,Ananya Sharma 0199,12,Gujarat,Maharashtra,,sale
+SO-00200,2026-07-04,Sales,Sales,20277.36,Cr,Vivaan Das 0200,18,Rajasthan,Maharashtra,,sale
+SO-00201,2026-06-11,Sales,Sales,4029.27,Cr,Nova Exports 0201,12,Kerala,Maharashtra,32RTVPN0973H9ZV,sale
+SO-00202,2026-07-15,Sales,Sales,7949.95,Cr,Pari Menon 0202,18,Gujarat,Maharashtra,,refund
+SO-00203,2026-10-16,Sales,Sales,12541.61,Cr,Unity Solutions 0203,5,Delhi,Maharashtra,07EAVAN7368Z2ZJ,sale
+SO-00204,2026-07-16,Sales,Sales,6643.19,Cr,Bharat Retail 0204,18,Punjab,Maharashtra,03QZKTX1452J9ZC,sale
+SO-00205,2026-08-23,Sales,Sales,8002.69,Cr,Vertex Marketing 0205,5,Karnataka,Maharashtra,29MZNOF9706G7ZW,sale
+SO-00206,2026-11-03,Sales,Sales,8899.45,Cr,Crescent Distributors 0206,18,Uttar Pradesh,Maharashtra,09QPTVF3112S9Z3,sale
+SO-00207,2026-04-17,Sales,Sales,17936.96,Cr,Aditya Singh 0207,18,West Bengal,Maharashtra,,refund
+SO-00208,2026-11-13,Sales,Sales,18550.19,Cr,Arjun Das 0208,18,Telangana,Maharashtra,,sale
+SO-00209,2026-07-03,Sales,Sales,17617.68,Cr,Priya Das 0209,18,Gujarat,Maharashtra,,sale
+SO-00210,2026-11-07,Sales,Sales,18351.58,Cr,Apex Exports 0210,18,Karnataka,Maharashtra,29HENMC9143X7ZB,sale
+SO-00211,2026-12-03,Sales,Sales,17434.57,Cr,Ishaan Singh 0211,18,Punjab,Maharashtra,,sale
+SO-00212,2026-11-16,Sales,Sales,8883.4,Cr,Apex Agencies 0212,12,Gujarat,Maharashtra,24CDFOA5977R6ZD,sale
+SO-00213,2026-06-03,Sales,Sales,20588.28,Cr,Global & Sons 0213,18,Uttar Pradesh,Maharashtra,09NYZZG5588H7Z1,sale
+SO-00214,2026-07-26,Sales,Sales,7572.46,Cr,Priya Mehta 0214,12,West Bengal,Maharashtra,,sale
+SO-00215,2026-06-27,Sales,Sales,24665.41,Cr,Sai Verma 0215,5,Karnataka,Maharashtra,,sale
+SO-00216,2026-06-04,Sales,Sales,18217.36,Cr,Saanvi Bose 0216,12,Madhya Pradesh,Maharashtra,,sale
+SO-00217,2026-04-21,Sales,Sales,15903.89,Cr,Karan Nair 0217,18,Telangana,Maharashtra,,sale
+SO-00218,2026-06-21,Sales,Sales,23709.09,Cr,Metro Marketing 0218,12,Uttar Pradesh,Maharashtra,09EMOAI8686J1ZO,sale
+SO-00219,2026-10-28,Sales,Sales,24324.57,Cr,Unity Exports 0219,18,Karnataka,Maharashtra,29BSSFA5847H4ZE,sale
+SO-00220,2026-05-19,Sales,Sales,14126.4,Cr,Reyansh Nair 0220,18,Rajasthan,Maharashtra,,sale
+SO-00221,2026-09-08,Sales,Sales,23486.5,Cr,Meera Kumar 0221,12,Rajasthan,Maharashtra,,sale
+SO-00222,2026-12-13,Sales,Sales,8127.14,Cr,Royal Industries 0222,12,Tamil Nadu,Maharashtra,33MBAIP3843C6ZD,sale
+SO-00223,2026-08-13,Sales,Sales,3877.64,Cr,Ananya Iyer 0223,18,Tamil Nadu,Maharashtra,,sale
+SO-00224,2026-06-21,Sales,Sales,3741.43,Cr,Apex Enterprises 0224,12,Gujarat,Maharashtra,24KXGRL8044Y4ZJ,sale
+SO-00225,2026-08-20,Sales,Sales,2525.23,Cr,Sunrise & Sons 0225,18,Tamil Nadu,Maharashtra,33VSYPN3239I8Z4,sale
+SO-00226,2026-05-21,Sales,Sales,22594.37,Cr,Shakti Distributors 0226,18,Kerala,Maharashtra,32UVUZG7717H2ZI,sale
+SO-00227,2026-05-31,Sales,Sales,24519.77,Cr,Saanvi Bose 0227,18,Karnataka,Maharashtra,,sale
+SO-00228,2026-06-09,Sales,Sales,12195.7,Cr,Pari Chowdhury 0228,18,West Bengal,Maharashtra,,sale
+SO-00229,2026-04-29,Sales,Sales,1785.11,Cr,Bharat Solutions 0229,18,Rajasthan,Maharashtra,08QGTWY3129B9ZV,sale
+SO-00230,2026-09-16,Sales,Sales,18838.31,Cr,Pioneer Traders 0230,12,Telangana,Maharashtra,36WTHRR9248Z2ZY,sale
+SO-00231,2026-08-28,Sales,Sales,5950.24,Cr,Apex Solutions 0231,18,Kerala,Maharashtra,32WWTUY3234B3ZP,sale
+SO-00232,2026-08-04,Sales,Sales,23666.67,Cr,Apex Agencies 0232,12,Kerala,Maharashtra,32YPTGT6816N7ZT,sale
+SO-00233,2026-05-17,Sales,Sales,6903.34,Cr,Ira Das 0233,18,Madhya Pradesh,Maharashtra,,sale
+SO-00234,2026-06-06,Sales,Sales,24969.53,Cr,Nikhil Shah 0234,18,Rajasthan,Maharashtra,,sale
+SO-00235,2026-09-26,Sales,Sales,9723.09,Cr,Nova Marketing 0235,18,Rajasthan,Maharashtra,08AEYAA7346V9Z5,sale
+SO-00236,2026-06-02,Sales,Sales,2222.28,Cr,Neha Kumar 0236,12,West Bengal,Maharashtra,,sale
+SO-00237,2026-08-26,Sales,Sales,10787.16,Cr,Sai Joshi 0237,18,West Bengal,Maharashtra,,sale
+SO-00238,2026-12-23,Sales,Sales,7845.26,Cr,Neha Sharma 0238,12,Kerala,Maharashtra,,sale
+SO-00239,2026-08-31,Sales,Sales,11281.7,Cr,Royal Trading Co 0239,18,Maharashtra,Maharashtra,27SFJVX0279Q1ZX,sale
+SO-00240,2026-07-19,Sales,Sales,22569.09,Cr,Neha Shah 0240,5,Rajasthan,Maharashtra,,sale
+SO-00241,2026-07-21,Sales,Sales,11141.53,Cr,Riya Bose 0241,18,Uttar Pradesh,Maharashtra,,sale
+SO-00242,2026-05-04,Sales,Sales,5444.03,Cr,Amit Menon 0242,18,Karnataka,Maharashtra,,sale
+SO-00243,2026-11-10,Sales,Sales,5836.07,Cr,Ganga Marketing 0243,18,Kerala,Maharashtra,32LZMUO9281C4ZR,sale
+SO-00244,2026-12-04,Sales,Sales,2966.73,Cr,Amit Joshi 0244,18,Uttar Pradesh,Maharashtra,,sale
+SO-00245,2026-11-17,Sales,Sales,7751.99,Cr,Vertex Distributors 0245,18,Tamil Nadu,Maharashtra,33GZQFS6280A3Z7,sale
+SO-00246,2026-10-09,Sales,Sales,17198.83,Cr,Reyansh Nair 0246,12,Delhi,Maharashtra,,sale
+SO-00247,2026-09-24,Sales,Sales,5572.86,Cr,Pooja Chowdhury 0247,18,Maharashtra,Maharashtra,,sale
+SO-00248,2026-07-03,Sales,Sales,24567.52,Cr,Pari Menon 0248,12,Punjab,Maharashtra,,sale
+SO-00249,2026-08-04,Sales,Sales,1784.84,Cr,Diya Mehta 0249,18,Delhi,Maharashtra,,sale
+SO-00250,2026-11-16,Sales,Sales,23099.5,Cr,Crescent Traders 0250,18,Gujarat,Maharashtra,24UVNYF7836Z1ZM,sale
+SO-00251,2026-07-06,Sales,Sales,14270.67,Cr,Crescent Retail 0251,18,Kerala,Maharashtra,32KBLNU9946N6ZX,sale
+SO-00252,2026-06-08,Sales,Sales,8052.7,Cr,Saanvi Mehta 0252,18,Kerala,Maharashtra,,sale
+SO-00253,2026-09-02,Sales,Sales,18068.55,Cr,Vihaan Shah 0253,12,West Bengal,Maharashtra,,sale
+SO-00254,2026-10-22,Sales,Sales,12731.22,Cr,Crescent Exports 0254,5,Punjab,Maharashtra,03QSJUZ9267I4Z0,sale
+SO-00255,2026-05-14,Sales,Sales,21233.15,Cr,Crescent Traders 0255,12,Maharashtra,Maharashtra,27HLZIY5268R1ZY,sale
+SO-00256,2026-06-07,Sales,Sales,14095.64,Cr,Orbit Retail 0256,12,Delhi,Maharashtra,07OPAQI3487S7ZP,sale
+SO-00257,2026-08-05,Sales,Sales,14929.42,Cr,Myra Joshi 0257,18,Uttar Pradesh,Maharashtra,,sale
+SO-00258,2026-04-14,Sales,Sales,11224.74,Cr,Bharat Distributors 0258,12,Gujarat,Maharashtra,24CDWIM9714R6Z7,sale
+SO-00259,2026-11-09,Sales,Sales,3426.59,Cr,Zenith Marketing 0259,18,Rajasthan,Maharashtra,08IKNTL1814A4Z5,sale
+SO-00260,2026-12-08,Sales,Sales,3077.37,Cr,Krishna Iyer 0260,5,Punjab,Maharashtra,,sale
+SO-00261,2026-11-29,Sales,Sales,16236.75,Cr,Aarav Kumar 0261,5,Tamil Nadu,Maharashtra,,sale
+SO-00262,2026-11-14,Sales,Sales,2293.05,Cr,Rahul Gupta 0262,18,Telangana,Maharashtra,,sale
+SO-00263,2026-06-08,Sales,Sales,5408.65,Cr,Kavya Patel 0263,18,Delhi,Maharashtra,,sale
+SO-00264,2026-10-01,Sales,Sales,706.51,Cr,Aadhya Iyer 0264,18,Delhi,Maharashtra,,sale
+SO-00265,2026-10-31,Sales,Sales,19967.54,Cr,Deepak Gupta 0265,5,Karnataka,Maharashtra,,sale
+SO-00266,2026-11-24,Sales,Sales,5617.99,Cr,Ananya Sharma 0266,18,Punjab,Maharashtra,,sale
+SO-00267,2026-12-15,Sales,Sales,7639.18,Cr,Royal Traders 0267,5,Punjab,Maharashtra,03YHYRD2794V9Z6,refund
+SO-00268,2026-08-01,Sales,Sales,19661.5,Cr,Meera Reddy 0268,12,Punjab,Maharashtra,,sale
+SO-00269,2026-05-14,Sales,Sales,15730.98,Cr,Ananya Sharma 0269,18,Uttar Pradesh,Maharashtra,,sale
+SO-00270,2026-08-14,Sales,Sales,8404.2,Cr,Saanvi Kumar 0270,12,Maharashtra,Maharashtra,,sale
+SO-00271,2026-11-10,Sales,Sales,12561.28,Cr,Reyansh Chowdhury 0271,18,Karnataka,Maharashtra,,sale
+SO-00272,2026-04-11,Sales,Sales,21911.25,Cr,Amit Kulkarni 0272,5,Delhi,Maharashtra,,sale
+SO-00273,2026-04-12,Sales,Sales,6181.17,Cr,Ishaan Bose 0273,12,Rajasthan,Maharashtra,,sale
+SO-00274,2026-05-06,Sales,Sales,20048.55,Cr,Royal Retail 0274,18,Maharashtra,Maharashtra,27XVAFD4826E8ZX,sale
+SO-00275,2026-06-11,Sales,Sales,19714.18,Cr,Aditya Das 0275,18,West Bengal,Maharashtra,,sale
+SO-00276,2026-09-11,Sales,Sales,18879.46,Cr,Crescent Enterprises 0276,12,Telangana,Maharashtra,36MZVFL8025J4ZM,sale
+SO-00277,2026-11-05,Sales,Sales,13978.26,Cr,Everest Retail 0277,18,Kerala,Maharashtra,32FPOXH4370L4Z4,sale
+SO-00278,2026-10-14,Sales,Sales,13433.91,Cr,Vihaan Das 0278,18,Karnataka,Maharashtra,,sale
+SO-00279,2026-05-08,Sales,Sales,6250.74,Cr,Aditya Patel 0279,12,Uttar Pradesh,Maharashtra,,sale
+SO-00280,2026-07-15,Sales,Sales,22556.92,Cr,Myra Iyer 0280,18,Delhi,Maharashtra,,sale
+SO-00281,2026-06-17,Sales,Sales,1521.51,Cr,Arjun Kulkarni 0281,12,Delhi,Maharashtra,,sale
+SO-00282,2026-06-24,Sales,Sales,1574.29,Cr,Everest Exports 0282,18,Kerala,Maharashtra,32LVDRI4871E9ZI,sale
+SO-00283,2026-09-03,Sales,Sales,21268.71,Cr,Krishna Das 0283,12,Tamil Nadu,Maharashtra,,sale
+SO-00284,2026-12-13,Sales,Sales,6479.47,Cr,Sai Kumar 0284,12,Madhya Pradesh,Maharashtra,,sale
+SO-00285,2026-11-09,Sales,Sales,15694.49,Cr,Krishna Gupta 0285,18,Rajasthan,Maharashtra,,sale
+SO-00286,2026-04-15,Sales,Sales,21101.08,Cr,Saanvi Bose 0286,12,Madhya Pradesh,Maharashtra,,sale
+SO-00287,2026-05-13,Sales,Sales,7759.65,Cr,Nikhil Kumar 0287,12,Tamil Nadu,Maharashtra,,sale
+SO-00288,2026-05-04,Sales,Sales,20217.56,Cr,Deepak Iyer 0288,5,Tamil Nadu,Maharashtra,,sale
+SO-00289,2026-07-16,Sales,Sales,14280.61,Cr,Pari Reddy 0289,5,Gujarat,Maharashtra,,sale
+SO-00290,2026-09-11,Sales,Sales,16275.0,Cr,Kavya Verma 0290,18,Karnataka,Maharashtra,,sale
+SO-00291,2026-12-14,Sales,Sales,13270.22,Cr,Rahul Desai 0291,12,West Bengal,Maharashtra,,refund
+SO-00292,2026-07-13,Sales,Sales,7151.76,Cr,Riya Bose 0292,18,Kerala,Maharashtra,,sale
+SO-00293,2026-08-22,Sales,Sales,7363.59,Cr,Arjun Reddy 0293,5,Telangana,Maharashtra,,sale
+SO-00294,2026-05-19,Sales,Sales,1631.74,Cr,Saanvi Reddy 0294,18,Maharashtra,Maharashtra,,sale
+SO-00295,2026-06-19,Sales,Sales,5705.27,Cr,Aditya Nair 0295,18,Gujarat,Maharashtra,,sale
+SO-00296,2026-07-05,Sales,Sales,18846.23,Cr,Priya Singh 0296,18,Telangana,Maharashtra,,sale
+SO-00297,2026-04-22,Sales,Sales,21306.62,Cr,Kavya Menon 0297,12,Kerala,Maharashtra,,sale
+SO-00298,2026-10-07,Sales,Sales,15815.88,Cr,Pioneer Traders 0298,5,Punjab,Maharashtra,03UJJTM1733H5Z5,sale
+SO-00299,2026-12-22,Sales,Sales,16125.8,Cr,Priya Kulkarni 0299,18,Karnataka,Maharashtra,,sale
+SO-00300,2026-11-10,Sales,Sales,18782.32,Cr,Orbit Retail 0300,18,Karnataka,Maharashtra,29EWZWE8338T3ZA,sale
+SO-00301,2026-08-31,Sales,Sales,20735.49,Cr,Krishna Patel 0301,12,Kerala,Maharashtra,,sale
+SO-00302,2026-11-21,Sales,Sales,7059.82,Cr,Vertex Retail 0302,12,Delhi,Maharashtra,07CVZYI8621Q9ZL,sale
+SO-00303,2026-06-30,Sales,Sales,9420.92,Cr,Riya Gupta 0303,12,Punjab,Maharashtra,,sale
+SO-00304,2026-05-11,Sales,Sales,13195.67,Cr,Global Solutions 0304,18,Rajasthan,Maharashtra,08DMWBS9769Y1Z1,sale
+SO-00305,2026-11-06,Sales,Sales,19679.83,Cr,Vihaan Kulkarni 0305,12,Madhya Pradesh,Maharashtra,,sale
+SO-00306,2026-08-13,Sales,Sales,8613.21,Cr,Karan Nair 0306,12,Kerala,Maharashtra,,sale
+SO-00307,2026-07-14,Sales,Sales,18492.62,Cr,Arjun Sharma 0307,18,Tamil Nadu,Maharashtra,,sale
+SO-00308,2026-08-03,Sales,Sales,10021.68,Cr,Deepak Kulkarni 0308,18,Kerala,Maharashtra,,sale
+SO-00309,2026-08-02,Sales,Sales,9782.26,Cr,Prime Enterprises 0309,18,Delhi,Maharashtra,07OISEB7344P8ZM,sale
+SO-00310,2026-05-08,Sales,Sales,6085.58,Cr,Deepak Reddy 0310,18,Uttar Pradesh,Maharashtra,,sale
+SO-00311,2026-09-28,Sales,Sales,4532.09,Cr,Sai Mehta 0311,12,Rajasthan,Maharashtra,,refund
+SO-00312,2026-09-02,Sales,Sales,9473.18,Cr,Krishna Sharma 0312,18,Tamil Nadu,Maharashtra,,sale
+SO-00313,2026-05-27,Sales,Sales,19483.36,Cr,Pioneer Trading Co 0313,5,Karnataka,Maharashtra,29UTTJE6589T4ZX,sale
+SO-00314,2026-09-12,Sales,Sales,7484.98,Cr,Rohan Nair 0314,12,Madhya Pradesh,Maharashtra,,sale
+SO-00315,2026-05-16,Sales,Sales,5960.0,Cr,Ganga Trading Co 0315,12,Telangana,Maharashtra,36VLILO5790M6Z3,sale
+SO-00316,2026-08-09,Sales,Sales,22025.21,Cr,Riya Gupta 0316,18,Madhya Pradesh,Maharashtra,,sale
+SO-00317,2026-05-06,Sales,Sales,24360.24,Cr,Karan Das 0317,18,Rajasthan,Maharashtra,,sale
+SO-00318,2026-09-15,Sales,Sales,23012.93,Cr,Vivaan Gupta 0318,18,Maharashtra,Maharashtra,,sale
+SO-00319,2026-07-16,Sales,Sales,21994.94,Cr,Aadhya Das 0319,18,Maharashtra,Maharashtra,,sale
+SO-00320,2026-11-09,Sales,Sales,3417.69,Cr,Arjun Rao 0320,18,Delhi,Maharashtra,,sale
+SO-00321,2026-10-29,Sales,Sales,4213.43,Cr,Saanvi Gupta 0321,18,West Bengal,Maharashtra,,sale
+SO-00322,2026-12-13,Sales,Sales,3264.05,Cr,Reyansh Sharma 0322,5,Maharashtra,Maharashtra,,sale
+SO-00323,2026-12-07,Sales,Sales,10844.44,Cr,Reyansh Das 0323,12,Maharashtra,Maharashtra,,sale
+SO-00324,2026-05-18,Sales,Sales,9612.13,Cr,Myra Desai 0324,18,Maharashtra,Maharashtra,,sale
+SO-00325,2026-09-13,Sales,Sales,24454.46,Cr,Aadhya Iyer 0325,18,Tamil Nadu,Maharashtra,,sale
+SO-00326,2026-11-26,Sales,Sales,15164.59,Cr,Meera Kulkarni 0326,18,West Bengal,Maharashtra,,refund
+SO-00327,2026-06-01,Sales,Sales,15112.32,Cr,Ishaan Nair 0327,18,Uttar Pradesh,Maharashtra,,sale
+SO-00328,2026-08-27,Sales,Sales,3027.65,Cr,Vihaan Reddy 0328,18,Kerala,Maharashtra,,sale
+SO-00329,2026-05-12,Sales,Sales,20724.8,Cr,Pooja Rao 0329,5,Kerala,Maharashtra,,sale
+SO-00330,2026-05-15,Sales,Sales,5059.9,Cr,Orbit Agencies 0330,18,Gujarat,Maharashtra,24BKJII8743T9ZF,sale
+SO-00331,2026-04-24,Sales,Sales,942.41,Cr,Neha Gupta 0331,12,Delhi,Maharashtra,,sale
+SO-00332,2026-11-25,Sales,Sales,7329.23,Cr,Aarav Chowdhury 0332,12,Gujarat,Maharashtra,,sale
+SO-00333,2026-09-15,Sales,Sales,15208.74,Cr,Metro Exports 0333,18,Kerala,Maharashtra,32ZCBNI4701P6ZB,sale
+SO-00334,2026-06-19,Sales,Sales,5113.64,Cr,Nikhil Kulkarni 0334,18,Tamil Nadu,Maharashtra,,sale
+SO-00335,2026-11-21,Sales,Sales,19057.6,Cr,Rohan Sharma 0335,18,Maharashtra,Maharashtra,,sale
+SO-00336,2026-07-12,Sales,Sales,7558.58,Cr,Neha Patel 0336,18,Kerala,Maharashtra,,sale
+SO-00337,2026-05-29,Sales,Sales,3382.53,Cr,Aadhya Kulkarni 0337,18,Rajasthan,Maharashtra,,sale
+SO-00338,2026-05-29,Sales,Sales,4037.2,Cr,Aditya Bose 0338,18,Karnataka,Maharashtra,,refund
+SO-00339,2026-04-13,Sales,Sales,8724.86,Cr,Royal Industries 0339,18,Kerala,Maharashtra,32TKFTM9434E2ZP,sale
+SO-00340,2026-05-08,Sales,Sales,24686.41,Cr,Bharat & Sons 0340,18,Karnataka,Maharashtra,29NYUKD2908I5Z1,sale
+SO-00341,2026-05-15,Sales,Sales,9772.31,Cr,Deepak Bose 0341,12,Tamil Nadu,Maharashtra,,sale
+SO-00342,2026-09-25,Sales,Sales,21807.52,Cr,Myra Chowdhury 0342,18,Gujarat,Maharashtra,,refund
+SO-00343,2026-08-19,Sales,Sales,24065.54,Cr,Saanvi Singh 0343,18,Uttar Pradesh,Maharashtra,,sale
+SO-00344,2026-05-23,Sales,Sales,6877.0,Cr,Sai Shah 0344,18,Maharashtra,Maharashtra,,sale
+SO-00345,2026-10-16,Sales,Sales,6992.81,Cr,Prime Distributors 0345,18,Punjab,Maharashtra,03XSVYP7798U7ZA,sale
+SO-00346,2026-07-06,Sales,Sales,23189.45,Cr,Karan Kumar 0346,18,Karnataka,Maharashtra,,sale
+SO-00347,2026-11-15,Sales,Sales,12094.62,Cr,Kavya Desai 0347,5,West Bengal,Maharashtra,,sale
+SO-00348,2026-08-10,Sales,Sales,16980.18,Cr,Amit Singh 0348,12,Karnataka,Maharashtra,,sale
+SO-00349,2026-12-03,Sales,Sales,10100.03,Cr,Aditya Kumar 0349,18,Telangana,Maharashtra,,sale
+SO-00350,2026-07-28,Sales,Sales,1890.43,Cr,Rahul Mehta 0350,18,Uttar Pradesh,Maharashtra,,sale
+SO-00351,2026-10-24,Sales,Sales,10076.13,Cr,Sneha Singh 0351,18,Tamil Nadu,Maharashtra,,sale
+SO-00352,2026-06-09,Sales,Sales,5252.26,Cr,Unity Agencies 0352,5,Madhya Pradesh,Maharashtra,23VADXL2225R4ZG,sale
+SO-00353,2026-04-29,Sales,Sales,24792.35,Cr,Karan Das 0353,18,Maharashtra,Maharashtra,,sale
+SO-00354,2026-09-01,Sales,Sales,22976.67,Cr,Anjali Patel 0354,18,Kerala,Maharashtra,,sale
+SO-00355,2026-07-24,Sales,Sales,4841.39,Cr,Krishna Bose 0355,5,Maharashtra,Maharashtra,,sale
+SO-00356,2026-12-02,Sales,Sales,18800.35,Cr,Anjali Reddy 0356,18,Uttar Pradesh,Maharashtra,,sale
+SO-00357,2026-06-13,Sales,Sales,594.12,Cr,Royal Exports 0357,5,Madhya Pradesh,Maharashtra,23LTIOZ2249O9Z2,sale
+SO-00358,2026-07-29,Sales,Sales,11414.22,Cr,Aarav Nair 0358,18,Uttar Pradesh,Maharashtra,,sale
+SO-00359,2026-12-09,Sales,Sales,18869.45,Cr,Orbit Retail 0359,12,Karnataka,Maharashtra,29ABAZG7692X4Z0,sale
+SO-00360,2026-08-11,Sales,Sales,10085.87,Cr,Anjali Das 0360,18,Kerala,Maharashtra,,sale
+SO-00361,2026-09-25,Sales,Sales,6746.01,Cr,Unity Marketing 0361,12,Telangana,Maharashtra,36KGLHP8628Q6Z1,sale
+SO-00362,2026-04-13,Sales,Sales,7860.96,Cr,Sai Rao 0362,5,Delhi,Maharashtra,,sale
+SO-00363,2026-06-21,Sales,Sales,5028.64,Cr,Riya Kumar 0363,12,Tamil Nadu,Maharashtra,,refund
+SO-00364,2026-07-03,Sales,Sales,12800.12,Cr,Royal Industries 0364,12,Gujarat,Maharashtra,24CKQXW0897Q3Z6,sale
+SO-00365,2026-06-09,Sales,Sales,8926.06,Cr,Karan Reddy 0365,18,Tamil Nadu,Maharashtra,,sale
+SO-00366,2026-08-03,Sales,Sales,8841.77,Cr,Crescent Marketing 0366,12,Madhya Pradesh,Maharashtra,23AXHBZ2537M7ZI,sale
+SO-00367,2026-08-20,Sales,Sales,6707.54,Cr,Meera Kulkarni 0367,5,Rajasthan,Maharashtra,,sale
+SO-00368,2026-08-31,Sales,Sales,21795.86,Cr,Vivaan Chowdhury 0368,5,Kerala,Maharashtra,,sale
+SO-00369,2026-04-29,Sales,Sales,4909.92,Cr,Pari Das 0369,5,Delhi,Maharashtra,,sale
+SO-00370,2026-05-17,Sales,Sales,22955.48,Cr,Sai Patel 0370,12,West Bengal,Maharashtra,,sale
+SO-00371,2026-05-09,Sales,Sales,11544.07,Cr,Nikhil Mehta 0371,12,Punjab,Maharashtra,,sale
+SO-00372,2026-04-24,Sales,Sales,11141.59,Cr,Pooja Nair 0372,18,Tamil Nadu,Maharashtra,,sale
+SO-00373,2026-06-16,Sales,Sales,9382.79,Cr,Sai Sharma 0373,18,Kerala,Maharashtra,,refund
+SO-00374,2026-10-01,Sales,Sales,20761.85,Cr,Riya Patel 0374,12,Rajasthan,Maharashtra,,sale
+SO-00375,2026-07-01,Sales,Sales,14063.7,Cr,Rohan Chowdhury 0375,5,Kerala,Maharashtra,,sale
+SO-00376,2026-05-05,Sales,Sales,11015.81,Cr,Zenith Retail 0376,18,West Bengal,Maharashtra,19TARSC6861R3ZC,sale
+SO-00377,2026-07-03,Sales,Sales,20693.12,Cr,Zenith Marketing 0377,12,Punjab,Maharashtra,03NYAZC8219N6ZJ,sale
+SO-00378,2026-09-22,Sales,Sales,2668.61,Cr,Vertex Trading Co 0378,18,Karnataka,Maharashtra,29IEIPQ9137S8ZR,sale
+SO-00379,2026-04-20,Sales,Sales,14120.71,Cr,Meera Reddy 0379,18,Gujarat,Maharashtra,,sale
+SO-00380,2026-10-12,Sales,Sales,15354.08,Cr,Deepak Bose 0380,18,Kerala,Maharashtra,,sale
+SO-00381,2026-09-28,Sales,Sales,7136.57,Cr,Aarav Desai 0381,18,Tamil Nadu,Maharashtra,,sale
+SO-00382,2026-07-12,Sales,Sales,13752.72,Cr,Pooja Pillai 0382,18,Punjab,Maharashtra,,sale
+SO-00383,2026-08-05,Sales,Sales,1080.36,Cr,Myra Sharma 0383,12,Tamil Nadu,Maharashtra,,sale
+SO-00384,2026-09-06,Sales,Sales,3127.82,Cr,Sunrise Agencies 0384,18,Uttar Pradesh,Maharashtra,09BUSLL0941K9ZN,sale
+SO-00385,2026-07-10,Sales,Sales,4923.71,Cr,Saanvi Verma 0385,5,Telangana,Maharashtra,,sale
+SO-00386,2026-05-30,Sales,Sales,16684.46,Cr,Reyansh Patel 0386,12,Telangana,Maharashtra,,sale
+SO-00387,2026-07-03,Sales,Sales,13330.95,Cr,Shakti Marketing 0387,12,Tamil Nadu,Maharashtra,33NPCAC8302J8ZF,sale
+SO-00388,2026-08-05,Sales,Sales,12782.62,Cr,Unity Enterprises 0388,18,Uttar Pradesh,Maharashtra,09TITFH9827A5ZI,sale
+SO-00389,2026-10-11,Sales,Sales,24985.52,Cr,Vivaan Bose 0389,18,Gujarat,Maharashtra,,refund
+SO-00390,2026-10-12,Sales,Sales,10435.15,Cr,Pari Desai 0390,18,Punjab,Maharashtra,,sale
+SO-00391,2026-11-19,Sales,Sales,1007.05,Cr,Ananya Shah 0391,5,Delhi,Maharashtra,,sale
+SO-00392,2026-11-19,Sales,Sales,3506.07,Cr,Vihaan Menon 0392,18,Tamil Nadu,Maharashtra,,sale
+SO-00393,2026-07-21,Sales,Sales,3259.76,Cr,Orbit Industries 0393,18,Madhya Pradesh,Maharashtra,23WYQMM4783W3Z2,sale
+SO-00394,2026-08-24,Sales,Sales,6313.89,Cr,Global Distributors 0394,12,Telangana,Maharashtra,36GHPLC9900V5ZT,sale
+SO-00395,2026-05-04,Sales,Sales,15310.02,Cr,Diya Sharma 0395,18,West Bengal,Maharashtra,,sale
+SO-00396,2026-06-22,Sales,Sales,10647.42,Cr,Vihaan Nair 0396,18,Tamil Nadu,Maharashtra,,sale
+SO-00397,2026-05-22,Sales,Sales,17486.03,Cr,Rohan Chowdhury 0397,5,West Bengal,Maharashtra,,refund
+SO-00398,2026-10-02,Sales,Sales,17627.26,Cr,Star Traders 0398,18,Tamil Nadu,Maharashtra,33TLIKG9932F6ZB,sale
+SO-00399,2026-07-29,Sales,Sales,12904.56,Cr,Apex Wholesale 0399,12,Telangana,Maharashtra,36YDQYX2734O1ZW,sale
+SO-00400,2026-04-25,Sales,Sales,19980.5,Cr,Pioneer Traders 0400,12,Madhya Pradesh,Maharashtra,23ZCSTO6077H2Z4,sale
+SO-00401,2026-08-27,Sales,Sales,10137.7,Cr,Zenith Wholesale 0401,18,West Bengal,Maharashtra,19OCFFR3847X9ZI,sale
+SO-00402,2026-08-01,Sales,Sales,15690.27,Cr,Karan Verma 0402,18,Maharashtra,Maharashtra,,sale
+SO-00403,2026-09-28,Sales,Sales,12427.12,Cr,Global Wholesale 0403,18,Punjab,Maharashtra,03PRDMF4177R1ZD,sale
+SO-00404,2026-09-08,Sales,Sales,14863.99,Cr,Sai Nair 0404,18,Gujarat,Maharashtra,,sale
+SO-00405,2026-12-27,Sales,Sales,17104.19,Cr,Everest & Sons 0405,18,Rajasthan,Maharashtra,08QYGJC7924R7ZZ,sale
+SO-00406,2026-04-02,Sales,Sales,11934.26,Cr,Meera Gupta 0406,18,Karnataka,Maharashtra,,sale
+SO-00407,2026-05-02,Sales,Sales,1052.01,Cr,Anjali Chowdhury 0407,12,West Bengal,Maharashtra,,sale
+SO-00408,2026-09-04,Sales,Sales,21477.85,Cr,Arjun Reddy 0408,12,Maharashtra,Maharashtra,,sale
+SO-00409,2026-08-22,Sales,Sales,15714.83,Cr,Vivaan Verma 0409,12,Madhya Pradesh,Maharashtra,,sale
+SO-00410,2026-11-04,Sales,Sales,24047.77,Cr,Shakti Enterprises 0410,12,West Bengal,Maharashtra,19DNXYD9556S9ZD,sale
+SO-00411,2026-07-22,Sales,Sales,10523.42,Cr,Everest Marketing 0411,18,Tamil Nadu,Maharashtra,33YENOB6780K3Z3,sale
+SO-00412,2026-11-10,Sales,Sales,19717.88,Cr,Arjun Nair 0412,18,Kerala,Maharashtra,,sale
+SO-00413,2026-07-12,Sales,Sales,17482.13,Cr,Pioneer Wholesale 0413,12,West Bengal,Maharashtra,19ARFTT5299L8ZW,sale
+SO-00414,2026-12-23,Sales,Sales,6890.32,Cr,Star Industries 0414,5,Kerala,Maharashtra,32GLOLW1191K2Z0,sale
+SO-00415,2026-07-06,Sales,Sales,6409.76,Cr,Crescent Industries 0415,18,Delhi,Maharashtra,07RMVJF5326W3ZV,sale
+SO-00416,2026-04-22,Sales,Sales,4489.5,Cr,Royal Enterprises 0416,12,Kerala,Maharashtra,32AHMHY6255R8ZA,sale
+SO-00417,2026-11-03,Sales,Sales,2091.81,Cr,Rahul Joshi 0417,18,West Bengal,Maharashtra,,refund
+SO-00418,2026-12-07,Sales,Sales,21634.98,Cr,Apex Distributors 0418,18,Rajasthan,Maharashtra,08JBLVV6049H6ZC,sale
+SO-00419,2026-10-18,Sales,Sales,5928.03,Cr,Ananya Kumar 0419,18,Punjab,Maharashtra,,sale
+SO-00420,2026-09-24,Sales,Sales,16620.58,Cr,Riya Gupta 0420,18,Madhya Pradesh,Maharashtra,,sale
+SO-00421,2026-04-24,Sales,Sales,8276.0,Cr,Vivaan Pillai 0421,5,Uttar Pradesh,Maharashtra,,sale
+SO-00422,2026-10-12,Sales,Sales,23794.7,Cr,Ira Iyer 0422,5,Madhya Pradesh,Maharashtra,,sale
+SO-00423,2026-06-17,Sales,Sales,4570.6,Cr,Unity Solutions 0423,12,Gujarat,Maharashtra,24JRKVD8347P9ZO,sale
+SO-00424,2026-12-19,Sales,Sales,13329.71,Cr,Karan Mehta 0424,18,Rajasthan,Maharashtra,,sale
+SO-00425,2026-12-04,Sales,Sales,16669.65,Cr,Aditya Pillai 0425,18,Rajasthan,Maharashtra,,sale
+SO-00426,2026-12-27,Sales,Sales,6492.71,Cr,Pari Sharma 0426,12,West Bengal,Maharashtra,,sale
+SO-00427,2026-09-11,Sales,Sales,16012.57,Cr,Ira Patel 0427,18,Gujarat,Maharashtra,,sale
+SO-00428,2026-07-13,Sales,Sales,7878.49,Cr,Sai Reddy 0428,18,Gujarat,Maharashtra,,sale
+SO-00429,2026-09-16,Sales,Sales,20033.22,Cr,Neha Kumar 0429,18,Tamil Nadu,Maharashtra,,sale
+SO-00430,2026-09-24,Sales,Sales,14428.01,Cr,Prime Agencies 0430,5,Maharashtra,Maharashtra,27FLNED9860A6ZY,sale
+SO-00431,2026-10-31,Sales,Sales,23824.87,Cr,Sai Desai 0431,18,West Bengal,Maharashtra,,sale
+SO-00432,2026-04-28,Sales,Sales,22936.21,Cr,Sneha Desai 0432,12,Kerala,Maharashtra,,sale
+SO-00433,2026-10-12,Sales,Sales,22229.43,Cr,Bharat Retail 0433,18,Karnataka,Maharashtra,29FNJGB4554B2Z6,sale
+SO-00434,2026-05-21,Sales,Sales,6681.33,Cr,Royal Wholesale 0434,5,Madhya Pradesh,Maharashtra,23BAPDS0746G9ZZ,sale
+SO-00435,2026-07-12,Sales,Sales,10637.5,Cr,Anjali Desai 0435,18,Rajasthan,Maharashtra,,sale
+SO-00436,2026-07-29,Sales,Sales,5988.51,Cr,Deepak Desai 0436,18,Gujarat,Maharashtra,,sale
+SO-00437,2026-04-20,Sales,Sales,5458.98,Cr,Metro & Sons 0437,18,Karnataka,Maharashtra,29WNUVR4420J5ZP,sale
+SO-00438,2026-11-01,Sales,Sales,6808.97,Cr,Pioneer Industries 0438,12,Punjab,Maharashtra,03HDUNS9712O7ZS,sale
+SO-00439,2026-12-18,Sales,Sales,20279.58,Cr,Star Retail 0439,5,Karnataka,Maharashtra,29LFOQT3019Y5ZO,refund
+SO-00440,2026-09-30,Sales,Sales,2351.21,Cr,Star Trading Co 0440,12,Gujarat,Maharashtra,24ZUANJ7199N9ZO,sale
+SO-00441,2026-04-02,Sales,Sales,19739.57,Cr,Global Exports 0441,18,Maharashtra,Maharashtra,27EJHUR0071X4Z0,refund
+SO-00442,2026-08-25,Sales,Sales,8162.34,Cr,Meera Patel 0442,12,West Bengal,Maharashtra,,sale
+SO-00443,2026-11-15,Sales,Sales,15249.49,Cr,Prime Traders 0443,18,Punjab,Maharashtra,03DFMTK1721P1ZO,sale
+SO-00444,2026-05-06,Sales,Sales,15495.35,Cr,Deepak Patel 0444,5,Uttar Pradesh,Maharashtra,,sale
+SO-00445,2026-04-05,Sales,Sales,10713.49,Cr,Aadhya Iyer 0445,18,West Bengal,Maharashtra,,sale
+SO-00446,2026-08-17,Sales,Sales,3996.93,Cr,Myra Shah 0446,5,Tamil Nadu,Maharashtra,,sale
+SO-00447,2026-12-21,Sales,Sales,870.21,Cr,Saanvi Shah 0447,5,Telangana,Maharashtra,,sale
+SO-00448,2026-10-07,Sales,Sales,1492.54,Cr,Diya Shah 0448,5,Maharashtra,Maharashtra,,sale
+SO-00449,2026-12-20,Sales,Sales,21074.7,Cr,Vertex Exports 0449,18,Tamil Nadu,Maharashtra,33FNVAO7510X7ZK,refund
+SO-00450,2026-06-13,Sales,Sales,1913.58,Cr,Orbit Solutions 0450,12,Delhi,Maharashtra,07VCQOO8078V1Z2,sale
+SO-00451,2026-08-30,Sales,Sales,5339.76,Cr,Aditya Shah 0451,12,West Bengal,Maharashtra,,sale
+SO-00452,2026-08-14,Sales,Sales,21636.09,Cr,Saanvi Gupta 0452,18,West Bengal,Maharashtra,,sale
+SO-00453,2026-12-13,Sales,Sales,14542.13,Cr,Arjun Bose 0453,18,Delhi,Maharashtra,,refund
+SO-00454,2026-07-20,Sales,Sales,15406.56,Cr,Krishna Gupta 0454,12,Kerala,Maharashtra,,sale
+SO-00455,2026-11-01,Sales,Sales,16176.1,Cr,Unity & Sons 0455,18,Uttar Pradesh,Maharashtra,09SBXAA4495V6ZP,sale
+SO-00456,2026-04-15,Sales,Sales,24074.44,Cr,Orbit Industries 0456,18,Kerala,Maharashtra,32BSIFP6827G6ZW,sale
+SO-00457,2026-04-10,Sales,Sales,5968.13,Cr,Arjun Rao 0457,18,Karnataka,Maharashtra,,sale
+SO-00458,2026-09-12,Sales,Sales,3188.74,Cr,Priya Das 0458,18,West Bengal,Maharashtra,,sale
+SO-00459,2026-04-09,Sales,Sales,14178.46,Cr,Orbit Enterprises 0459,18,Maharashtra,Maharashtra,27NBYDC1112Z9ZO,sale
+SO-00460,2026-06-01,Sales,Sales,21618.94,Cr,Ganga Wholesale 0460,18,Uttar Pradesh,Maharashtra,09QOUPL8585I1Z8,sale
+SO-00461,2026-08-31,Sales,Sales,10622.32,Cr,Vertex Traders 0461,18,Madhya Pradesh,Maharashtra,23VZQNJ4742E7ZN,sale
+SO-00462,2026-05-25,Sales,Sales,14228.95,Cr,Vertex Trading Co 0462,12,West Bengal,Maharashtra,19COTBY9145L2ZR,sale
+SO-00463,2026-06-06,Sales,Sales,11522.19,Cr,Aditya Rao 0463,12,Uttar Pradesh,Maharashtra,,sale
+SO-00464,2026-12-16,Sales,Sales,14746.83,Cr,Vihaan Reddy 0464,18,Maharashtra,Maharashtra,,sale
+SO-00465,2026-11-03,Sales,Sales,17022.57,Cr,Global Marketing 0465,18,Tamil Nadu,Maharashtra,33JLUPN7587T5ZJ,sale
+SO-00466,2026-07-22,Sales,Sales,7703.26,Cr,Myra Verma 0466,12,Kerala,Maharashtra,,sale
+SO-00467,2026-07-04,Sales,Sales,424.29,Cr,Reyansh Iyer 0467,18,Delhi,Maharashtra,,sale
+SO-00468,2026-10-01,Sales,Sales,8655.32,Cr,Bharat & Sons 0468,18,Tamil Nadu,Maharashtra,33RGCQC6404V7ZL,sale
+SO-00469,2026-05-17,Sales,Sales,6421.14,Cr,Nikhil Patel 0469,18,Karnataka,Maharashtra,,refund
+SO-00470,2026-11-21,Sales,Sales,11304.0,Cr,Sai Iyer 0470,18,Kerala,Maharashtra,,sale
+SO-00471,2026-08-13,Sales,Sales,7061.28,Cr,Prime Solutions 0471,12,Madhya Pradesh,Maharashtra,23VPKGO9110P7ZB,sale
+SO-00472,2026-12-10,Sales,Sales,23631.46,Cr,Amit Sharma 0472,18,Tamil Nadu,Maharashtra,,sale
+SO-00473,2026-08-23,Sales,Sales,8067.45,Cr,Vertex Trading Co 0473,12,Uttar Pradesh,Maharashtra,09FEZVI0447N6ZF,sale
+SO-00474,2026-08-26,Sales,Sales,13385.04,Cr,Aarav Rao 0474,12,Karnataka,Maharashtra,,sale
+SO-00475,2026-10-04,Sales,Sales,13854.08,Cr,Unity Retail 0475,12,Rajasthan,Maharashtra,08XEDHG3205T4ZL,sale
+SO-00476,2026-05-07,Sales,Sales,2431.87,Cr,Meera Shah 0476,18,Karnataka,Maharashtra,,sale
+SO-00477,2026-12-06,Sales,Sales,19263.9,Cr,Nova Industries 0477,18,Kerala,Maharashtra,32RASIF2509J3Z3,sale
+SO-00478,2026-05-25,Sales,Sales,17481.78,Cr,Riya Verma 0478,12,Tamil Nadu,Maharashtra,,sale
+SO-00479,2026-07-24,Sales,Sales,23306.59,Cr,Bharat Agencies 0479,12,Telangana,Maharashtra,36LIADH2397L3Z0,sale
+SO-00480,2026-06-05,Sales,Sales,24336.0,Cr,Ira Joshi 0480,5,Uttar Pradesh,Maharashtra,,sale
+SO-00481,2026-12-16,Sales,Sales,16627.18,Cr,Rohan Patel 0481,12,West Bengal,Maharashtra,,sale
+SO-00482,2026-08-31,Sales,Sales,10092.83,Cr,Prime Enterprises 0482,18,Maharashtra,Maharashtra,27CMRUH7662I9ZR,sale
+SO-00483,2026-08-11,Sales,Sales,21847.75,Cr,Shakti Distributors 0483,12,Madhya Pradesh,Maharashtra,23SNMXG7972J7ZZ,sale
+SO-00484,2026-11-08,Sales,Sales,5048.36,Cr,Reyansh Kulkarni 0484,18,Maharashtra,Maharashtra,,sale
+SO-00485,2026-05-10,Sales,Sales,9291.0,Cr,Arjun Gupta 0485,18,Kerala,Maharashtra,,sale
+SO-00486,2026-11-15,Sales,Sales,6615.55,Cr,Royal Exports 0486,5,Uttar Pradesh,Maharashtra,09WCWIB7991E1ZF,sale
+SO-00487,2026-10-06,Sales,Sales,24801.87,Cr,Neha Sharma 0487,5,Karnataka,Maharashtra,,sale
+SO-00488,2026-06-03,Sales,Sales,2616.11,Cr,Ganga Trading Co 0488,18,Delhi,Maharashtra,07SMAWX0493R3ZF,sale
+SO-00489,2026-10-29,Sales,Sales,15574.32,Cr,Crescent Agencies 0489,12,Madhya Pradesh,Maharashtra,23TROJH7049T9ZO,sale
+SO-00490,2026-04-15,Sales,Sales,11622.85,Cr,Nova Marketing 0490,12,Punjab,Maharashtra,03XJFGK3449B1ZA,refund
+SO-00491,2026-11-17,Sales,Sales,23827.33,Cr,Saanvi Gupta 0491,12,Madhya Pradesh,Maharashtra,,sale
+SO-00492,2026-11-24,Sales,Sales,24234.51,Cr,Anjali Reddy 0492,18,Maharashtra,Maharashtra,,sale
+SO-00493,2026-10-05,Sales,Sales,9471.16,Cr,Nikhil Desai 0493,12,Punjab,Maharashtra,,sale
+SO-00494,2026-12-03,Sales,Sales,3860.62,Cr,Reyansh Patel 0494,12,Tamil Nadu,Maharashtra,,sale
+SO-00495,2026-12-07,Sales,Sales,5180.61,Cr,Riya Das 0495,18,Maharashtra,Maharashtra,,sale
+SO-00496,2026-07-19,Sales,Sales,4585.46,Cr,Aarav Kulkarni 0496,18,Gujarat,Maharashtra,,sale
+SO-00497,2026-04-17,Sales,Sales,517.1,Cr,Vihaan Desai 0497,12,Tamil Nadu,Maharashtra,,refund
+SO-00498,2026-08-10,Sales,Sales,18253.68,Cr,Nikhil Das 0498,12,Kerala,Maharashtra,,sale
+SO-00499,2026-09-07,Sales,Sales,16710.56,Cr,Sneha Das 0499,18,Kerala,Maharashtra,,sale
+SO-00500,2026-04-24,Sales,Sales,18949.24,Cr,Meera Chowdhury 0500,18,Maharashtra,Maharashtra,,sale
+SO-00501,2026-06-15,Sales,Sales,12686.75,Cr,Unity Distributors 0501,12,Tamil Nadu,Maharashtra,33XIPJV4319R3ZJ,sale
+SO-00502,2026-04-24,Sales,Sales,6926.03,Cr,Ira Patel 0502,12,Maharashtra,Maharashtra,,sale
+SO-00503,2026-04-17,Sales,Sales,23339.5,Cr,Amit Gupta 0503,12,Maharashtra,Maharashtra,,sale
+SO-00504,2026-11-18,Sales,Sales,10739.4,Cr,Aarav Kumar 0504,18,Telangana,Maharashtra,,sale
+SO-00505,2026-09-03,Sales,Sales,6686.16,Cr,Aditya Rao 0505,18,Uttar Pradesh,Maharashtra,,sale
+SO-00506,2026-06-17,Sales,Sales,4941.87,Cr,Ganga & Sons 0506,12,Telangana,Maharashtra,36ZEZXM4575U3ZY,sale
+SO-00507,2026-08-09,Sales,Sales,12141.52,Cr,Ira Menon 0507,18,Telangana,Maharashtra,,sale
+SO-00508,2026-06-17,Sales,Sales,2550.57,Cr,Reyansh Bose 0508,18,Maharashtra,Maharashtra,,refund
+SO-00509,2026-05-24,Sales,Sales,22816.14,Cr,Pioneer Agencies 0509,5,Karnataka,Maharashtra,29GQBYU9611E5Z1,sale
+SO-00510,2026-08-09,Sales,Sales,11631.82,Cr,Apex Retail 0510,18,West Bengal,Maharashtra,19JDBAU6919X9ZR,sale
+SO-00511,2026-04-02,Sales,Sales,7057.86,Cr,Krishna Sharma 0511,18,Punjab,Maharashtra,,sale
+SO-00512,2026-05-18,Sales,Sales,23842.49,Cr,Apex Wholesale 0512,12,Uttar Pradesh,Maharashtra,09RGGEG1112G1ZV,sale
+SO-00513,2026-04-04,Sales,Sales,19919.72,Cr,Prime Exports 0513,18,Gujarat,Maharashtra,24HTBKJ7837J4ZN,sale
+SO-00514,2026-05-10,Sales,Sales,9468.34,Cr,Vertex Enterprises 0514,18,Tamil Nadu,Maharashtra,33XBAGK3041V4ZS,sale
+SO-00515,2026-04-11,Sales,Sales,22546.21,Cr,Vihaan Menon 0515,12,Tamil Nadu,Maharashtra,,sale
+SO-00516,2026-07-06,Sales,Sales,18844.13,Cr,Shakti Enterprises 0516,5,Uttar Pradesh,Maharashtra,09HVVXB2508R7ZR,sale
+SO-00517,2026-08-09,Sales,Sales,23853.9,Cr,Deepak Rao 0517,18,Gujarat,Maharashtra,,sale
+SO-00518,2026-04-08,Sales,Sales,17557.99,Cr,Diya Kulkarni 0518,18,Karnataka,Maharashtra,,sale
+SO-00519,2026-10-03,Sales,Sales,5268.13,Cr,Kavya Pillai 0519,18,Gujarat,Maharashtra,,sale
+SO-00520,2026-07-17,Sales,Sales,12890.73,Cr,Diya Reddy 0520,5,Madhya Pradesh,Maharashtra,,sale
+SO-00521,2026-10-31,Sales,Sales,11496.01,Cr,Ananya Patel 0521,18,Madhya Pradesh,Maharashtra,,sale
+SO-00522,2026-09-22,Sales,Sales,23417.25,Cr,Diya Desai 0522,18,Tamil Nadu,Maharashtra,,sale
+SO-00523,2026-06-25,Sales,Sales,19817.94,Cr,Pioneer Exports 0523,18,Madhya Pradesh,Maharashtra,23NTFNO8296Y6ZB,sale
+SO-00524,2026-07-09,Sales,Sales,8588.67,Cr,Deepak Iyer 0524,18,Uttar Pradesh,Maharashtra,,sale
+SO-00525,2026-07-20,Sales,Sales,334.24,Cr,Myra Pillai 0525,12,Punjab,Maharashtra,,sale
+SO-00526,2026-09-16,Sales,Sales,17152.11,Cr,Vivaan Shah 0526,18,West Bengal,Maharashtra,,sale
+SO-00527,2026-05-18,Sales,Sales,3092.57,Cr,Rohan Shah 0527,18,West Bengal,Maharashtra,,sale
+SO-00528,2026-06-29,Sales,Sales,3509.83,Cr,Reyansh Kulkarni 0528,18,Uttar Pradesh,Maharashtra,,sale
+SO-00529,2026-11-16,Sales,Sales,9947.25,Cr,Krishna Patel 0529,18,Rajasthan,Maharashtra,,sale
+SO-00530,2026-06-12,Sales,Sales,20907.09,Cr,Arjun Verma 0530,12,Kerala,Maharashtra,,sale
+SO-00531,2026-11-19,Sales,Sales,19610.53,Cr,Ira Gupta 0531,18,West Bengal,Maharashtra,,sale
+SO-00532,2026-09-27,Sales,Sales,8291.36,Cr,Unity Trading Co 0532,12,Telangana,Maharashtra,36YVIHL9643W3ZL,sale
+SO-00533,2026-05-20,Sales,Sales,13518.08,Cr,Karan Gupta 0533,18,Karnataka,Maharashtra,,sale
+SO-00534,2026-11-29,Sales,Sales,19403.93,Cr,Everest Retail 0534,18,Delhi,Maharashtra,07TXALY3234S8Z7,sale
+SO-00535,2026-05-24,Sales,Sales,7502.9,Cr,Aadhya Joshi 0535,12,Punjab,Maharashtra,,sale
+SO-00536,2026-10-08,Sales,Sales,20308.23,Cr,Kavya Nair 0536,18,Gujarat,Maharashtra,,sale
+SO-00537,2026-07-28,Sales,Sales,9393.93,Cr,Neha Desai 0537,5,Maharashtra,Maharashtra,,sale
+SO-00538,2026-08-04,Sales,Sales,23822.41,Cr,Diya Patel 0538,5,Karnataka,Maharashtra,,sale
+SO-00539,2026-06-21,Sales,Sales,3893.26,Cr,Ananya Patel 0539,12,Madhya Pradesh,Maharashtra,,sale
+SO-00540,2026-06-07,Sales,Sales,9052.06,Cr,Shakti Marketing 0540,18,Karnataka,Maharashtra,29RARDZ8517T7ZI,sale
+SO-00541,2026-11-15,Sales,Sales,22139.68,Cr,Unity Enterprises 0541,12,Kerala,Maharashtra,32HCEZE4845O5ZM,sale
+SO-00542,2026-11-01,Sales,Sales,10656.99,Cr,Vivaan Mehta 0542,18,Tamil Nadu,Maharashtra,,sale
+SO-00543,2026-10-16,Sales,Sales,17133.72,Cr,Riya Reddy 0543,12,Delhi,Maharashtra,,sale
+SO-00544,2026-10-16,Sales,Sales,13546.75,Cr,Vivaan Pillai 0544,5,Karnataka,Maharashtra,,sale
+SO-00545,2026-12-13,Sales,Sales,10318.01,Cr,Pari Kumar 0545,5,Punjab,Maharashtra,,sale
+SO-00546,2026-08-20,Sales,Sales,17451.0,Cr,Bharat Agencies 0546,5,Kerala,Maharashtra,32YCLEQ2127F3Z6,sale
+SO-00547,2026-04-24,Sales,Sales,11657.58,Cr,Krishna Singh 0547,12,Madhya Pradesh,Maharashtra,,sale
+SO-00548,2026-09-05,Sales,Sales,12644.84,Cr,Myra Nair 0548,18,Rajasthan,Maharashtra,,sale
+SO-00549,2026-04-28,Sales,Sales,17953.33,Cr,Global Distributors 0549,18,Madhya Pradesh,Maharashtra,23KLEVA3978E4Z8,sale
+SO-00550,2026-05-28,Sales,Sales,13070.82,Cr,Saanvi Reddy 0550,12,Madhya Pradesh,Maharashtra,,sale
+SO-00551,2026-10-14,Sales,Sales,6339.35,Cr,Ganga Exports 0551,18,Rajasthan,Maharashtra,08GAENJ5634X2ZA,sale
+SO-00552,2026-07-31,Sales,Sales,11938.42,Cr,Krishna Gupta 0552,18,West Bengal,Maharashtra,,sale
+SO-00553,2026-11-16,Sales,Sales,9254.58,Cr,Nikhil Mehta 0553,18,Rajasthan,Maharashtra,,sale
+SO-00554,2026-11-05,Sales,Sales,1759.92,Cr,Reyansh Singh 0554,12,Punjab,Maharashtra,,sale
+SO-00555,2026-09-02,Sales,Sales,9605.69,Cr,Riya Mehta 0555,18,Maharashtra,Maharashtra,,sale
+SO-00556,2026-11-14,Sales,Sales,20699.54,Cr,Sneha Kumar 0556,5,Telangana,Maharashtra,,sale
+SO-00557,2026-08-08,Sales,Sales,850.01,Cr,Aadhya Menon 0557,18,Uttar Pradesh,Maharashtra,,sale
+SO-00558,2026-05-23,Sales,Sales,8354.63,Cr,Sai Reddy 0558,5,West Bengal,Maharashtra,,sale
+SO-00559,2026-10-12,Sales,Sales,18280.7,Cr,Aadhya Verma 0559,12,Madhya Pradesh,Maharashtra,,sale
+SO-00560,2026-11-27,Sales,Sales,16846.42,Cr,Rohan Joshi 0560,18,Karnataka,Maharashtra,,sale
+SO-00561,2026-05-02,Sales,Sales,3294.33,Cr,Rahul Sharma 0561,18,Karnataka,Maharashtra,,sale
+SO-00562,2026-07-09,Sales,Sales,10829.09,Cr,Aadhya Desai 0562,18,Uttar Pradesh,Maharashtra,,sale
+SO-00563,2026-12-21,Sales,Sales,10914.54,Cr,Pooja Mehta 0563,18,Punjab,Maharashtra,,sale
+SO-00564,2026-11-21,Sales,Sales,22567.28,Cr,Reyansh Gupta 0564,18,Tamil Nadu,Maharashtra,,sale
+SO-00565,2026-12-23,Sales,Sales,19184.96,Cr,Royal Retail 0565,5,Karnataka,Maharashtra,29KQGBP1534V5ZB,sale
+SO-00566,2026-07-11,Sales,Sales,10565.18,Cr,Prime Marketing 0566,5,Gujarat,Maharashtra,24IUPDJ2030A5ZA,sale
+SO-00567,2026-06-04,Sales,Sales,19813.92,Cr,Priya Patel 0567,18,Punjab,Maharashtra,,sale
+SO-00568,2026-06-10,Sales,Sales,23878.92,Cr,Diya Gupta 0568,5,Delhi,Maharashtra,,sale
+SO-00569,2026-10-23,Sales,Sales,1246.95,Cr,Neha Patel 0569,18,Punjab,Maharashtra,,sale
+SO-00570,2026-10-04,Sales,Sales,3002.75,Cr,Royal Exports 0570,18,Rajasthan,Maharashtra,08KVVGB3257P1ZH,sale
+SO-00571,2026-06-15,Sales,Sales,19110.33,Cr,Zenith Distributors 0571,18,Maharashtra,Maharashtra,27QSCPX6417X3ZB,sale
+SO-00572,2026-08-27,Sales,Sales,13426.29,Cr,Royal Trading Co 0572,12,Rajasthan,Maharashtra,08TOEGY4218F3ZD,sale
+SO-00573,2026-05-06,Sales,Sales,1138.8,Cr,Meera Reddy 0573,5,Rajasthan,Maharashtra,,sale
+SO-00574,2026-05-17,Sales,Sales,9250.91,Cr,Sneha Kumar 0574,18,Maharashtra,Maharashtra,,sale
+SO-00575,2026-07-12,Sales,Sales,6696.6,Cr,Aadhya Iyer 0575,18,Telangana,Maharashtra,,sale
+SO-00576,2026-07-24,Sales,Sales,1396.23,Cr,Star & Sons 0576,18,Maharashtra,Maharashtra,27LRYZC1996W4Z5,sale
+SO-00577,2026-10-05,Sales,Sales,12827.94,Cr,Deepak Das 0577,12,West Bengal,Maharashtra,,sale
+SO-00578,2026-06-03,Sales,Sales,17469.47,Cr,Kavya Kumar 0578,18,Rajasthan,Maharashtra,,sale
+SO-00579,2026-04-17,Sales,Sales,18270.62,Cr,Royal Exports 0579,18,Punjab,Maharashtra,03NVSOA7768A7ZT,sale
+SO-00580,2026-12-26,Sales,Sales,6033.82,Cr,Kavya Pillai 0580,18,Uttar Pradesh,Maharashtra,,sale
+SO-00581,2026-07-16,Sales,Sales,12075.28,Cr,Ganga Distributors 0581,12,Tamil Nadu,Maharashtra,33CKRZZ5219O5ZT,sale
+SO-00582,2026-09-10,Sales,Sales,12196.06,Cr,Anjali Desai 0582,12,Karnataka,Maharashtra,,sale
+SO-00583,2026-04-28,Sales,Sales,18466.38,Cr,Shakti Trading Co 0583,12,Delhi,Maharashtra,07IDZHD2138U6Z9,refund
+SO-00584,2026-09-11,Sales,Sales,7733.07,Cr,Ananya Verma 0584,18,Tamil Nadu,Maharashtra,,sale
+SO-00585,2026-06-16,Sales,Sales,9890.35,Cr,Sunrise Traders 0585,18,Telangana,Maharashtra,36DRYOF3989X3ZE,sale
+SO-00586,2026-04-04,Sales,Sales,7334.26,Cr,Nikhil Singh 0586,12,Uttar Pradesh,Maharashtra,,sale
+SO-00587,2026-06-01,Sales,Sales,1906.82,Cr,Star Retail 0587,12,Delhi,Maharashtra,07RZGUD5641E5ZK,sale
+SO-00588,2026-12-03,Sales,Sales,4830.37,Cr,Global Agencies 0588,12,West Bengal,Maharashtra,19QXQRR0394H6ZT,sale
+SO-00589,2026-09-09,Sales,Sales,1212.03,Cr,Vihaan Rao 0589,18,West Bengal,Maharashtra,,sale
+SO-00590,2026-08-21,Sales,Sales,15772.71,Cr,Neha Pillai 0590,12,Kerala,Maharashtra,,sale
+SO-00591,2026-06-16,Sales,Sales,5197.59,Cr,Sunrise Distributors 0591,18,Gujarat,Maharashtra,24TQUNC8722H6ZH,sale
+SO-00592,2026-07-24,Sales,Sales,21918.97,Cr,Shakti Retail 0592,12,West Bengal,Maharashtra,19VMJKA2007B3ZD,sale
+SO-00593,2026-05-25,Sales,Sales,22198.15,Cr,Bharat Agencies 0593,18,West Bengal,Maharashtra,19MMDQR5467N5ZX,sale
+SO-00594,2026-08-26,Sales,Sales,20795.7,Cr,Shakti & Sons 0594,12,Rajasthan,Maharashtra,08AFYFP1646R4ZM,refund
+SO-00595,2026-10-27,Sales,Sales,3097.26,Cr,Ganga & Sons 0595,12,West Bengal,Maharashtra,19JBVEJ6719Z3ZS,sale
+SO-00596,2026-09-20,Sales,Sales,17734.82,Cr,Ganga Agencies 0596,18,Tamil Nadu,Maharashtra,33UNBDG7970X6ZT,sale
+SO-00597,2026-06-29,Sales,Sales,8394.76,Cr,Apex Distributors 0597,18,West Bengal,Maharashtra,19LTLJK8349W7ZN,sale
+SO-00598,2026-09-19,Sales,Sales,16428.96,Cr,Nova Retail 0598,5,Punjab,Maharashtra,03XKUYN7148I8Z5,sale
+SO-00599,2026-09-29,Sales,Sales,20645.48,Cr,Rahul Shah 0599,12,Kerala,Maharashtra,,sale
+SO-00600,2026-10-09,Sales,Sales,15892.38,Cr,Metro Marketing 0600,12,Uttar Pradesh,Maharashtra,09PQYQT5709Y5Z5,refund
+SO-00601,2026-05-25,Sales,Sales,8195.09,Cr,Royal Solutions 0601,5,Madhya Pradesh,Maharashtra,23QXPAG2595B2Z5,sale
+SO-00602,2026-12-20,Sales,Sales,7478.26,Cr,Aadhya Chowdhury 0602,18,Delhi,Maharashtra,,sale
+SO-00603,2026-09-16,Sales,Sales,5310.12,Cr,Aarav Reddy 0603,18,Madhya Pradesh,Maharashtra,,sale
+SO-00604,2026-04-02,Sales,Sales,464.04,Cr,Aarav Verma 0604,18,Rajasthan,Maharashtra,,sale
+SO-00605,2026-07-21,Sales,Sales,4042.87,Cr,Vivaan Singh 0605,18,Telangana,Maharashtra,,sale
+SO-00606,2026-05-01,Sales,Sales,1770.16,Cr,Zenith Exports 0606,12,Karnataka,Maharashtra,29WRLQV1266H5ZP,sale
+SO-00607,2026-08-16,Sales,Sales,19655.64,Cr,Vertex Retail 0607,12,Delhi,Maharashtra,07HVQCN3058C4ZX,sale
+SO-00608,2026-05-12,Sales,Sales,21542.58,Cr,Pari Shah 0608,12,Karnataka,Maharashtra,,sale
+SO-00609,2026-06-09,Sales,Sales,23136.48,Cr,Orbit Distributors 0609,18,Telangana,Maharashtra,36KITLG3590A1Z2,sale
+SO-00610,2026-05-07,Sales,Sales,4482.91,Cr,Ishaan Chowdhury 0610,12,Maharashtra,Maharashtra,,sale
+SO-00611,2026-12-27,Sales,Sales,19731.94,Cr,Global & Sons 0611,5,Uttar Pradesh,Maharashtra,09IYLYQ8342D6Z5,sale
+SO-00612,2026-08-19,Sales,Sales,12264.6,Cr,Nikhil Iyer 0612,18,Madhya Pradesh,Maharashtra,,sale
+SO-00613,2026-10-26,Sales,Sales,9628.5,Cr,Metro Trading Co 0613,18,Gujarat,Maharashtra,24URKQW5100W3ZF,sale
+SO-00614,2026-06-11,Sales,Sales,7253.45,Cr,Orbit Marketing 0614,18,Uttar Pradesh,Maharashtra,09DKCNN5705U4ZG,sale
+SO-00615,2026-08-13,Sales,Sales,23555.02,Cr,Metro Exports 0615,12,Maharashtra,Maharashtra,27VPSAU2847Z2ZR,sale
+SO-00616,2026-11-10,Sales,Sales,21474.16,Cr,Aditya Reddy 0616,18,West Bengal,Maharashtra,,sale
+SO-00617,2026-05-01,Sales,Sales,15546.52,Cr,Zenith Agencies 0617,5,Maharashtra,Maharashtra,27WCCFY3574A2ZN,sale
+SO-00618,2026-10-24,Sales,Sales,22974.33,Cr,Star Industries 0618,18,West Bengal,Maharashtra,19YVEJQ4278Q1Z4,sale
+SO-00619,2026-05-11,Sales,Sales,24747.07,Cr,Nikhil Chowdhury 0619,18,Maharashtra,Maharashtra,,sale
+SO-00620,2026-10-09,Sales,Sales,24269.89,Cr,Unity Marketing 0620,12,Uttar Pradesh,Maharashtra,09SRZEL5160R4Z8,sale
+SO-00621,2026-05-05,Sales,Sales,1096.17,Cr,Rohan Bose 0621,5,Uttar Pradesh,Maharashtra,,refund
+SO-00622,2026-08-15,Sales,Sales,2913.89,Cr,Arjun Mehta 0622,18,Madhya Pradesh,Maharashtra,,sale
+SO-00623,2026-05-09,Sales,Sales,6158.46,Cr,Everest Agencies 0623,18,Telangana,Maharashtra,36HYYIW0870G6ZU,refund
+SO-00624,2026-08-13,Sales,Sales,4309.12,Cr,Nikhil Kumar 0624,12,Karnataka,Maharashtra,,sale
+SO-00625,2026-07-05,Sales,Sales,18714.48,Cr,Apex & Sons 0625,18,Delhi,Maharashtra,07HPTYO8302M6ZD,sale
+SO-00626,2026-07-26,Sales,Sales,17389.32,Cr,Amit Desai 0626,18,Kerala,Maharashtra,,sale
+SO-00627,2026-11-17,Sales,Sales,20611.81,Cr,Bharat Agencies 0627,12,Karnataka,Maharashtra,29QBVKY1553H9ZQ,sale
+SO-00628,2026-09-16,Sales,Sales,6866.8,Cr,Anjali Singh 0628,12,Telangana,Maharashtra,,sale
+SO-00629,2026-07-05,Sales,Sales,12706.32,Cr,Shakti Trading Co 0629,18,Uttar Pradesh,Maharashtra,09PXJWW4217J3Z1,refund
+SO-00630,2026-04-21,Sales,Sales,19628.46,Cr,Ishaan Desai 0630,18,Kerala,Maharashtra,,sale
+SO-00631,2026-07-25,Sales,Sales,12339.43,Cr,Star Wholesale 0631,18,Telangana,Maharashtra,36TWXGQ9346C1ZS,sale
+SO-00632,2026-08-11,Sales,Sales,13788.77,Cr,Aditya Singh 0632,18,Delhi,Maharashtra,,sale
+SO-00633,2026-11-27,Sales,Sales,9287.05,Cr,Ganga Agencies 0633,18,Maharashtra,Maharashtra,27FDINI6974Z3ZP,sale
+SO-00634,2026-06-07,Sales,Sales,874.23,Cr,Pioneer Distributors 0634,5,Kerala,Maharashtra,32VQNSP5784Q2ZA,sale
+SO-00635,2026-05-18,Sales,Sales,16343.85,Cr,Karan Shah 0635,18,Tamil Nadu,Maharashtra,,sale
+SO-00636,2026-10-03,Sales,Sales,5168.8,Cr,Neha Sharma 0636,18,Karnataka,Maharashtra,,sale
+SO-00637,2026-07-28,Sales,Sales,7524.52,Cr,Nikhil Rao 0637,18,West Bengal,Maharashtra,,sale
+SO-00638,2026-05-24,Sales,Sales,15136.45,Cr,Ira Gupta 0638,18,Telangana,Maharashtra,,sale
+SO-00639,2026-09-28,Sales,Sales,10798.07,Cr,Crescent Marketing 0639,5,Telangana,Maharashtra,36EVODE5884P7ZX,sale
+SO-00640,2026-07-12,Sales,Sales,11949.53,Cr,Unity Exports 0640,12,Rajasthan,Maharashtra,08BYTQE8670Q1Z3,sale
+SO-00641,2026-08-28,Sales,Sales,10182.61,Cr,Ananya Nair 0641,18,Karnataka,Maharashtra,,sale
+SO-00642,2026-07-16,Sales,Sales,3354.73,Cr,Aadhya Menon 0642,18,Maharashtra,Maharashtra,,sale
+SO-00643,2026-09-08,Sales,Sales,18344.22,Cr,Nova & Sons 0643,12,Delhi,Maharashtra,07CBGSS2925L8ZE,sale
+SO-00644,2026-10-08,Sales,Sales,23048.46,Cr,Aadhya Sharma 0644,18,Delhi,Maharashtra,,sale
+SO-00645,2026-08-13,Sales,Sales,12004.51,Cr,Ananya Pillai 0645,18,Gujarat,Maharashtra,,sale
+SO-00646,2026-12-12,Sales,Sales,682.91,Cr,Saanvi Joshi 0646,12,Delhi,Maharashtra,,refund
+SO-00647,2026-05-20,Sales,Sales,20974.83,Cr,Global Retail 0647,18,West Bengal,Maharashtra,19OUQTV5420J7ZZ,sale
+SO-00648,2026-08-27,Sales,Sales,1205.87,Cr,Zenith Traders 0648,18,Uttar Pradesh,Maharashtra,09IDRSC8657L3ZP,sale
+SO-00649,2026-06-07,Sales,Sales,18967.75,Cr,Ananya Reddy 0649,12,Gujarat,Maharashtra,,sale
+SO-00650,2026-08-12,Sales,Sales,23634.27,Cr,Orbit Trading Co 0650,5,Madhya Pradesh,Maharashtra,23FRNHN5247Z3ZA,sale
+SO-00651,2026-08-13,Sales,Sales,19236.54,Cr,Neha Iyer 0651,18,Punjab,Maharashtra,,sale
+SO-00652,2026-09-28,Sales,Sales,15488.83,Cr,Everest Distributors 0652,5,Punjab,Maharashtra,03KQHSJ7936D8ZX,sale
+SO-00653,2026-09-21,Sales,Sales,19027.55,Cr,Amit Desai 0653,18,Telangana,Maharashtra,,sale
+SO-00654,2026-12-11,Sales,Sales,2662.29,Cr,Pooja Kulkarni 0654,18,West Bengal,Maharashtra,,sale
+SO-00655,2026-06-16,Sales,Sales,1796.38,Cr,Shakti Agencies 0655,5,Karnataka,Maharashtra,29UFEMY0553O3ZV,sale
+SO-00656,2026-04-05,Sales,Sales,2980.25,Cr,Pari Menon 0656,18,Madhya Pradesh,Maharashtra,,sale
+SO-00657,2026-11-09,Sales,Sales,8308.34,Cr,Amit Menon 0657,5,Delhi,Maharashtra,,sale
+SO-00658,2026-05-29,Sales,Sales,14438.41,Cr,Amit Patel 0658,5,Karnataka,Maharashtra,,sale
+SO-00659,2026-04-27,Sales,Sales,22255.71,Cr,Nova & Sons 0659,18,Rajasthan,Maharashtra,08NLPPG5022P1ZC,sale
+SO-00660,2026-12-10,Sales,Sales,5953.42,Cr,Rahul Kumar 0660,12,Rajasthan,Maharashtra,,sale
+SO-00661,2026-04-05,Sales,Sales,17013.76,Cr,Prime Distributors 0661,18,Gujarat,Maharashtra,24XATDA9987J2Z4,sale
+SO-00662,2026-07-13,Sales,Sales,16656.04,Cr,Royal Trading Co 0662,18,Karnataka,Maharashtra,29VYTBG3163R2ZA,refund
+SO-00663,2026-10-15,Sales,Sales,5683.54,Cr,Vertex Retail 0663,18,Maharashtra,Maharashtra,27XSWMA4238Z3Z5,sale
+SO-00664,2026-04-13,Sales,Sales,7737.82,Cr,Rahul Shah 0664,5,West Bengal,Maharashtra,,sale
+SO-00665,2026-04-05,Sales,Sales,6461.74,Cr,Pioneer Enterprises 0665,18,Punjab,Maharashtra,03KWIZD9621P9ZP,sale
+SO-00666,2026-06-11,Sales,Sales,2880.64,Cr,Neha Kulkarni 0666,12,Kerala,Maharashtra,,sale
+SO-00667,2026-12-12,Sales,Sales,4212.02,Cr,Ishaan Mehta 0667,5,Rajasthan,Maharashtra,,sale
+SO-00668,2026-09-18,Sales,Sales,3925.25,Cr,Pari Patel 0668,18,Rajasthan,Maharashtra,,refund
+SO-00669,2026-10-20,Sales,Sales,8699.32,Cr,Metro Trading Co 0669,18,Kerala,Maharashtra,32TRLYV9689J8ZN,sale
+SO-00670,2026-12-06,Sales,Sales,17220.63,Cr,Saanvi Kulkarni 0670,12,Karnataka,Maharashtra,,sale
+SO-00671,2026-07-15,Sales,Sales,21041.42,Cr,Deepak Iyer 0671,12,Rajasthan,Maharashtra,,sale
+SO-00672,2026-12-04,Sales,Sales,16089.12,Cr,Rohan Menon 0672,12,West Bengal,Maharashtra,,sale
+SO-00673,2026-12-23,Sales,Sales,8528.33,Cr,Sai Sharma 0673,18,Delhi,Maharashtra,,sale
+SO-00674,2026-06-05,Sales,Sales,10611.96,Cr,Anjali Pillai 0674,5,Telangana,Maharashtra,,sale
+SO-00675,2026-05-11,Sales,Sales,17055.06,Cr,Vihaan Sharma 0675,18,Punjab,Maharashtra,,sale
+SO-00676,2026-10-31,Sales,Sales,23465.66,Cr,Bharat Solutions 0676,18,West Bengal,Maharashtra,19SUMPW6357W1ZO,sale
+SO-00677,2026-10-28,Sales,Sales,7062.01,Cr,Bharat Trading Co 0677,5,Madhya Pradesh,Maharashtra,23EUWEZ2627A6Z1,sale
+SO-00678,2026-10-27,Sales,Sales,1052.2,Cr,Prime Traders 0678,18,Punjab,Maharashtra,03PBACQ4043Y1ZG,sale
+SO-00679,2026-08-19,Sales,Sales,14807.2,Cr,Karan Pillai 0679,18,Madhya Pradesh,Maharashtra,,sale
+SO-00680,2026-05-04,Sales,Sales,5252.82,Cr,Pari Nair 0680,18,Tamil Nadu,Maharashtra,,sale
+SO-00681,2026-10-03,Sales,Sales,5045.4,Cr,Arjun Reddy 0681,18,Telangana,Maharashtra,,sale
+SO-00682,2026-07-29,Sales,Sales,10377.11,Cr,Zenith Distributors 0682,5,Rajasthan,Maharashtra,08UTODG5421R1ZY,sale
+SO-00683,2026-04-17,Sales,Sales,6118.37,Cr,Pooja Menon 0683,18,Delhi,Maharashtra,,sale
+SO-00684,2026-05-24,Sales,Sales,2522.62,Cr,Royal & Sons 0684,18,West Bengal,Maharashtra,19PWCSC7793Z2ZQ,sale
+SO-00685,2026-09-13,Sales,Sales,11865.24,Cr,Unity Agencies 0685,18,Uttar Pradesh,Maharashtra,09FOCAL9968G5ZS,sale
+SO-00686,2026-08-16,Sales,Sales,12445.53,Cr,Riya Nair 0686,18,Kerala,Maharashtra,,sale
+SO-00687,2026-05-21,Sales,Sales,15983.7,Cr,Meera Joshi 0687,12,Telangana,Maharashtra,,sale
+SO-00688,2026-08-23,Sales,Sales,11143.77,Cr,Aarav Singh 0688,18,Uttar Pradesh,Maharashtra,,sale
+SO-00689,2026-10-03,Sales,Sales,10785.06,Cr,Vivaan Reddy 0689,18,Tamil Nadu,Maharashtra,,refund
+SO-00690,2026-06-26,Sales,Sales,21798.58,Cr,Royal Exports 0690,18,Telangana,Maharashtra,36JDXZW9189E4ZP,refund
+SO-00691,2026-04-29,Sales,Sales,10536.32,Cr,Krishna Rao 0691,18,Uttar Pradesh,Maharashtra,,sale
+SO-00692,2026-12-17,Sales,Sales,6969.65,Cr,Anjali Menon 0692,18,Telangana,Maharashtra,,sale
+SO-00693,2026-09-22,Sales,Sales,17630.26,Cr,Aditya Singh 0693,18,Kerala,Maharashtra,,sale
+SO-00694,2026-05-30,Sales,Sales,13710.68,Cr,Diya Kumar 0694,18,Kerala,Maharashtra,,sale
+SO-00695,2026-07-15,Sales,Sales,2236.6,Cr,Bharat & Sons 0695,18,Punjab,Maharashtra,03IGVDD5769L6ZI,sale
+SO-00696,2026-12-05,Sales,Sales,3990.85,Cr,Krishna Pillai 0696,18,Uttar Pradesh,Maharashtra,,sale
+SO-00697,2026-08-28,Sales,Sales,22528.0,Cr,Aditya Desai 0697,12,Kerala,Maharashtra,,refund
+SO-00698,2026-08-06,Sales,Sales,2316.09,Cr,Anjali Joshi 0698,18,Punjab,Maharashtra,,sale
+SO-00699,2026-04-30,Sales,Sales,22364.8,Cr,Karan Gupta 0699,18,Uttar Pradesh,Maharashtra,,sale
+SO-00700,2026-09-11,Sales,Sales,276.81,Cr,Rohan Singh 0700,18,Karnataka,Maharashtra,,sale
+SO-00701,2026-11-26,Sales,Sales,14191.89,Cr,Zenith Exports 0701,18,Kerala,Maharashtra,32XIYSH2034Y9ZY,sale
+SO-00702,2026-04-13,Sales,Sales,8644.27,Cr,Vihaan Bose 0702,5,Gujarat,Maharashtra,,sale
+SO-00703,2026-10-05,Sales,Sales,7664.71,Cr,Reyansh Desai 0703,18,West Bengal,Maharashtra,,sale
+SO-00704,2026-09-24,Sales,Sales,11593.06,Cr,Global Marketing 0704,12,Punjab,Maharashtra,03UCCAV0756B8ZR,sale
+SO-00705,2026-09-22,Sales,Sales,10780.06,Cr,Diya Kumar 0705,12,Rajasthan,Maharashtra,,sale
+SO-00706,2026-07-23,Sales,Sales,9573.18,Cr,Sunrise Solutions 0706,18,Delhi,Maharashtra,07GLZHC3094K1ZE,sale
+SO-00707,2026-07-31,Sales,Sales,17079.28,Cr,Sneha Bose 0707,12,Madhya Pradesh,Maharashtra,,sale
+SO-00708,2026-05-25,Sales,Sales,299.65,Cr,Myra Menon 0708,12,Uttar Pradesh,Maharashtra,,sale
+SO-00709,2026-11-16,Sales,Sales,16140.96,Cr,Krishna Joshi 0709,18,Kerala,Maharashtra,,sale
+SO-00710,2026-07-11,Sales,Sales,18702.26,Cr,Myra Desai 0710,5,Kerala,Maharashtra,,sale
+SO-00711,2026-10-24,Sales,Sales,9621.72,Cr,Anjali Iyer 0711,12,Delhi,Maharashtra,,sale
+SO-00712,2026-06-01,Sales,Sales,806.26,Cr,Crescent Traders 0712,12,Karnataka,Maharashtra,29ETVWR1039A2Z6,sale
+SO-00713,2026-12-23,Sales,Sales,4017.14,Cr,Vihaan Chowdhury 0713,18,Gujarat,Maharashtra,,sale
+SO-00714,2026-09-08,Sales,Sales,7625.07,Cr,Rahul Kumar 0714,18,Punjab,Maharashtra,,sale
+SO-00715,2026-10-02,Sales,Sales,2224.38,Cr,Ira Rao 0715,12,Rajasthan,Maharashtra,,sale
+SO-00716,2026-04-22,Sales,Sales,2639.95,Cr,Arjun Singh 0716,12,Karnataka,Maharashtra,,sale
+SO-00717,2026-05-24,Sales,Sales,12673.52,Cr,Metro Industries 0717,12,Uttar Pradesh,Maharashtra,09ZPGRB7412V6ZJ,sale
+SO-00718,2026-09-12,Sales,Sales,23648.31,Cr,Unity Industries 0718,18,Gujarat,Maharashtra,24URFLJ2427E2ZO,sale
+SO-00719,2026-09-27,Sales,Sales,18190.41,Cr,Aarav Rao 0719,12,Tamil Nadu,Maharashtra,,sale
+SO-00720,2026-04-20,Sales,Sales,4024.36,Cr,Aadhya Patel 0720,18,Maharashtra,Maharashtra,,sale
+SO-00721,2026-08-23,Sales,Sales,10095.55,Cr,Ganga Agencies 0721,12,Karnataka,Maharashtra,29MPMAT6517Q6ZR,sale
+SO-00722,2026-10-04,Sales,Sales,21450.85,Cr,Zenith Enterprises 0722,5,Punjab,Maharashtra,03KXMZO7141T3ZB,sale
+SO-00723,2026-06-10,Sales,Sales,9094.15,Cr,Sneha Kulkarni 0723,5,Kerala,Maharashtra,,sale
+SO-00724,2026-05-26,Sales,Sales,20374.59,Cr,Zenith Wholesale 0724,18,Kerala,Maharashtra,32RDFXA2942S4Z8,sale
+SO-00725,2026-08-06,Sales,Sales,6452.56,Cr,Ishaan Shah 0725,18,Punjab,Maharashtra,,sale
+SO-00726,2026-05-03,Sales,Sales,3847.91,Cr,Star Industries 0726,18,Maharashtra,Maharashtra,27RNYYZ5317Z9ZV,sale
+SO-00727,2026-10-31,Sales,Sales,15359.04,Cr,Karan Shah 0727,18,Telangana,Maharashtra,,sale
+SO-00728,2026-09-30,Sales,Sales,14324.61,Cr,Sneha Gupta 0728,18,Madhya Pradesh,Maharashtra,,sale
+SO-00729,2026-04-02,Sales,Sales,12704.32,Cr,Sunrise Traders 0729,18,Gujarat,Maharashtra,24TMOMD2660D7ZO,sale
+SO-00730,2026-10-27,Sales,Sales,20803.78,Cr,Riya Menon 0730,18,Kerala,Maharashtra,,sale
+SO-00731,2026-07-14,Sales,Sales,4996.31,Cr,Myra Pillai 0731,12,Gujarat,Maharashtra,,sale
+SO-00732,2026-08-27,Sales,Sales,5094.8,Cr,Arjun Reddy 0732,12,Karnataka,Maharashtra,,refund
+SO-00733,2026-12-07,Sales,Sales,14265.58,Cr,Crescent Marketing 0733,18,Maharashtra,Maharashtra,27PXMMI1882M6ZB,sale
+SO-00734,2026-07-24,Sales,Sales,4278.09,Cr,Metro Industries 0734,18,Rajasthan,Maharashtra,08VCUIF0004M8Z2,sale
+SO-00735,2026-04-10,Sales,Sales,23858.61,Cr,Crescent Distributors 0735,12,Punjab,Maharashtra,03UCAPS1372C5ZE,sale
+SO-00736,2026-08-25,Sales,Sales,10476.38,Cr,Vertex Agencies 0736,18,Punjab,Maharashtra,03NIZJA2245R6Z3,sale
+SO-00737,2026-06-28,Sales,Sales,11565.39,Cr,Rohan Kulkarni 0737,18,West Bengal,Maharashtra,,sale
+SO-00738,2026-09-10,Sales,Sales,2788.39,Cr,Pari Menon 0738,12,Madhya Pradesh,Maharashtra,,sale
+SO-00739,2026-04-28,Sales,Sales,2642.06,Cr,Apex Wholesale 0739,18,Kerala,Maharashtra,32MMPQA1790O8ZH,sale
+SO-00740,2026-06-02,Sales,Sales,21566.69,Cr,Crescent Solutions 0740,18,Telangana,Maharashtra,36PYCGK6011P3Z1,sale
+SO-00741,2026-11-28,Sales,Sales,23169.63,Cr,Orbit Distributors 0741,12,West Bengal,Maharashtra,19BFHDE0782O5ZH,sale
+SO-00742,2026-07-16,Sales,Sales,2637.08,Cr,Sunrise & Sons 0742,5,Tamil Nadu,Maharashtra,33TUGMK1219M7ZI,sale
+SO-00743,2026-10-28,Sales,Sales,1585.09,Cr,Aarav Shah 0743,18,Punjab,Maharashtra,,sale
+SO-00744,2026-10-19,Sales,Sales,23386.46,Cr,Ganga Agencies 0744,12,Gujarat,Maharashtra,24YMKAW1203N1Z3,sale
+SO-00745,2026-05-23,Sales,Sales,4706.42,Cr,Aadhya Das 0745,18,Maharashtra,Maharashtra,,sale
+SO-00746,2026-08-12,Sales,Sales,20902.25,Cr,Sneha Gupta 0746,18,Maharashtra,Maharashtra,,sale
+SO-00747,2026-09-20,Sales,Sales,6653.46,Cr,Ananya Kulkarni 0747,12,Karnataka,Maharashtra,,sale
+SO-00748,2026-06-17,Sales,Sales,3314.95,Cr,Ganga Retail 0748,18,West Bengal,Maharashtra,19FBAEH7698T7ZD,sale
+SO-00749,2026-05-19,Sales,Sales,22980.95,Cr,Orbit Industries 0749,18,Madhya Pradesh,Maharashtra,23FVLVQ5044Y4Z1,sale
+SO-00750,2026-08-09,Sales,Sales,15264.46,Cr,Zenith Traders 0750,18,Delhi,Maharashtra,07BNBPZ3399X2ZW,sale
+SO-00751,2026-07-08,Sales,Sales,19041.19,Cr,Ganga Distributors 0751,12,Rajasthan,Maharashtra,08DVWEM9050B2ZQ,sale
+SO-00752,2026-07-08,Sales,Sales,7447.96,Cr,Aadhya Mehta 0752,5,Gujarat,Maharashtra,,refund
+SO-00753,2026-06-29,Sales,Sales,18141.14,Cr,Karan Menon 0753,12,Rajasthan,Maharashtra,,sale
+SO-00754,2026-07-19,Sales,Sales,13456.08,Cr,Global Agencies 0754,18,Karnataka,Maharashtra,29NKNUU1046L4ZR,sale
+SO-00755,2026-11-24,Sales,Sales,13279.66,Cr,Orbit Traders 0755,5,Telangana,Maharashtra,36EBLCM4534E7ZG,refund
+SO-00756,2026-07-19,Sales,Sales,22940.37,Cr,Vertex Traders 0756,18,Kerala,Maharashtra,32UYLJZ6570F3ZY,sale
+SO-00757,2026-12-03,Sales,Sales,10690.44,Cr,Aditya Reddy 0757,18,Delhi,Maharashtra,,sale
+SO-00758,2026-08-30,Sales,Sales,19626.59,Cr,Apex Retail 0758,18,Delhi,Maharashtra,07TVAPT8279N2Z6,sale
+SO-00759,2026-11-13,Sales,Sales,8497.56,Cr,Deepak Joshi 0759,12,Karnataka,Maharashtra,,sale
+SO-00760,2026-10-08,Sales,Sales,17724.56,Cr,Deepak Verma 0760,18,Gujarat,Maharashtra,,sale
+SO-00761,2026-06-01,Sales,Sales,11403.75,Cr,Ishaan Singh 0761,5,Delhi,Maharashtra,,sale
+SO-00762,2026-04-01,Sales,Sales,23182.72,Cr,Bharat Traders 0762,12,Madhya Pradesh,Maharashtra,23AVEMG2138S7Z0,sale
+SO-00763,2026-05-10,Sales,Sales,777.26,Cr,Diya Pillai 0763,18,Punjab,Maharashtra,,sale
+SO-00764,2026-12-16,Sales,Sales,12646.29,Cr,Vertex Enterprises 0764,18,Uttar Pradesh,Maharashtra,09DSILU9319J4Z5,sale
+SO-00765,2026-08-14,Sales,Sales,8578.88,Cr,Bharat Wholesale 0765,18,Maharashtra,Maharashtra,27ZEACG2780X2Z2,sale
+SO-00766,2026-07-10,Sales,Sales,7201.13,Cr,Pioneer Traders 0766,12,Karnataka,Maharashtra,29CNLQO0654K6ZB,sale
+SO-00767,2026-05-14,Sales,Sales,5383.98,Cr,Diya Menon 0767,5,Delhi,Maharashtra,,sale
+SO-00768,2026-07-29,Sales,Sales,2011.78,Cr,Unity Distributors 0768,18,Rajasthan,Maharashtra,08JLVNF5032B5ZU,sale
+SO-00769,2026-12-23,Sales,Sales,19062.29,Cr,Aditya Bose 0769,12,Gujarat,Maharashtra,,sale
+SO-00770,2026-08-26,Sales,Sales,12526.18,Cr,Reyansh Das 0770,18,Maharashtra,Maharashtra,,sale
+SO-00771,2026-07-30,Sales,Sales,786.05,Cr,Pioneer Retail 0771,18,Maharashtra,Maharashtra,27VAXFI3419A6Z0,sale
+SO-00772,2026-06-22,Sales,Sales,21474.28,Cr,Ira Reddy 0772,18,West Bengal,Maharashtra,,sale
+SO-00773,2026-10-24,Sales,Sales,7832.61,Cr,Riya Sharma 0773,12,Telangana,Maharashtra,,sale
+SO-00774,2026-11-08,Sales,Sales,11227.0,Cr,Global Solutions 0774,5,Karnataka,Maharashtra,29LHKNZ0808D7ZT,sale
+SO-00775,2026-05-29,Sales,Sales,18835.75,Cr,Ananya Kumar 0775,18,Gujarat,Maharashtra,,sale
+SO-00776,2026-07-10,Sales,Sales,16241.3,Cr,Anjali Chowdhury 0776,18,Rajasthan,Maharashtra,,sale
+SO-00777,2026-05-06,Sales,Sales,22522.16,Cr,Pooja Nair 0777,18,Punjab,Maharashtra,,sale
+SO-00778,2026-07-27,Sales,Sales,6241.33,Cr,Ganga Solutions 0778,18,Karnataka,Maharashtra,29GHLKV8807A6Z0,refund
+SO-00779,2026-05-03,Sales,Sales,22101.88,Cr,Sneha Bose 0779,18,West Bengal,Maharashtra,,sale
+SO-00780,2026-05-20,Sales,Sales,9061.6,Cr,Unity Enterprises 0780,18,Karnataka,Maharashtra,29NMNUC6983N8ZI,sale
+SO-00781,2026-11-24,Sales,Sales,21696.06,Cr,Sunrise Wholesale 0781,18,Tamil Nadu,Maharashtra,33YAGWH2841A8ZS,sale
+SO-00782,2026-05-13,Sales,Sales,19133.8,Cr,Nikhil Gupta 0782,12,Punjab,Maharashtra,,sale
+SO-00783,2026-09-28,Sales,Sales,11023.94,Cr,Nova Wholesale 0783,18,Telangana,Maharashtra,36HMFRF5355K5ZF,sale
+SO-00784,2026-10-10,Sales,Sales,24115.43,Cr,Sneha Sharma 0784,5,Punjab,Maharashtra,,sale
+SO-00785,2026-08-02,Sales,Sales,8107.04,Cr,Deepak Chowdhury 0785,5,Delhi,Maharashtra,,sale
+SO-00786,2026-06-28,Sales,Sales,12942.22,Cr,Crescent Trading Co 0786,18,Kerala,Maharashtra,32UPYNF1334G3ZK,sale
+SO-00787,2026-06-18,Sales,Sales,8027.66,Cr,Ananya Nair 0787,5,Tamil Nadu,Maharashtra,,sale
+SO-00788,2026-09-05,Sales,Sales,9401.47,Cr,Riya Chowdhury 0788,12,Kerala,Maharashtra,,refund
+SO-00789,2026-10-11,Sales,Sales,21035.68,Cr,Vihaan Menon 0789,12,West Bengal,Maharashtra,,sale
+SO-00790,2026-10-06,Sales,Sales,19072.5,Cr,Meera Singh 0790,5,Telangana,Maharashtra,,sale
+SO-00791,2026-11-18,Sales,Sales,18450.36,Cr,Riya Nair 0791,5,Telangana,Maharashtra,,refund
+SO-00792,2026-11-23,Sales,Sales,889.27,Cr,Reyansh Reddy 0792,18,Karnataka,Maharashtra,,sale
+SO-00793,2026-11-13,Sales,Sales,5236.29,Cr,Myra Mehta 0793,18,Delhi,Maharashtra,,sale
+SO-00794,2026-08-30,Sales,Sales,16630.26,Cr,Unity & Sons 0794,18,Gujarat,Maharashtra,24ZPBTG0297Q1Z3,sale
+SO-00795,2026-08-22,Sales,Sales,7574.91,Cr,Unity Distributors 0795,12,Telangana,Maharashtra,36RXTKH8401Q7Z1,sale
+SO-00796,2026-06-04,Sales,Sales,18946.35,Cr,Aditya Nair 0796,18,Gujarat,Maharashtra,,sale
+SO-00797,2026-09-14,Sales,Sales,2150.75,Cr,Metro Trading Co 0797,5,Kerala,Maharashtra,32KNAED6035L5Z2,sale
+SO-00798,2026-04-21,Sales,Sales,17353.27,Cr,Myra Kumar 0798,18,Rajasthan,Maharashtra,,sale
+SO-00799,2026-11-28,Sales,Sales,10183.45,Cr,Diya Gupta 0799,12,Tamil Nadu,Maharashtra,,sale
+SO-00800,2026-12-26,Sales,Sales,6055.53,Cr,Ananya Bose 0800,12,Punjab,Maharashtra,,refund
+SO-00801,2026-08-23,Sales,Sales,20614.08,Cr,Bharat Distributors 0801,18,Kerala,Maharashtra,32ABZJT3976L6Z5,sale
+SO-00802,2026-07-25,Sales,Sales,5894.98,Cr,Aditya Desai 0802,12,Karnataka,Maharashtra,,sale
+SO-00803,2026-07-18,Sales,Sales,5125.02,Cr,Unity Industries 0803,18,Gujarat,Maharashtra,24GDNBO9316F7Z2,sale
+SO-00804,2026-07-24,Sales,Sales,14991.1,Cr,Everest Enterprises 0804,18,West Bengal,Maharashtra,19DVJGT5164S1ZR,sale
+SO-00805,2026-09-13,Sales,Sales,21151.88,Cr,Neha Mehta 0805,18,Kerala,Maharashtra,,sale
+SO-00806,2026-05-27,Sales,Sales,780.56,Cr,Ganga Retail 0806,18,Tamil Nadu,Maharashtra,33YUUSY0712V8Z6,sale
+SO-00807,2026-10-09,Sales,Sales,24848.0,Cr,Ishaan Menon 0807,18,West Bengal,Maharashtra,,sale
+SO-00808,2026-11-08,Sales,Sales,3328.2,Cr,Reyansh Rao 0808,18,Telangana,Maharashtra,,sale
+SO-00809,2026-05-31,Sales,Sales,9223.97,Cr,Ananya Reddy 0809,18,Karnataka,Maharashtra,,sale
+SO-00810,2026-09-28,Sales,Sales,18218.18,Cr,Rohan Desai 0810,12,Tamil Nadu,Maharashtra,,sale
+SO-00811,2026-06-30,Sales,Sales,17651.99,Cr,Deepak Bose 0811,5,Madhya Pradesh,Maharashtra,,sale
+SO-00812,2026-04-15,Sales,Sales,7361.55,Cr,Amit Das 0812,18,Uttar Pradesh,Maharashtra,,sale
+SO-00813,2026-07-04,Sales,Sales,1230.94,Cr,Shakti Distributors 0813,5,Punjab,Maharashtra,03MUKYY9536H3ZE,sale
+SO-00814,2026-11-14,Sales,Sales,24651.95,Cr,Meera Joshi 0814,12,Gujarat,Maharashtra,,sale
+SO-00815,2026-04-30,Sales,Sales,518.81,Cr,Unity Wholesale 0815,12,Rajasthan,Maharashtra,08OKJZQ4025R3ZS,sale
+SO-00816,2026-12-02,Sales,Sales,15762.09,Cr,Rahul Joshi 0816,12,Rajasthan,Maharashtra,,sale
+SO-00817,2026-05-23,Sales,Sales,11412.82,Cr,Sunrise Wholesale 0817,18,Karnataka,Maharashtra,29AQKHO9979G4ZJ,sale
+SO-00818,2026-10-23,Sales,Sales,12259.56,Cr,Metro Wholesale 0818,12,Kerala,Maharashtra,32KVFSM8413N3ZR,refund
+SO-00819,2026-06-07,Sales,Sales,5559.11,Cr,Krishna Singh 0819,18,Madhya Pradesh,Maharashtra,,sale
+SO-00820,2026-11-21,Sales,Sales,17034.54,Cr,Pooja Singh 0820,12,Gujarat,Maharashtra,,sale
+SO-00821,2026-10-12,Sales,Sales,18495.7,Cr,Deepak Shah 0821,5,Kerala,Maharashtra,,sale
+SO-00822,2026-04-27,Sales,Sales,2415.75,Cr,Everest Marketing 0822,18,Madhya Pradesh,Maharashtra,23HHALU6342X3ZK,sale
+SO-00823,2026-04-23,Sales,Sales,12605.11,Cr,Myra Reddy 0823,5,Maharashtra,Maharashtra,,sale
+SO-00824,2026-04-07,Sales,Sales,4600.23,Cr,Star Marketing 0824,18,Delhi,Maharashtra,07EUMJY3451I5ZU,sale
+SO-00825,2026-11-12,Sales,Sales,17723.94,Cr,Aadhya Mehta 0825,18,West Bengal,Maharashtra,,sale
+SO-00826,2026-07-16,Sales,Sales,7605.33,Cr,Pioneer Traders 0826,18,Uttar Pradesh,Maharashtra,09PPOJI3177D2ZW,sale
+SO-00827,2026-10-28,Sales,Sales,4985.51,Cr,Ganga Industries 0827,12,Delhi,Maharashtra,07QHDOK4539Q6ZO,sale
+SO-00828,2026-12-25,Sales,Sales,3474.91,Cr,Bharat & Sons 0828,18,Telangana,Maharashtra,36GVCTX2036W8ZL,sale
+SO-00829,2026-11-22,Sales,Sales,20828.88,Cr,Vihaan Pillai 0829,18,Karnataka,Maharashtra,,refund
+SO-00830,2026-10-09,Sales,Sales,1886.2,Cr,Aarav Rao 0830,18,West Bengal,Maharashtra,,sale
+SO-00831,2026-05-14,Sales,Sales,20026.84,Cr,Neha Mehta 0831,18,Telangana,Maharashtra,,sale
+SO-00832,2026-11-12,Sales,Sales,11910.6,Cr,Aditya Iyer 0832,18,Rajasthan,Maharashtra,,sale
+SO-00833,2026-08-22,Sales,Sales,1607.48,Cr,Crescent Wholesale 0833,18,Gujarat,Maharashtra,24GNAVA7669U1ZE,sale
+SO-00834,2026-04-22,Sales,Sales,23350.78,Cr,Vertex Trading Co 0834,18,Rajasthan,Maharashtra,08BAGOB0880Q1ZM,refund
+SO-00835,2026-07-26,Sales,Sales,24958.34,Cr,Royal Enterprises 0835,18,Kerala,Maharashtra,32GOQKR3054V8Z3,sale
+SO-00836,2026-08-07,Sales,Sales,8713.16,Cr,Deepak Singh 0836,12,Rajasthan,Maharashtra,,sale
+SO-00837,2026-11-10,Sales,Sales,12409.67,Cr,Sai Shah 0837,18,Kerala,Maharashtra,,sale
+SO-00838,2026-12-08,Sales,Sales,17730.43,Cr,Crescent Wholesale 0838,5,Maharashtra,Maharashtra,27WFVWR8182P9Z7,sale
+SO-00839,2026-12-18,Sales,Sales,7641.68,Cr,Meera Rao 0839,18,Maharashtra,Maharashtra,,sale
+SO-00840,2026-08-25,Sales,Sales,17013.47,Cr,Pioneer Exports 0840,18,Gujarat,Maharashtra,24XULKD1997D2ZL,sale
+SO-00841,2026-08-25,Sales,Sales,21615.35,Cr,Ira Chowdhury 0841,5,West Bengal,Maharashtra,,sale
+SO-00842,2026-04-28,Sales,Sales,9849.57,Cr,Karan Reddy 0842,18,West Bengal,Maharashtra,,sale
+SO-00843,2026-10-20,Sales,Sales,18762.07,Cr,Amit Singh 0843,5,Uttar Pradesh,Maharashtra,,sale
+SO-00844,2026-05-02,Sales,Sales,3743.51,Cr,Ishaan Das 0844,12,Rajasthan,Maharashtra,,sale
+SO-00845,2026-06-19,Sales,Sales,4231.06,Cr,Pooja Chowdhury 0845,18,Gujarat,Maharashtra,,refund
+SO-00846,2026-09-03,Sales,Sales,17872.57,Cr,Apex Exports 0846,12,Gujarat,Maharashtra,24GYKTY0891E5ZF,sale
+SO-00847,2026-04-28,Sales,Sales,3526.49,Cr,Aadhya Iyer 0847,5,Kerala,Maharashtra,,refund
+SO-00848,2026-07-31,Sales,Sales,910.02,Cr,Pari Nair 0848,18,West Bengal,Maharashtra,,sale
+SO-00849,2026-08-16,Sales,Sales,17067.54,Cr,Ganga Wholesale 0849,18,Rajasthan,Maharashtra,08HXGOD1384R3ZI,sale
+SO-00850,2026-08-20,Sales,Sales,21493.04,Cr,Vihaan Kulkarni 0850,18,Madhya Pradesh,Maharashtra,,sale
+SO-00851,2026-04-07,Sales,Sales,21755.24,Cr,Metro & Sons 0851,5,Maharashtra,Maharashtra,27LCCPN0522W4ZS,sale
+SO-00852,2026-05-01,Sales,Sales,21538.45,Cr,Global Solutions 0852,12,West Bengal,Maharashtra,19CGRMF3682Q1ZI,sale
+SO-00853,2026-10-11,Sales,Sales,5613.32,Cr,Vivaan Gupta 0853,18,Kerala,Maharashtra,,sale
+SO-00854,2026-10-17,Sales,Sales,20068.63,Cr,Deepak Shah 0854,18,Uttar Pradesh,Maharashtra,,sale
+SO-00855,2026-04-27,Sales,Sales,5610.23,Cr,Ira Joshi 0855,5,Punjab,Maharashtra,,sale
+SO-00856,2026-11-21,Sales,Sales,18932.64,Cr,Anjali Rao 0856,5,Punjab,Maharashtra,,refund
+SO-00857,2026-06-15,Sales,Sales,5096.34,Cr,Bharat Distributors 0857,18,Gujarat,Maharashtra,24YHLBF3603C8ZN,sale
+SO-00858,2026-04-26,Sales,Sales,24950.01,Cr,Ira Nair 0858,18,West Bengal,Maharashtra,,sale
+SO-00859,2026-06-11,Sales,Sales,20024.32,Cr,Crescent Agencies 0859,12,Madhya Pradesh,Maharashtra,23NWAHM9733X2ZZ,sale
+SO-00860,2026-05-11,Sales,Sales,22004.63,Cr,Karan Iyer 0860,12,Delhi,Maharashtra,,sale
+SO-00861,2026-08-11,Sales,Sales,21466.57,Cr,Kavya Nair 0861,18,Maharashtra,Maharashtra,,sale
+SO-00862,2026-06-25,Sales,Sales,20071.19,Cr,Priya Das 0862,12,Kerala,Maharashtra,,sale
+SO-00863,2026-09-29,Sales,Sales,2438.35,Cr,Arjun Verma 0863,18,Karnataka,Maharashtra,,sale
+SO-00864,2026-04-04,Sales,Sales,24931.03,Cr,Pari Iyer 0864,12,Delhi,Maharashtra,,sale
+SO-00865,2026-06-03,Sales,Sales,11433.42,Cr,Aditya Nair 0865,18,Telangana,Maharashtra,,sale
+SO-00866,2026-10-18,Sales,Sales,2266.49,Cr,Vertex & Sons 0866,18,Madhya Pradesh,Maharashtra,23QTOSQ5211K4ZR,sale
+SO-00867,2026-10-02,Sales,Sales,8043.59,Cr,Apex Solutions 0867,12,West Bengal,Maharashtra,19ERXLC0477D4Z9,sale
+SO-00868,2026-11-26,Sales,Sales,11012.06,Cr,Krishna Rao 0868,18,Uttar Pradesh,Maharashtra,,sale
+SO-00869,2026-12-04,Sales,Sales,7090.69,Cr,Sai Das 0869,18,Maharashtra,Maharashtra,,sale
+SO-00870,2026-05-08,Sales,Sales,16144.14,Cr,Vertex Exports 0870,18,Telangana,Maharashtra,36FDDSA8792P5ZX,sale
+SO-00871,2026-11-25,Sales,Sales,9822.59,Cr,Rahul Gupta 0871,18,Gujarat,Maharashtra,,sale
+SO-00872,2026-06-19,Sales,Sales,17528.01,Cr,Karan Iyer 0872,12,Madhya Pradesh,Maharashtra,,sale
+SO-00873,2026-08-16,Sales,Sales,9326.96,Cr,Unity Marketing 0873,12,Maharashtra,Maharashtra,27XDCWO6036P4ZW,refund
+SO-00874,2026-06-04,Sales,Sales,574.96,Cr,Orbit Traders 0874,12,Delhi,Maharashtra,07CIZTG5730E7ZQ,sale
+SO-00875,2026-12-12,Sales,Sales,15006.45,Cr,Priya Das 0875,18,Maharashtra,Maharashtra,,sale
+SO-00876,2026-06-18,Sales,Sales,24513.67,Cr,Priya Shah 0876,18,Karnataka,Maharashtra,,sale
+SO-00877,2026-11-06,Sales,Sales,1283.83,Cr,Aditya Gupta 0877,18,Telangana,Maharashtra,,sale
+SO-00878,2026-07-30,Sales,Sales,12159.73,Cr,Sai Rao 0878,18,Delhi,Maharashtra,,sale
+SO-00879,2026-04-23,Sales,Sales,3626.17,Cr,Nova Solutions 0879,18,Kerala,Maharashtra,32JVZHQ1524E5Z6,sale
+SO-00880,2026-11-03,Sales,Sales,15389.93,Cr,Pioneer Solutions 0880,18,Madhya Pradesh,Maharashtra,23FJYBS2716M8ZA,sale
+SO-00881,2026-08-29,Sales,Sales,24924.75,Cr,Vertex Agencies 0881,18,Uttar Pradesh,Maharashtra,09LSNXC5115Z5ZX,sale
+SO-00882,2026-05-01,Sales,Sales,5091.92,Cr,Rohan Menon 0882,12,Tamil Nadu,Maharashtra,,sale
+SO-00883,2026-07-01,Sales,Sales,2888.65,Cr,Krishna Nair 0883,18,Uttar Pradesh,Maharashtra,,sale
+SO-00884,2026-10-17,Sales,Sales,7702.07,Cr,Aarav Shah 0884,18,Telangana,Maharashtra,,sale
+SO-00885,2026-07-28,Sales,Sales,9416.6,Cr,Sneha Mehta 0885,18,Kerala,Maharashtra,,sale
+SO-00886,2026-06-13,Sales,Sales,8305.13,Cr,Bharat Wholesale 0886,18,Madhya Pradesh,Maharashtra,23QVCNZ5411X4ZW,sale
+SO-00887,2026-08-26,Sales,Sales,3119.41,Cr,Meera Rao 0887,18,Tamil Nadu,Maharashtra,,sale
+SO-00888,2026-04-24,Sales,Sales,15218.93,Cr,Shakti Marketing 0888,18,Punjab,Maharashtra,03IQSBS4905W8ZW,sale
+SO-00889,2026-10-23,Sales,Sales,11074.44,Cr,Ira Sharma 0889,12,Kerala,Maharashtra,,sale
+SO-00890,2026-08-16,Sales,Sales,8840.13,Cr,Metro Distributors 0890,18,Maharashtra,Maharashtra,27TTTQD9848N1Z9,sale
+SO-00891,2026-07-17,Sales,Sales,17042.33,Cr,Aarav Nair 0891,18,Karnataka,Maharashtra,,sale
+SO-00892,2026-07-22,Sales,Sales,11583.36,Cr,Vihaan Menon 0892,12,Punjab,Maharashtra,,sale
+SO-00893,2026-04-08,Sales,Sales,13973.29,Cr,Prime Exports 0893,18,Karnataka,Maharashtra,29PIAEZ4442V1Z7,sale
+SO-00894,2026-07-28,Sales,Sales,5424.61,Cr,Amit Mehta 0894,5,Tamil Nadu,Maharashtra,,sale
+SO-00895,2026-12-26,Sales,Sales,20572.08,Cr,Ishaan Mehta 0895,5,Kerala,Maharashtra,,sale
+SO-00896,2026-12-16,Sales,Sales,4191.36,Cr,Vihaan Mehta 0896,18,Uttar Pradesh,Maharashtra,,sale
+SO-00897,2026-05-20,Sales,Sales,12717.87,Cr,Orbit Agencies 0897,18,Karnataka,Maharashtra,29KMYMK0781I9ZE,sale
+SO-00898,2026-06-02,Sales,Sales,20097.36,Cr,Meera Pillai 0898,18,West Bengal,Maharashtra,,sale
+SO-00899,2026-07-21,Sales,Sales,10882.01,Cr,Ganga Solutions 0899,18,Tamil Nadu,Maharashtra,33SFMCR0896O2ZL,sale
+SO-00900,2026-04-13,Sales,Sales,7212.46,Cr,Rohan Rao 0900,18,Rajasthan,Maharashtra,,sale
+SO-00901,2026-04-21,Sales,Sales,21404.75,Cr,Reyansh Chowdhury 0901,18,Gujarat,Maharashtra,,sale
+SO-00902,2026-11-10,Sales,Sales,12219.51,Cr,Meera Bose 0902,5,Uttar Pradesh,Maharashtra,,sale
+SO-00903,2026-08-02,Sales,Sales,4091.74,Cr,Vivaan Iyer 0903,18,Madhya Pradesh,Maharashtra,,sale
+SO-00904,2026-09-10,Sales,Sales,12932.21,Cr,Aditya Gupta 0904,5,Karnataka,Maharashtra,,sale
+SO-00905,2026-06-25,Sales,Sales,2878.86,Cr,Star Wholesale 0905,12,Uttar Pradesh,Maharashtra,09HUNVA0423Z2ZZ,sale
+SO-00906,2026-05-28,Sales,Sales,11356.57,Cr,Nikhil Kumar 0906,12,Punjab,Maharashtra,,sale
+SO-00907,2026-09-27,Sales,Sales,5500.91,Cr,Saanvi Kulkarni 0907,12,West Bengal,Maharashtra,,sale
+SO-00908,2026-10-05,Sales,Sales,380.39,Cr,Amit Menon 0908,12,Rajasthan,Maharashtra,,sale
+SO-00909,2026-12-01,Sales,Sales,9866.37,Cr,Rahul Patel 0909,18,Maharashtra,Maharashtra,,sale
+SO-00910,2026-11-03,Sales,Sales,3508.35,Cr,Anjali Bose 0910,12,Delhi,Maharashtra,,sale
+SO-00911,2026-07-27,Sales,Sales,23322.54,Cr,Shakti Exports 0911,18,Gujarat,Maharashtra,24BYIGM5883T8ZX,sale
+SO-00912,2026-10-03,Sales,Sales,16336.33,Cr,Nikhil Rao 0912,5,Tamil Nadu,Maharashtra,,sale
+SO-00913,2026-05-13,Sales,Sales,7884.83,Cr,Ganga Distributors 0913,12,Tamil Nadu,Maharashtra,33MDURA7797Z2Z1,sale
+SO-00914,2026-06-16,Sales,Sales,22013.13,Cr,Krishna Bose 0914,18,Rajasthan,Maharashtra,,sale
+SO-00915,2026-08-04,Sales,Sales,20648.13,Cr,Crescent Distributors 0915,5,West Bengal,Maharashtra,19JJEPZ3916P2ZI,sale
+SO-00916,2026-06-13,Sales,Sales,23902.58,Cr,Karan Chowdhury 0916,12,Karnataka,Maharashtra,,sale
+SO-00917,2026-12-24,Sales,Sales,18663.1,Cr,Sunrise Enterprises 0917,12,Punjab,Maharashtra,03VKRIL3250X2ZP,sale
+SO-00918,2026-06-13,Sales,Sales,19036.99,Cr,Rohan Singh 0918,12,Gujarat,Maharashtra,,sale
+SO-00919,2026-04-16,Sales,Sales,5299.21,Cr,Deepak Iyer 0919,5,Telangana,Maharashtra,,sale
+SO-00920,2026-04-24,Sales,Sales,15035.36,Cr,Ira Kumar 0920,5,Telangana,Maharashtra,,sale
+SO-00921,2026-06-05,Sales,Sales,3873.11,Cr,Karan Reddy 0921,18,Telangana,Maharashtra,,sale
+SO-00922,2026-04-10,Sales,Sales,24822.41,Cr,Pari Iyer 0922,18,Karnataka,Maharashtra,,sale
+SO-00923,2026-06-17,Sales,Sales,11583.71,Cr,Saanvi Das 0923,18,Delhi,Maharashtra,,sale
+SO-00924,2026-09-22,Sales,Sales,13637.85,Cr,Vivaan Chowdhury 0924,18,Karnataka,Maharashtra,,sale
+SO-00925,2026-06-04,Sales,Sales,15719.22,Cr,Metro Agencies 0925,12,Karnataka,Maharashtra,29OGGGC3838Z4Z6,sale
+SO-00926,2026-04-30,Sales,Sales,21227.31,Cr,Diya Sharma 0926,5,Madhya Pradesh,Maharashtra,,sale
+SO-00927,2026-07-19,Sales,Sales,2268.2,Cr,Meera Pillai 0927,18,Tamil Nadu,Maharashtra,,sale
+SO-00928,2026-09-15,Sales,Sales,924.26,Cr,Myra Bose 0928,18,Punjab,Maharashtra,,sale
+SO-00929,2026-12-01,Sales,Sales,23408.16,Cr,Zenith Exports 0929,12,Kerala,Maharashtra,32EDYOJ3092S5ZM,sale
+SO-00930,2026-07-15,Sales,Sales,342.51,Cr,Amit Joshi 0930,12,Kerala,Maharashtra,,sale
+SO-00931,2026-09-20,Sales,Sales,18846.39,Cr,Meera Iyer 0931,18,Punjab,Maharashtra,,sale
+SO-00932,2026-07-27,Sales,Sales,17699.86,Cr,Sai Menon 0932,18,Uttar Pradesh,Maharashtra,,sale
+SO-00933,2026-11-10,Sales,Sales,10680.19,Cr,Zenith Traders 0933,18,Madhya Pradesh,Maharashtra,23DCCUH9114O5ZQ,sale
+SO-00934,2026-05-08,Sales,Sales,18252.91,Cr,Krishna Verma 0934,5,Uttar Pradesh,Maharashtra,,sale
+SO-00935,2026-06-22,Sales,Sales,12064.55,Cr,Bharat Marketing 0935,18,Karnataka,Maharashtra,29XXCLE1281V9ZH,sale
+SO-00936,2026-04-17,Sales,Sales,13141.91,Cr,Ananya Reddy 0936,18,Uttar Pradesh,Maharashtra,,sale
+SO-00937,2026-05-30,Sales,Sales,8599.57,Cr,Arjun Mehta 0937,18,Punjab,Maharashtra,,sale
+SO-00938,2026-11-28,Sales,Sales,1305.87,Cr,Pooja Bose 0938,12,Tamil Nadu,Maharashtra,,sale
+SO-00939,2026-09-07,Sales,Sales,15490.24,Cr,Sneha Joshi 0939,18,Punjab,Maharashtra,,sale
+SO-00940,2026-10-21,Sales,Sales,5780.93,Cr,Ananya Sharma 0940,18,Maharashtra,Maharashtra,,sale
+SO-00941,2026-09-05,Sales,Sales,4861.84,Cr,Apex Traders 0941,18,Rajasthan,Maharashtra,08UNKAP5578G3ZC,sale
+SO-00942,2026-11-05,Sales,Sales,1898.03,Cr,Pioneer Traders 0942,18,Punjab,Maharashtra,03FKETZ5066B4ZI,sale
+SO-00943,2026-04-16,Sales,Sales,15827.58,Cr,Myra Singh 0943,18,Rajasthan,Maharashtra,,sale
+SO-00944,2026-10-15,Sales,Sales,12040.2,Cr,Apex Trading Co 0944,18,Gujarat,Maharashtra,24OYSTY4489R3Z9,sale
+SO-00945,2026-06-07,Sales,Sales,7885.05,Cr,Nikhil Verma 0945,18,Maharashtra,Maharashtra,,sale
+SO-00946,2026-09-04,Sales,Sales,24722.31,Cr,Reyansh Bose 0946,18,Delhi,Maharashtra,,sale
+SO-00947,2026-08-18,Sales,Sales,16240.34,Cr,Ishaan Nair 0947,18,Uttar Pradesh,Maharashtra,,sale
+SO-00948,2026-05-24,Sales,Sales,18171.92,Cr,Prime Solutions 0948,12,Gujarat,Maharashtra,24LFPIM9413R2ZD,sale
+SO-00949,2026-07-04,Sales,Sales,12873.92,Cr,Karan Verma 0949,18,Punjab,Maharashtra,,sale
+SO-00950,2026-10-17,Sales,Sales,947.39,Cr,Shakti Trading Co 0950,18,Uttar Pradesh,Maharashtra,09EODRH2572T7ZD,sale
+SO-00951,2026-07-31,Sales,Sales,2383.9,Cr,Metro Distributors 0951,18,Telangana,Maharashtra,36UMUCC2983Y6ZF,sale
+SO-00952,2026-04-05,Sales,Sales,10070.09,Cr,Royal Traders 0952,18,Maharashtra,Maharashtra,27RKKVP8619B5ZW,sale
+SO-00953,2026-04-20,Sales,Sales,8500.02,Cr,Reyansh Sharma 0953,18,Uttar Pradesh,Maharashtra,,sale
+SO-00954,2026-07-21,Sales,Sales,13187.46,Cr,Amit Bose 0954,18,Telangana,Maharashtra,,sale
+SO-00955,2026-04-10,Sales,Sales,13690.19,Cr,Bharat Industries 0955,5,West Bengal,Maharashtra,19YJBNX5521V3ZA,refund
+SO-00956,2026-07-05,Sales,Sales,14235.22,Cr,Diya Singh 0956,12,Rajasthan,Maharashtra,,sale
+SO-00957,2026-11-29,Sales,Sales,16803.22,Cr,Pooja Joshi 0957,18,Gujarat,Maharashtra,,sale
+SO-00958,2026-09-24,Sales,Sales,4986.8,Cr,Pioneer & Sons 0958,5,Karnataka,Maharashtra,29RMSWL3440H2ZR,sale
+SO-00959,2026-07-31,Sales,Sales,18788.28,Cr,Pioneer Solutions 0959,5,Maharashtra,Maharashtra,27ATJBH9297H2ZU,sale
+SO-00960,2026-04-09,Sales,Sales,1371.18,Cr,Arjun Kulkarni 0960,18,Rajasthan,Maharashtra,,sale
+SO-00961,2026-08-26,Sales,Sales,9548.21,Cr,Aarav Singh 0961,5,West Bengal,Maharashtra,,sale
+SO-00962,2026-09-06,Sales,Sales,11414.7,Cr,Metro & Sons 0962,12,Madhya Pradesh,Maharashtra,23CCYMM5697X8ZY,sale
+SO-00963,2026-05-04,Sales,Sales,7555.8,Cr,Bharat Wholesale 0963,5,West Bengal,Maharashtra,19VORRN3215Y4ZT,sale
+SO-00964,2026-05-16,Sales,Sales,11041.16,Cr,Crescent Marketing 0964,18,Delhi,Maharashtra,07KXWYS5078G8ZS,sale
+SO-00965,2026-12-01,Sales,Sales,2383.99,Cr,Zenith Wholesale 0965,18,West Bengal,Maharashtra,19CLMBM9352G9ZX,sale
+SO-00966,2026-08-06,Sales,Sales,3275.93,Cr,Royal & Sons 0966,18,Uttar Pradesh,Maharashtra,09WNQYD3685Q8ZN,sale
+SO-00967,2026-10-28,Sales,Sales,7765.65,Cr,Royal Distributors 0967,12,West Bengal,Maharashtra,19OLLPG4827V6ZK,sale
+SO-00968,2026-12-19,Sales,Sales,7551.73,Cr,Aditya Menon 0968,18,Karnataka,Maharashtra,,refund
+SO-00969,2026-06-14,Sales,Sales,17043.42,Cr,Nova Industries 0969,12,Tamil Nadu,Maharashtra,33LXPTP8061D8Z6,sale
+SO-00970,2026-10-04,Sales,Sales,5925.52,Cr,Diya Rao 0970,18,Telangana,Maharashtra,,sale
+SO-00971,2026-11-09,Sales,Sales,15078.79,Cr,Royal & Sons 0971,18,Karnataka,Maharashtra,29SOLZJ0390W6ZG,sale
+SO-00972,2026-10-22,Sales,Sales,443.53,Cr,Neha Joshi 0972,5,West Bengal,Maharashtra,,sale
+SO-00973,2026-07-21,Sales,Sales,12870.32,Cr,Pioneer Exports 0973,12,Delhi,Maharashtra,07NZJHB4774A8ZC,sale
+SO-00974,2026-05-26,Sales,Sales,15145.16,Cr,Karan Das 0974,12,Tamil Nadu,Maharashtra,,refund
+SO-00975,2026-07-12,Sales,Sales,5007.53,Cr,Bharat Agencies 0975,5,Tamil Nadu,Maharashtra,33RUCIL4464D8Z9,sale
+SO-00976,2026-10-21,Sales,Sales,1526.46,Cr,Sneha Sharma 0976,18,Punjab,Maharashtra,,refund
+SO-00977,2026-06-07,Sales,Sales,12136.34,Cr,Reyansh Pillai 0977,12,Telangana,Maharashtra,,sale
+SO-00978,2026-07-14,Sales,Sales,3694.36,Cr,Orbit Trading Co 0978,18,West Bengal,Maharashtra,19RGVYE4802Q1ZV,sale
+SO-00979,2026-04-01,Sales,Sales,21161.39,Cr,Ananya Kulkarni 0979,18,Rajasthan,Maharashtra,,sale
+SO-00980,2026-10-04,Sales,Sales,7465.97,Cr,Sunrise Agencies 0980,18,Madhya Pradesh,Maharashtra,23XEFHC4977Y6Z4,sale
+SO-00981,2026-10-31,Sales,Sales,19771.86,Cr,Pari Gupta 0981,18,Uttar Pradesh,Maharashtra,,sale
+SO-00982,2026-09-19,Sales,Sales,23174.83,Cr,Pioneer Trading Co 0982,18,Uttar Pradesh,Maharashtra,09JXWUD3000B1ZS,sale
+SO-00983,2026-11-03,Sales,Sales,4483.24,Cr,Prime Exports 0983,18,Tamil Nadu,Maharashtra,33BHFUA7331Y7ZV,sale
+SO-00984,2026-11-22,Sales,Sales,10670.46,Cr,Priya Reddy 0984,12,Madhya Pradesh,Maharashtra,,sale
+SO-00985,2026-04-28,Sales,Sales,5503.75,Cr,Pari Desai 0985,12,Uttar Pradesh,Maharashtra,,sale
+SO-00986,2026-06-04,Sales,Sales,5321.34,Cr,Amit Verma 0986,5,Delhi,Maharashtra,,sale
+SO-00987,2026-08-24,Sales,Sales,10629.84,Cr,Rahul Chowdhury 0987,12,Delhi,Maharashtra,,sale
+SO-00988,2026-07-12,Sales,Sales,2248.99,Cr,Arjun Pillai 0988,18,Rajasthan,Maharashtra,,sale
+SO-00989,2026-05-23,Sales,Sales,9663.93,Cr,Pooja Menon 0989,12,Madhya Pradesh,Maharashtra,,sale
+SO-00990,2026-11-17,Sales,Sales,18654.74,Cr,Kavya Sharma 0990,18,Madhya Pradesh,Maharashtra,,sale
+SO-00991,2026-12-07,Sales,Sales,22335.21,Cr,Aadhya Rao 0991,5,Punjab,Maharashtra,,refund
+SO-00992,2026-06-02,Sales,Sales,8606.43,Cr,Amit Nair 0992,12,Tamil Nadu,Maharashtra,,sale
+SO-00993,2026-07-13,Sales,Sales,4540.68,Cr,Rohan Kulkarni 0993,18,West Bengal,Maharashtra,,sale
+SO-00994,2026-07-26,Sales,Sales,22303.75,Cr,Rohan Chowdhury 0994,12,Madhya Pradesh,Maharashtra,,sale
+SO-00995,2026-08-29,Sales,Sales,23002.91,Cr,Diya Chowdhury 0995,18,Maharashtra,Maharashtra,,sale
+SO-00996,2026-11-01,Sales,Sales,18825.2,Cr,Apex Enterprises 0996,12,Gujarat,Maharashtra,24CTXXV5908O6ZQ,sale
+SO-00997,2026-11-02,Sales,Sales,2558.73,Cr,Shakti Enterprises 0997,18,Telangana,Maharashtra,36WZFSB0483X8ZV,sale
+SO-00998,2026-10-13,Sales,Sales,8211.75,Cr,Ananya Joshi 0998,18,Tamil Nadu,Maharashtra,,sale
+SO-00999,2026-06-04,Sales,Sales,556.84,Cr,Ira Shah 0999,18,Madhya Pradesh,Maharashtra,,sale
+SO-01000,2026-12-05,Sales,Sales,23354.99,Cr,Royal & Sons 1000,18,Madhya Pradesh,Maharashtra,23AUVTF3453O3ZP,sale
+SO-01001,2026-12-07,Sales,Sales,8019.98,Cr,Unity Enterprises 1001,18,Maharashtra,Maharashtra,27UPMKC5631V8Z6,refund
+SO-01002,2026-04-24,Sales,Sales,14798.0,Cr,Vivaan Kulkarni 1002,18,Rajasthan,Maharashtra,,sale
+SO-01003,2026-06-30,Sales,Sales,22297.38,Cr,Star Solutions 1003,5,West Bengal,Maharashtra,19FTPLO4486Q9Z6,sale
+SO-01004,2026-08-26,Sales,Sales,6708.02,Cr,Bharat Distributors 1004,12,Uttar Pradesh,Maharashtra,09IKKMB8419B5ZC,sale
+SO-01005,2026-05-31,Sales,Sales,12412.92,Cr,Amit Singh 1005,18,Rajasthan,Maharashtra,,sale
+SO-01006,2026-10-26,Sales,Sales,21452.88,Cr,Rohan Kulkarni 1006,18,Maharashtra,Maharashtra,,sale
+SO-01007,2026-04-14,Sales,Sales,4067.02,Cr,Zenith Solutions 1007,12,Maharashtra,Maharashtra,27ZHYYI3779T2ZC,sale
+SO-01008,2026-05-15,Sales,Sales,7164.06,Cr,Sunrise Traders 1008,12,Uttar Pradesh,Maharashtra,09WRVDD2064V1ZK,sale
+SO-01009,2026-07-12,Sales,Sales,19407.46,Cr,Deepak Mehta 1009,5,Delhi,Maharashtra,,sale
+SO-01010,2026-09-29,Sales,Sales,24548.66,Cr,Prime Distributors 1010,18,Rajasthan,Maharashtra,08LVJMN1739F5Z7,sale
+SO-01011,2026-06-20,Sales,Sales,23462.01,Cr,Aditya Gupta 1011,18,Maharashtra,Maharashtra,,sale
+SO-01012,2026-12-04,Sales,Sales,1249.87,Cr,Apex Industries 1012,18,Delhi,Maharashtra,07CHCYW4226D5ZH,sale
+SO-01013,2026-05-16,Sales,Sales,5373.84,Cr,Orbit Retail 1013,18,Maharashtra,Maharashtra,27EPBBY6839K8ZA,sale
+SO-01014,2026-05-01,Sales,Sales,4026.67,Cr,Meera Sharma 1014,5,Delhi,Maharashtra,,sale
+SO-01015,2026-05-30,Sales,Sales,22178.46,Cr,Sai Rao 1015,5,Punjab,Maharashtra,,sale
+SO-01016,2026-08-23,Sales,Sales,3461.45,Cr,Sunrise Enterprises 1016,18,Gujarat,Maharashtra,24XESQN2298I7ZJ,sale
+SO-01017,2026-05-08,Sales,Sales,13490.84,Cr,Riya Joshi 1017,5,Tamil Nadu,Maharashtra,,sale
+SO-01018,2026-04-28,Sales,Sales,11340.38,Cr,Reyansh Rao 1018,18,Rajasthan,Maharashtra,,sale
+SO-01019,2026-08-03,Sales,Sales,8787.49,Cr,Riya Gupta 1019,18,Karnataka,Maharashtra,,sale
+SO-01020,2026-04-16,Sales,Sales,5920.95,Cr,Karan Singh 1020,18,Telangana,Maharashtra,,sale
+SO-01021,2026-12-10,Sales,Sales,2784.66,Cr,Riya Das 1021,12,Madhya Pradesh,Maharashtra,,sale
+SO-01022,2026-05-10,Sales,Sales,3384.3,Cr,Ganga Trading Co 1022,5,Tamil Nadu,Maharashtra,33GZSLB1868W3Z1,sale
+SO-01023,2026-09-03,Sales,Sales,16617.92,Cr,Anjali Joshi 1023,12,Tamil Nadu,Maharashtra,,sale
+SO-01024,2026-09-04,Sales,Sales,1627.74,Cr,Sunrise Marketing 1024,5,Gujarat,Maharashtra,24TJYKY8570N6ZO,sale
+SO-01025,2026-10-25,Sales,Sales,3821.05,Cr,Orbit Industries 1025,5,West Bengal,Maharashtra,19ETRDL2013X5ZD,sale
+SO-01026,2026-10-13,Sales,Sales,14400.5,Cr,Ira Sharma 1026,12,Delhi,Maharashtra,,refund
+SO-01027,2026-05-11,Sales,Sales,10738.88,Cr,Apex Retail 1027,18,Kerala,Maharashtra,32WMSRQ4197J9ZJ,sale
+SO-01028,2026-12-11,Sales,Sales,12028.08,Cr,Zenith Industries 1028,18,Uttar Pradesh,Maharashtra,09LQFFG9592T6ZO,refund
+SO-01029,2026-12-13,Sales,Sales,5470.86,Cr,Bharat Distributors 1029,18,Punjab,Maharashtra,03UHZKQ2808E5Z5,sale
+SO-01030,2026-07-06,Sales,Sales,12719.54,Cr,Aditya Joshi 1030,5,Tamil Nadu,Maharashtra,,sale
+SO-01031,2026-08-26,Sales,Sales,23005.1,Cr,Pooja Desai 1031,18,Madhya Pradesh,Maharashtra,,sale
+SO-01032,2026-10-15,Sales,Sales,19748.83,Cr,Shakti Trading Co 1032,18,Tamil Nadu,Maharashtra,33RLLXE8357P4ZM,sale
+SO-01033,2026-04-11,Sales,Sales,7830.69,Cr,Aadhya Sharma 1033,18,Punjab,Maharashtra,,sale
+SO-01034,2026-05-10,Sales,Sales,4636.95,Cr,Pooja Iyer 1034,18,Tamil Nadu,Maharashtra,,sale
+SO-01035,2026-10-23,Sales,Sales,7340.49,Cr,Crescent Agencies 1035,12,Punjab,Maharashtra,03KEWIP0613T2ZY,sale
+SO-01036,2026-10-13,Sales,Sales,21106.71,Cr,Shakti Solutions 1036,12,Gujarat,Maharashtra,24UPOLP3774D7ZH,sale
+SO-01037,2026-09-11,Sales,Sales,7646.98,Cr,Priya Pillai 1037,18,Maharashtra,Maharashtra,,sale
+SO-01038,2026-07-19,Sales,Sales,11247.4,Cr,Rahul Das 1038,12,Maharashtra,Maharashtra,,sale
+SO-01039,2026-09-25,Sales,Sales,16420.28,Cr,Anjali Rao 1039,18,Uttar Pradesh,Maharashtra,,sale
+SO-01040,2026-05-12,Sales,Sales,6398.83,Cr,Meera Kumar 1040,18,Maharashtra,Maharashtra,,sale
+SO-01041,2026-11-16,Sales,Sales,1189.02,Cr,Zenith Exports 1041,5,Kerala,Maharashtra,32FGPHH6900A6ZY,sale
+SO-01042,2026-10-28,Sales,Sales,6059.38,Cr,Shakti Traders 1042,18,Telangana,Maharashtra,36LDTER1638C9Z5,sale
+SO-01043,2026-08-05,Sales,Sales,17402.56,Cr,Vihaan Reddy 1043,12,West Bengal,Maharashtra,,sale
+SO-01044,2026-08-13,Sales,Sales,11554.67,Cr,Sneha Pillai 1044,18,Maharashtra,Maharashtra,,sale
+SO-01045,2026-10-31,Sales,Sales,18260.36,Cr,Vihaan Gupta 1045,12,Uttar Pradesh,Maharashtra,,sale
+SO-01046,2026-08-01,Sales,Sales,17544.79,Cr,Pioneer Marketing 1046,18,Kerala,Maharashtra,32GKUXC4838I8ZG,sale
+SO-01047,2026-07-17,Sales,Sales,16008.14,Cr,Saanvi Menon 1047,18,Uttar Pradesh,Maharashtra,,sale
+SO-01048,2026-12-02,Sales,Sales,22665.46,Cr,Vertex Traders 1048,18,Maharashtra,Maharashtra,27HXYLK4294G3Z3,sale
+SO-01049,2026-08-04,Sales,Sales,14190.16,Cr,Sunrise Agencies 1049,18,Gujarat,Maharashtra,24LHOZR8451Q6Z0,sale
+SO-01050,2026-04-22,Sales,Sales,16737.2,Cr,Karan Das 1050,12,Madhya Pradesh,Maharashtra,,sale
+SO-01051,2026-11-09,Sales,Sales,4868.22,Cr,Metro Enterprises 1051,12,West Bengal,Maharashtra,19PBZZO7278B5Z6,sale
+SO-01052,2026-11-10,Sales,Sales,998.77,Cr,Deepak Pillai 1052,12,Tamil Nadu,Maharashtra,,sale
+SO-01053,2026-08-30,Sales,Sales,24618.08,Cr,Ira Das 1053,12,Tamil Nadu,Maharashtra,,sale
+SO-01054,2026-10-11,Sales,Sales,8421.93,Cr,Sneha Mehta 1054,18,Telangana,Maharashtra,,refund
+SO-01055,2026-08-10,Sales,Sales,10634.84,Cr,Prime Traders 1055,18,Telangana,Maharashtra,36JBULW8497J2ZB,sale
+SO-01056,2026-12-27,Sales,Sales,13411.47,Cr,Pooja Iyer 1056,18,Uttar Pradesh,Maharashtra,,sale
+SO-01057,2026-12-23,Sales,Sales,18527.18,Cr,Nikhil Nair 1057,18,Uttar Pradesh,Maharashtra,,sale
+SO-01058,2026-05-05,Sales,Sales,5282.23,Cr,Neha Chowdhury 1058,5,West Bengal,Maharashtra,,sale
+SO-01059,2026-06-16,Sales,Sales,1628.89,Cr,Karan Gupta 1059,5,Kerala,Maharashtra,,sale
+SO-01060,2026-10-01,Sales,Sales,23624.24,Cr,Nikhil Chowdhury 1060,18,Uttar Pradesh,Maharashtra,,refund
+SO-01061,2026-06-15,Sales,Sales,15654.31,Cr,Global Exports 1061,18,Karnataka,Maharashtra,29RFCWE0698Z7ZP,sale
+SO-01062,2026-09-23,Sales,Sales,10317.41,Cr,Ira Gupta 1062,12,Tamil Nadu,Maharashtra,,sale
+SO-01063,2026-05-20,Sales,Sales,17692.96,Cr,Diya Verma 1063,5,Tamil Nadu,Maharashtra,,sale
+SO-01064,2026-04-04,Sales,Sales,18831.26,Cr,Riya Rao 1064,12,Punjab,Maharashtra,,sale
+SO-01065,2026-06-27,Sales,Sales,8013.77,Cr,Nova Exports 1065,18,Madhya Pradesh,Maharashtra,23OYCDI8188P7ZG,sale
+SO-01066,2026-11-17,Sales,Sales,12758.81,Cr,Crescent Distributors 1066,5,West Bengal,Maharashtra,19DUZCN8255I4ZC,sale
+SO-01067,2026-10-07,Sales,Sales,15802.72,Cr,Everest Agencies 1067,18,Gujarat,Maharashtra,24IFLLE4617Z6ZO,sale
+SO-01068,2026-10-31,Sales,Sales,20301.65,Cr,Everest Wholesale 1068,18,Kerala,Maharashtra,32CGPMW0167F1ZA,sale
+SO-01069,2026-07-06,Sales,Sales,3326.61,Cr,Anjali Kulkarni 1069,18,West Bengal,Maharashtra,,sale
+SO-01070,2026-05-27,Sales,Sales,10449.26,Cr,Riya Patel 1070,5,Telangana,Maharashtra,,sale
+SO-01071,2026-08-20,Sales,Sales,12303.45,Cr,Anjali Desai 1071,5,Telangana,Maharashtra,,sale
+SO-01072,2026-11-14,Sales,Sales,21251.58,Cr,Rohan Verma 1072,18,Maharashtra,Maharashtra,,sale
+SO-01073,2026-12-08,Sales,Sales,2464.99,Cr,Vihaan Reddy 1073,12,Punjab,Maharashtra,,refund
+SO-01074,2026-09-13,Sales,Sales,16844.34,Cr,Karan Das 1074,18,Punjab,Maharashtra,,refund
+SO-01075,2026-06-02,Sales,Sales,17220.6,Cr,Crescent Traders 1075,12,Kerala,Maharashtra,32BTUHS4182F9Z6,sale
+SO-01076,2026-05-26,Sales,Sales,18632.24,Cr,Meera Verma 1076,12,Delhi,Maharashtra,,sale
+SO-01077,2026-05-04,Sales,Sales,20393.38,Cr,Riya Das 1077,12,Maharashtra,Maharashtra,,sale
+SO-01078,2026-05-26,Sales,Sales,16016.19,Cr,Vertex Marketing 1078,12,Tamil Nadu,Maharashtra,33MESFM6029P6ZL,refund
+SO-01079,2026-05-05,Sales,Sales,15925.88,Cr,Pari Bose 1079,18,Madhya Pradesh,Maharashtra,,sale
+SO-01080,2026-09-05,Sales,Sales,5532.77,Cr,Ira Kulkarni 1080,18,Uttar Pradesh,Maharashtra,,refund
+SO-01081,2026-05-06,Sales,Sales,23627.89,Cr,Ishaan Pillai 1081,18,Karnataka,Maharashtra,,sale
+SO-01082,2026-08-26,Sales,Sales,24284.41,Cr,Rohan Rao 1082,18,Madhya Pradesh,Maharashtra,,sale
+SO-01083,2026-09-04,Sales,Sales,7685.4,Cr,Ira Singh 1083,12,Karnataka,Maharashtra,,sale
+SO-01084,2026-04-12,Sales,Sales,3535.48,Cr,Star Trading Co 1084,5,Uttar Pradesh,Maharashtra,09XWYUD9733I7Z4,sale
+SO-01085,2026-12-03,Sales,Sales,2434.44,Cr,Shakti Trading Co 1085,18,Gujarat,Maharashtra,24DTBCI1539C9ZO,sale
+SO-01086,2026-05-18,Sales,Sales,17488.48,Cr,Royal Retail 1086,18,Telangana,Maharashtra,36SJRXI5587O8Z6,sale
+SO-01087,2026-05-31,Sales,Sales,11997.01,Cr,Ishaan Kumar 1087,18,Delhi,Maharashtra,,sale
+SO-01088,2026-10-05,Sales,Sales,11754.86,Cr,Amit Pillai 1088,18,Punjab,Maharashtra,,refund
+SO-01089,2026-11-12,Sales,Sales,22957.75,Cr,Star Marketing 1089,18,Delhi,Maharashtra,07QDGQT1599A9ZW,sale
+SO-01090,2026-04-08,Sales,Sales,15103.59,Cr,Aarav Joshi 1090,5,West Bengal,Maharashtra,,sale
+SO-01091,2026-05-05,Sales,Sales,8099.11,Cr,Neha Nair 1091,18,Karnataka,Maharashtra,,sale
+SO-01092,2026-10-28,Sales,Sales,3969.44,Cr,Aadhya Joshi 1092,18,Delhi,Maharashtra,,sale
+SO-01093,2026-05-27,Sales,Sales,12773.14,Cr,Neha Sharma 1093,18,Delhi,Maharashtra,,sale
+SO-01094,2026-04-13,Sales,Sales,14685.67,Cr,Priya Menon 1094,12,Uttar Pradesh,Maharashtra,,sale
+SO-01095,2026-05-09,Sales,Sales,951.01,Cr,Nikhil Kulkarni 1095,5,Delhi,Maharashtra,,sale
+SO-01096,2026-08-28,Sales,Sales,24969.22,Cr,Sneha Iyer 1096,5,Gujarat,Maharashtra,,sale
+SO-01097,2026-09-13,Sales,Sales,15608.73,Cr,Ananya Reddy 1097,18,Uttar Pradesh,Maharashtra,,sale
+SO-01098,2026-05-08,Sales,Sales,5262.46,Cr,Ananya Singh 1098,5,Rajasthan,Maharashtra,,refund
+SO-01099,2026-07-09,Sales,Sales,14307.78,Cr,Ananya Kulkarni 1099,5,Madhya Pradesh,Maharashtra,,sale
+SO-01100,2026-07-19,Sales,Sales,23203.93,Cr,Riya Sharma 1100,12,West Bengal,Maharashtra,,sale
+SO-01101,2026-10-27,Sales,Sales,18659.57,Cr,Reyansh Mehta 1101,18,Gujarat,Maharashtra,,refund
+SO-01102,2026-12-14,Sales,Sales,23064.75,Cr,Aarav Shah 1102,18,Kerala,Maharashtra,,sale
+SO-01103,2026-11-22,Sales,Sales,13973.45,Cr,Reyansh Nair 1103,18,Punjab,Maharashtra,,sale
+SO-01104,2026-07-21,Sales,Sales,20363.53,Cr,Metro Agencies 1104,18,Tamil Nadu,Maharashtra,33HFDLL0615V8ZW,sale
+SO-01105,2026-09-24,Sales,Sales,986.22,Cr,Myra Singh 1105,18,West Bengal,Maharashtra,,sale
+SO-01106,2026-07-20,Sales,Sales,5172.6,Cr,Karan Kumar 1106,5,Tamil Nadu,Maharashtra,,sale
+SO-01107,2026-08-04,Sales,Sales,18870.35,Cr,Rohan Menon 1107,12,Gujarat,Maharashtra,,sale
+SO-01108,2026-09-04,Sales,Sales,16994.86,Cr,Global Solutions 1108,18,Madhya Pradesh,Maharashtra,23LYAUG0634F1ZY,sale
+SO-01109,2026-08-17,Sales,Sales,21435.58,Cr,Krishna Reddy 1109,5,Punjab,Maharashtra,,sale
+SO-01110,2026-05-06,Sales,Sales,13259.31,Cr,Vivaan Singh 1110,18,Gujarat,Maharashtra,,sale
+SO-01111,2026-05-17,Sales,Sales,11229.5,Cr,Deepak Rao 1111,18,Maharashtra,Maharashtra,,sale
+SO-01112,2026-08-12,Sales,Sales,6106.95,Cr,Priya Bose 1112,12,Gujarat,Maharashtra,,refund
+SO-01113,2026-12-10,Sales,Sales,1867.15,Cr,Bharat Traders 1113,12,Gujarat,Maharashtra,24POCRM3309I7ZM,sale
+SO-01114,2026-10-24,Sales,Sales,4920.27,Cr,Pari Pillai 1114,12,Rajasthan,Maharashtra,,sale
+SO-01115,2026-08-01,Sales,Sales,14806.31,Cr,Saanvi Desai 1115,18,Rajasthan,Maharashtra,,sale
+SO-01116,2026-08-11,Sales,Sales,23350.55,Cr,Pari Chowdhury 1116,18,Uttar Pradesh,Maharashtra,,sale
+SO-01117,2026-08-07,Sales,Sales,24587.3,Cr,Meera Nair 1117,18,Rajasthan,Maharashtra,,sale
+SO-01118,2026-04-02,Sales,Sales,10117.91,Cr,Deepak Chowdhury 1118,12,Gujarat,Maharashtra,,sale
+SO-01119,2026-11-17,Sales,Sales,24383.47,Cr,Sneha Joshi 1119,12,Gujarat,Maharashtra,,sale
+SO-01120,2026-10-22,Sales,Sales,4883.12,Cr,Pari Patel 1120,18,Punjab,Maharashtra,,sale
+SO-01121,2026-09-30,Sales,Sales,3764.41,Cr,Aarav Shah 1121,18,Rajasthan,Maharashtra,,sale
+SO-01122,2026-10-05,Sales,Sales,7543.29,Cr,Vihaan Patel 1122,18,Telangana,Maharashtra,,sale
+SO-01123,2026-07-05,Sales,Sales,11021.48,Cr,Aditya Pillai 1123,12,Telangana,Maharashtra,,sale
+SO-01124,2026-07-28,Sales,Sales,21754.27,Cr,Meera Menon 1124,5,Kerala,Maharashtra,,sale
+SO-01125,2026-06-06,Sales,Sales,18153.75,Cr,Neha Verma 1125,18,Kerala,Maharashtra,,sale
+SO-01126,2026-08-26,Sales,Sales,19933.42,Cr,Krishna Rao 1126,12,Kerala,Maharashtra,,sale
+SO-01127,2026-08-20,Sales,Sales,16569.56,Cr,Star Solutions 1127,5,West Bengal,Maharashtra,19BQBUS4037N6ZJ,sale
+SO-01128,2026-06-19,Sales,Sales,8918.59,Cr,Riya Bose 1128,18,Madhya Pradesh,Maharashtra,,sale
+SO-01129,2026-06-17,Sales,Sales,14924.12,Cr,Myra Menon 1129,18,Uttar Pradesh,Maharashtra,,sale
+SO-01130,2026-12-05,Sales,Sales,5745.43,Cr,Pioneer Industries 1130,18,Uttar Pradesh,Maharashtra,09HBCMG0570Z2Z8,sale
+SO-01131,2026-11-15,Sales,Sales,7365.06,Cr,Meera Mehta 1131,18,Tamil Nadu,Maharashtra,,sale
+SO-01132,2026-10-01,Sales,Sales,23826.73,Cr,Neha Pillai 1132,18,Karnataka,Maharashtra,,sale
+SO-01133,2026-05-18,Sales,Sales,5686.41,Cr,Vihaan Singh 1133,18,West Bengal,Maharashtra,,sale
+SO-01134,2026-08-22,Sales,Sales,5353.98,Cr,Aditya Verma 1134,18,Telangana,Maharashtra,,sale
+SO-01135,2026-09-11,Sales,Sales,4441.23,Cr,Prime & Sons 1135,18,Rajasthan,Maharashtra,08PRGJQ1784O3Z0,sale
+SO-01136,2026-11-15,Sales,Sales,11312.35,Cr,Saanvi Rao 1136,18,Karnataka,Maharashtra,,sale
+SO-01137,2026-08-18,Sales,Sales,18928.54,Cr,Aditya Sharma 1137,12,Maharashtra,Maharashtra,,sale
+SO-01138,2026-08-23,Sales,Sales,10841.85,Cr,Rohan Singh 1138,12,Uttar Pradesh,Maharashtra,,sale
+SO-01139,2026-08-05,Sales,Sales,7371.41,Cr,Diya Kumar 1139,5,Maharashtra,Maharashtra,,sale
+SO-01140,2026-05-06,Sales,Sales,13760.17,Cr,Nova Wholesale 1140,12,Punjab,Maharashtra,03FPMXP7799L2ZK,sale
+SO-01141,2026-08-29,Sales,Sales,13131.74,Cr,Apex Agencies 1141,12,Rajasthan,Maharashtra,08WKBAJ7951V6ZR,sale
+SO-01142,2026-05-19,Sales,Sales,24038.06,Cr,Nikhil Rao 1142,12,Madhya Pradesh,Maharashtra,,sale
+SO-01143,2026-12-26,Sales,Sales,4210.21,Cr,Karan Singh 1143,18,Tamil Nadu,Maharashtra,,sale
+SO-01144,2026-07-18,Sales,Sales,13556.52,Cr,Myra Shah 1144,5,Punjab,Maharashtra,,refund
+SO-01145,2026-05-05,Sales,Sales,13687.97,Cr,Global Retail 1145,18,West Bengal,Maharashtra,19SCNUL7736U4Z0,sale
+SO-01146,2026-05-23,Sales,Sales,20689.44,Cr,Pari Iyer 1146,5,Telangana,Maharashtra,,sale
+SO-01147,2026-04-02,Sales,Sales,22371.13,Cr,Ishaan Menon 1147,18,West Bengal,Maharashtra,,sale
+SO-01148,2026-05-01,Sales,Sales,7371.14,Cr,Riya Desai 1148,5,Gujarat,Maharashtra,,sale
+SO-01149,2026-12-11,Sales,Sales,2810.76,Cr,Metro Enterprises 1149,18,Rajasthan,Maharashtra,08HBHFX7817E1ZE,sale
+SO-01150,2026-09-14,Sales,Sales,6471.75,Cr,Aditya Shah 1150,12,Madhya Pradesh,Maharashtra,,sale
+SO-01151,2026-08-21,Sales,Sales,22278.82,Cr,Ganga Exports 1151,12,Tamil Nadu,Maharashtra,33BKNKF9602F7Z0,sale
+SO-01152,2026-04-17,Sales,Sales,1503.79,Cr,Kavya Verma 1152,18,Rajasthan,Maharashtra,,sale
+SO-01153,2026-10-15,Sales,Sales,20096.72,Cr,Sunrise Wholesale 1153,12,Gujarat,Maharashtra,24XKFLC7611C7ZZ,sale
+SO-01154,2026-11-25,Sales,Sales,12856.77,Cr,Prime & Sons 1154,18,Maharashtra,Maharashtra,27ASDLB9251N2ZU,sale
+SO-01155,2026-10-06,Sales,Sales,2954.19,Cr,Nikhil Kumar 1155,5,Rajasthan,Maharashtra,,sale
+SO-01156,2026-10-11,Sales,Sales,13876.3,Cr,Vertex Agencies 1156,18,Madhya Pradesh,Maharashtra,23KBSJN6706V5ZG,refund
+SO-01157,2026-11-23,Sales,Sales,24978.84,Cr,Rahul Desai 1157,18,Uttar Pradesh,Maharashtra,,sale
+SO-01158,2026-09-11,Sales,Sales,20993.96,Cr,Aarav Reddy 1158,18,Uttar Pradesh,Maharashtra,,sale
+SO-01159,2026-07-25,Sales,Sales,3943.27,Cr,Ganga Wholesale 1159,12,Uttar Pradesh,Maharashtra,09JEHLP5095N9ZA,refund
+SO-01160,2026-09-13,Sales,Sales,23790.04,Cr,Diya Nair 1160,18,West Bengal,Maharashtra,,sale
+SO-01161,2026-10-14,Sales,Sales,21385.5,Cr,Kavya Sharma 1161,5,Karnataka,Maharashtra,,sale
+SO-01162,2026-04-15,Sales,Sales,4681.0,Cr,Bharat Exports 1162,18,Uttar Pradesh,Maharashtra,09HMMOK4446D2Z6,sale
+SO-01163,2026-05-05,Sales,Sales,24072.29,Cr,Pari Mehta 1163,12,Uttar Pradesh,Maharashtra,,sale
+SO-01164,2026-05-27,Sales,Sales,18963.66,Cr,Zenith Marketing 1164,18,Gujarat,Maharashtra,24XNUJH8037D4ZL,sale
+SO-01165,2026-07-24,Sales,Sales,4218.09,Cr,Vivaan Pillai 1165,12,West Bengal,Maharashtra,,sale
+SO-01166,2026-10-11,Sales,Sales,5159.93,Cr,Rohan Bose 1166,12,Uttar Pradesh,Maharashtra,,sale
+SO-01167,2026-12-08,Sales,Sales,22874.25,Cr,Sunrise Exports 1167,18,Rajasthan,Maharashtra,08XQHUC9019O7Z2,sale
+SO-01168,2026-12-19,Sales,Sales,7052.21,Cr,Bharat Agencies 1168,12,Punjab,Maharashtra,03YYWXP4519I6Z1,sale
+SO-01169,2026-07-07,Sales,Sales,15815.33,Cr,Nikhil Kumar 1169,18,Delhi,Maharashtra,,sale
+SO-01170,2026-08-16,Sales,Sales,5609.08,Cr,Kavya Desai 1170,18,West Bengal,Maharashtra,,sale
+SO-01171,2026-10-19,Sales,Sales,14231.91,Cr,Vihaan Menon 1171,12,Tamil Nadu,Maharashtra,,sale
+SO-01172,2026-06-17,Sales,Sales,13178.68,Cr,Prime Enterprises 1172,18,Maharashtra,Maharashtra,27DWUFP4872I3ZQ,sale
+SO-01173,2026-07-15,Sales,Sales,10523.47,Cr,Ira Gupta 1173,12,Kerala,Maharashtra,,sale
+SO-01174,2026-04-24,Sales,Sales,13820.5,Cr,Nova Exports 1174,5,Gujarat,Maharashtra,24APUET7698K3Z4,sale
+SO-01175,2026-05-24,Sales,Sales,9616.97,Cr,Metro Retail 1175,18,Delhi,Maharashtra,07IURBB4793K3ZZ,sale
+SO-01176,2026-07-15,Sales,Sales,24533.34,Cr,Saanvi Iyer 1176,5,West Bengal,Maharashtra,,sale
+SO-01177,2026-08-23,Sales,Sales,22181.38,Cr,Aadhya Gupta 1177,12,Madhya Pradesh,Maharashtra,,sale
+SO-01178,2026-12-24,Sales,Sales,6524.02,Cr,Riya Iyer 1178,18,Madhya Pradesh,Maharashtra,,sale
+SO-01179,2026-07-20,Sales,Sales,13917.59,Cr,Vihaan Singh 1179,5,West Bengal,Maharashtra,,sale
+SO-01180,2026-10-21,Sales,Sales,18982.71,Cr,Saanvi Rao 1180,18,Maharashtra,Maharashtra,,sale
+SO-01181,2026-09-14,Sales,Sales,4677.16,Cr,Meera Nair 1181,18,Kerala,Maharashtra,,sale
+SO-01182,2026-11-14,Sales,Sales,12082.43,Cr,Pari Iyer 1182,12,Kerala,Maharashtra,,sale
+SO-01183,2026-07-20,Sales,Sales,17437.48,Cr,Aarav Patel 1183,18,Tamil Nadu,Maharashtra,,sale
+SO-01184,2026-10-30,Sales,Sales,1881.47,Cr,Sneha Kumar 1184,12,Kerala,Maharashtra,,sale
+SO-01185,2026-12-02,Sales,Sales,2531.88,Cr,Nova Marketing 1185,18,West Bengal,Maharashtra,19RPMGS6492H5ZB,sale
+SO-01186,2026-06-10,Sales,Sales,1367.92,Cr,Neha Mehta 1186,18,Telangana,Maharashtra,,sale
+SO-01187,2026-07-13,Sales,Sales,14652.44,Cr,Vivaan Rao 1187,18,West Bengal,Maharashtra,,sale
+SO-01188,2026-04-19,Sales,Sales,10823.86,Cr,Krishna Gupta 1188,5,Punjab,Maharashtra,,sale
+SO-01189,2026-06-30,Sales,Sales,17874.07,Cr,Pioneer Solutions 1189,12,Telangana,Maharashtra,36CEWUX7001U2Z0,sale
+SO-01190,2026-08-12,Sales,Sales,787.82,Cr,Metro Retail 1190,18,Madhya Pradesh,Maharashtra,23RAAST7135B7ZQ,sale
+SO-01191,2026-10-02,Sales,Sales,16540.41,Cr,Aditya Verma 1191,18,Maharashtra,Maharashtra,,sale
+SO-01192,2026-07-27,Sales,Sales,18147.88,Cr,Riya Kulkarni 1192,18,Gujarat,Maharashtra,,sale
+SO-01193,2026-09-27,Sales,Sales,2076.61,Cr,Sunrise Marketing 1193,12,Madhya Pradesh,Maharashtra,23LXALX9228U5ZX,sale
+SO-01194,2026-10-24,Sales,Sales,7040.99,Cr,Vivaan Desai 1194,18,Rajasthan,Maharashtra,,sale
+SO-01195,2026-08-04,Sales,Sales,3789.94,Cr,Unity & Sons 1195,18,Kerala,Maharashtra,32HPQPP3539Y5ZF,sale
+SO-01196,2026-08-28,Sales,Sales,2370.58,Cr,Prime & Sons 1196,18,Madhya Pradesh,Maharashtra,23RCUWE7479K1ZG,sale
+SO-01197,2026-12-22,Sales,Sales,15848.73,Cr,Everest Wholesale 1197,18,Madhya Pradesh,Maharashtra,23OVZSH3520H6Z8,sale
+SO-01198,2026-05-15,Sales,Sales,18408.78,Cr,Nova Distributors 1198,5,Karnataka,Maharashtra,29OJUEG9918B4ZI,sale
+SO-01199,2026-12-06,Sales,Sales,11507.13,Cr,Sunrise Retail 1199,18,Tamil Nadu,Maharashtra,33UPOYI9796D7ZY,sale
+SO-01200,2026-06-19,Sales,Sales,6881.06,Cr,Meera Rao 1200,5,West Bengal,Maharashtra,,sale
+SO-01201,2026-07-31,Sales,Sales,15357.97,Cr,Prime Exports 1201,12,Punjab,Maharashtra,03BOSXQ6528Q7ZH,sale
+SO-01202,2026-04-15,Sales,Sales,24462.64,Cr,Everest Marketing 1202,18,Madhya Pradesh,Maharashtra,23ZPJDL6506A2ZX,sale
+SO-01203,2026-04-17,Sales,Sales,489.9,Cr,Reyansh Menon 1203,12,Madhya Pradesh,Maharashtra,,sale
+SO-01204,2026-09-12,Sales,Sales,2967.01,Cr,Aditya Reddy 1204,18,Tamil Nadu,Maharashtra,,sale
+SO-01205,2026-06-12,Sales,Sales,5149.81,Cr,Neha Patel 1205,18,Rajasthan,Maharashtra,,sale
+SO-01206,2026-08-18,Sales,Sales,22944.97,Cr,Pioneer Exports 1206,18,Maharashtra,Maharashtra,27LYBFA6899K5Z6,sale
+SO-01207,2026-06-01,Sales,Sales,20248.36,Cr,Aditya Singh 1207,12,West Bengal,Maharashtra,,sale
+SO-01208,2026-04-03,Sales,Sales,20867.43,Cr,Ira Desai 1208,12,Maharashtra,Maharashtra,,sale
+SO-01209,2026-12-02,Sales,Sales,5915.46,Cr,Krishna Patel 1209,12,Tamil Nadu,Maharashtra,,sale
+SO-01210,2026-11-27,Sales,Sales,789.72,Cr,Prime Solutions 1210,18,Maharashtra,Maharashtra,27WSOEO0490C2ZS,sale
+SO-01211,2026-05-16,Sales,Sales,14736.2,Cr,Pioneer Solutions 1211,18,Madhya Pradesh,Maharashtra,23CZZYM5983I2ZO,sale
+SO-01212,2026-06-11,Sales,Sales,3254.27,Cr,Star Retail 1212,18,Maharashtra,Maharashtra,27SMZPT7008Z9ZM,sale
+SO-01213,2026-07-11,Sales,Sales,450.53,Cr,Myra Mehta 1213,18,Maharashtra,Maharashtra,,sale
+SO-01214,2026-06-25,Sales,Sales,13891.99,Cr,Meera Kumar 1214,5,Kerala,Maharashtra,,sale
+SO-01215,2026-08-17,Sales,Sales,17232.18,Cr,Zenith Wholesale 1215,5,Delhi,Maharashtra,07IIYCK6954A5ZJ,sale
+SO-01216,2026-04-05,Sales,Sales,5701.43,Cr,Everest Industries 1216,18,Gujarat,Maharashtra,24JLUHR3786K5Z7,sale
+SO-01217,2026-06-08,Sales,Sales,9966.54,Cr,Reyansh Pillai 1217,18,Uttar Pradesh,Maharashtra,,sale
+SO-01218,2026-11-12,Sales,Sales,20619.34,Cr,Myra Verma 1218,18,Rajasthan,Maharashtra,,sale
+SO-01219,2026-12-13,Sales,Sales,24805.75,Cr,Star Retail 1219,18,Uttar Pradesh,Maharashtra,09MFCRU1646I3Z5,sale
+SO-01220,2026-07-07,Sales,Sales,11869.9,Cr,Pooja Kulkarni 1220,12,Gujarat,Maharashtra,,sale
+SO-01221,2026-05-04,Sales,Sales,22757.44,Cr,Amit Menon 1221,18,West Bengal,Maharashtra,,sale
+SO-01222,2026-05-08,Sales,Sales,21941.36,Cr,Karan Das 1222,18,West Bengal,Maharashtra,,refund
+SO-01223,2026-06-08,Sales,Sales,1306.38,Cr,Sai Das 1223,18,Telangana,Maharashtra,,sale
+SO-01224,2026-10-21,Sales,Sales,17975.54,Cr,Nova & Sons 1224,5,Kerala,Maharashtra,32GEXQY7321W4Z7,sale
+SO-01225,2026-09-30,Sales,Sales,22280.47,Cr,Ananya Iyer 1225,12,Madhya Pradesh,Maharashtra,,sale
+SO-01226,2026-04-20,Sales,Sales,6923.07,Cr,Karan Reddy 1226,18,Rajasthan,Maharashtra,,sale
+SO-01227,2026-07-04,Sales,Sales,8944.03,Cr,Arjun Iyer 1227,12,Kerala,Maharashtra,,refund
+SO-01228,2026-07-01,Sales,Sales,10386.79,Cr,Crescent Agencies 1228,18,Tamil Nadu,Maharashtra,33IRQDF4427X4ZD,sale
+SO-01229,2026-04-24,Sales,Sales,8095.34,Cr,Star Retail 1229,18,Uttar Pradesh,Maharashtra,09XIKGQ2767J6ZY,refund
+SO-01230,2026-04-20,Sales,Sales,1418.13,Cr,Kavya Joshi 1230,18,Uttar Pradesh,Maharashtra,,sale
+SO-01231,2026-08-16,Sales,Sales,6234.08,Cr,Myra Kumar 1231,5,Punjab,Maharashtra,,sale
+SO-01232,2026-12-17,Sales,Sales,2640.56,Cr,Shakti Trading Co 1232,18,Karnataka,Maharashtra,29ANPSE5363G7Z4,sale
+SO-01233,2026-11-11,Sales,Sales,13213.37,Cr,Diya Sharma 1233,18,Rajasthan,Maharashtra,,sale
+SO-01234,2026-07-17,Sales,Sales,8064.5,Cr,Myra Singh 1234,18,Telangana,Maharashtra,,sale
+SO-01235,2026-04-29,Sales,Sales,19722.76,Cr,Sunrise Trading Co 1235,18,Uttar Pradesh,Maharashtra,09XYKVE1654V5ZO,sale
+SO-01236,2026-10-08,Sales,Sales,9905.5,Cr,Sai Singh 1236,18,Uttar Pradesh,Maharashtra,,sale
+SO-01237,2026-07-25,Sales,Sales,17911.15,Cr,Meera Kulkarni 1237,18,Kerala,Maharashtra,,sale
+SO-01238,2026-12-18,Sales,Sales,5844.37,Cr,Vihaan Nair 1238,12,Tamil Nadu,Maharashtra,,sale
+SO-01239,2026-10-03,Sales,Sales,11521.68,Cr,Neha Das 1239,18,Rajasthan,Maharashtra,,sale
+SO-01240,2026-04-21,Sales,Sales,18775.85,Cr,Krishna Kumar 1240,18,Uttar Pradesh,Maharashtra,,refund
+SO-01241,2026-09-03,Sales,Sales,17732.13,Cr,Riya Patel 1241,18,Punjab,Maharashtra,,sale
+SO-01242,2026-05-21,Sales,Sales,18947.95,Cr,Amit Mehta 1242,12,Rajasthan,Maharashtra,,sale
+SO-01243,2026-10-22,Sales,Sales,18050.25,Cr,Star Trading Co 1243,18,Punjab,Maharashtra,03XJOMW8360V4ZS,sale
+SO-01244,2026-06-27,Sales,Sales,4165.44,Cr,Ananya Singh 1244,12,Telangana,Maharashtra,,sale
+SO-01245,2026-06-30,Sales,Sales,17369.39,Cr,Vivaan Joshi 1245,18,Punjab,Maharashtra,,sale
+SO-01246,2026-10-02,Sales,Sales,3985.02,Cr,Royal Industries 1246,5,Uttar Pradesh,Maharashtra,09SANVA7408W7ZU,sale
+SO-01247,2026-05-01,Sales,Sales,13324.27,Cr,Nikhil Pillai 1247,5,Uttar Pradesh,Maharashtra,,sale
+SO-01248,2026-06-08,Sales,Sales,17816.45,Cr,Riya Reddy 1248,18,West Bengal,Maharashtra,,refund
+SO-01249,2026-11-09,Sales,Sales,2901.43,Cr,Myra Chowdhury 1249,12,Punjab,Maharashtra,,sale
+SO-01250,2026-11-07,Sales,Sales,10169.45,Cr,Zenith Retail 1250,18,Karnataka,Maharashtra,29APUXV7521N5ZM,sale
+SO-01251,2026-04-19,Sales,Sales,17947.4,Cr,Sai Patel 1251,18,Gujarat,Maharashtra,,sale
+SO-01252,2026-12-17,Sales,Sales,15823.14,Cr,Karan Bose 1252,18,Delhi,Maharashtra,,sale
+SO-01253,2026-08-11,Sales,Sales,19673.89,Cr,Karan Menon 1253,18,Tamil Nadu,Maharashtra,,sale
+SO-01254,2026-04-06,Sales,Sales,10110.7,Cr,Prime & Sons 1254,18,Uttar Pradesh,Maharashtra,09NHDOL9934G1Z0,sale
+SO-01255,2026-12-09,Sales,Sales,5749.23,Cr,Priya Kumar 1255,12,Kerala,Maharashtra,,sale
+SO-01256,2026-04-29,Sales,Sales,19389.2,Cr,Deepak Iyer 1256,18,Tamil Nadu,Maharashtra,,sale
+SO-01257,2026-12-02,Sales,Sales,3566.25,Cr,Anjali Patel 1257,18,Kerala,Maharashtra,,sale
+SO-01258,2026-06-23,Sales,Sales,11282.03,Cr,Sneha Iyer 1258,18,Telangana,Maharashtra,,sale
+SO-01259,2026-08-03,Sales,Sales,7944.85,Cr,Crescent Wholesale 1259,12,Maharashtra,Maharashtra,27CVHHH1494V7ZK,refund
+SO-01260,2026-04-26,Sales,Sales,23719.77,Cr,Royal Traders 1260,5,Gujarat,Maharashtra,24YAAXV3068C3ZN,sale
+SO-01261,2026-10-29,Sales,Sales,752.72,Cr,Myra Nair 1261,18,Uttar Pradesh,Maharashtra,,sale
+SO-01262,2026-04-19,Sales,Sales,17224.82,Cr,Pari Iyer 1262,5,Madhya Pradesh,Maharashtra,,sale
+SO-01263,2026-07-02,Sales,Sales,7732.66,Cr,Priya Rao 1263,18,Rajasthan,Maharashtra,,sale
+SO-01264,2026-10-13,Sales,Sales,5509.11,Cr,Neha Verma 1264,12,Gujarat,Maharashtra,,sale
+SO-01265,2026-05-11,Sales,Sales,701.94,Cr,Karan Sharma 1265,18,West Bengal,Maharashtra,,refund
+SO-01266,2026-08-09,Sales,Sales,876.14,Cr,Ananya Das 1266,12,Telangana,Maharashtra,,sale
+SO-01267,2026-11-22,Sales,Sales,14242.97,Cr,Deepak Das 1267,12,Karnataka,Maharashtra,,sale
+SO-01268,2026-10-09,Sales,Sales,12109.0,Cr,Unity Distributors 1268,18,Maharashtra,Maharashtra,27WQORB9793H6Z7,sale
+SO-01269,2026-10-15,Sales,Sales,12903.93,Cr,Ananya Verma 1269,18,Madhya Pradesh,Maharashtra,,sale
+SO-01270,2026-11-21,Sales,Sales,20053.32,Cr,Prime Solutions 1270,18,Maharashtra,Maharashtra,27OLTYO2955H3ZC,sale
+SO-01271,2026-06-18,Sales,Sales,14072.51,Cr,Rahul Verma 1271,18,Uttar Pradesh,Maharashtra,,sale
+SO-01272,2026-06-04,Sales,Sales,10264.98,Cr,Rahul Desai 1272,5,Gujarat,Maharashtra,,sale
+SO-01273,2026-11-30,Sales,Sales,21172.0,Cr,Metro & Sons 1273,5,Tamil Nadu,Maharashtra,33OJFRN3369Q5ZL,sale
+SO-01274,2026-11-28,Sales,Sales,20442.47,Cr,Vertex Enterprises 1274,18,Rajasthan,Maharashtra,08PBQGH6972K1ZX,sale
+SO-01275,2026-11-17,Sales,Sales,18846.8,Cr,Rahul Patel 1275,18,Kerala,Maharashtra,,sale
+SO-01276,2026-11-13,Sales,Sales,3977.84,Cr,Shakti Traders 1276,18,Tamil Nadu,Maharashtra,33EUYOE5661D6ZJ,sale
+SO-01277,2026-05-03,Sales,Sales,11627.68,Cr,Deepak Verma 1277,5,Gujarat,Maharashtra,,sale
+SO-01278,2026-08-25,Sales,Sales,8446.4,Cr,Global Wholesale 1278,18,Punjab,Maharashtra,03PRHFD7679N7Z6,refund
+SO-01279,2026-09-03,Sales,Sales,22084.47,Cr,Rohan Reddy 1279,12,Gujarat,Maharashtra,,sale
+SO-01280,2026-07-09,Sales,Sales,20161.38,Cr,Sneha Kumar 1280,18,Kerala,Maharashtra,,sale
+SO-01281,2026-10-26,Sales,Sales,19746.41,Cr,Prime Marketing 1281,12,Uttar Pradesh,Maharashtra,09QVIAO1500L4ZW,sale
+SO-01282,2026-09-23,Sales,Sales,20628.02,Cr,Kavya Patel 1282,18,Tamil Nadu,Maharashtra,,sale
+SO-01283,2026-09-13,Sales,Sales,20100.28,Cr,Anjali Verma 1283,5,West Bengal,Maharashtra,,sale
+SO-01284,2026-05-24,Sales,Sales,9309.37,Cr,Aarav Chowdhury 1284,18,Delhi,Maharashtra,,sale
+SO-01285,2026-09-28,Sales,Sales,18530.15,Cr,Prime Wholesale 1285,5,Punjab,Maharashtra,03VPZSA5869B3Z3,sale
+SO-01286,2026-11-28,Sales,Sales,2689.82,Cr,Riya Verma 1286,18,Delhi,Maharashtra,,sale
+SO-01287,2026-11-19,Sales,Sales,16587.95,Cr,Kavya Mehta 1287,18,Telangana,Maharashtra,,sale
+SO-01288,2026-10-25,Sales,Sales,1305.39,Cr,Shakti Agencies 1288,5,West Bengal,Maharashtra,19PCFID7228C2ZO,sale
+SO-01289,2026-07-02,Sales,Sales,17294.76,Cr,Sai Shah 1289,5,Telangana,Maharashtra,,sale
+SO-01290,2026-08-16,Sales,Sales,13198.2,Cr,Unity Solutions 1290,12,Tamil Nadu,Maharashtra,33RZCYF8307W2Z5,sale
+SO-01291,2026-07-18,Sales,Sales,23396.93,Cr,Kavya Shah 1291,18,Gujarat,Maharashtra,,sale
+SO-01292,2026-07-09,Sales,Sales,18807.55,Cr,Nova Retail 1292,18,Gujarat,Maharashtra,24AUDNP9247T3ZH,sale
+SO-01293,2026-12-12,Sales,Sales,1434.37,Cr,Karan Rao 1293,18,Maharashtra,Maharashtra,,sale
+SO-01294,2026-07-10,Sales,Sales,19182.28,Cr,Riya Reddy 1294,18,Tamil Nadu,Maharashtra,,sale
+SO-01295,2026-10-15,Sales,Sales,12357.2,Cr,Diya Patel 1295,12,West Bengal,Maharashtra,,sale
+SO-01296,2026-10-27,Sales,Sales,19861.51,Cr,Sneha Mehta 1296,12,Rajasthan,Maharashtra,,sale
+SO-01297,2026-04-04,Sales,Sales,273.24,Cr,Vihaan Mehta 1297,12,Tamil Nadu,Maharashtra,,sale
+SO-01298,2026-11-24,Sales,Sales,1738.24,Cr,Diya Mehta 1298,12,Gujarat,Maharashtra,,sale
+SO-01299,2026-05-11,Sales,Sales,2351.24,Cr,Sneha Reddy 1299,12,Maharashtra,Maharashtra,,sale
+SO-01300,2026-05-14,Sales,Sales,4158.76,Cr,Meera Pillai 1300,18,Tamil Nadu,Maharashtra,,sale
+SO-01301,2026-05-21,Sales,Sales,9532.89,Cr,Rohan Chowdhury 1301,18,Kerala,Maharashtra,,sale
+SO-01302,2026-09-14,Sales,Sales,10555.22,Cr,Pari Desai 1302,18,Telangana,Maharashtra,,sale
+SO-01303,2026-09-29,Sales,Sales,23586.66,Cr,Sai Reddy 1303,12,Kerala,Maharashtra,,sale
+SO-01304,2026-05-25,Sales,Sales,22259.85,Cr,Krishna Menon 1304,18,Gujarat,Maharashtra,,sale
+SO-01305,2026-05-09,Sales,Sales,4576.37,Cr,Shakti Traders 1305,5,Rajasthan,Maharashtra,08ESOLV9527M1ZZ,sale
+SO-01306,2026-07-24,Sales,Sales,20532.37,Cr,Riya Chowdhury 1306,12,Punjab,Maharashtra,,sale
+SO-01307,2026-09-04,Sales,Sales,15163.61,Cr,Royal & Sons 1307,18,West Bengal,Maharashtra,19RAWMU8299L1ZY,sale
+SO-01308,2026-07-31,Sales,Sales,7182.68,Cr,Sai Desai 1308,12,Tamil Nadu,Maharashtra,,sale
+SO-01309,2026-04-04,Sales,Sales,8406.99,Cr,Diya Das 1309,18,Tamil Nadu,Maharashtra,,sale
+SO-01310,2026-09-09,Sales,Sales,9659.02,Cr,Kavya Mehta 1310,18,Punjab,Maharashtra,,sale
+SO-01311,2026-06-11,Sales,Sales,4939.11,Cr,Global Marketing 1311,18,Kerala,Maharashtra,32KFBRH6949V6Z2,sale
+SO-01312,2026-11-29,Sales,Sales,14362.83,Cr,Prime Trading Co 1312,18,Kerala,Maharashtra,32SNUHR4366Z7ZP,sale
+SO-01313,2026-10-25,Sales,Sales,16857.33,Cr,Pooja Bose 1313,5,Rajasthan,Maharashtra,,sale
+SO-01314,2026-05-19,Sales,Sales,10786.65,Cr,Star & Sons 1314,5,Kerala,Maharashtra,32OUGAA4068R3ZW,sale
+SO-01315,2026-05-13,Sales,Sales,15346.92,Cr,Zenith Agencies 1315,18,Uttar Pradesh,Maharashtra,09ZQWHX4539J7ZI,sale
+SO-01316,2026-12-04,Sales,Sales,8301.37,Cr,Sunrise Retail 1316,5,Telangana,Maharashtra,36JFZKU9092M1ZR,sale
+SO-01317,2026-08-22,Sales,Sales,12802.28,Cr,Ishaan Pillai 1317,18,Gujarat,Maharashtra,,sale
+SO-01318,2026-08-19,Sales,Sales,15845.49,Cr,Anjali Kulkarni 1318,18,Telangana,Maharashtra,,sale
+SO-01319,2026-07-22,Sales,Sales,5329.18,Cr,Shakti Trading Co 1319,18,Maharashtra,Maharashtra,27CDYWA1868A3Z7,sale
+SO-01320,2026-05-13,Sales,Sales,15647.17,Cr,Sneha Menon 1320,18,Madhya Pradesh,Maharashtra,,sale
+SO-01321,2026-11-08,Sales,Sales,14408.23,Cr,Nikhil Gupta 1321,12,Uttar Pradesh,Maharashtra,,sale
+SO-01322,2026-05-13,Sales,Sales,21703.84,Cr,Neha Menon 1322,5,West Bengal,Maharashtra,,sale
+SO-01323,2026-11-24,Sales,Sales,16738.93,Cr,Unity Distributors 1323,12,Kerala,Maharashtra,32ZBLYO5758P4ZJ,sale
+SO-01324,2026-07-26,Sales,Sales,19845.78,Cr,Pooja Bose 1324,18,Madhya Pradesh,Maharashtra,,sale
+SO-01325,2026-08-29,Sales,Sales,12658.32,Cr,Pari Iyer 1325,18,Delhi,Maharashtra,,sale
+SO-01326,2026-10-28,Sales,Sales,15598.48,Cr,Rohan Joshi 1326,12,Delhi,Maharashtra,,sale
+SO-01327,2026-05-23,Sales,Sales,12077.73,Cr,Aadhya Iyer 1327,12,Telangana,Maharashtra,,sale
+SO-01328,2026-04-15,Sales,Sales,23811.43,Cr,Aarav Desai 1328,5,Punjab,Maharashtra,,sale
+SO-01329,2026-08-24,Sales,Sales,18439.58,Cr,Star Exports 1329,18,Rajasthan,Maharashtra,08BLWPD8423C7ZK,sale
+SO-01330,2026-06-08,Sales,Sales,19169.75,Cr,Ganga Trading Co 1330,18,Gujarat,Maharashtra,24BHDJW4738N4ZN,sale
+SO-01331,2026-05-17,Sales,Sales,14468.57,Cr,Metro & Sons 1331,18,Kerala,Maharashtra,32APSLV0206A7Z2,sale
+SO-01332,2026-08-13,Sales,Sales,6626.97,Cr,Vihaan Chowdhury 1332,18,Gujarat,Maharashtra,,sale
+SO-01333,2026-07-18,Sales,Sales,22132.49,Cr,Nova Agencies 1333,18,Rajasthan,Maharashtra,08UKTQY3838F4ZC,sale
+SO-01334,2026-04-26,Sales,Sales,7337.97,Cr,Arjun Gupta 1334,18,Karnataka,Maharashtra,,refund
+SO-01335,2026-04-10,Sales,Sales,23372.72,Cr,Pooja Patel 1335,12,West Bengal,Maharashtra,,sale
+SO-01336,2026-05-16,Sales,Sales,910.35,Cr,Everest Enterprises 1336,18,Gujarat,Maharashtra,24TRFER5210I1ZJ,sale
+SO-01337,2026-04-25,Sales,Sales,15352.63,Cr,Vertex Agencies 1337,18,Karnataka,Maharashtra,29GGMSY7781N6ZJ,sale
+SO-01338,2026-04-11,Sales,Sales,15335.4,Cr,Bharat Distributors 1338,5,Punjab,Maharashtra,03JFDTZ1387Y9ZT,sale
+SO-01339,2026-07-04,Sales,Sales,19825.6,Cr,Reyansh Kumar 1339,18,Tamil Nadu,Maharashtra,,sale
+SO-01340,2026-10-11,Sales,Sales,17615.17,Cr,Bharat Agencies 1340,18,Punjab,Maharashtra,03BFJXA9420U1Z0,sale
+SO-01341,2026-07-23,Sales,Sales,12002.03,Cr,Aadhya Kumar 1341,18,Punjab,Maharashtra,,sale
+SO-01342,2026-06-16,Sales,Sales,22973.89,Cr,Sai Gupta 1342,18,Maharashtra,Maharashtra,,sale
+SO-01343,2026-09-13,Sales,Sales,13264.92,Cr,Riya Nair 1343,18,Delhi,Maharashtra,,sale
+SO-01344,2026-07-01,Sales,Sales,13511.94,Cr,Ishaan Das 1344,5,Delhi,Maharashtra,,sale
+SO-01345,2026-11-08,Sales,Sales,6545.39,Cr,Prime Solutions 1345,12,Gujarat,Maharashtra,24FLSIE1143O4ZW,sale
+SO-01346,2026-10-05,Sales,Sales,11226.94,Cr,Priya Patel 1346,5,Madhya Pradesh,Maharashtra,,sale
+SO-01347,2026-05-07,Sales,Sales,6858.74,Cr,Ganga Traders 1347,18,Maharashtra,Maharashtra,27QOSHB0402X7ZR,sale
+SO-01348,2026-09-07,Sales,Sales,22652.54,Cr,Vihaan Shah 1348,18,Tamil Nadu,Maharashtra,,sale
+SO-01349,2026-05-02,Sales,Sales,21506.91,Cr,Aditya Singh 1349,18,Telangana,Maharashtra,,sale
+SO-01350,2026-10-23,Sales,Sales,16268.49,Cr,Priya Verma 1350,5,Rajasthan,Maharashtra,,sale
+SO-01351,2026-06-11,Sales,Sales,3672.41,Cr,Meera Bose 1351,18,Delhi,Maharashtra,,sale
+SO-01352,2026-04-29,Sales,Sales,8555.16,Cr,Reyansh Sharma 1352,18,Maharashtra,Maharashtra,,sale
+SO-01353,2026-09-20,Sales,Sales,23270.2,Cr,Arjun Reddy 1353,18,Gujarat,Maharashtra,,sale
+SO-01354,2026-05-30,Sales,Sales,19998.03,Cr,Star Distributors 1354,12,West Bengal,Maharashtra,19QSXIZ9940Y6ZE,sale
+SO-01355,2026-05-09,Sales,Sales,24862.6,Cr,Vihaan Nair 1355,12,Gujarat,Maharashtra,,sale
+SO-01356,2026-11-14,Sales,Sales,11077.08,Cr,Rohan Sharma 1356,5,Kerala,Maharashtra,,sale
+SO-01357,2026-04-18,Sales,Sales,14245.95,Cr,Ananya Verma 1357,18,Telangana,Maharashtra,,sale
+SO-01358,2026-06-01,Sales,Sales,5451.26,Cr,Aarav Chowdhury 1358,18,Delhi,Maharashtra,,sale
+SO-01359,2026-12-11,Sales,Sales,15992.92,Cr,Prime Wholesale 1359,18,Rajasthan,Maharashtra,08UCYAK4313Q9Z9,sale
+SO-01360,2026-10-08,Sales,Sales,12195.83,Cr,Royal Agencies 1360,18,Telangana,Maharashtra,36PWGFX7237C5Z2,sale
+SO-01361,2026-09-08,Sales,Sales,21950.67,Cr,Vertex Exports 1361,12,Karnataka,Maharashtra,29FTFXN9007K9ZT,sale
+SO-01362,2026-06-28,Sales,Sales,10882.25,Cr,Metro Enterprises 1362,12,Tamil Nadu,Maharashtra,33TCTDQ4039T6ZV,sale
+SO-01363,2026-09-25,Sales,Sales,8820.97,Cr,Zenith Traders 1363,12,Telangana,Maharashtra,36ZUYHE5860C1Z3,sale
+SO-01364,2026-10-27,Sales,Sales,5671.1,Cr,Rohan Bose 1364,18,Rajasthan,Maharashtra,,refund
+SO-01365,2026-06-05,Sales,Sales,22950.06,Cr,Sai Das 1365,12,Maharashtra,Maharashtra,,sale
+SO-01366,2026-12-12,Sales,Sales,5122.0,Cr,Aarav Nair 1366,18,Uttar Pradesh,Maharashtra,,refund
+SO-01367,2026-06-02,Sales,Sales,23640.63,Cr,Anjali Rao 1367,18,Telangana,Maharashtra,,sale
+SO-01368,2026-04-01,Sales,Sales,14841.17,Cr,Global Wholesale 1368,5,Maharashtra,Maharashtra,27YDNFF3712Q8ZM,sale
+SO-01369,2026-07-02,Sales,Sales,5940.29,Cr,Vertex Industries 1369,12,Uttar Pradesh,Maharashtra,09AHDGK4107N2ZJ,sale
+SO-01370,2026-06-04,Sales,Sales,8399.99,Cr,Star Solutions 1370,18,Delhi,Maharashtra,07ZRKPN8820X3ZR,sale
+SO-01371,2026-05-12,Sales,Sales,8972.26,Cr,Apex Solutions 1371,12,Karnataka,Maharashtra,29RVSTX9281O7Z2,sale
+SO-01372,2026-08-01,Sales,Sales,6977.01,Cr,Nikhil Verma 1372,18,Tamil Nadu,Maharashtra,,sale
+SO-01373,2026-06-16,Sales,Sales,12590.8,Cr,Global Exports 1373,18,Rajasthan,Maharashtra,08HXEUT8354V7ZM,sale
+SO-01374,2026-09-25,Sales,Sales,9610.85,Cr,Aadhya Joshi 1374,5,Telangana,Maharashtra,,sale
+SO-01375,2026-12-10,Sales,Sales,2913.76,Cr,Diya Chowdhury 1375,18,Tamil Nadu,Maharashtra,,sale
+SO-01376,2026-06-19,Sales,Sales,16380.97,Cr,Pari Singh 1376,5,Karnataka,Maharashtra,,sale
+SO-01377,2026-11-26,Sales,Sales,6205.08,Cr,Karan Bose 1377,18,Rajasthan,Maharashtra,,sale
+SO-01378,2026-08-02,Sales,Sales,23627.46,Cr,Royal & Sons 1378,18,Madhya Pradesh,Maharashtra,23XPFXI1519E3ZH,refund
+SO-01379,2026-11-14,Sales,Sales,3945.35,Cr,Sunrise Enterprises 1379,12,Delhi,Maharashtra,07NMXDN4583R8ZC,sale
+SO-01380,2026-12-04,Sales,Sales,9586.27,Cr,Orbit & Sons 1380,5,West Bengal,Maharashtra,19QMDKM9366F9ZD,sale
+SO-01381,2026-07-07,Sales,Sales,6096.08,Cr,Nova Marketing 1381,18,Rajasthan,Maharashtra,08BBTWM1935P2ZP,sale
+SO-01382,2026-05-14,Sales,Sales,12460.79,Cr,Apex Wholesale 1382,12,Maharashtra,Maharashtra,27ERYPK9572C7ZY,sale
+SO-01383,2026-10-10,Sales,Sales,2012.54,Cr,Vertex Exports 1383,5,Kerala,Maharashtra,32METNW9344D3ZK,sale
+SO-01384,2026-08-16,Sales,Sales,24045.39,Cr,Neha Pillai 1384,18,Telangana,Maharashtra,,sale
+SO-01385,2026-09-29,Sales,Sales,24619.08,Cr,Neha Nair 1385,18,Maharashtra,Maharashtra,,refund
+SO-01386,2026-11-09,Sales,Sales,708.13,Cr,Saanvi Pillai 1386,18,Telangana,Maharashtra,,sale
+SO-01387,2026-10-27,Sales,Sales,12003.91,Cr,Arjun Desai 1387,5,Tamil Nadu,Maharashtra,,sale
+SO-01388,2026-09-22,Sales,Sales,4900.29,Cr,Pari Sharma 1388,12,Punjab,Maharashtra,,sale
+SO-01389,2026-04-14,Sales,Sales,22612.01,Cr,Meera Sharma 1389,12,Karnataka,Maharashtra,,sale
+SO-01390,2026-07-07,Sales,Sales,3511.94,Cr,Ananya Verma 1390,18,Delhi,Maharashtra,,refund
+SO-01391,2026-08-10,Sales,Sales,8224.43,Cr,Aditya Patel 1391,12,Gujarat,Maharashtra,,sale
+SO-01392,2026-09-04,Sales,Sales,12852.43,Cr,Myra Joshi 1392,12,Punjab,Maharashtra,,sale
+SO-01393,2026-12-22,Sales,Sales,12365.55,Cr,Pioneer Wholesale 1393,18,Maharashtra,Maharashtra,27FMEZT6989L3ZQ,sale
+SO-01394,2026-10-15,Sales,Sales,2006.66,Cr,Saanvi Gupta 1394,18,Kerala,Maharashtra,,sale
+SO-01395,2026-10-10,Sales,Sales,14406.52,Cr,Ganga Solutions 1395,5,Telangana,Maharashtra,36MPKGW7715N2ZT,sale
+SO-01396,2026-10-25,Sales,Sales,11565.83,Cr,Ananya Patel 1396,18,Telangana,Maharashtra,,sale
+SO-01397,2026-10-03,Sales,Sales,18556.25,Cr,Saanvi Das 1397,18,Tamil Nadu,Maharashtra,,sale
+SO-01398,2026-07-01,Sales,Sales,1564.09,Cr,Aditya Shah 1398,5,Tamil Nadu,Maharashtra,,sale
+SO-01399,2026-08-22,Sales,Sales,11418.12,Cr,Anjali Kulkarni 1399,12,Delhi,Maharashtra,,sale
+SO-01400,2026-07-17,Sales,Sales,7617.8,Cr,Sneha Chowdhury 1400,18,West Bengal,Maharashtra,,sale
+SO-01401,2026-07-25,Sales,Sales,9676.34,Cr,Sai Gupta 1401,18,Uttar Pradesh,Maharashtra,,sale
+SO-01402,2026-04-05,Sales,Sales,9800.93,Cr,Reyansh Menon 1402,5,Kerala,Maharashtra,,sale
+SO-01403,2026-05-26,Sales,Sales,21191.52,Cr,Pari Mehta 1403,12,Madhya Pradesh,Maharashtra,,refund
+SO-01404,2026-09-27,Sales,Sales,11111.3,Cr,Ishaan Bose 1404,12,Karnataka,Maharashtra,,refund
+SO-01405,2026-08-10,Sales,Sales,1870.74,Cr,Unity Trading Co 1405,18,Rajasthan,Maharashtra,08KYUYF0121D4Z7,sale
+SO-01406,2026-11-11,Sales,Sales,13867.39,Cr,Aadhya Sharma 1406,12,West Bengal,Maharashtra,,sale
+SO-01407,2026-05-23,Sales,Sales,1200.62,Cr,Orbit Distributors 1407,18,West Bengal,Maharashtra,19QEGXN1587S8ZK,sale
+SO-01408,2026-07-02,Sales,Sales,5081.76,Cr,Zenith Retail 1408,18,Rajasthan,Maharashtra,08ZJGUB1247B8ZP,sale
+SO-01409,2026-05-16,Sales,Sales,7508.37,Cr,Sneha Desai 1409,18,Karnataka,Maharashtra,,sale
+SO-01410,2026-11-30,Sales,Sales,24583.08,Cr,Star Marketing 1410,18,West Bengal,Maharashtra,19EQICA3529S4Z9,sale
+SO-01411,2026-09-14,Sales,Sales,13541.45,Cr,Apex Solutions 1411,12,Telangana,Maharashtra,36ISRJI0377G9ZZ,sale
+SO-01412,2026-08-12,Sales,Sales,8638.66,Cr,Pioneer Traders 1412,18,Maharashtra,Maharashtra,27MRNPG1861L4Z6,sale
+SO-01413,2026-10-06,Sales,Sales,18728.99,Cr,Pari Reddy 1413,12,Maharashtra,Maharashtra,,sale
+SO-01414,2026-08-03,Sales,Sales,2771.17,Cr,Riya Rao 1414,18,Delhi,Maharashtra,,sale
+SO-01415,2026-08-01,Sales,Sales,13888.61,Cr,Priya Pillai 1415,18,Maharashtra,Maharashtra,,sale
+SO-01416,2026-07-14,Sales,Sales,19519.01,Cr,Saanvi Desai 1416,5,Telangana,Maharashtra,,sale
+SO-01417,2026-09-11,Sales,Sales,6221.84,Cr,Karan Patel 1417,18,Rajasthan,Maharashtra,,sale
+SO-01418,2026-05-07,Sales,Sales,10219.11,Cr,Ganga Wholesale 1418,12,Uttar Pradesh,Maharashtra,09KOKCM3618F6ZY,sale
+SO-01419,2026-04-14,Sales,Sales,17956.89,Cr,Aarav Reddy 1419,12,Karnataka,Maharashtra,,sale
+SO-01420,2026-11-04,Sales,Sales,10121.97,Cr,Ira Kumar 1420,18,West Bengal,Maharashtra,,sale
+SO-01421,2026-08-09,Sales,Sales,18536.41,Cr,Rahul Shah 1421,18,West Bengal,Maharashtra,,sale
+SO-01422,2026-09-09,Sales,Sales,13223.7,Cr,Arjun Shah 1422,18,Uttar Pradesh,Maharashtra,,sale
+SO-01423,2026-12-16,Sales,Sales,22759.94,Cr,Prime Retail 1423,18,Uttar Pradesh,Maharashtra,09BCFPZ3390J2ZV,sale
+SO-01424,2026-04-03,Sales,Sales,8423.74,Cr,Kavya Joshi 1424,12,West Bengal,Maharashtra,,sale
+SO-01425,2026-10-09,Sales,Sales,3301.38,Cr,Sneha Gupta 1425,18,Gujarat,Maharashtra,,sale
+SO-01426,2026-07-16,Sales,Sales,21294.49,Cr,Aditya Bose 1426,12,Uttar Pradesh,Maharashtra,,sale
+SO-01427,2026-08-14,Sales,Sales,12810.36,Cr,Royal Enterprises 1427,18,Telangana,Maharashtra,36JXGXI1670L9ZO,sale
+SO-01428,2026-10-16,Sales,Sales,4066.64,Cr,Reyansh Desai 1428,18,Punjab,Maharashtra,,sale
+SO-01429,2026-05-14,Sales,Sales,5928.93,Cr,Arjun Menon 1429,12,West Bengal,Maharashtra,,sale
+SO-01430,2026-10-24,Sales,Sales,2221.68,Cr,Everest Wholesale 1430,5,Uttar Pradesh,Maharashtra,09PDTWL6998A7Z5,sale
+SO-01431,2026-11-06,Sales,Sales,4816.39,Cr,Ishaan Sharma 1431,18,Maharashtra,Maharashtra,,sale
+SO-01432,2026-09-05,Sales,Sales,14527.29,Cr,Star Retail 1432,18,Karnataka,Maharashtra,29DENOW1496J2Z8,sale
+SO-01433,2026-06-15,Sales,Sales,7587.74,Cr,Global Exports 1433,18,Uttar Pradesh,Maharashtra,09XWMCC5098A6ZD,sale
+SO-01434,2026-04-09,Sales,Sales,2811.08,Cr,Royal Traders 1434,18,Kerala,Maharashtra,32KRLIG2173B9ZD,sale
+SO-01435,2026-05-06,Sales,Sales,23393.8,Cr,Rahul Chowdhury 1435,18,Punjab,Maharashtra,,sale
+SO-01436,2026-12-10,Sales,Sales,14398.26,Cr,Bharat Traders 1436,18,Gujarat,Maharashtra,24JRVDU8682U7ZQ,sale
+SO-01437,2026-04-11,Sales,Sales,11457.52,Cr,Sai Iyer 1437,18,Maharashtra,Maharashtra,,sale
+SO-01438,2026-05-30,Sales,Sales,24268.68,Cr,Aadhya Nair 1438,18,Rajasthan,Maharashtra,,sale
+SO-01439,2026-08-08,Sales,Sales,758.99,Cr,Diya Singh 1439,18,Madhya Pradesh,Maharashtra,,sale
+SO-01440,2026-05-21,Sales,Sales,3744.4,Cr,Zenith Agencies 1440,12,Kerala,Maharashtra,32FWXAX5299T2ZE,refund
+SO-01441,2026-11-06,Sales,Sales,16794.09,Cr,Rahul Nair 1441,18,Madhya Pradesh,Maharashtra,,sale
+SO-01442,2026-06-16,Sales,Sales,4907.97,Cr,Nikhil Bose 1442,18,Uttar Pradesh,Maharashtra,,sale
+SO-01443,2026-11-07,Sales,Sales,11530.52,Cr,Ishaan Verma 1443,18,Kerala,Maharashtra,,sale
+SO-01444,2026-10-07,Sales,Sales,23545.09,Cr,Pioneer Trading Co 1444,18,Tamil Nadu,Maharashtra,33TFOPD6993X2ZZ,refund
+SO-01445,2026-12-12,Sales,Sales,630.77,Cr,Krishna Joshi 1445,18,Madhya Pradesh,Maharashtra,,sale
+SO-01446,2026-06-27,Sales,Sales,14006.4,Cr,Riya Kulkarni 1446,12,Maharashtra,Maharashtra,,sale
+SO-01447,2026-11-17,Sales,Sales,21496.35,Cr,Saanvi Pillai 1447,12,Kerala,Maharashtra,,sale
+SO-01448,2026-07-05,Sales,Sales,5507.93,Cr,Aadhya Nair 1448,18,Uttar Pradesh,Maharashtra,,sale
+SO-01449,2026-04-04,Sales,Sales,2664.29,Cr,Orbit Enterprises 1449,5,Telangana,Maharashtra,36TFQDB4717V9ZO,sale
+SO-01450,2026-10-02,Sales,Sales,24066.87,Cr,Reyansh Desai 1450,18,Uttar Pradesh,Maharashtra,,sale
+SO-01451,2026-05-12,Sales,Sales,6463.69,Cr,Riya Kulkarni 1451,18,Madhya Pradesh,Maharashtra,,sale
+SO-01452,2026-06-04,Sales,Sales,18444.38,Cr,Metro Exports 1452,18,Telangana,Maharashtra,36QYGHM7284Z8ZQ,sale
+SO-01453,2026-08-05,Sales,Sales,17517.66,Cr,Metro Agencies 1453,18,West Bengal,Maharashtra,19ECDON4592V7ZT,sale
+SO-01454,2026-05-16,Sales,Sales,21615.87,Cr,Meera Shah 1454,18,West Bengal,Maharashtra,,sale
+SO-01455,2026-12-22,Sales,Sales,11630.94,Cr,Metro Retail 1455,18,West Bengal,Maharashtra,19AHPSD9751D2ZJ,sale
+SO-01456,2026-11-16,Sales,Sales,6679.25,Cr,Nova Solutions 1456,18,Delhi,Maharashtra,07LFCOO0683X5Z5,sale
+SO-01457,2026-06-08,Sales,Sales,20364.95,Cr,Kavya Bose 1457,18,Kerala,Maharashtra,,sale
+SO-01458,2026-08-31,Sales,Sales,7132.33,Cr,Orbit Agencies 1458,12,Kerala,Maharashtra,32HPKQL0975G5Z2,sale
+SO-01459,2026-10-12,Sales,Sales,21768.44,Cr,Sunrise Industries 1459,18,Gujarat,Maharashtra,24TOMON1180R3ZK,sale
+SO-01460,2026-09-13,Sales,Sales,24289.4,Cr,Apex Enterprises 1460,18,West Bengal,Maharashtra,19WFTMY3622C6ZH,sale
+SO-01461,2026-06-12,Sales,Sales,9060.22,Cr,Anjali Rao 1461,12,Uttar Pradesh,Maharashtra,,sale
+SO-01462,2026-10-07,Sales,Sales,7166.52,Cr,Neha Singh 1462,18,Karnataka,Maharashtra,,sale
+SO-01463,2026-10-10,Sales,Sales,23871.09,Cr,Saanvi Joshi 1463,18,Kerala,Maharashtra,,sale
+SO-01464,2026-07-19,Sales,Sales,7088.71,Cr,Ira Menon 1464,18,Tamil Nadu,Maharashtra,,sale
+SO-01465,2026-06-20,Sales,Sales,14716.99,Cr,Meera Patel 1465,18,Gujarat,Maharashtra,,sale
+SO-01466,2026-04-14,Sales,Sales,11225.56,Cr,Metro Exports 1466,18,Karnataka,Maharashtra,29YGVSR6502H9ZR,sale
+SO-01467,2026-04-01,Sales,Sales,2437.7,Cr,Ganga Exports 1467,18,Rajasthan,Maharashtra,08NGOZL2426Z8ZS,sale
+SO-01468,2026-05-13,Sales,Sales,16271.62,Cr,Crescent Marketing 1468,12,Gujarat,Maharashtra,24DQQXJ4259M7ZY,sale
+SO-01469,2026-08-06,Sales,Sales,14553.28,Cr,Arjun Gupta 1469,18,Maharashtra,Maharashtra,,sale
+SO-01470,2026-11-13,Sales,Sales,18851.62,Cr,Neha Sharma 1470,18,Punjab,Maharashtra,,sale
+SO-01471,2026-04-28,Sales,Sales,22377.72,Cr,Nikhil Mehta 1471,18,Rajasthan,Maharashtra,,sale
+SO-01472,2026-08-16,Sales,Sales,12354.84,Cr,Star Wholesale 1472,12,Tamil Nadu,Maharashtra,33DBZEN2172U6ZZ,sale
+SO-01473,2026-04-16,Sales,Sales,2444.25,Cr,Aarav Rao 1473,12,Karnataka,Maharashtra,,sale
+SO-01474,2026-06-27,Sales,Sales,12577.15,Cr,Global Retail 1474,18,Karnataka,Maharashtra,29POMYQ1028N4ZG,sale
+SO-01475,2026-07-07,Sales,Sales,11143.04,Cr,Shakti Retail 1475,12,Tamil Nadu,Maharashtra,33NANWW7588A8ZB,refund
+SO-01476,2026-08-03,Sales,Sales,6407.06,Cr,Crescent Agencies 1476,18,Delhi,Maharashtra,07ZBEYX8910E7ZQ,sale
+SO-01477,2026-09-07,Sales,Sales,8302.01,Cr,Amit Verma 1477,5,Delhi,Maharashtra,,sale
+SO-01478,2026-08-22,Sales,Sales,15888.21,Cr,Apex Marketing 1478,18,Kerala,Maharashtra,32AHOWV1277I4ZD,sale
+SO-01479,2026-11-25,Sales,Sales,4372.56,Cr,Myra Kulkarni 1479,12,Telangana,Maharashtra,,sale
+SO-01480,2026-05-04,Sales,Sales,7571.91,Cr,Prime Industries 1480,18,Madhya Pradesh,Maharashtra,23JYVEE8242X6ZQ,sale
+SO-01481,2026-12-27,Sales,Sales,14202.42,Cr,Kavya Reddy 1481,18,Tamil Nadu,Maharashtra,,refund
+SO-01482,2026-04-07,Sales,Sales,22544.7,Cr,Pioneer Wholesale 1482,12,Tamil Nadu,Maharashtra,33JQZOK3677S2ZN,sale
+SO-01483,2026-04-19,Sales,Sales,3461.25,Cr,Prime Solutions 1483,5,Delhi,Maharashtra,07FSKVP2501Q9ZG,sale
+SO-01484,2026-12-19,Sales,Sales,997.14,Cr,Sunrise Industries 1484,12,Punjab,Maharashtra,03XUBJL1428W8Z9,sale
+SO-01485,2026-04-26,Sales,Sales,17300.64,Cr,Ananya Bose 1485,18,Punjab,Maharashtra,,sale
+SO-01486,2026-09-19,Sales,Sales,3499.14,Cr,Myra Desai 1486,12,Tamil Nadu,Maharashtra,,sale
+SO-01487,2026-11-28,Sales,Sales,10569.64,Cr,Saanvi Singh 1487,18,Rajasthan,Maharashtra,,sale
+SO-01488,2026-05-24,Sales,Sales,18940.93,Cr,Diya Desai 1488,18,West Bengal,Maharashtra,,sale
+SO-01489,2026-05-27,Sales,Sales,24560.78,Cr,Ira Singh 1489,12,Madhya Pradesh,Maharashtra,,sale
+SO-01490,2026-06-22,Sales,Sales,3738.17,Cr,Sai Menon 1490,18,Uttar Pradesh,Maharashtra,,sale
+SO-01491,2026-10-31,Sales,Sales,12315.6,Cr,Metro Distributors 1491,18,Maharashtra,Maharashtra,27CJQWG9224Q1Z8,sale
+SO-01492,2026-10-22,Sales,Sales,21655.29,Cr,Arjun Iyer 1492,18,Kerala,Maharashtra,,sale
+SO-01493,2026-11-08,Sales,Sales,17838.22,Cr,Prime Marketing 1493,18,Karnataka,Maharashtra,29UEMKX3718R5ZZ,sale
+SO-01494,2026-11-29,Sales,Sales,21132.97,Cr,Nova Retail 1494,12,Tamil Nadu,Maharashtra,33ISETB0470U5ZN,sale
+SO-01495,2026-09-24,Sales,Sales,13475.11,Cr,Neha Reddy 1495,12,Karnataka,Maharashtra,,sale
+SO-01496,2026-05-16,Sales,Sales,13846.37,Cr,Diya Gupta 1496,18,Karnataka,Maharashtra,,sale
+SO-01497,2026-08-08,Sales,Sales,22317.27,Cr,Vihaan Shah 1497,18,Karnataka,Maharashtra,,sale
+SO-01498,2026-09-12,Sales,Sales,10627.44,Cr,Vivaan Nair 1498,5,Uttar Pradesh,Maharashtra,,sale
+SO-01499,2026-07-25,Sales,Sales,7246.91,Cr,Aditya Rao 1499,18,West Bengal,Maharashtra,,refund
+SO-01500,2026-09-06,Sales,Sales,6783.46,Cr,Metro & Sons 1500,18,Gujarat,Maharashtra,24ZCPZD8188W2Z2,sale
+SO-01501,2026-09-24,Sales,Sales,7943.93,Cr,Pari Joshi 1501,18,Maharashtra,Maharashtra,,sale
+SO-01502,2026-07-19,Sales,Sales,2475.0,Cr,Meera Das 1502,18,Rajasthan,Maharashtra,,sale
+SO-01503,2026-10-10,Sales,Sales,11413.06,Cr,Aditya Verma 1503,18,Kerala,Maharashtra,,sale
+SO-01504,2026-07-29,Sales,Sales,19831.69,Cr,Amit Mehta 1504,12,Telangana,Maharashtra,,sale
+SO-01505,2026-06-30,Sales,Sales,12790.65,Cr,Pooja Reddy 1505,12,West Bengal,Maharashtra,,sale
+SO-01506,2026-10-07,Sales,Sales,8015.36,Cr,Meera Sharma 1506,12,Punjab,Maharashtra,,sale
+SO-01507,2026-11-27,Sales,Sales,362.57,Cr,Krishna Joshi 1507,5,West Bengal,Maharashtra,,sale
+SO-01508,2026-12-14,Sales,Sales,17713.7,Cr,Ira Verma 1508,12,Punjab,Maharashtra,,sale
+SO-01509,2026-05-28,Sales,Sales,10606.06,Cr,Rahul Rao 1509,18,Kerala,Maharashtra,,sale
+SO-01510,2026-10-20,Sales,Sales,15062.0,Cr,Kavya Das 1510,5,Kerala,Maharashtra,,sale
+SO-01511,2026-04-06,Sales,Sales,19726.83,Cr,Saanvi Nair 1511,18,Delhi,Maharashtra,,refund
+SO-01512,2026-12-05,Sales,Sales,3909.5,Cr,Myra Gupta 1512,18,Karnataka,Maharashtra,,sale
+SO-01513,2026-06-02,Sales,Sales,3342.36,Cr,Vivaan Singh 1513,12,Punjab,Maharashtra,,sale
+SO-01514,2026-06-14,Sales,Sales,15389.16,Cr,Neha Shah 1514,18,Gujarat,Maharashtra,,sale
+SO-01515,2026-08-01,Sales,Sales,20390.58,Cr,Bharat Distributors 1515,18,Kerala,Maharashtra,32NPMVY0848S6ZF,sale
+SO-01516,2026-11-24,Sales,Sales,14105.91,Cr,Metro Enterprises 1516,18,Maharashtra,Maharashtra,27QLXXE7162O2ZG,sale
+SO-01517,2026-07-23,Sales,Sales,452.99,Cr,Arjun Mehta 1517,5,Tamil Nadu,Maharashtra,,sale
+SO-01518,2026-08-09,Sales,Sales,8105.54,Cr,Anjali Reddy 1518,12,Gujarat,Maharashtra,,sale
+SO-01519,2026-11-08,Sales,Sales,8975.24,Cr,Prime Industries 1519,18,Punjab,Maharashtra,03YHUFX7636C5ZR,refund
+SO-01520,2026-12-27,Sales,Sales,21528.22,Cr,Ananya Chowdhury 1520,18,Karnataka,Maharashtra,,sale
+SO-01521,2026-08-17,Sales,Sales,20680.29,Cr,Amit Nair 1521,18,Delhi,Maharashtra,,sale
+SO-01522,2026-04-14,Sales,Sales,3416.85,Cr,Pioneer Agencies 1522,12,Rajasthan,Maharashtra,08MZYTS1511N8ZN,sale
+SO-01523,2026-07-19,Sales,Sales,18843.85,Cr,Priya Rao 1523,18,Uttar Pradesh,Maharashtra,,sale
+SO-01524,2026-06-24,Sales,Sales,9523.78,Cr,Metro Marketing 1524,12,Karnataka,Maharashtra,29SMXDN2137R1Z5,sale
+SO-01525,2026-06-12,Sales,Sales,3807.94,Cr,Riya Joshi 1525,5,Gujarat,Maharashtra,,sale
+SO-01526,2026-12-27,Sales,Sales,6698.03,Cr,Aditya Sharma 1526,5,West Bengal,Maharashtra,,sale
+SO-01527,2026-09-22,Sales,Sales,11673.14,Cr,Pooja Bose 1527,5,Rajasthan,Maharashtra,,sale
+SO-01528,2026-06-11,Sales,Sales,1308.88,Cr,Neha Mehta 1528,18,Tamil Nadu,Maharashtra,,sale
+SO-01529,2026-08-22,Sales,Sales,1514.81,Cr,Sai Sharma 1529,18,Madhya Pradesh,Maharashtra,,sale
+SO-01530,2026-08-03,Sales,Sales,2655.61,Cr,Aditya Kulkarni 1530,18,Tamil Nadu,Maharashtra,,sale
+SO-01531,2026-12-12,Sales,Sales,2239.18,Cr,Pioneer Agencies 1531,5,Punjab,Maharashtra,03GHPGH7957V3Z1,sale
+SO-01532,2026-06-28,Sales,Sales,24464.68,Cr,Ananya Kulkarni 1532,5,Madhya Pradesh,Maharashtra,,sale
+SO-01533,2026-12-11,Sales,Sales,9579.33,Cr,Priya Singh 1533,18,Delhi,Maharashtra,,sale
+SO-01534,2026-11-26,Sales,Sales,22922.25,Cr,Amit Bose 1534,5,Karnataka,Maharashtra,,sale
+SO-01535,2026-09-18,Sales,Sales,1874.25,Cr,Ananya Verma 1535,18,Delhi,Maharashtra,,sale
+SO-01536,2026-06-28,Sales,Sales,5336.2,Cr,Rahul Rao 1536,18,Uttar Pradesh,Maharashtra,,sale
+SO-01537,2026-07-10,Sales,Sales,24900.12,Cr,Nikhil Kumar 1537,12,Rajasthan,Maharashtra,,sale
+SO-01538,2026-09-26,Sales,Sales,1898.3,Cr,Reyansh Verma 1538,12,Uttar Pradesh,Maharashtra,,sale
+SO-01539,2026-12-25,Sales,Sales,12183.32,Cr,Apex Distributors 1539,18,Uttar Pradesh,Maharashtra,09BBBWA5423G9ZY,sale
+SO-01540,2026-08-01,Sales,Sales,7632.65,Cr,Ishaan Patel 1540,18,Delhi,Maharashtra,,sale
+SO-01541,2026-12-08,Sales,Sales,16280.76,Cr,Neha Singh 1541,18,Delhi,Maharashtra,,sale
+SO-01542,2026-06-16,Sales,Sales,16416.56,Cr,Arjun Shah 1542,12,Rajasthan,Maharashtra,,refund
+SO-01543,2026-05-18,Sales,Sales,15487.55,Cr,Pari Chowdhury 1543,18,Maharashtra,Maharashtra,,sale
+SO-01544,2026-09-27,Sales,Sales,4072.74,Cr,Apex Marketing 1544,18,Maharashtra,Maharashtra,27CFGXZ6729Y8ZS,sale
+SO-01545,2026-06-04,Sales,Sales,19176.68,Cr,Ganga Marketing 1545,12,Uttar Pradesh,Maharashtra,09RMWBR5855K4ZK,sale
+SO-01546,2026-11-09,Sales,Sales,9975.61,Cr,Meera Kulkarni 1546,18,Maharashtra,Maharashtra,,sale
+SO-01547,2026-12-06,Sales,Sales,7834.8,Cr,Nova Solutions 1547,18,Rajasthan,Maharashtra,08NXCKZ7986I5ZT,sale
+SO-01548,2026-09-09,Sales,Sales,2270.08,Cr,Prime Agencies 1548,18,Gujarat,Maharashtra,24FUBTG6174A1ZF,sale
+SO-01549,2026-09-11,Sales,Sales,5862.5,Cr,Vivaan Joshi 1549,5,Kerala,Maharashtra,,sale
+SO-01550,2026-12-01,Sales,Sales,7317.47,Cr,Sai Singh 1550,18,Kerala,Maharashtra,,sale
+SO-01551,2026-04-12,Sales,Sales,9267.58,Cr,Pari Pillai 1551,18,Telangana,Maharashtra,,sale
+SO-01552,2026-05-18,Sales,Sales,19258.42,Cr,Nova Marketing 1552,12,Gujarat,Maharashtra,24PQYDN9390L5ZE,sale
+SO-01553,2026-05-15,Sales,Sales,17813.33,Cr,Ishaan Gupta 1553,12,Tamil Nadu,Maharashtra,,sale
+SO-01554,2026-08-04,Sales,Sales,12666.98,Cr,Ananya Singh 1554,18,Tamil Nadu,Maharashtra,,sale
+SO-01555,2026-05-18,Sales,Sales,23024.8,Cr,Pooja Singh 1555,18,Uttar Pradesh,Maharashtra,,sale
+SO-01556,2026-12-07,Sales,Sales,9922.67,Cr,Myra Verma 1556,5,Maharashtra,Maharashtra,,sale
+SO-01557,2026-06-28,Sales,Sales,19152.65,Cr,Myra Kumar 1557,12,Maharashtra,Maharashtra,,sale
+SO-01558,2026-11-15,Sales,Sales,13659.97,Cr,Vihaan Sharma 1558,18,Delhi,Maharashtra,,sale
+SO-01559,2026-10-14,Sales,Sales,3344.76,Cr,Neha Menon 1559,18,West Bengal,Maharashtra,,sale
+SO-01560,2026-11-13,Sales,Sales,23635.24,Cr,Nikhil Reddy 1560,18,Gujarat,Maharashtra,,sale
+SO-01561,2026-12-08,Sales,Sales,23874.66,Cr,Everest Agencies 1561,18,Madhya Pradesh,Maharashtra,23NYHNR0215C3ZF,sale
+SO-01562,2026-11-16,Sales,Sales,13057.48,Cr,Pooja Das 1562,12,Punjab,Maharashtra,,sale
+SO-01563,2026-10-06,Sales,Sales,18904.93,Cr,Priya Sharma 1563,18,Madhya Pradesh,Maharashtra,,sale
+SO-01564,2026-11-14,Sales,Sales,6355.87,Cr,Aarav Verma 1564,18,West Bengal,Maharashtra,,sale
+SO-01565,2026-09-10,Sales,Sales,10242.45,Cr,Karan Pillai 1565,5,Rajasthan,Maharashtra,,refund
+SO-01566,2026-10-27,Sales,Sales,1883.41,Cr,Vertex Marketing 1566,12,Punjab,Maharashtra,03SXHQP2688U8ZR,sale
+SO-01567,2026-06-27,Sales,Sales,7269.03,Cr,Star & Sons 1567,18,Maharashtra,Maharashtra,27NABUV1791L8ZJ,sale
+SO-01568,2026-12-27,Sales,Sales,19278.22,Cr,Aarav Shah 1568,5,Gujarat,Maharashtra,,sale
+SO-01569,2026-11-20,Sales,Sales,22119.57,Cr,Vertex & Sons 1569,12,Gujarat,Maharashtra,24ZYDHV5161T1ZH,sale
+SO-01570,2026-05-08,Sales,Sales,3639.86,Cr,Pioneer Solutions 1570,18,Telangana,Maharashtra,36QJVNP2307H6ZK,sale
+SO-01571,2026-08-24,Sales,Sales,20825.74,Cr,Myra Chowdhury 1571,18,Kerala,Maharashtra,,sale
+SO-01572,2026-08-02,Sales,Sales,11534.26,Cr,Shakti Traders 1572,18,Tamil Nadu,Maharashtra,33IINAG2627Q1ZH,sale
+SO-01573,2026-12-06,Sales,Sales,22312.56,Cr,Krishna Gupta 1573,18,Tamil Nadu,Maharashtra,,sale
+SO-01574,2026-04-27,Sales,Sales,3586.74,Cr,Shakti Solutions 1574,18,Madhya Pradesh,Maharashtra,23FAAAU7080I7Z2,sale
+SO-01575,2026-05-24,Sales,Sales,16627.34,Cr,Krishna Patel 1575,18,Karnataka,Maharashtra,,sale
+SO-01576,2026-07-29,Sales,Sales,15614.83,Cr,Unity Retail 1576,12,Uttar Pradesh,Maharashtra,09WOFSX3843X7Z2,sale
+SO-01577,2026-07-12,Sales,Sales,8590.75,Cr,Zenith Traders 1577,5,West Bengal,Maharashtra,19ZJTSG0909G6ZL,sale
+SO-01578,2026-06-05,Sales,Sales,18476.11,Cr,Kavya Shah 1578,5,Maharashtra,Maharashtra,,sale
+SO-01579,2026-04-17,Sales,Sales,20929.39,Cr,Karan Rao 1579,18,West Bengal,Maharashtra,,sale
+SO-01580,2026-12-10,Sales,Sales,13673.2,Cr,Zenith Wholesale 1580,5,Rajasthan,Maharashtra,08JNMMJ2339G2ZR,sale
+SO-01581,2026-08-29,Sales,Sales,12014.29,Cr,Aditya Gupta 1581,5,Uttar Pradesh,Maharashtra,,sale
+SO-01582,2026-04-05,Sales,Sales,16717.51,Cr,Anjali Rao 1582,18,Kerala,Maharashtra,,sale
+SO-01583,2026-11-11,Sales,Sales,23289.45,Cr,Bharat & Sons 1583,12,Madhya Pradesh,Maharashtra,23GUWKX0366X2ZM,sale
+SO-01584,2026-04-25,Sales,Sales,1512.49,Cr,Neha Iyer 1584,18,Madhya Pradesh,Maharashtra,,sale
+SO-01585,2026-12-06,Sales,Sales,13829.24,Cr,Priya Kulkarni 1585,18,Karnataka,Maharashtra,,sale
+SO-01586,2026-05-22,Sales,Sales,16215.99,Cr,Aditya Kumar 1586,18,Karnataka,Maharashtra,,sale
+SO-01587,2026-07-09,Sales,Sales,21948.77,Cr,Vivaan Sharma 1587,18,Maharashtra,Maharashtra,,sale
+SO-01588,2026-06-20,Sales,Sales,1569.12,Cr,Nikhil Shah 1588,18,West Bengal,Maharashtra,,sale
+SO-01589,2026-07-14,Sales,Sales,23671.12,Cr,Royal Trading Co 1589,18,Kerala,Maharashtra,32KHCCR5470N9ZI,sale
+SO-01590,2026-10-26,Sales,Sales,17829.84,Cr,Priya Joshi 1590,5,Uttar Pradesh,Maharashtra,,sale
+SO-01591,2026-06-08,Sales,Sales,3170.95,Cr,Krishna Das 1591,12,Rajasthan,Maharashtra,,sale
+SO-01592,2026-06-21,Sales,Sales,21726.22,Cr,Neha Kumar 1592,18,Delhi,Maharashtra,,refund
+SO-01593,2026-09-18,Sales,Sales,24551.84,Cr,Neha Shah 1593,18,Telangana,Maharashtra,,sale
+SO-01594,2026-05-24,Sales,Sales,6864.82,Cr,Meera Das 1594,5,West Bengal,Maharashtra,,sale
+SO-01595,2026-08-07,Sales,Sales,17867.24,Cr,Vertex Traders 1595,18,Telangana,Maharashtra,36VYROT4693V8Z7,sale
+SO-01596,2026-10-13,Sales,Sales,6359.41,Cr,Pioneer Agencies 1596,12,Punjab,Maharashtra,03KODBY5492G9ZK,sale
+SO-01597,2026-10-12,Sales,Sales,24065.02,Cr,Krishna Singh 1597,12,Maharashtra,Maharashtra,,sale
+SO-01598,2026-11-11,Sales,Sales,519.99,Cr,Neha Gupta 1598,18,Karnataka,Maharashtra,,sale
+SO-01599,2026-09-16,Sales,Sales,13068.26,Cr,Global Industries 1599,12,Punjab,Maharashtra,03JQZOD5644Q4ZJ,sale
+SO-01600,2026-09-21,Sales,Sales,20912.4,Cr,Aadhya Kulkarni 1600,18,Kerala,Maharashtra,,sale
+SO-01601,2026-12-10,Sales,Sales,13655.85,Cr,Vivaan Gupta 1601,5,Punjab,Maharashtra,,sale
+SO-01602,2026-10-30,Sales,Sales,17303.2,Cr,Neha Shah 1602,12,Punjab,Maharashtra,,sale
+SO-01603,2026-11-19,Sales,Sales,23750.68,Cr,Priya Singh 1603,18,Uttar Pradesh,Maharashtra,,sale
+SO-01604,2026-06-03,Sales,Sales,5219.9,Cr,Diya Kumar 1604,12,Delhi,Maharashtra,,refund
+SO-01605,2026-06-15,Sales,Sales,1950.29,Cr,Deepak Gupta 1605,18,Uttar Pradesh,Maharashtra,,sale
+SO-01606,2026-07-02,Sales,Sales,3420.65,Cr,Vihaan Reddy 1606,18,Delhi,Maharashtra,,sale
+SO-01607,2026-08-18,Sales,Sales,6015.44,Cr,Meera Iyer 1607,12,Uttar Pradesh,Maharashtra,,sale
+SO-01608,2026-09-12,Sales,Sales,8784.4,Cr,Aarav Menon 1608,18,Rajasthan,Maharashtra,,sale
+SO-01609,2026-04-27,Sales,Sales,22663.45,Cr,Unity Wholesale 1609,12,Maharashtra,Maharashtra,27EPHZD3143U5Z8,refund
+SO-01610,2026-10-01,Sales,Sales,3069.81,Cr,Ishaan Kulkarni 1610,12,Uttar Pradesh,Maharashtra,,sale
+SO-01611,2026-12-20,Sales,Sales,19922.41,Cr,Shakti Retail 1611,12,Kerala,Maharashtra,32NQHLX2535U8ZK,sale
+SO-01612,2026-12-12,Sales,Sales,958.23,Cr,Pioneer Enterprises 1612,18,Madhya Pradesh,Maharashtra,23KRFCP1476Z8Z8,sale
+SO-01613,2026-10-19,Sales,Sales,22398.87,Cr,Vertex Enterprises 1613,5,Rajasthan,Maharashtra,08TQUFA3888P1Z2,sale
+SO-01614,2026-05-05,Sales,Sales,11409.14,Cr,Priya Desai 1614,18,Delhi,Maharashtra,,sale
+SO-01615,2026-10-15,Sales,Sales,16847.4,Cr,Sunrise Solutions 1615,18,Kerala,Maharashtra,32IKUMG0273Z4ZW,sale
+SO-01616,2026-09-12,Sales,Sales,19299.07,Cr,Vihaan Kumar 1616,5,Rajasthan,Maharashtra,,sale
+SO-01617,2026-10-31,Sales,Sales,8857.14,Cr,Shakti Retail 1617,18,Karnataka,Maharashtra,29SHHPZ8492H6Z3,refund
+SO-01618,2026-07-10,Sales,Sales,8547.42,Cr,Neha Kulkarni 1618,18,Punjab,Maharashtra,,sale
+SO-01619,2026-10-03,Sales,Sales,22426.05,Cr,Riya Das 1619,12,Kerala,Maharashtra,,sale
+SO-01620,2026-04-23,Sales,Sales,22372.8,Cr,Ishaan Bose 1620,12,Maharashtra,Maharashtra,,sale
+SO-01621,2026-09-24,Sales,Sales,11715.92,Cr,Priya Desai 1621,12,Karnataka,Maharashtra,,sale
+SO-01622,2026-11-22,Sales,Sales,5778.13,Cr,Myra Das 1622,12,Rajasthan,Maharashtra,,sale
+SO-01623,2026-08-11,Sales,Sales,18088.5,Cr,Priya Kulkarni 1623,12,Gujarat,Maharashtra,,sale
+SO-01624,2026-04-22,Sales,Sales,2097.94,Cr,Reyansh Kulkarni 1624,5,Karnataka,Maharashtra,,sale
+SO-01625,2026-06-02,Sales,Sales,3161.24,Cr,Apex Marketing 1625,12,Tamil Nadu,Maharashtra,33ETEUN3997V8ZL,sale
+SO-01626,2026-06-14,Sales,Sales,7088.69,Cr,Metro Exports 1626,12,West Bengal,Maharashtra,19AGNXN9597R4ZR,sale
+SO-01627,2026-04-04,Sales,Sales,19267.19,Cr,Nova Agencies 1627,18,Punjab,Maharashtra,03NEIJE8347W1ZA,sale
+SO-01628,2026-06-27,Sales,Sales,21403.83,Cr,Sunrise Exports 1628,12,Gujarat,Maharashtra,24VQUBM1106H2ZB,sale
+SO-01629,2026-08-31,Sales,Sales,14644.83,Cr,Nikhil Desai 1629,5,Kerala,Maharashtra,,sale
+SO-01630,2026-09-11,Sales,Sales,5615.73,Cr,Aditya Joshi 1630,18,Punjab,Maharashtra,,sale
+SO-01631,2026-08-13,Sales,Sales,686.73,Cr,Ananya Nair 1631,12,Gujarat,Maharashtra,,refund
+SO-01632,2026-05-01,Sales,Sales,17608.44,Cr,Prime & Sons 1632,12,Telangana,Maharashtra,36NTPZA2539Q7Z1,sale
+SO-01633,2026-05-09,Sales,Sales,13700.23,Cr,Myra Das 1633,18,Telangana,Maharashtra,,sale
+SO-01634,2026-08-26,Sales,Sales,22331.29,Cr,Sai Bose 1634,18,Tamil Nadu,Maharashtra,,sale
+SO-01635,2026-09-16,Sales,Sales,8163.27,Cr,Ananya Desai 1635,18,Karnataka,Maharashtra,,refund
+SO-01636,2026-08-17,Sales,Sales,16990.64,Cr,Apex Traders 1636,12,Tamil Nadu,Maharashtra,33ZQSWG2974J8ZZ,sale
+SO-01637,2026-09-14,Sales,Sales,9912.52,Cr,Aditya Sharma 1637,18,Tamil Nadu,Maharashtra,,sale
+SO-01638,2026-09-17,Sales,Sales,11521.9,Cr,Sunrise & Sons 1638,12,Delhi,Maharashtra,07HAZIQ9015R2Z6,sale
+SO-01639,2026-10-03,Sales,Sales,2655.89,Cr,Bharat & Sons 1639,18,Tamil Nadu,Maharashtra,33LFJHJ5040P7ZF,sale
+SO-01640,2026-11-04,Sales,Sales,20880.32,Cr,Rahul Joshi 1640,18,West Bengal,Maharashtra,,sale
+SO-01641,2026-07-22,Sales,Sales,13484.87,Cr,Vertex Exports 1641,18,Rajasthan,Maharashtra,08TZIKK8214S5ZR,sale
+SO-01642,2026-09-12,Sales,Sales,14022.34,Cr,Diya Desai 1642,18,Uttar Pradesh,Maharashtra,,sale
+SO-01643,2026-07-22,Sales,Sales,12272.21,Cr,Nova Marketing 1643,18,Karnataka,Maharashtra,29NAFNK8045L6ZV,sale
+SO-01644,2026-06-27,Sales,Sales,8887.95,Cr,Nova Wholesale 1644,5,Delhi,Maharashtra,07GYJBZ1228E1Z0,sale
+SO-01645,2026-05-06,Sales,Sales,23621.02,Cr,Orbit Solutions 1645,12,Karnataka,Maharashtra,29WHYXJ0890Q6ZS,sale
+SO-01646,2026-10-10,Sales,Sales,4692.76,Cr,Sai Mehta 1646,12,Punjab,Maharashtra,,sale
+SO-01647,2026-06-09,Sales,Sales,7196.15,Cr,Everest Industries 1647,12,Madhya Pradesh,Maharashtra,23DBIZZ5821H4ZG,sale
+SO-01648,2026-04-15,Sales,Sales,22328.63,Cr,Pioneer Solutions 1648,12,Gujarat,Maharashtra,24ZPGLK7455J7ZJ,sale
+SO-01649,2026-08-14,Sales,Sales,13819.04,Cr,Nova Wholesale 1649,12,Maharashtra,Maharashtra,27LKGZR9152Z1ZO,sale
+SO-01650,2026-12-18,Sales,Sales,11569.3,Cr,Prime & Sons 1650,12,Uttar Pradesh,Maharashtra,09WVNHI2265F5ZT,sale
+SO-01651,2026-11-09,Sales,Sales,13466.16,Cr,Sneha Nair 1651,18,Telangana,Maharashtra,,sale
+SO-01652,2026-11-09,Sales,Sales,9453.29,Cr,Anjali Pillai 1652,18,Rajasthan,Maharashtra,,sale
+SO-01653,2026-05-27,Sales,Sales,1828.05,Cr,Karan Desai 1653,18,Rajasthan,Maharashtra,,sale
+SO-01654,2026-12-16,Sales,Sales,20866.96,Cr,Orbit & Sons 1654,12,Gujarat,Maharashtra,24ECNRC4242B2ZU,sale
+SO-01655,2026-12-08,Sales,Sales,9324.88,Cr,Diya Mehta 1655,18,Karnataka,Maharashtra,,sale
+SO-01656,2026-09-13,Sales,Sales,19857.92,Cr,Orbit Marketing 1656,18,Delhi,Maharashtra,07IRUFL2170M5ZI,sale
+SO-01657,2026-07-21,Sales,Sales,5272.73,Cr,Amit Kulkarni 1657,18,Gujarat,Maharashtra,,sale
+SO-01658,2026-06-30,Sales,Sales,13475.62,Cr,Vivaan Mehta 1658,12,Uttar Pradesh,Maharashtra,,sale
+SO-01659,2026-04-08,Sales,Sales,1930.81,Cr,Myra Desai 1659,18,Maharashtra,Maharashtra,,sale
+SO-01660,2026-04-29,Sales,Sales,13519.4,Cr,Apex Solutions 1660,18,Telangana,Maharashtra,36QIXLM7496G4ZH,sale
+SO-01661,2026-04-20,Sales,Sales,13260.82,Cr,Pari Nair 1661,18,Uttar Pradesh,Maharashtra,,sale
+SO-01662,2026-12-12,Sales,Sales,4678.24,Cr,Global Trading Co 1662,18,Karnataka,Maharashtra,29KBZIQ4492X9ZR,sale
+SO-01663,2026-10-03,Sales,Sales,18897.77,Cr,Sunrise Exports 1663,12,Kerala,Maharashtra,32DJEJB1331M7Z9,sale
+SO-01664,2026-12-19,Sales,Sales,12539.97,Cr,Amit Patel 1664,18,Gujarat,Maharashtra,,sale
+SO-01665,2026-08-15,Sales,Sales,22872.69,Cr,Meera Singh 1665,12,Karnataka,Maharashtra,,sale
+SO-01666,2026-05-10,Sales,Sales,2714.25,Cr,Star Trading Co 1666,12,Maharashtra,Maharashtra,27LBLTD2308U3Z1,sale
+SO-01667,2026-05-04,Sales,Sales,4259.98,Cr,Unity Solutions 1667,18,Karnataka,Maharashtra,29VGERR3930N7ZF,sale
+SO-01668,2026-09-08,Sales,Sales,18712.47,Cr,Reyansh Mehta 1668,12,Delhi,Maharashtra,,sale
+SO-01669,2026-08-23,Sales,Sales,3236.55,Cr,Apex & Sons 1669,18,Delhi,Maharashtra,07EKIQL2618O3ZG,sale
+SO-01670,2026-08-10,Sales,Sales,17859.7,Cr,Neha Sharma 1670,12,Rajasthan,Maharashtra,,sale
+SO-01671,2026-05-07,Sales,Sales,10077.47,Cr,Pari Menon 1671,18,Karnataka,Maharashtra,,sale
+SO-01672,2026-08-30,Sales,Sales,14249.27,Cr,Unity Agencies 1672,18,West Bengal,Maharashtra,19ZKXKX1259R2Z2,sale
+SO-01673,2026-06-16,Sales,Sales,15693.48,Cr,Unity Enterprises 1673,18,Madhya Pradesh,Maharashtra,23WJVCW0776R8ZZ,sale
+SO-01674,2026-11-24,Sales,Sales,5331.85,Cr,Global Agencies 1674,5,Gujarat,Maharashtra,24TYCSF8012X3Z2,sale
+SO-01675,2026-10-11,Sales,Sales,14772.59,Cr,Unity Distributors 1675,5,Kerala,Maharashtra,32OAKJE8074I8Z0,sale
+SO-01676,2026-05-24,Sales,Sales,3354.45,Cr,Kavya Das 1676,18,Punjab,Maharashtra,,sale
+SO-01677,2026-11-06,Sales,Sales,4727.96,Cr,Sneha Chowdhury 1677,18,Gujarat,Maharashtra,,sale
+SO-01678,2026-09-24,Sales,Sales,22696.75,Cr,Nikhil Gupta 1678,5,Kerala,Maharashtra,,sale
+SO-01679,2026-05-01,Sales,Sales,22475.4,Cr,Global Retail 1679,12,Telangana,Maharashtra,36MOIDF6359K8ZC,sale
+SO-01680,2026-04-12,Sales,Sales,6214.72,Cr,Unity Industries 1680,18,Rajasthan,Maharashtra,08ORXIU1072F3ZP,sale
+SO-01681,2026-08-22,Sales,Sales,24788.44,Cr,Orbit Enterprises 1681,18,Telangana,Maharashtra,36GMUGW3906H5ZA,sale
+SO-01682,2026-07-02,Sales,Sales,20901.34,Cr,Aarav Singh 1682,18,Telangana,Maharashtra,,sale
+SO-01683,2026-11-24,Sales,Sales,14681.16,Cr,Apex Solutions 1683,12,Gujarat,Maharashtra,24QGGQY1467P4ZC,sale
+SO-01684,2026-07-31,Sales,Sales,4657.68,Cr,Vihaan Nair 1684,12,Maharashtra,Maharashtra,,sale
+SO-01685,2026-05-03,Sales,Sales,6678.17,Cr,Priya Sharma 1685,5,Rajasthan,Maharashtra,,sale
+SO-01686,2026-08-01,Sales,Sales,23729.27,Cr,Unity Traders 1686,12,Punjab,Maharashtra,03MBBUY9200M4Z6,sale
+SO-01687,2026-09-26,Sales,Sales,9678.26,Cr,Sunrise Enterprises 1687,18,Kerala,Maharashtra,32YHUWM4426J8ZH,sale
+SO-01688,2026-08-01,Sales,Sales,8074.7,Cr,Vertex Enterprises 1688,18,Delhi,Maharashtra,07NKPIK6826F7Z0,sale
+SO-01689,2026-04-30,Sales,Sales,22910.31,Cr,Meera Shah 1689,18,Uttar Pradesh,Maharashtra,,sale
+SO-01690,2026-08-08,Sales,Sales,4026.43,Cr,Anjali Patel 1690,18,Kerala,Maharashtra,,sale
+SO-01691,2026-05-02,Sales,Sales,15221.25,Cr,Anjali Chowdhury 1691,18,Madhya Pradesh,Maharashtra,,sale
+SO-01692,2026-10-29,Sales,Sales,13870.65,Cr,Karan Menon 1692,12,Uttar Pradesh,Maharashtra,,sale
+SO-01693,2026-04-20,Sales,Sales,21865.93,Cr,Bharat Solutions 1693,5,Maharashtra,Maharashtra,27SRHYF7280J4Z8,sale
+SO-01694,2026-05-08,Sales,Sales,18228.99,Cr,Apex Trading Co 1694,5,Punjab,Maharashtra,03BENEA1136B2Z2,sale
+SO-01695,2026-12-04,Sales,Sales,18283.32,Cr,Pari Verma 1695,18,Punjab,Maharashtra,,sale
+SO-01696,2026-07-27,Sales,Sales,23042.33,Cr,Crescent Enterprises 1696,18,Maharashtra,Maharashtra,27MGTHC4602U6ZE,sale
+SO-01697,2026-11-20,Sales,Sales,2208.88,Cr,Myra Das 1697,18,Gujarat,Maharashtra,,sale
+SO-01698,2026-12-16,Sales,Sales,3771.84,Cr,Vivaan Pillai 1698,18,Uttar Pradesh,Maharashtra,,sale
+SO-01699,2026-10-29,Sales,Sales,9312.61,Cr,Rohan Pillai 1699,12,Delhi,Maharashtra,,sale
+SO-01700,2026-08-29,Sales,Sales,12807.21,Cr,Metro Distributors 1700,12,Delhi,Maharashtra,07QJUIT9829K8Z3,refund
+SO-01701,2026-06-14,Sales,Sales,10336.8,Cr,Crescent Distributors 1701,12,Gujarat,Maharashtra,24AYDUQ3087M8ZZ,sale
+SO-01702,2026-08-06,Sales,Sales,19922.69,Cr,Saanvi Singh 1702,12,Delhi,Maharashtra,,refund
+SO-01703,2026-08-10,Sales,Sales,2656.12,Cr,Meera Gupta 1703,18,Maharashtra,Maharashtra,,sale
+SO-01704,2026-11-05,Sales,Sales,16513.45,Cr,Amit Bose 1704,5,Delhi,Maharashtra,,sale
+SO-01705,2026-09-28,Sales,Sales,12297.53,Cr,Riya Verma 1705,18,Telangana,Maharashtra,,sale
+SO-01706,2026-10-04,Sales,Sales,5837.68,Cr,Shakti Marketing 1706,18,Delhi,Maharashtra,07FXEOE4559K9ZX,sale
+SO-01707,2026-10-02,Sales,Sales,18473.45,Cr,Riya Desai 1707,5,West Bengal,Maharashtra,,sale
+SO-01708,2026-07-06,Sales,Sales,18110.56,Cr,Sneha Kumar 1708,5,West Bengal,Maharashtra,,sale
+SO-01709,2026-12-01,Sales,Sales,13230.49,Cr,Ananya Pillai 1709,18,West Bengal,Maharashtra,,refund
+SO-01710,2026-10-19,Sales,Sales,13041.54,Cr,Nova & Sons 1710,18,Gujarat,Maharashtra,24ZZOZP5051X2Z5,sale
+SO-01711,2026-09-09,Sales,Sales,13108.89,Cr,Krishna Iyer 1711,12,Telangana,Maharashtra,,sale
+SO-01712,2026-07-24,Sales,Sales,7589.0,Cr,Saanvi Chowdhury 1712,18,Punjab,Maharashtra,,sale
+SO-01713,2026-11-08,Sales,Sales,12835.38,Cr,Ira Shah 1713,18,Kerala,Maharashtra,,refund
+SO-01714,2026-05-01,Sales,Sales,14087.77,Cr,Sai Verma 1714,5,Madhya Pradesh,Maharashtra,,sale
+SO-01715,2026-06-06,Sales,Sales,13467.38,Cr,Royal Trading Co 1715,18,Delhi,Maharashtra,07HMZBR0338O7ZR,sale
+SO-01716,2026-08-23,Sales,Sales,4990.18,Cr,Saanvi Chowdhury 1716,12,Telangana,Maharashtra,,refund
+SO-01717,2026-11-30,Sales,Sales,18595.68,Cr,Sunrise Industries 1717,12,West Bengal,Maharashtra,19PAKDJ9611S2ZD,sale
+SO-01718,2026-12-21,Sales,Sales,3933.23,Cr,Pooja Kulkarni 1718,5,Punjab,Maharashtra,,sale
+SO-01719,2026-09-19,Sales,Sales,8026.85,Cr,Orbit Distributors 1719,18,Maharashtra,Maharashtra,27MDEYB7319C7ZP,sale
+SO-01720,2026-05-18,Sales,Sales,23810.15,Cr,Everest Wholesale 1720,18,Madhya Pradesh,Maharashtra,23VOYYR0111A7ZE,sale
+SO-01721,2026-12-26,Sales,Sales,20063.77,Cr,Global & Sons 1721,18,Rajasthan,Maharashtra,08CZQYS3305J6ZO,sale
+SO-01722,2026-09-09,Sales,Sales,9210.75,Cr,Meera Desai 1722,18,Tamil Nadu,Maharashtra,,sale
+SO-01723,2026-09-24,Sales,Sales,1261.37,Cr,Ananya Verma 1723,18,Punjab,Maharashtra,,sale
+SO-01724,2026-04-21,Sales,Sales,20756.2,Cr,Sai Gupta 1724,12,Telangana,Maharashtra,,sale
+SO-01725,2026-11-01,Sales,Sales,23365.27,Cr,Metro Traders 1725,5,West Bengal,Maharashtra,19QBKJD0708U6ZL,sale
+SO-01726,2026-12-08,Sales,Sales,1588.55,Cr,Nova Traders 1726,5,Kerala,Maharashtra,32YWVOI2039L3Z7,sale
+SO-01727,2026-04-20,Sales,Sales,13494.68,Cr,Vivaan Bose 1727,18,Madhya Pradesh,Maharashtra,,sale
+SO-01728,2026-08-26,Sales,Sales,11692.45,Cr,Priya Joshi 1728,12,Telangana,Maharashtra,,sale
+SO-01729,2026-06-18,Sales,Sales,3946.55,Cr,Metro Marketing 1729,18,Delhi,Maharashtra,07LHDWM6292G3Z0,sale
+SO-01730,2026-12-22,Sales,Sales,15975.9,Cr,Rahul Mehta 1730,18,Punjab,Maharashtra,,sale
+SO-01731,2026-11-19,Sales,Sales,19985.7,Cr,Rahul Singh 1731,18,Karnataka,Maharashtra,,sale
+SO-01732,2026-04-26,Sales,Sales,6885.96,Cr,Reyansh Verma 1732,12,Gujarat,Maharashtra,,sale
+SO-01733,2026-11-09,Sales,Sales,6882.07,Cr,Everest Trading Co 1733,18,Gujarat,Maharashtra,24BIYAY7995A1ZQ,sale
+SO-01734,2026-08-03,Sales,Sales,11243.18,Cr,Crescent Agencies 1734,18,Uttar Pradesh,Maharashtra,09HZULH4343W3Z8,sale
+SO-01735,2026-07-15,Sales,Sales,15399.08,Cr,Diya Gupta 1735,12,Telangana,Maharashtra,,sale
+SO-01736,2026-12-08,Sales,Sales,23128.78,Cr,Crescent Traders 1736,12,Rajasthan,Maharashtra,08YVFYV6432N5ZV,refund
+SO-01737,2026-09-06,Sales,Sales,12573.08,Cr,Neha Iyer 1737,18,Uttar Pradesh,Maharashtra,,sale
+SO-01738,2026-07-18,Sales,Sales,11880.48,Cr,Aadhya Menon 1738,12,Tamil Nadu,Maharashtra,,sale
+SO-01739,2026-08-01,Sales,Sales,6883.91,Cr,Ira Menon 1739,12,West Bengal,Maharashtra,,sale
+SO-01740,2026-05-21,Sales,Sales,6201.73,Cr,Sneha Menon 1740,5,Madhya Pradesh,Maharashtra,,sale
+SO-01741,2026-12-17,Sales,Sales,11229.62,Cr,Amit Bose 1741,12,Punjab,Maharashtra,,sale
+SO-01742,2026-08-11,Sales,Sales,22073.11,Cr,Sai Chowdhury 1742,5,Karnataka,Maharashtra,,sale
+SO-01743,2026-10-07,Sales,Sales,6674.71,Cr,Saanvi Nair 1743,12,Rajasthan,Maharashtra,,sale
+SO-01744,2026-09-10,Sales,Sales,23001.0,Cr,Deepak Mehta 1744,12,Telangana,Maharashtra,,sale
+SO-01745,2026-10-29,Sales,Sales,6935.74,Cr,Neha Bose 1745,18,Madhya Pradesh,Maharashtra,,sale
+SO-01746,2026-05-28,Sales,Sales,10619.33,Cr,Nikhil Sharma 1746,5,Delhi,Maharashtra,,sale
+SO-01747,2026-12-26,Sales,Sales,10160.68,Cr,Ira Gupta 1747,18,Telangana,Maharashtra,,sale
+SO-01748,2026-12-04,Sales,Sales,16804.69,Cr,Vivaan Reddy 1748,18,Kerala,Maharashtra,,sale
+SO-01749,2026-11-27,Sales,Sales,7324.05,Cr,Ira Kumar 1749,5,West Bengal,Maharashtra,,sale
+SO-01750,2026-12-26,Sales,Sales,3540.32,Cr,Vertex & Sons 1750,5,Madhya Pradesh,Maharashtra,23KVALM0874Q7ZF,sale
+SO-01751,2026-09-14,Sales,Sales,337.26,Cr,Vihaan Menon 1751,12,Karnataka,Maharashtra,,sale
+SO-01752,2026-09-23,Sales,Sales,19528.23,Cr,Vivaan Pillai 1752,18,Tamil Nadu,Maharashtra,,sale
+SO-01753,2026-07-09,Sales,Sales,1777.52,Cr,Ananya Shah 1753,18,Gujarat,Maharashtra,,sale
+SO-01754,2026-06-08,Sales,Sales,8642.75,Cr,Bharat Trading Co 1754,18,Telangana,Maharashtra,36MSJUB1186C3ZD,sale
+SO-01755,2026-06-11,Sales,Sales,512.2,Cr,Nova Distributors 1755,18,Uttar Pradesh,Maharashtra,09PHKWH3955E9ZG,sale
+SO-01756,2026-10-19,Sales,Sales,22941.27,Cr,Royal Marketing 1756,18,West Bengal,Maharashtra,19CUJTH8990J3ZL,sale
+SO-01757,2026-09-20,Sales,Sales,3210.01,Cr,Amit Kulkarni 1757,18,Maharashtra,Maharashtra,,sale
+SO-01758,2026-08-29,Sales,Sales,18307.15,Cr,Royal Industries 1758,12,Tamil Nadu,Maharashtra,33JEWYD6682H2ZY,sale
+SO-01759,2026-12-14,Sales,Sales,24577.6,Cr,Deepak Das 1759,12,Madhya Pradesh,Maharashtra,,sale
+SO-01760,2026-04-17,Sales,Sales,21762.68,Cr,Metro Industries 1760,12,Gujarat,Maharashtra,24DXJMH4893W2Z0,sale
+SO-01761,2026-06-29,Sales,Sales,16257.29,Cr,Crescent & Sons 1761,18,Rajasthan,Maharashtra,08DXGGK4400S4ZY,sale
+SO-01762,2026-12-26,Sales,Sales,2183.94,Cr,Nova Enterprises 1762,18,West Bengal,Maharashtra,19XEOHE8069H8ZD,sale
+SO-01763,2026-08-19,Sales,Sales,2685.57,Cr,Sunrise Industries 1763,18,Delhi,Maharashtra,07UWYMD1527O4ZP,sale
+SO-01764,2026-04-20,Sales,Sales,6651.18,Cr,Apex & Sons 1764,5,West Bengal,Maharashtra,19DQPFW5063K2ZF,sale
+SO-01765,2026-09-25,Sales,Sales,24367.61,Cr,Amit Chowdhury 1765,18,Telangana,Maharashtra,,sale
+SO-01766,2026-11-09,Sales,Sales,20825.03,Cr,Amit Joshi 1766,18,Madhya Pradesh,Maharashtra,,sale
+SO-01767,2026-09-22,Sales,Sales,5100.04,Cr,Anjali Rao 1767,18,Delhi,Maharashtra,,sale
+SO-01768,2026-04-26,Sales,Sales,4639.03,Cr,Vihaan Menon 1768,18,Maharashtra,Maharashtra,,sale
+SO-01769,2026-09-21,Sales,Sales,3070.17,Cr,Prime Solutions 1769,18,Karnataka,Maharashtra,29TOAOR0711Y1Z3,sale
+SO-01770,2026-08-20,Sales,Sales,24787.29,Cr,Sneha Patel 1770,12,Madhya Pradesh,Maharashtra,,sale
+SO-01771,2026-11-29,Sales,Sales,8428.4,Cr,Neha Joshi 1771,18,Kerala,Maharashtra,,refund
+SO-01772,2026-08-31,Sales,Sales,23629.23,Cr,Pioneer Retail 1772,18,Maharashtra,Maharashtra,27FQLLR1416L8ZO,sale
+SO-01773,2026-07-21,Sales,Sales,5966.41,Cr,Everest Trading Co 1773,5,Punjab,Maharashtra,03JKRBN5668T3ZV,sale
+SO-01774,2026-05-16,Sales,Sales,12161.39,Cr,Myra Chowdhury 1774,5,Madhya Pradesh,Maharashtra,,sale
+SO-01775,2026-11-08,Sales,Sales,24672.65,Cr,Orbit Industries 1775,18,Telangana,Maharashtra,36FDWQG2343O3ZL,sale
+SO-01776,2026-09-03,Sales,Sales,11792.11,Cr,Crescent Exports 1776,18,Gujarat,Maharashtra,24NJIBE8376O5Z8,sale
+SO-01777,2026-06-02,Sales,Sales,23995.77,Cr,Royal Enterprises 1777,18,Delhi,Maharashtra,07TCMVP3362W8ZA,sale
+SO-01778,2026-07-26,Sales,Sales,5849.31,Cr,Vihaan Shah 1778,18,Rajasthan,Maharashtra,,sale
+SO-01779,2026-11-26,Sales,Sales,11141.96,Cr,Ishaan Kumar 1779,12,Rajasthan,Maharashtra,,sale
+SO-01780,2026-05-04,Sales,Sales,22761.33,Cr,Aadhya Shah 1780,5,Gujarat,Maharashtra,,sale
+SO-01781,2026-04-16,Sales,Sales,21806.71,Cr,Pari Nair 1781,18,West Bengal,Maharashtra,,sale
+SO-01782,2026-09-08,Sales,Sales,4234.95,Cr,Riya Mehta 1782,5,Kerala,Maharashtra,,sale
+SO-01783,2026-07-17,Sales,Sales,16163.77,Cr,Sai Iyer 1783,18,Maharashtra,Maharashtra,,sale
+SO-01784,2026-10-17,Sales,Sales,19750.02,Cr,Diya Nair 1784,12,Delhi,Maharashtra,,sale
+SO-01785,2026-05-17,Sales,Sales,22035.75,Cr,Global Retail 1785,18,Uttar Pradesh,Maharashtra,09WAEHH2883Q9ZC,refund
+SO-01786,2026-05-01,Sales,Sales,10304.4,Cr,Global Trading Co 1786,18,Madhya Pradesh,Maharashtra,23HNLRH8467W4ZD,sale
+SO-01787,2026-09-23,Sales,Sales,24825.51,Cr,Global Industries 1787,5,Maharashtra,Maharashtra,27GRPWI5305L1ZD,sale
+SO-01788,2026-09-27,Sales,Sales,20351.63,Cr,Sneha Mehta 1788,18,Telangana,Maharashtra,,sale
+SO-01789,2026-10-23,Sales,Sales,23552.9,Cr,Reyansh Mehta 1789,18,Madhya Pradesh,Maharashtra,,sale
+SO-01790,2026-12-14,Sales,Sales,10614.59,Cr,Rahul Shah 1790,18,Delhi,Maharashtra,,sale
+SO-01791,2026-10-31,Sales,Sales,4579.94,Cr,Anjali Das 1791,12,Delhi,Maharashtra,,sale
+SO-01792,2026-07-26,Sales,Sales,6591.94,Cr,Aarav Rao 1792,18,Delhi,Maharashtra,,sale
+SO-01793,2026-08-09,Sales,Sales,22318.93,Cr,Rohan Patel 1793,12,Uttar Pradesh,Maharashtra,,sale
+SO-01794,2026-07-20,Sales,Sales,13092.51,Cr,Deepak Singh 1794,18,Maharashtra,Maharashtra,,sale
+SO-01795,2026-12-16,Sales,Sales,6079.52,Cr,Sunrise Trading Co 1795,18,Rajasthan,Maharashtra,08TPVHK3096K3ZF,sale
+SO-01796,2026-06-27,Sales,Sales,19630.25,Cr,Deepak Chowdhury 1796,5,Uttar Pradesh,Maharashtra,,sale
+SO-01797,2026-04-17,Sales,Sales,17866.64,Cr,Kavya Nair 1797,18,Rajasthan,Maharashtra,,sale
+SO-01798,2026-08-20,Sales,Sales,18291.32,Cr,Ira Kumar 1798,12,Punjab,Maharashtra,,sale
+SO-01799,2026-08-22,Sales,Sales,21694.32,Cr,Myra Singh 1799,5,Delhi,Maharashtra,,sale
+SO-01800,2026-06-08,Sales,Sales,10576.25,Cr,Ganga Enterprises 1800,18,Uttar Pradesh,Maharashtra,09SQMJM4321B6ZO,sale
+SO-01801,2026-07-11,Sales,Sales,7285.89,Cr,Aditya Reddy 1801,18,Telangana,Maharashtra,,sale
+SO-01802,2026-12-26,Sales,Sales,21948.09,Cr,Metro Industries 1802,18,Kerala,Maharashtra,32QFBKA6889E1ZV,sale
+SO-01803,2026-12-04,Sales,Sales,17684.1,Cr,Aadhya Rao 1803,18,Tamil Nadu,Maharashtra,,sale
+SO-01804,2026-07-13,Sales,Sales,10225.63,Cr,Rohan Bose 1804,5,Kerala,Maharashtra,,sale
+SO-01805,2026-11-18,Sales,Sales,20265.41,Cr,Priya Iyer 1805,18,Gujarat,Maharashtra,,sale
+SO-01806,2026-10-23,Sales,Sales,22869.61,Cr,Ganga & Sons 1806,5,West Bengal,Maharashtra,19VYWWA1780Z4Z0,sale
+SO-01807,2026-11-24,Sales,Sales,23864.65,Cr,Reyansh Verma 1807,18,West Bengal,Maharashtra,,refund
+SO-01808,2026-10-05,Sales,Sales,22633.01,Cr,Aditya Reddy 1808,12,Tamil Nadu,Maharashtra,,sale
+SO-01809,2026-07-17,Sales,Sales,4053.52,Cr,Pooja Shah 1809,18,Tamil Nadu,Maharashtra,,sale
+SO-01810,2026-08-10,Sales,Sales,11833.47,Cr,Krishna Reddy 1810,18,Kerala,Maharashtra,,sale
+SO-01811,2026-12-17,Sales,Sales,19233.89,Cr,Metro Enterprises 1811,18,Rajasthan,Maharashtra,08OMKNW5333H8ZP,sale
+SO-01812,2026-12-27,Sales,Sales,15718.57,Cr,Aadhya Shah 1812,18,Karnataka,Maharashtra,,sale
+SO-01813,2026-10-27,Sales,Sales,4900.94,Cr,Pooja Kumar 1813,18,Madhya Pradesh,Maharashtra,,sale
+SO-01814,2026-10-01,Sales,Sales,11496.39,Cr,Amit Patel 1814,18,Kerala,Maharashtra,,sale
+SO-01815,2026-04-22,Sales,Sales,16443.5,Cr,Rahul Bose 1815,18,Uttar Pradesh,Maharashtra,,sale
+SO-01816,2026-07-18,Sales,Sales,17440.89,Cr,Meera Gupta 1816,5,Rajasthan,Maharashtra,,sale
+SO-01817,2026-06-11,Sales,Sales,5234.14,Cr,Metro Wholesale 1817,18,Uttar Pradesh,Maharashtra,09FDJTN6452X9ZI,sale
+SO-01818,2026-09-04,Sales,Sales,10618.49,Cr,Myra Verma 1818,18,Gujarat,Maharashtra,,sale
+SO-01819,2026-04-02,Sales,Sales,13717.52,Cr,Ishaan Gupta 1819,12,Tamil Nadu,Maharashtra,,sale
+SO-01820,2026-09-24,Sales,Sales,11329.87,Cr,Karan Pillai 1820,18,Kerala,Maharashtra,,sale
+SO-01821,2026-06-20,Sales,Sales,21090.12,Cr,Vihaan Joshi 1821,12,Tamil Nadu,Maharashtra,,sale
+SO-01822,2026-09-06,Sales,Sales,3652.94,Cr,Star Distributors 1822,12,Kerala,Maharashtra,32YTVBL4752M6ZU,sale
+SO-01823,2026-12-08,Sales,Sales,10801.63,Cr,Aadhya Nair 1823,18,Telangana,Maharashtra,,sale
+SO-01824,2026-10-31,Sales,Sales,8448.47,Cr,Prime Solutions 1824,12,West Bengal,Maharashtra,19ODSBO0954B3ZY,sale
+SO-01825,2026-04-27,Sales,Sales,22064.1,Cr,Krishna Iyer 1825,12,West Bengal,Maharashtra,,sale
+SO-01826,2026-09-17,Sales,Sales,3241.44,Cr,Saanvi Gupta 1826,12,Kerala,Maharashtra,,sale
+SO-01827,2026-10-03,Sales,Sales,6338.46,Cr,Meera Sharma 1827,18,Madhya Pradesh,Maharashtra,,sale
+SO-01828,2026-04-07,Sales,Sales,2182.77,Cr,Vivaan Mehta 1828,18,Rajasthan,Maharashtra,,sale
+SO-01829,2026-09-27,Sales,Sales,1100.97,Cr,Sai Shah 1829,12,Kerala,Maharashtra,,sale
+SO-01830,2026-10-15,Sales,Sales,19986.92,Cr,Ishaan Chowdhury 1830,12,Gujarat,Maharashtra,,sale
+SO-01831,2026-09-19,Sales,Sales,18784.9,Cr,Orbit Agencies 1831,18,Kerala,Maharashtra,32SGNIK3795K1ZG,refund
+SO-01832,2026-12-16,Sales,Sales,23907.68,Cr,Sunrise Exports 1832,18,Punjab,Maharashtra,03GPPDE6774C4ZZ,refund
+SO-01833,2026-10-03,Sales,Sales,3827.94,Cr,Metro Agencies 1833,12,Punjab,Maharashtra,03CAMUW0914T5Z8,sale
+SO-01834,2026-07-01,Sales,Sales,12723.87,Cr,Anjali Gupta 1834,18,Telangana,Maharashtra,,sale
+SO-01835,2026-07-25,Sales,Sales,19320.32,Cr,Nova Traders 1835,18,Delhi,Maharashtra,07UGDEO3625F7ZZ,sale
+SO-01836,2026-07-03,Sales,Sales,10213.54,Cr,Meera Shah 1836,18,Kerala,Maharashtra,,sale
+SO-01837,2026-10-04,Sales,Sales,12122.66,Cr,Vihaan Sharma 1837,18,West Bengal,Maharashtra,,sale
+SO-01838,2026-07-26,Sales,Sales,2248.5,Cr,Ishaan Nair 1838,5,Uttar Pradesh,Maharashtra,,sale
+SO-01839,2026-08-06,Sales,Sales,9004.73,Cr,Royal Traders 1839,18,Delhi,Maharashtra,07QKGMM2689X9Z8,sale
+SO-01840,2026-10-14,Sales,Sales,21326.4,Cr,Meera Joshi 1840,12,Telangana,Maharashtra,,sale
+SO-01841,2026-08-01,Sales,Sales,24362.31,Cr,Diya Desai 1841,18,Delhi,Maharashtra,,sale
+SO-01842,2026-04-08,Sales,Sales,23359.54,Cr,Sunrise Retail 1842,18,Karnataka,Maharashtra,29FIBSK8676F5ZG,sale
+SO-01843,2026-08-07,Sales,Sales,21878.31,Cr,Pooja Bose 1843,5,Karnataka,Maharashtra,,sale
+SO-01844,2026-11-10,Sales,Sales,7679.59,Cr,Ganga Enterprises 1844,18,Rajasthan,Maharashtra,08VISSX1304F4Z3,sale
+SO-01845,2026-09-30,Sales,Sales,11674.24,Cr,Royal Marketing 1845,18,Madhya Pradesh,Maharashtra,23ELZUT4510G9ZJ,sale
+SO-01846,2026-10-28,Sales,Sales,10700.4,Cr,Meera Bose 1846,18,Madhya Pradesh,Maharashtra,,sale
+SO-01847,2026-10-06,Sales,Sales,14249.96,Cr,Rahul Reddy 1847,12,Karnataka,Maharashtra,,sale
+SO-01848,2026-09-17,Sales,Sales,22692.17,Cr,Rohan Pillai 1848,5,Tamil Nadu,Maharashtra,,sale
+SO-01849,2026-12-27,Sales,Sales,23467.05,Cr,Sunrise Exports 1849,18,Kerala,Maharashtra,32TKMDV8502Y2ZY,sale
+SO-01850,2026-06-11,Sales,Sales,11118.1,Cr,Anjali Pillai 1850,18,Gujarat,Maharashtra,,sale
+SO-01851,2026-04-14,Sales,Sales,20848.14,Cr,Ishaan Rao 1851,12,West Bengal,Maharashtra,,sale
+SO-01852,2026-05-30,Sales,Sales,1682.49,Cr,Aadhya Kumar 1852,12,Karnataka,Maharashtra,,sale
+SO-01853,2026-05-28,Sales,Sales,18878.94,Cr,Rohan Menon 1853,12,Telangana,Maharashtra,,sale
+SO-01854,2026-11-15,Sales,Sales,23060.76,Cr,Prime Industries 1854,18,Rajasthan,Maharashtra,08PQCVM0091N2ZG,sale
+SO-01855,2026-09-13,Sales,Sales,14259.69,Cr,Aadhya Das 1855,5,Rajasthan,Maharashtra,,refund
+SO-01856,2026-12-23,Sales,Sales,3534.9,Cr,Aditya Menon 1856,18,Tamil Nadu,Maharashtra,,refund
+SO-01857,2026-04-09,Sales,Sales,2549.81,Cr,Ishaan Das 1857,18,Gujarat,Maharashtra,,sale
+SO-01858,2026-05-15,Sales,Sales,9031.09,Cr,Reyansh Gupta 1858,18,Punjab,Maharashtra,,sale
+SO-01859,2026-08-17,Sales,Sales,12714.8,Cr,Amit Pillai 1859,12,West Bengal,Maharashtra,,sale
+SO-01860,2026-12-13,Sales,Sales,14287.39,Cr,Reyansh Mehta 1860,18,Rajasthan,Maharashtra,,sale
+SO-01861,2026-06-16,Sales,Sales,20938.15,Cr,Prime Retail 1861,18,Rajasthan,Maharashtra,08IGSPQ4671M3Z6,sale
+SO-01862,2026-11-12,Sales,Sales,3824.07,Cr,Rahul Shah 1862,12,Karnataka,Maharashtra,,refund
+SO-01863,2026-05-03,Sales,Sales,3640.48,Cr,Aarav Chowdhury 1863,12,Telangana,Maharashtra,,sale
+SO-01864,2026-11-01,Sales,Sales,24164.13,Cr,Global Traders 1864,12,Rajasthan,Maharashtra,08AEJGE6491V5ZC,sale
+SO-01865,2026-06-24,Sales,Sales,23412.73,Cr,Global & Sons 1865,18,Maharashtra,Maharashtra,27FESYX0485R6ZX,refund
+SO-01866,2026-07-03,Sales,Sales,691.95,Cr,Reyansh Mehta 1866,12,Punjab,Maharashtra,,sale
+SO-01867,2026-08-02,Sales,Sales,2506.23,Cr,Pioneer Agencies 1867,18,Punjab,Maharashtra,03XMRZZ6366Z6Z6,sale
+SO-01868,2026-06-09,Sales,Sales,7725.32,Cr,Arjun Kumar 1868,18,Gujarat,Maharashtra,,sale
+SO-01869,2026-06-08,Sales,Sales,19093.51,Cr,Sneha Rao 1869,18,Maharashtra,Maharashtra,,sale
+SO-01870,2026-11-17,Sales,Sales,1900.15,Cr,Rahul Shah 1870,12,Telangana,Maharashtra,,sale
+SO-01871,2026-11-09,Sales,Sales,10701.54,Cr,Unity Traders 1871,18,Tamil Nadu,Maharashtra,33IYSOR7447B1ZH,sale
+SO-01872,2026-08-11,Sales,Sales,11503.08,Cr,Neha Das 1872,18,Karnataka,Maharashtra,,sale
+SO-01873,2026-12-27,Sales,Sales,15054.06,Cr,Rahul Chowdhury 1873,12,Rajasthan,Maharashtra,,sale
+SO-01874,2026-07-14,Sales,Sales,20499.12,Cr,Priya Kulkarni 1874,18,Madhya Pradesh,Maharashtra,,sale
+SO-01875,2026-07-23,Sales,Sales,18868.69,Cr,Prime Enterprises 1875,18,West Bengal,Maharashtra,19OWPYV1941V2ZJ,sale
+SO-01876,2026-06-11,Sales,Sales,4940.01,Cr,Riya Patel 1876,18,Telangana,Maharashtra,,sale
+SO-01877,2026-05-06,Sales,Sales,9094.27,Cr,Amit Shah 1877,12,Delhi,Maharashtra,,sale
+SO-01878,2026-07-27,Sales,Sales,3926.99,Cr,Royal Traders 1878,18,Tamil Nadu,Maharashtra,33LXALI6475E9ZJ,sale
+SO-01879,2026-05-29,Sales,Sales,5183.33,Cr,Sneha Bose 1879,12,West Bengal,Maharashtra,,sale
+SO-01880,2026-10-22,Sales,Sales,20598.13,Cr,Aarav Kulkarni 1880,18,Uttar Pradesh,Maharashtra,,sale
+SO-01881,2026-11-03,Sales,Sales,13084.72,Cr,Kavya Kulkarni 1881,12,Telangana,Maharashtra,,sale
+SO-01882,2026-06-21,Sales,Sales,3522.42,Cr,Saanvi Reddy 1882,18,Maharashtra,Maharashtra,,sale
+SO-01883,2026-08-13,Sales,Sales,7588.5,Cr,Myra Pillai 1883,5,Kerala,Maharashtra,,refund
+SO-01884,2026-12-18,Sales,Sales,15958.65,Cr,Everest Exports 1884,18,Karnataka,Maharashtra,29POXDD3805P8ZR,sale
+SO-01885,2026-05-24,Sales,Sales,2081.93,Cr,Deepak Iyer 1885,18,Delhi,Maharashtra,,sale
+SO-01886,2026-06-04,Sales,Sales,13435.7,Cr,Myra Kumar 1886,12,West Bengal,Maharashtra,,sale
+SO-01887,2026-06-24,Sales,Sales,23246.47,Cr,Pioneer & Sons 1887,12,West Bengal,Maharashtra,19LEEKB0342B7ZD,sale
+SO-01888,2026-12-11,Sales,Sales,10780.01,Cr,Star Industries 1888,12,Maharashtra,Maharashtra,27AJATQ2391I5ZT,sale
+SO-01889,2026-06-28,Sales,Sales,1319.96,Cr,Diya Mehta 1889,12,West Bengal,Maharashtra,,refund
+SO-01890,2026-05-11,Sales,Sales,10514.4,Cr,Nikhil Mehta 1890,5,Rajasthan,Maharashtra,,sale
+SO-01891,2026-08-10,Sales,Sales,12174.63,Cr,Vihaan Desai 1891,12,Kerala,Maharashtra,,sale
+SO-01892,2026-06-27,Sales,Sales,3634.41,Cr,Sneha Patel 1892,18,Rajasthan,Maharashtra,,sale
+SO-01893,2026-08-08,Sales,Sales,24868.73,Cr,Prime Agencies 1893,18,Kerala,Maharashtra,32SBXXU0106V1ZG,sale
+SO-01894,2026-12-11,Sales,Sales,9622.44,Cr,Sunrise Industries 1894,18,Madhya Pradesh,Maharashtra,23GJJDJ8981D1ZM,sale
+SO-01895,2026-05-23,Sales,Sales,5049.07,Cr,Meera Rao 1895,5,Punjab,Maharashtra,,sale
+SO-01896,2026-07-15,Sales,Sales,20855.11,Cr,Star Solutions 1896,12,Karnataka,Maharashtra,29NRQPW5437G7ZN,sale
+SO-01897,2026-08-22,Sales,Sales,7668.27,Cr,Neha Rao 1897,18,West Bengal,Maharashtra,,sale
+SO-01898,2026-11-16,Sales,Sales,14616.64,Cr,Rohan Patel 1898,12,Uttar Pradesh,Maharashtra,,sale
+SO-01899,2026-11-11,Sales,Sales,18973.86,Cr,Ananya Verma 1899,18,Rajasthan,Maharashtra,,sale
+SO-01900,2026-05-10,Sales,Sales,11780.85,Cr,Deepak Singh 1900,18,Karnataka,Maharashtra,,sale
+SO-01901,2026-12-24,Sales,Sales,8146.02,Cr,Shakti Exports 1901,12,Rajasthan,Maharashtra,08SWAAT0162K9Z4,sale
+SO-01902,2026-08-20,Sales,Sales,24341.32,Cr,Diya Menon 1902,5,Uttar Pradesh,Maharashtra,,sale
+SO-01903,2026-05-19,Sales,Sales,9671.36,Cr,Vertex Marketing 1903,18,Telangana,Maharashtra,36OLBFA0487X3ZO,sale
+SO-01904,2026-07-18,Sales,Sales,21686.42,Cr,Kavya Pillai 1904,12,Karnataka,Maharashtra,,sale
+SO-01905,2026-12-23,Sales,Sales,22064.68,Cr,Prime Distributors 1905,18,Gujarat,Maharashtra,24NQBTY3105E9ZR,sale
+SO-01906,2026-05-28,Sales,Sales,14843.68,Cr,Ganga Wholesale 1906,12,Madhya Pradesh,Maharashtra,23BCAHT5864A9Z8,sale
+SO-01907,2026-12-17,Sales,Sales,24901.87,Cr,Karan Joshi 1907,12,Telangana,Maharashtra,,sale
+SO-01908,2026-12-02,Sales,Sales,18539.35,Cr,Royal Enterprises 1908,18,Kerala,Maharashtra,32MBUZH9584G4ZN,sale
+SO-01909,2026-08-21,Sales,Sales,12729.31,Cr,Meera Pillai 1909,12,Rajasthan,Maharashtra,,sale
+SO-01910,2026-10-17,Sales,Sales,13049.59,Cr,Prime Trading Co 1910,18,Karnataka,Maharashtra,29GSSIT3293D6ZH,sale
+SO-01911,2026-11-16,Sales,Sales,12653.85,Cr,Everest Wholesale 1911,18,Gujarat,Maharashtra,24HMNGB4865G6Z6,sale
+SO-01912,2026-08-26,Sales,Sales,6384.78,Cr,Pioneer & Sons 1912,12,Gujarat,Maharashtra,24OBAES5517E9ZD,sale
+SO-01913,2026-04-23,Sales,Sales,2026.32,Cr,Rohan Joshi 1913,18,Tamil Nadu,Maharashtra,,sale
+SO-01914,2026-08-24,Sales,Sales,11023.34,Cr,Saanvi Reddy 1914,12,Telangana,Maharashtra,,sale
+SO-01915,2026-06-19,Sales,Sales,10457.93,Cr,Unity Enterprises 1915,18,West Bengal,Maharashtra,19SXTXY7015P2ZW,sale
+SO-01916,2026-11-18,Sales,Sales,19328.49,Cr,Royal Solutions 1916,12,Kerala,Maharashtra,32VNCUT1261D2Z6,sale
+SO-01917,2026-11-30,Sales,Sales,22447.36,Cr,Reyansh Menon 1917,18,Gujarat,Maharashtra,,sale
+SO-01918,2026-07-30,Sales,Sales,8498.24,Cr,Global Agencies 1918,5,Punjab,Maharashtra,03RIXMH0939A2ZI,sale
+SO-01919,2026-10-17,Sales,Sales,19282.53,Cr,Aadhya Rao 1919,18,Telangana,Maharashtra,,sale
+SO-01920,2026-12-20,Sales,Sales,3843.64,Cr,Vihaan Singh 1920,12,West Bengal,Maharashtra,,sale
+SO-01921,2026-05-02,Sales,Sales,421.64,Cr,Anjali Kumar 1921,5,Telangana,Maharashtra,,sale
+SO-01922,2026-06-17,Sales,Sales,862.37,Cr,Ganga Retail 1922,5,Kerala,Maharashtra,32RVMGN1645H4ZN,sale
+SO-01923,2026-11-10,Sales,Sales,18058.08,Cr,Reyansh Bose 1923,18,Telangana,Maharashtra,,sale
+SO-01924,2026-04-24,Sales,Sales,24802.68,Cr,Unity Wholesale 1924,12,Rajasthan,Maharashtra,08DUXHN1147U5ZC,sale
+SO-01925,2026-10-06,Sales,Sales,16199.83,Cr,Ananya Singh 1925,12,Kerala,Maharashtra,,sale
+SO-01926,2026-08-20,Sales,Sales,9710.73,Cr,Vertex Wholesale 1926,18,Tamil Nadu,Maharashtra,33AZGJS9926Y1ZG,sale
+SO-01927,2026-05-01,Sales,Sales,2053.28,Cr,Vivaan Reddy 1927,18,Madhya Pradesh,Maharashtra,,sale
+SO-01928,2026-05-16,Sales,Sales,8269.62,Cr,Star Solutions 1928,18,Delhi,Maharashtra,07EQPQX4219B6ZN,sale
+SO-01929,2026-09-27,Sales,Sales,10577.36,Cr,Bharat Trading Co 1929,12,Telangana,Maharashtra,36UUYCP0013Q6Z8,sale
+SO-01930,2026-10-30,Sales,Sales,19532.11,Cr,Aditya Mehta 1930,12,Delhi,Maharashtra,,sale
+SO-01931,2026-05-20,Sales,Sales,12075.4,Cr,Sneha Chowdhury 1931,18,Punjab,Maharashtra,,refund
+SO-01932,2026-11-13,Sales,Sales,18385.05,Cr,Priya Mehta 1932,18,Madhya Pradesh,Maharashtra,,sale
+SO-01933,2026-10-18,Sales,Sales,3394.8,Cr,Neha Kumar 1933,18,Delhi,Maharashtra,,refund
+SO-01934,2026-11-20,Sales,Sales,17561.76,Cr,Riya Kulkarni 1934,18,West Bengal,Maharashtra,,sale
+SO-01935,2026-04-04,Sales,Sales,6108.34,Cr,Crescent Exports 1935,5,Tamil Nadu,Maharashtra,33IDDWX9151Y5ZU,sale
+SO-01936,2026-10-12,Sales,Sales,18660.35,Cr,Aadhya Desai 1936,12,West Bengal,Maharashtra,,refund
+SO-01937,2026-12-21,Sales,Sales,19250.48,Cr,Anjali Gupta 1937,5,Karnataka,Maharashtra,,sale
+SO-01938,2026-06-24,Sales,Sales,19772.41,Cr,Pooja Gupta 1938,18,Maharashtra,Maharashtra,,sale
+SO-01939,2026-08-20,Sales,Sales,16999.84,Cr,Nova & Sons 1939,18,Kerala,Maharashtra,32VYLGG4961C2ZH,sale
+SO-01940,2026-12-15,Sales,Sales,5737.37,Cr,Priya Kulkarni 1940,18,Telangana,Maharashtra,,sale
+SO-01941,2026-07-12,Sales,Sales,18962.6,Cr,Anjali Patel 1941,12,Uttar Pradesh,Maharashtra,,sale
+SO-01942,2026-09-18,Sales,Sales,18171.11,Cr,Prime Enterprises 1942,18,Gujarat,Maharashtra,24XHJFF3905N6Z1,sale
+SO-01943,2026-11-02,Sales,Sales,3544.34,Cr,Aadhya Reddy 1943,12,Rajasthan,Maharashtra,,sale
+SO-01944,2026-11-21,Sales,Sales,8091.43,Cr,Vihaan Pillai 1944,18,Delhi,Maharashtra,,sale
+SO-01945,2026-10-01,Sales,Sales,505.21,Cr,Sunrise Wholesale 1945,5,Delhi,Maharashtra,07QVVCM6046I3Z3,sale
+SO-01946,2026-11-13,Sales,Sales,19835.27,Cr,Aadhya Verma 1946,18,Tamil Nadu,Maharashtra,,refund
+SO-01947,2026-09-08,Sales,Sales,22673.38,Cr,Royal & Sons 1947,18,Kerala,Maharashtra,32ZLLQT8440Y9ZF,sale
+SO-01948,2026-09-08,Sales,Sales,16023.23,Cr,Global Agencies 1948,12,West Bengal,Maharashtra,19GYENM8836M5Z7,sale
+SO-01949,2026-10-27,Sales,Sales,8387.13,Cr,Kavya Mehta 1949,18,Rajasthan,Maharashtra,,sale
+SO-01950,2026-05-21,Sales,Sales,18486.64,Cr,Sai Kulkarni 1950,5,Gujarat,Maharashtra,,sale
+SO-01951,2026-07-16,Sales,Sales,8321.28,Cr,Aadhya Kumar 1951,5,Kerala,Maharashtra,,sale
+SO-01952,2026-08-03,Sales,Sales,15868.91,Cr,Unity Marketing 1952,12,Punjab,Maharashtra,03SEFUC1213L4Z7,sale
+SO-01953,2026-10-17,Sales,Sales,15499.35,Cr,Aadhya Das 1953,18,Telangana,Maharashtra,,sale
+SO-01954,2026-07-01,Sales,Sales,3618.8,Cr,Amit Gupta 1954,12,Kerala,Maharashtra,,sale
+SO-01955,2026-10-14,Sales,Sales,21851.22,Cr,Apex Industries 1955,18,Punjab,Maharashtra,03ERPDG9763U9Z2,sale
+SO-01956,2026-04-15,Sales,Sales,12982.18,Cr,Ananya Das 1956,18,Kerala,Maharashtra,,sale
+SO-01957,2026-04-02,Sales,Sales,7988.48,Cr,Pioneer Retail 1957,18,Telangana,Maharashtra,36EFERV9057Z8Z4,sale
+SO-01958,2026-12-22,Sales,Sales,2511.98,Cr,Neha Kumar 1958,5,Punjab,Maharashtra,,sale
+SO-01959,2026-09-28,Sales,Sales,2434.51,Cr,Vertex Enterprises 1959,18,Punjab,Maharashtra,03VNJFI2627M9ZY,sale
+SO-01960,2026-06-02,Sales,Sales,6680.91,Cr,Myra Kumar 1960,18,Rajasthan,Maharashtra,,sale
+SO-01961,2026-09-02,Sales,Sales,3666.43,Cr,Aadhya Singh 1961,18,Karnataka,Maharashtra,,sale
+SO-01962,2026-08-17,Sales,Sales,21970.73,Cr,Arjun Pillai 1962,18,West Bengal,Maharashtra,,sale
+SO-01963,2026-07-25,Sales,Sales,4157.55,Cr,Vivaan Pillai 1963,18,Madhya Pradesh,Maharashtra,,sale
+SO-01964,2026-12-22,Sales,Sales,18306.22,Cr,Metro & Sons 1964,18,West Bengal,Maharashtra,19AACNB9013M4ZU,refund
+SO-01965,2026-06-10,Sales,Sales,16030.19,Cr,Ganga Agencies 1965,12,Telangana,Maharashtra,36UQPAB9176S4ZG,sale
+SO-01966,2026-09-20,Sales,Sales,16130.18,Cr,Global Solutions 1966,12,Karnataka,Maharashtra,29GJMAU9783K4ZY,sale
+SO-01967,2026-07-05,Sales,Sales,15784.18,Cr,Ira Rao 1967,12,Delhi,Maharashtra,,sale
+SO-01968,2026-05-29,Sales,Sales,11643.21,Cr,Ananya Chowdhury 1968,12,Rajasthan,Maharashtra,,sale
+SO-01969,2026-04-07,Sales,Sales,18125.96,Cr,Myra Kumar 1969,12,Gujarat,Maharashtra,,sale
+SO-01970,2026-05-07,Sales,Sales,254.9,Cr,Ishaan Patel 1970,18,Gujarat,Maharashtra,,sale
+SO-01971,2026-05-04,Sales,Sales,14141.56,Cr,Krishna Menon 1971,18,Telangana,Maharashtra,,sale
+SO-01972,2026-05-25,Sales,Sales,13050.03,Cr,Ishaan Rao 1972,18,Telangana,Maharashtra,,sale
+SO-01973,2026-08-18,Sales,Sales,10085.08,Cr,Anjali Reddy 1973,18,Punjab,Maharashtra,,sale
+SO-01974,2026-11-17,Sales,Sales,20316.98,Cr,Rohan Nair 1974,18,West Bengal,Maharashtra,,sale
+SO-01975,2026-05-08,Sales,Sales,22632.89,Cr,Amit Kulkarni 1975,18,Punjab,Maharashtra,,sale
+SO-01976,2026-07-21,Sales,Sales,10822.16,Cr,Nova Exports 1976,12,Rajasthan,Maharashtra,08QSIMP1279A2Z7,sale
+SO-01977,2026-11-26,Sales,Sales,7354.6,Cr,Myra Kulkarni 1977,12,Tamil Nadu,Maharashtra,,sale
+SO-01978,2026-12-19,Sales,Sales,24280.94,Cr,Aditya Singh 1978,12,Rajasthan,Maharashtra,,sale
+SO-01979,2026-10-10,Sales,Sales,12222.26,Cr,Riya Singh 1979,12,Maharashtra,Maharashtra,,sale
+SO-01980,2026-09-17,Sales,Sales,15720.63,Cr,Vertex Trading Co 1980,12,Tamil Nadu,Maharashtra,33UCYNL2304W6ZD,sale
+SO-01981,2026-11-28,Sales,Sales,3415.26,Cr,Pari Kulkarni 1981,18,Maharashtra,Maharashtra,,sale
+SO-01982,2026-12-04,Sales,Sales,9820.89,Cr,Reyansh Menon 1982,18,Punjab,Maharashtra,,sale
+SO-01983,2026-11-05,Sales,Sales,18546.06,Cr,Ananya Nair 1983,12,Punjab,Maharashtra,,sale
+SO-01984,2026-11-30,Sales,Sales,13049.57,Cr,Kavya Mehta 1984,12,Telangana,Maharashtra,,sale
+SO-01985,2026-06-25,Sales,Sales,15659.65,Cr,Ira Pillai 1985,18,Uttar Pradesh,Maharashtra,,sale
+SO-01986,2026-11-01,Sales,Sales,12010.36,Cr,Pooja Kumar 1986,18,Kerala,Maharashtra,,sale
+SO-01987,2026-10-01,Sales,Sales,12856.24,Cr,Ira Singh 1987,12,Uttar Pradesh,Maharashtra,,sale
+SO-01988,2026-12-03,Sales,Sales,1731.44,Cr,Sai Menon 1988,12,Maharashtra,Maharashtra,,sale
+SO-01989,2026-09-13,Sales,Sales,6840.58,Cr,Vivaan Bose 1989,18,Madhya Pradesh,Maharashtra,,sale
+SO-01990,2026-11-16,Sales,Sales,10589.72,Cr,Unity Retail 1990,5,Telangana,Maharashtra,36YEWSL1267M9Z3,sale
+SO-01991,2026-04-29,Sales,Sales,17749.74,Cr,Myra Reddy 1991,5,Gujarat,Maharashtra,,sale
+SO-01992,2026-12-22,Sales,Sales,17183.7,Cr,Amit Kumar 1992,18,Tamil Nadu,Maharashtra,,sale
+SO-01993,2026-12-02,Sales,Sales,2579.76,Cr,Aadhya Menon 1993,5,Kerala,Maharashtra,,sale
+SO-01994,2026-10-22,Sales,Sales,21478.71,Cr,Pioneer Solutions 1994,12,West Bengal,Maharashtra,19HWJCP7736U6Z7,sale
+SO-01995,2026-11-22,Sales,Sales,21202.3,Cr,Vihaan Sharma 1995,18,Karnataka,Maharashtra,,sale
+SO-01996,2026-07-21,Sales,Sales,6535.21,Cr,Orbit Exports 1996,18,Gujarat,Maharashtra,24EJXRC1867A4ZT,sale
+SO-01997,2026-04-29,Sales,Sales,24949.26,Cr,Anjali Desai 1997,18,Kerala,Maharashtra,,refund
+SO-01998,2026-09-30,Sales,Sales,9214.38,Cr,Ira Menon 1998,5,Rajasthan,Maharashtra,,sale
+SO-01999,2026-04-22,Sales,Sales,14309.84,Cr,Pooja Gupta 1999,5,Madhya Pradesh,Maharashtra,,sale
+SO-02000,2026-12-03,Sales,Sales,17546.67,Cr,Neha Shah 2000,12,Delhi,Maharashtra,,sale
