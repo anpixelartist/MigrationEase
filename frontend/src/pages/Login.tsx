@@ -60,9 +60,9 @@ export default function Login() {
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
       <div className="fadeIn" style={{ width: 380, maxWidth: "100%" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 22, justifyContent: "center" }}>
-          <div style={{ width: 30, height: 30, borderRadius: 8, background: T.accent, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, fontWeight: 700 }}>⟂</div>
-          <div style={{ fontWeight: 600, fontSize: 17, letterSpacing: "-.01em" }}>Ledgerbridge</div>
+        <div style={{ marginBottom: 22, textAlign: "center" }}>
+          <div style={{ fontWeight: 800, fontSize: 26, letterSpacing: ".08em", color: T.accent }}>YAVDA</div>
+          <div style={{ fontSize: 12.5, color: T.muted, marginTop: 4 }}>Let Data be Your North Star</div>
         </div>
 
         <form onSubmit={submit} style={{ ...card, padding: 26 }}>

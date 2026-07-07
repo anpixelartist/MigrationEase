@@ -231,7 +231,7 @@ export default function Importer() {
               <div style={{ fontWeight: 600, marginBottom: 2 }}>
                 {bridgeStatus?.online ? "Direct-to-Tally push is active" : "Automatic push to Tally Prime"}
               </div>
-              Ledgerbridge connects to <b>Tally Prime</b> through a small agent on the machine running Tally
+              YAVDA connects to <b>Tally Prime</b> through a small agent on the machine running Tally
               (its gateway on <b>port 9000</b>) — so you can push imports straight into your company, no manual XML.
               {bridgeStatus?.online ? " A bridge is connected and ready." : " No bridge is connected yet."}{" "}
               <Link to="/bridge" style={{ color: T.accent, fontWeight: 500, whiteSpace: "nowrap" }}>
