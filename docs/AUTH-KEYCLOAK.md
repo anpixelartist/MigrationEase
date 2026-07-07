@@ -150,3 +150,31 @@ Checklist:
 - Future: social login / OTP / enterprise SSO are realm-level additions (Identity Providers,
   Authentication flows, Organizations) — no backend or frontend changes required, because the
   backend only ever sees the same issuer, audience, and `sub`.
+
+---
+
+## Production launch checklist (Keycloak-only mode)
+
+For a customer-facing deployment the app runs in **`keycloak` mode** — the built-in email/password
+endpoints are disabled and every login is verified by Keycloak. Steps:
+
+1. **Backend:** set `TM_AUTH_MODE=keycloak` and `TM_OIDC_REQUIRE_VERIFIED_EMAIL=true`
+   (see `backend/.env.example`). `TM_JWT_SECRET` is not needed in this mode.
+2. **Realm:** import the hardened template `infra/keycloak/realm-tallymigration-prod.json` (NOT the
+   dev `realm-tallymigration.json`). It ships with `verifyEmail=true`, a 12-char password policy,
+   brute-force lockout (5 failures), TOTP policy, `sslRequired=all`, and **no** hardcoded M2M secret.
+   Then in the admin console:
+   - Replace `https://app.example.com` in `tallymigration-web` with your real frontend origin.
+   - **Email/SMTP:** Realm Settings → Email — configure a real SMTP server (required for verify-email
+     and password reset).
+   - **MFA:** Authentication → `browser` flow → set the **OTP Form** execution to *Required* (or add a
+     conditional-OTP sub-flow) so users must set up an authenticator. TOTP policy is pre-set.
+   - **M2M:** create a confidential client per external consumer (Client authentication ON, Service
+     accounts ON, Standard flow OFF), give it the `tallymigration-api` scope, and register its
+     clientId with an org via `POST /auth/service-accounts`. The public `tallymigration-web` client
+     is rejected for service-account registration by design.
+3. **Keycloak server:** run `start --optimized` with `KC_DB=postgres` behind TLS (see
+   `infra/docker-compose.keycloak-prod.yml`); inject the bootstrap admin from a secret store and
+   rotate it after first login.
+4. **Verify:** `GET /auth/config` returns `{"mode":"keycloak"}`; the app login screen shows only
+   *Continue with SSO*; `POST /auth/login` and `/auth/signup` return **403** (password auth disabled).
