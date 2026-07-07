@@ -61,8 +61,9 @@ export default function Login() {
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
       <div className="fadeIn" style={{ width: 380, maxWidth: "100%" }}>
         <div style={{ marginBottom: 22, textAlign: "center" }}>
-          <div style={{ fontWeight: 800, fontSize: 26, letterSpacing: ".08em", color: T.accent }}>YAVDA</div>
-          <div style={{ fontSize: 12.5, color: T.muted, marginTop: 4 }}>Let Data be Your North Star</div>
+          <div style={{ fontWeight: 800, fontSize: 13, letterSpacing: ".22em", color: T.accent }}>YAVDA ANALYTICS</div>
+          <div style={{ fontWeight: 800, fontSize: 25, letterSpacing: "-.02em", color: T.text, marginTop: 7 }}>MigrationEase</div>
+          <div style={{ fontSize: 12.5, color: T.muted, marginTop: 5 }}>Let Data be Your North Star</div>
         </div>
 
         <form onSubmit={submit} style={{ ...card, padding: 26 }}>

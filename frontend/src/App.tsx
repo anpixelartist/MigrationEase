@@ -44,8 +44,9 @@ function TopBar() {
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(247,247,245,.82)", backdropFilter: "blur(12px)", borderBottom: `1px solid ${T.line}` }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 28px", height: 58, display: "flex", alignItems: "center", gap: 28 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-          <div style={{ fontWeight: 800, fontSize: 18, letterSpacing: ".06em", color: T.accent }}>YAVDA</div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 7 }}>
+          <div style={{ fontWeight: 700, fontSize: 16, letterSpacing: "-.01em", color: T.text }}>MigrationEase</div>
+          <div style={{ fontWeight: 700, fontSize: 10.5, letterSpacing: ".1em", color: T.accent }}>by YAVDA</div>
         </div>
         <nav style={{ display: "flex", gap: 18, flex: 1 }}>
           <Link to="/" style={linkStyle(loc.pathname === "/")}>Import</Link>
