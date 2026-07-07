@@ -6,7 +6,6 @@ import AuthCallback from "./pages/AuthCallback";
 import BridgeSettings from "./pages/BridgeSettings";
 import Importer from "./pages/Importer";
 import Login from "./pages/Login";
-import Status from "./pages/Status";
 import { T } from "./theme";
 
 /** Always-visible pill so users know the automatic Tally push facility (local bridge → Tally on port 9000) is live. */
@@ -52,7 +51,6 @@ function TopBar() {
         <nav style={{ display: "flex", gap: 18, flex: 1 }}>
           <Link to="/" style={linkStyle(loc.pathname === "/")}>Import</Link>
           <Link to="/bridge" style={linkStyle(loc.pathname === "/bridge")}>Bridge</Link>
-          <Link to="/status" style={linkStyle(loc.pathname === "/status")}>Status</Link>
         </nav>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <TallyStatusPill />
@@ -90,7 +88,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Importer />} />
         <Route path="/bridge" element={<BridgeSettings />} />
-        <Route path="/status" element={<Status />} />
         <Route path="/auth/callback" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
