@@ -1,0 +1,36 @@
+# Production-oriented Keycloak — do NOT use the dev service in docker-compose.yml (start-dev + H2 +
+# admin/admin) for anything internet-facing. This runs the optimized server on Postgres behind a
+# TLS-terminating reverse proxy, with all secrets injected from the environment.
+#
+#   1. Put Keycloak behind your TLS proxy (nginx/Traefik/ALB); it terminates HTTPS and forwards to :8080.
+#   2. Provide a Postgres for Keycloak (separate DB from the app's).
+#   3. Export the required secrets (see below), then:
+#        KC_HOSTNAME=https://auth.example.com \
+#        KC_DB_URL=jdbc:postgresql://kc-db:5432/keycloak KC_DB_USERNAME=... KC_DB_PASSWORD=... \
+#        KC_BOOTSTRAP_ADMIN_USERNAME=... KC_BOOTSTRAP_ADMIN_PASSWORD=... \
+#        docker compose -f infra/docker-compose.keycloak-prod.yml up -d
+#   4. Import a HARDENED realm (NOT infra/keycloak/realm-tallymigration.json as-is): set
+#      verifyEmail=true + SMTP, rotate the example-m2m secret, replace localhost redirectUris/webOrigins
+#      with your real origin, and reconsider registrationAllowed. See docs/AUTH-KEYCLOAK.md.
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    # start (optimized), NOT start-dev: production mode, strict hostname, HTTPS expected at the edge.
+    command: ["start", "--optimized"]
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: ${KC_DB_URL:?set KC_DB_URL}
+      KC_DB_USERNAME: ${KC_DB_USERNAME:?set KC_DB_USERNAME}
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD:?set KC_DB_PASSWORD}
+      # Public URL as browsers see it (behind the proxy). Tokens' issuer must match TM_OIDC_ISSUER.
+      KC_HOSTNAME: ${KC_HOSTNAME:?set KC_HOSTNAME e.g. https://auth.example.com}
+      # TLS is terminated at the proxy; trust its forwarded headers.
+      KC_PROXY_HEADERS: xforwarded
+      KC_HTTP_ENABLED: "true"   # http only on the internal :8080 hop; the edge does HTTPS
+      # First-boot admin — inject from a secret manager; rotate after bootstrapping a real admin.
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME:?set admin user}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD:?set admin password}
+    ports:
+      - "8080:8080"   # expose only to the reverse proxy, not the public internet
+    restart: unless-stopped

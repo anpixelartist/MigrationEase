@@ -12,6 +12,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/tallymigration/bridge/internal/tally"
@@ -69,6 +70,7 @@ func run(args []string) int {
 	key := fs.String("key", "", "bridge API key (bk_...)")
 	tallyURL := fs.String("tally", tally.DefaultBaseURL, "Tally gateway URL")
 	company := fs.String("company", "", "active company name (for heartbeats)")
+	testCompany := fs.String("test-company", "", "sandbox: only allow pushes into this company (safety gate)")
 	_ = fs.Parse(args)
 
 	if *relay == "" || *key == "" {
@@ -76,11 +78,11 @@ func run(args []string) int {
 		return 2
 	}
 
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM) // SIGTERM: docker stop / service managers
 	defer cancel()
 
 	fmt.Printf("bridge: connecting to %s (Tally at %s)\n", *relay, *tallyURL)
-	cfg := wsclient.Config{RelayURL: *relay, APIKey: *key, Tally: tally.New(*tallyURL), Company: *company}
+	cfg := wsclient.Config{RelayURL: *relay, APIKey: *key, Tally: tally.New(*tallyURL), Company: *company, TestCompany: *testCompany}
 	if err := wsclient.Run(ctx, cfg); err != nil && ctx.Err() == nil {
 		fmt.Println("bridge: stopped with error:", err)
 		return 1

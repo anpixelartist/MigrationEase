@@ -8,7 +8,18 @@ can replace it without touching callers.
 State machine (forward-only, with re-runs allowed where it's safe):
 
     CREATED --upload--> PARSED --mapping--> MAPPED --validate--> VALIDATED
-        --resolve(optional)--> RESOLVED --generate--> GENERATED --push--> PUSHED
+        --resolve(optional)--> RESOLVED --generate--> GENERATED --push--> PUSHING
+            --> PUSHED | PUSHED_PARTIAL | PUSH_FAILED
+
+Push is guarded for idempotency — duplicate imports create duplicate accounting entries in Tally:
+
+- ``PUSHING`` claims the job (concurrent pushes get 409); a stale claim (worker died mid-push)
+  becomes reclaimable after ``STALE_PUSH_SECONDS``.
+- ``PUSHED`` (Tally accepted everything) is terminal for "push" — re-pushing the same XML would
+  double-import every row.
+- ``PUSHED_PARTIAL`` (some rows imported, some errored) also blocks re-push for the same reason;
+  the recovery path is fixing the data and re-generating.
+- ``PUSH_FAILED`` (nothing imported, or no response received) allows retry.
 """
 
 from __future__ import annotations
@@ -34,17 +45,31 @@ class JobStatus(str, Enum):
     VALIDATED = "validated"
     RESOLVED = "resolved"
     GENERATED = "generated"
-    PUSHED = "pushed"
+    PUSHING = "pushing"  # push claimed/in flight (blocks concurrent pushes)
+    PUSHED = "pushed"  # Tally accepted every row — terminal for "push"
+    PUSHED_PARTIAL = "pushed_partial"  # some rows imported; re-push would duplicate them
+    PUSH_FAILED = "push_failed"  # nothing imported (or no response) — retry allowed
 
+
+# A PUSHING claim older than this is considered abandoned (worker died mid-push) and may be
+# re-claimed. Comfortably above the 120 s bridge-dispatch timeout.
+STALE_PUSH_SECONDS = 300
 
 # Which statuses each action may run from.
 _ALLOWED: dict[str, set[JobStatus]] = {
-    "upload": set(JobStatus),  # re-upload allowed from any state (resets downstream)
+    "upload": set(JobStatus) - {JobStatus.PUSHING},  # re-upload resets downstream (not mid-push)
     "map": {JobStatus.PARSED, JobStatus.MAPPED, JobStatus.VALIDATED, JobStatus.RESOLVED},
     "validate": {JobStatus.MAPPED, JobStatus.VALIDATED, JobStatus.RESOLVED},
     "resolve": {JobStatus.VALIDATED, JobStatus.RESOLVED, JobStatus.GENERATED},
-    "generate": {JobStatus.VALIDATED, JobStatus.RESOLVED, JobStatus.GENERATED},
-    "push": {JobStatus.GENERATED, JobStatus.PUSHED},
+    # after a failed/partial push the recovery path is: fix data -> re-generate -> push again
+    "generate": {
+        JobStatus.VALIDATED,
+        JobStatus.RESOLVED,
+        JobStatus.GENERATED,
+        JobStatus.PUSH_FAILED,
+        JobStatus.PUSHED_PARTIAL,
+    },
+    "push": {JobStatus.GENERATED, JobStatus.PUSH_FAILED},
 }
 
 

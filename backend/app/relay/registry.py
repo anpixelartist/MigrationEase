@@ -12,7 +12,11 @@ log = get_logger("relay")
 
 
 class BridgeOffline(Exception):
-    pass
+    """The push could not be completed via the bridge (the XML may or may not have been sent)."""
+
+
+class BridgeNotConnected(BridgeOffline):
+    """No bridge connection exists — raised BEFORE anything is sent, so retry is always safe."""
 
 
 class WSLike(Protocol):
@@ -58,7 +62,7 @@ class BridgeRegistry:
     ) -> bytes:
         conn = self._by_org.get(org_id)
         if conn is None:
-            raise BridgeOffline("no bridge connected for this organization")
+            raise BridgeNotConnected("no bridge connected for this organization")
         future: asyncio.Future[bytes] = asyncio.get_event_loop().create_future()
         conn.pending[job_id] = future
         await conn.ws.send_json(

@@ -7,6 +7,7 @@ machine, logs start/outcome with the job id and counts, and converts stage failu
 
 from __future__ import annotations
 
+import datetime as _dt
 import re
 import urllib.error
 import urllib.request
@@ -35,7 +36,7 @@ from app.pipeline.profiling import profile
 from app.pipeline.push.response_parser import XMLSecurityError, parse_import_response
 from app.pipeline.resolution import resolve
 from app.pipeline.validation import validate
-from app.services.job_store import Job, JobStatus
+from app.services.job_store import STALE_PUSH_SECONDS, Job, JobStatus
 
 log = get_logger("pipeline")
 
@@ -132,13 +133,52 @@ def suggest_mapping(job: Job) -> MappingProposal:
     if job.df is None:
         raise InvalidState("Upload a file before requesting mapping suggestions.")
     proposal = auto_map(job.df, job.entity_type).data
+    _overlay_saved_template(job, proposal)
     log.info(
         "map.suggested",
         job_id=job.id,
         unmapped_required=proposal.unmapped_required,
         sources=len(job.df.columns),
+        applied_template=proposal.applied_template,
     )
     return proposal
+
+
+def _overlay_saved_template(job: Job, proposal: MappingProposal) -> None:
+    """Strengthen the fuzzy proposal with the org's best-matching saved template (if any).
+
+    A user who once mapped this export shape by hand and saved it gets it auto-applied on the next
+    import: the template's columns win (method=template, auto-accepted), and its constants ride along
+    for the UI to pre-fill. Never fails the request — a template lookup error just leaves the fuzzy
+    proposal untouched.
+    """
+    try:
+        from app.services import template_service
+
+        tmpl = template_service.best_match(job.org_id, job.entity_type, list(job.df.columns))
+    except Exception:  # pragma: no cover - template overlay is best-effort, never blocks mapping
+        log.warning("map.template_overlay_failed", job_id=job.id, exc_info=True)
+        return
+    if tmpl is None:
+        return
+
+    present = set(job.df.columns)
+    by_field = {s.target_field: s for s in proposal.suggestions}
+    for field, col in tmpl.mapping.items():
+        if col in present and field in by_field:
+            s = by_field[field]
+            s.source_column = col
+            s.method = "template"
+            s.confidence = max(s.confidence, 0.99)
+            s.status = "auto_accept"
+
+    used = {s.source_column for s in proposal.suggestions if s.source_column}
+    proposal.unmapped_sources = [c for c in job.df.columns if c not in used]
+    proposal.unmapped_required = [
+        s.target_field for s in proposal.suggestions if s.required and s.source_column is None
+    ]
+    proposal.applied_template = tmpl.name
+    proposal.applied_constants = dict(tmpl.constants)
 
 
 def apply_mapping(job: Job, mapping: dict[str, str | None], constants: dict[str, str], template: str | None = None) -> None:
@@ -241,7 +281,7 @@ def run_resolution(job: Job, existing: list[dict[str, Any]] | None) -> Any:
     return verdicts
 
 
-def run_generation(job: Job, company: str | None, cutover_date: str | None = None) -> dict[str, Any]:
+def run_generation(job: Job, company: str | None, cutover_date: str | None = None, b2c_summary: bool = False, settlement_mode: bool = False) -> dict[str, Any]:
     job.require("generate")
     if job.mapped_df is None or job.validation is None:
         raise InvalidState("Map and validate before generating.")
@@ -253,7 +293,7 @@ def run_generation(job: Job, company: str | None, cutover_date: str | None = Non
         )
 
     if job.entity_type == EntityType.VOUCHER:
-        return _generate_vouchers(job, company, cutover_date)
+        return _generate_vouchers(job, company, cutover_date, b2c_summary=b2c_summary, settlement_mode=settlement_mode)
 
     verdict_by_row = {v.source_row: v for v in (job.resolution or [])}
     units: list[Unit] = []
@@ -318,12 +358,12 @@ def run_generation(job: Job, company: str | None, cutover_date: str | None = Non
     return {"generated": total, "held": held, "skipped": skipped, "errors": conv_errors, "bytes": len(xml)}
 
 
-def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None = None) -> dict[str, Any]:
+def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None = None, b2c_summary: bool = False, settlement_mode: bool = False) -> dict[str, Any]:
     """Group the mapped rows into balanced vouchers and build the Tally "Vouchers" envelope."""
     df = job.mapped_df
 
     opening_balances = {}
-    if cutover_date and "date" in df.columns:
+    if cutover_date and "date" in df.columns and not settlement_mode:
         from datetime import datetime
         try:
             cutover = datetime.strptime(cutover_date, "%Y-%m-%d").date()
@@ -365,7 +405,14 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
         except ValueError:
             pass # ignore bad cutover date format
 
-    vouchers, conv_errors = rows_to_vouchers(df)
+    if settlement_mode:
+        from app.pipeline.voucher import settlement_rows_to_vouchers
+        vouchers, conv_errors = settlement_rows_to_vouchers(df)
+    else:
+        vouchers, conv_errors = rows_to_vouchers(df)
+    if b2c_summary:
+        from app.pipeline.voucher import aggregate_b2c_daily
+        vouchers = aggregate_b2c_daily(vouchers)
 
     ledgers = []
     from app.pipeline.entities import Ledger, TallyAction
@@ -420,10 +467,82 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
     }
 
 
-def run_push(job: Job, settings: Settings) -> Any:
-    job.require("push")
+def ensure_pushable(job: Job) -> None:
+    """Raise unless a push may start now (also used by the router as a fast pre-check)."""
+    if job.status is JobStatus.PUSHING:
+        age = (_dt.datetime.now(_dt.timezone.utc) - job.updated_at).total_seconds()
+        if age < STALE_PUSH_SECONDS:
+            raise InvalidState(
+                "A push is already in progress for this job.",
+                code="push_in_progress",
+                detail=f"Claimed {int(age)}s ago; retry allowed after {STALE_PUSH_SECONDS}s.",
+            )
+        log.warning("push.reclaim_stale", job_id=job.id, stale_seconds=int(age))
+    else:
+        job.require("push")
     if job.xml is None:
-        raise InvalidState("Generate XML before pushing.")
+        raise InvalidState("Generate the XML before pushing.")
+
+
+def claim_push(job: Job) -> None:
+    """Atomically claim the push (call under the job lock) — the idempotency guard.
+
+    Concurrent/duplicate pushes get a 409 instead of silently double-importing into Tally. A
+    ``PUSHING`` claim whose worker died is reclaimable after ``STALE_PUSH_SECONDS``.
+    """
+    ensure_pushable(job)
+    job.advance(JobStatus.PUSHING)
+
+
+def record_push_result(job: Job, result: Any) -> JobStatus:
+    """Persist Tally's verdict and pick the terminal status (call under the job lock).
+
+    - all rows accepted            -> PUSHED       (re-push blocked: would duplicate everything)
+    - nothing imported             -> PUSH_FAILED  (safe to retry)
+    - some imported, some errored  -> PUSHED_PARTIAL (re-push blocked: would duplicate the
+      successes; recovery = fix data -> re-generate -> push)
+    """
+    job.push_result = result
+    imported = result.created + result.altered + result.combined
+    if result.is_success:
+        status = JobStatus.PUSHED
+    elif imported == 0:
+        status = JobStatus.PUSH_FAILED
+    else:
+        status = JobStatus.PUSHED_PARTIAL
+        job.notes.append(
+            f"partial import: {imported} row(s) already in Tally, {result.errors} error(s), "
+            f"{len(result.line_errors)} line error(s) — re-push blocked to avoid duplicates"
+        )
+    job.advance(status)
+    log.info(
+        "push.done",
+        job_id=job.id,
+        status=status.value,
+        created=result.created,
+        altered=result.altered,
+        errors=result.errors,
+        exceptions=result.exceptions,
+        line_errors=len(result.line_errors),
+    )
+    return status
+
+
+def record_push_failure(job: Job, reason: str) -> None:
+    """Mark a push whose response never arrived (call under the job lock).
+
+    Retry is allowed, but if the transport died AFTER Tally received the XML the import may have
+    happened — the note tells the user to verify in Tally before re-pushing.
+    """
+    job.notes.append(f"push failed: {reason} — verify in Tally before re-pushing")
+    job.advance(JobStatus.PUSH_FAILED)
+    log.warning("push.failed", job_id=job.id, reason=reason)
+
+
+def run_push(job: Job, settings: Settings) -> Any:
+    """Direct dev push to a local Tally gateway. Caller must have claimed via ``claim_push``."""
+    if job.xml is None:
+        raise InvalidState("Generate the XML before pushing.")
     if not settings.direct_tally_push:
         raise ServiceUnavailable(
             "Direct push is disabled; connect a bridge agent to relay to Tally.",
@@ -452,15 +571,4 @@ def run_push(job: Job, settings: Settings) -> Any:
             "Tally returned a response that could not be parsed.", code="bad_tally_response", detail=str(exc)
         ) from exc
 
-    job.push_result = result
-    job.advance(JobStatus.PUSHED)
-    log.info(
-        "push.done",
-        job_id=job.id,
-        created=result.created,
-        altered=result.altered,
-        errors=result.errors,
-        exceptions=result.exceptions,
-        line_errors=len(result.line_errors),
-    )
     return result

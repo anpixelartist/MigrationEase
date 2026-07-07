@@ -1,9 +1,12 @@
+import { oidcConfigStore, refreshTokens, type TokenSet } from "../auth/oidc";
 import type {
+  AuthConfig,
   BridgeResponse,
   BridgeStatus,
   EntityType,
   Job,
   MappingProposal,
+  MappingTemplate,
   Problem,
   ProfileSignals,
   TaskEnqueued,
@@ -15,6 +18,8 @@ import type {
 
 const BASE = import.meta.env.VITE_API_BASE || "/api";
 const TOKEN_KEY = "tm_token";
+const REFRESH_KEY = "tm_refresh_token";
+const ID_TOKEN_KEY = "tm_id_token";
 
 export class ApiError extends Error {
   problem: Problem;
@@ -27,7 +32,41 @@ export class ApiError extends Error {
 export const tokenStore = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (t: string | null) => (t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY)),
+  getRefresh: () => localStorage.getItem(REFRESH_KEY),
+  getIdToken: () => localStorage.getItem(ID_TOKEN_KEY),
+  /** Store an OIDC token set (Keycloak login/refresh). */
+  setSession(tokens: TokenSet) {
+    localStorage.setItem(TOKEN_KEY, tokens.access_token);
+    if (tokens.refresh_token) localStorage.setItem(REFRESH_KEY, tokens.refresh_token);
+    if (tokens.id_token) localStorage.setItem(ID_TOKEN_KEY, tokens.id_token);
+  },
+  clear() {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(REFRESH_KEY);
+    localStorage.removeItem(ID_TOKEN_KEY);
+  },
 };
+
+// Single in-flight refresh shared by concurrent 401s.
+let refreshing: Promise<boolean> | null = null;
+
+async function tryRefreshSession(): Promise<boolean> {
+  const cfg = oidcConfigStore.get();
+  const refresh = tokenStore.getRefresh();
+  if (!cfg || !refresh) return false;
+  refreshing ??= (async () => {
+    try {
+      tokenStore.setSession(await refreshTokens(cfg, refresh));
+      return true;
+    } catch {
+      tokenStore.clear();
+      return false;
+    } finally {
+      refreshing = null;
+    }
+  })();
+  return refreshing;
+}
 
 async function parseError(res: Response): Promise<never> {
   let problem: Problem;
@@ -36,11 +75,11 @@ async function parseError(res: Response): Promise<never> {
   } catch {
     problem = { type: "about:blank", title: res.statusText, status: res.status, code: "http_error", detail: null, errors: [] };
   }
-  if (res.status === 401) tokenStore.set(null);
+  if (res.status === 401) tokenStore.clear();
   throw new ApiError(problem);
 }
 
-async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
+async function request<T>(method: string, path: string, body?: unknown, isRetry = false): Promise<T> {
   const headers: Record<string, string> = {};
   const token = tokenStore.get();
   if (token) headers["Authorization"] = `Bearer ${token}`;
@@ -52,6 +91,11 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
     payload = JSON.stringify(body);
   }
   const res = await fetch(`${BASE}${path}`, { method, headers, body: payload });
+  // Expired OIDC access token → one silent refresh, then retry the call.
+  // (FormData bodies are consumed by the first attempt, so uploads surface the 401 instead.)
+  if (res.status === 401 && !isRetry && !(body instanceof FormData) && (await tryRefreshSession())) {
+    return request<T>(method, path, body, true);
+  }
   if (!res.ok) return parseError(res);
   if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
@@ -59,6 +103,7 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 
 // ---- auth ----
 export const api = {
+  authConfig: () => request<AuthConfig>("GET", "/auth/config"),
   signup: (email: string, password: string, full_name?: string, org_name?: string) =>
     request<TokenResponse>("POST", "/auth/signup", { email, password, full_name, org_name }),
   login: (email: string, password: string) =>
@@ -82,8 +127,13 @@ export const api = {
   // long stages return a task; poll with pollTask
   enqueueValidate: (id: string, known_groups?: string[]) =>
     request<TaskEnqueued>("POST", `/jobs/${id}/validate`, { known_groups: known_groups ?? null }),
-  enqueueGenerate: (id: string, company?: string, cutover_date?: string) =>
-    request<TaskEnqueued>("POST", `/jobs/${id}/generate`, { company: company ?? null, cutover_date: cutover_date ?? null }),
+  enqueueGenerate: (id: string, company?: string, cutover_date?: string, opts?: { b2c_summary?: boolean; settlement_mode?: boolean }) =>
+    request<TaskEnqueued>("POST", `/jobs/${id}/generate`, {
+      company: company ?? null,
+      cutover_date: cutover_date ?? null,
+      b2c_summary: opts?.b2c_summary ?? false,
+      settlement_mode: opts?.settlement_mode ?? false,
+    }),
   enqueuePush: (id: string) => request<TaskEnqueued>("POST", `/jobs/${id}/push`),
   getTask: <T>(id: string, taskId: string) => request<TaskResult<T>>("GET", `/jobs/${id}/tasks/${taskId}`),
   artifactUrl: (id: string) => `${BASE}/jobs/${id}/artifact`,
@@ -91,6 +141,18 @@ export const api = {
   // ---- bridge ----
   createBridge: (name?: string) => request<BridgeResponse>("POST", "/bridges", { name }),
   bridgeStatus: () => request<BridgeStatus>("GET", "/bridge/status"),
+
+  // ---- saved mapping templates ----
+  listTemplates: (entity_type: EntityType) =>
+    request<MappingTemplate[]>("GET", `/templates?entity_type=${encodeURIComponent(entity_type)}`),
+  saveTemplate: (t: {
+    name: string;
+    entity_type: EntityType;
+    mapping: Record<string, string | null>;
+    constants: Record<string, string>;
+    source_columns: string[];
+  }) => request<MappingTemplate>("POST", "/templates", t),
+  deleteTemplate: (id: string) => request<void>("DELETE", `/templates/${id}`),
 };
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -98,7 +160,9 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 /** Poll a background task to completion. */
 export async function pollTask<T>(jobId: string, taskId: string, opts?: { intervalMs?: number; tries?: number }): Promise<TaskResult<T>> {
   const interval = opts?.intervalMs ?? 700;
-  const tries = opts?.tries ?? 120;
+  // ~7 min — must comfortably outlast the server-side stage timeouts (bridge dispatch is 120 s),
+  // otherwise the UI fabricates a timeout while the task is still running server-side.
+  const tries = opts?.tries ?? 600;
   for (let i = 0; i < tries; i++) {
     const r = await api.getTask<T>(jobId, taskId);
     if (r.state !== "pending") return r;

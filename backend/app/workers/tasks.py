@@ -16,9 +16,10 @@ import asyncio
 from typing import Any
 
 from app.core.config import get_settings
-from app.core.errors import AppError, InvalidState, ServiceUnavailable
-from app.pipeline.push.response_parser import parse_import_response
-from app.relay.registry import BridgeOffline, registry
+from app.core.errors import AppError, ServiceUnavailable, UnprocessableData
+from app.pipeline.push.response_parser import XMLSecurityError, parse_import_response
+from app.relay import redis_relay
+from app.relay.registry import BridgeNotConnected, BridgeOffline
 from app.services import pipeline_service as svc
 from app.services.job_repo import get_db_store
 from app.services.job_store import JobStatus
@@ -70,11 +71,11 @@ async def validate_task(
 
 
 @broker.task
-async def generate_task(org_id: str, job_id: str, company: str | None = None, cutover_date: str | None = None) -> dict[str, Any]:
+async def generate_task(org_id: str, job_id: str, company: str | None = None, cutover_date: str | None = None, b2c_summary: bool = False, settlement_mode: bool = False) -> dict[str, Any]:
     def _run() -> dict[str, Any]:
         try:
             with get_db_store().lock(org_id, job_id) as job:
-                summary = svc.run_generation(job, company, cutover_date)
+                summary = svc.run_generation(job, company, cutover_date, b2c_summary=b2c_summary, settlement_mode=settlement_mode)
                 return _done(
                     {
                         "status": job.status.value,
@@ -95,51 +96,97 @@ async def generate_task(org_id: str, job_id: str, company: str | None = None, cu
 
 @broker.task
 async def push_task(org_id: str, job_id: str) -> dict[str, Any]:
+    """Push the generated XML into Tally — idempotently.
+
+    Sequence: (1) atomically CLAIM the push under the job lock (concurrent/duplicate pushes get
+    409 — a double import would duplicate accounting entries); (2) send — direct HTTP in dev, or
+    via the bridge relay (local socket or Redis pub/sub to the replica that holds it); (3) record
+    Tally's actual verdict, which decides PUSHED / PUSHED_PARTIAL / PUSH_FAILED.
+    """
     settings = get_settings()
     store = get_db_store()
 
+    def _claim() -> tuple[bytes, str | None]:
+        with store.lock(org_id, job_id) as job:
+            svc.claim_push(job)
+            assert job.xml is not None  # guaranteed by claim_push
+            return job.xml, job.company
+
+    def _record(result: Any) -> str:
+        with store.lock(org_id, job_id) as job:
+            return svc.record_push_result(job, result).value
+
+    def _record_failure(reason: str) -> None:
+        with store.lock(org_id, job_id) as job:
+            svc.record_push_failure(job, reason)
+
+    def _release_claim() -> None:
+        # nothing was ever sent -> safe to hand the job back untouched
+        with store.lock(org_id, job_id) as job:
+            job.advance(JobStatus.GENERATED)
+
+    try:
+        xml, company = await asyncio.to_thread(_claim)
+    except AppError as exc:
+        return _error(exc)
+
     # dev: direct push to a local Tally gateway (sync urllib in a thread)
     if settings.direct_tally_push:
-        def _run() -> dict[str, Any]:
+        def _run_direct() -> dict[str, Any]:
             try:
                 with store.lock(org_id, job_id) as job:
                     result = svc.run_push(job, settings)
-                    return _done({"status": job.status.value, **result.model_dump(exclude={"raw_xml"})})
+                    status = svc.record_push_result(job, result)
+                    return _done({"status": status.value, **result.model_dump(exclude={"raw_xml"})})
+            except ServiceUnavailable as exc:  # gateway unreachable — nothing was imported
+                with store.lock(org_id, job_id) as job:
+                    svc.record_push_failure(job, exc.message)
+                return _error(exc)
             except AppError as exc:
+                with store.lock(org_id, job_id) as job:
+                    svc.record_push_failure(job, exc.message)
                 return _error(exc)
 
-        return await asyncio.to_thread(_run)
+        return await asyncio.to_thread(_run_direct)
 
-    # prod: relay the XML to the org's connected bridge over WSS, await Tally's response
+    # prod: relay the XML to the org's bridge (this process, or another replica via Redis)
     try:
-        def _read() -> tuple[bytes, str | None]:
-            job = store.get(org_id, job_id)
-            job.require("push")
-            if job.xml is None:
-                raise InvalidState("Generate the XML before pushing.")
-            return job.xml, job.company
-
-        xml, company = await asyncio.to_thread(_read)
-        try:
-            response = await registry.dispatch(org_id, job_id, xml, company)
-        except BridgeOffline as exc:
-            raise ServiceUnavailable(
+        response = await redis_relay.dispatch(org_id, job_id, xml, company)
+    except BridgeNotConnected as exc:
+        await asyncio.to_thread(_release_claim)  # pre-send failure: retry is always safe
+        return _error(
+            ServiceUnavailable(
                 "No bridge is connected for this organization.",
                 code="bridge_unavailable",
                 detail=str(exc),
-            ) from exc
+            )
+        )
+    except BridgeOffline as exc:
+        # The XML may have reached Tally before the transport died — mark PUSH_FAILED with a
+        # verify-first warning instead of pretending nothing happened.
+        await asyncio.to_thread(_record_failure, str(exc))
+        return _error(
+            ServiceUnavailable(
+                "The bridge did not return a result for this push.",
+                code="bridge_no_result",
+                detail=f"{exc} — verify in Tally whether the import happened before re-pushing.",
+            )
+        )
 
+    try:
         result = parse_import_response(response)
+    except XMLSecurityError as exc:
+        await asyncio.to_thread(_record_failure, f"unparseable Tally response: {exc}")
+        return _error(
+            UnprocessableData(
+                "Tally returned a response that could not be parsed.",
+                code="bad_tally_response",
+                detail=str(exc),
+            )
+        )
 
-        def _persist() -> None:
-            with store.lock(org_id, job_id) as job:
-                job.push_result = result
-                job.advance(JobStatus.PUSHED)
-
-        await asyncio.to_thread(_persist)
-        return _done({"status": "pushed", **result.model_dump(exclude={"raw_xml"})})
-    except AppError as exc:
-        return _error(exc)
+    status = await asyncio.to_thread(_record, result)
+    return _done({"status": status, **result.model_dump(exclude={"raw_xml"})})
 
 
 @broker.task(schedule=[{"cron": "0 3 * * *"}])  # runs daily at 3am

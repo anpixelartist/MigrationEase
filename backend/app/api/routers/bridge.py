@@ -8,6 +8,7 @@ from starlette.concurrency import run_in_threadpool
 from app.api.deps import Principal, get_principal
 from app.core.errors import Forbidden
 from app.core.logging import bind_context
+from app.relay import redis_relay
 from app.relay.registry import registry
 from app.schemas.bridge import BridgeResponse, CreateBridgeRequest
 from app.services import bridge_service
@@ -30,15 +31,25 @@ async def create_bridge(
 @router.get("/bridge/status")
 async def bridge_status(principal: Principal = Depends(get_principal)) -> dict:
     return {
-        "online": registry.is_online(principal.org_id),
+        # fleet-wide: the socket may be held by another API replica (Redis presence)
+        "online": await redis_relay.is_online_anywhere(principal.org_id),
         "company_guid": registry.company_guid(principal.org_id),
     }
 
 
+def _extract_key(websocket: WebSocket) -> str | None:
+    """Bridge key from the Authorization header (preferred — query strings leak into proxy/access
+    logs), falling back to ?key= for older bridge builds."""
+    auth = websocket.headers.get("authorization", "")
+    if auth.lower().startswith("bearer "):
+        return auth.split(" ", 1)[1].strip() or None
+    return websocket.query_params.get("key")
+
+
 @router.websocket("/bridge/ws")
 async def bridge_ws(websocket: WebSocket) -> None:
-    """The bridge dials in here (WSS in prod) and authenticates with its API key (?key=...)."""
-    auth = await run_in_threadpool(bridge_service.authenticate, websocket.query_params.get("key"))
+    """The bridge dials in here (WSS in prod) and authenticates with its API key."""
+    auth = await run_in_threadpool(bridge_service.authenticate, _extract_key(websocket))
     if auth is None:
         await websocket.close(code=4401)  # reject unauthenticated
         return
@@ -46,12 +57,17 @@ async def bridge_ws(websocket: WebSocket) -> None:
     bind_context(org_id=org_id, bridge_id=bridge_id)
     await websocket.accept()
     await registry.connect(org_id, bridge_id, websocket)
+    await redis_relay.presence_connected(org_id)
     await run_in_threadpool(bridge_service.touch_last_seen, bridge_id)
     try:
         while True:
             frame = await websocket.receive_json()
             await registry.on_frame(org_id, frame)
+            if frame.get("type") == "heartbeat":
+                await redis_relay.presence_refresh(org_id)
     except WebSocketDisconnect:
         pass
     finally:
         await registry.disconnect(org_id, websocket)
+        if not registry.is_online(org_id):  # a replacement connection may have raced in
+            await redis_relay.presence_disconnected(org_id)

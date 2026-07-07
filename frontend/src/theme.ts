@@ -1,8 +1,10 @@
 import type { CSSProperties } from "react";
 
-// Design tokens lifted from the Ledgerbridge prototype (design-reference/).
+// YAVDA brand. Primary is the petrol/teal blue from the YAVDA mark; brandDark is the deeper logo shade.
+export const BRAND = { name: "YAVDA", tagline: "Let Data be Your North Star" };
 export const T = {
-  accent: "#4f46e5",
+  accent: "#146d8a",   // YAVDA teal-blue — buttons, links, active nav, focus rings
+  accentDark: "#0e4f66",
   bg: "#f3f3f1",
   surface: "#ffffff",
   text: "#1c1c1a",

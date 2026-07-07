@@ -1,145 +1,127 @@
-# TallyMigration ("Ledgerbridge")
+# MigrationEase
 
-Migrate accounting data from user-uploaded **CSV/Excel** into **Tally** (Indian desktop accounting
-software) via Tally's XML import format — with auto column-mapping, validation, and a guided wizard.
+**by Yavda Analytics** — migrate accounting data from user-uploaded **CSV/Excel** into **TallyPrime**
+via Tally's XML import format, with auto column-mapping, validation, a GST/e-commerce voucher engine,
+and Single Sign-On.
 
 - **Backend** — Python 3.12 / FastAPI: the 7-stage pipeline (parse → profile → map → validate →
-  resolve → generate XML → push), auth + multi-tenant orgs, async workers, object storage.
-- **Frontend** — React + TypeScript (Vite): the import wizard.
-- **Bridge** — a Go agent that runs on the user's machine and relays XML to Tally's `localhost:9000`.
+  resolve → generate XML → push), multi-tenant orgs, async workers, object storage.
+- **Frontend** — React + TypeScript (Vite): the guided import wizard.
+- **Bridge** — a Go agent on the user's machine that relays XML to Tally's local gateway (`:9000`).
+- **Auth** — built-in email/password *or* **Keycloak SSO** (OIDC).
 
-## Repository layout
+> **Just want to run/show the demo?** Use the **`run-demo` skill** (`.claude/skills/run-demo/`) or
+> follow *Quick start* below. Agents/devs: see [AGENTS.md](AGENTS.md).
 
-| Path | What |
+## What it does
+
+| Area | Capabilities |
 |---|---|
-| `backend/` | FastAPI service + Alembic migrations + taskiq workers ([backend/README.md](backend/README.md)) |
-| `frontend/` | React + TS (Vite) app ([frontend/README.md](frontend/README.md)); `design-reference/` holds the original prototype |
-| `bridge/` | Go bridge agent ([bridge/README.md](bridge/README.md)) |
-| `infra/` | `docker-compose.yml` for Postgres / Redis / MinIO |
-| `shared/` | canonical Tally field catalog (JSON) — read by backend and frontend |
-| `docs/` | architecture + open-source-stack plan |
+| **Masters** | Ledgers, Groups, Units, Stock Items — parse → auto-map → validate → generate → push. Create-vs-update resolution, opening balances, HSN codes. |
+| **Vouchers** | Transactions grouped into balanced vouchers; triple-layer double-entry enforcement; cutover date → opening balances; Round-Off. |
+| **GST / e-commerce engine** | Place-of-supply tax computed from a GST rate → **CGST/SGST** (intra-state) or **IGST** (inter-state); **B2B invoices vs B2C daily summaries**; **marketplace settlement** journals (Bank/Commission/Fees/TCS); **refunds → Credit Notes**. |
+| **Mapping** | Fuzzy auto-mapping with confidence scoring; fixed-value constants; **saved templates** that auto-apply to future files with the same columns. |
+| **Push** | Direct (same machine) or via the bridge; idempotent (a repeat push is blocked; status = pushed / pushed_partial / push_failed). |
+| **Auth** | Email/password, or Keycloak SSO (Authorization Code + PKCE), org-scoped multi-tenant isolation. |
 
 ---
 
 ## Prerequisites
 
-| Tool | Version | Needed for |
+| Tool | Version | For |
 |---|---|---|
 | **Python** | 3.12+ | backend |
 | **Node.js** | 20+ | frontend |
-| **Go** | 1.22+ | bridge (optional until you need it) |
-| **Docker** | any | Postgres/Redis/MinIO (optional — dev runs on SQLite + local FS) |
-| **TallyPrime** | — | only to actually push data; enable the gateway (F1 → Settings → Connectivity → "Act as Server", port 9000) |
-
-Either conda **or** a plain venv works for the backend. Examples below show both.
+| **Docker** | any | Keycloak (SSO) / optional Postgres·Redis·MinIO |
+| **Go** | 1.22+ | bridge (only to push to a networked Tally) |
+| **TallyPrime** | — | only to actually push; enable the gateway (F1 → Settings → Connectivity → "Act as Server", port 9000) |
 
 ---
 
-## Quick start (dev — SQLite, no Docker)
+## Quick start (dev — SQLite, no external services)
 
 ### 1) Backend → http://127.0.0.1:8000
-
 ```bash
 cd backend
-
-# --- option A: conda ---
-conda create -n tally python=3.12 -y
-conda run -n tally pip install -e .[dev]
-conda run -n tally uvicorn app.main:app --reload
-
-# --- option B: venv ---
-python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
+python -m venv .venv && .venv\Scripts\activate      # POSIX: source .venv/bin/activate
 pip install -e .[dev]
 uvicorn app.main:app --reload
 ```
-
-Dev defaults: SQLite (`./tallymigration.db`, auto-created), local-filesystem blob storage, and an
-in-process task broker — **no external services required**. API docs at http://127.0.0.1:8000/docs.
-
-> **Push to Tally in dev:** set `TM_DIRECT_TALLY_PUSH=true` to POST straight to a local Tally gateway
-> (bypasses the bridge). Otherwise pushes go through a connected bridge (see below).
+Dev defaults: SQLite (`./tallymigration.db`, auto-created), local-filesystem storage, in-process
+broker — no external services. API docs at http://127.0.0.1:8000/docs.
 
 ### 2) Frontend → http://localhost:5173
-
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+Proxies `/api` → the backend on :8000. Sign up (or use SSO), then walk the wizard.
 
-The dev server **proxies `/api` → the backend on :8000** (override with `TM_BACKEND=http://host:port npm run dev`).
-Open http://localhost:5173, **sign up** (creates your workspace), and walk the wizard.
-
-### 3) Try it
-1. Sign up.
-2. **Import** → choose *Ledgers* → upload a CSV like:
-   ```csv
-   Ledger Name,Under,Opening Bal
-   Acme Traders,Sundry Debtors,15000
-   Beta Corp,Sundry Debtors,(500)
-   ```
-3. Preview → confirm the auto-mapping → Validate → enter your Tally company on the Plan step →
-   **Download XML** or **Push to Tally**.
+### 3) Push to Tally (optional)
+Set `TM_DIRECT_TALLY_PUSH=true` to POST straight to a local Tally gateway on :9000 (bypasses the
+bridge). Otherwise pushes route through a connected bridge (Bridge tab → generate key → run the
+`bridge run …` command on the Tally machine).
 
 ---
 
-## Connecting Tally via the bridge (instead of direct push)
+## Authentication (built-in or Keycloak SSO)
 
-In production the backend never reaches Tally directly — a local **bridge agent** does. To use it in dev:
+Set the mode with `TM_AUTH_MODE`:
 
+- **`legacy`** — built-in email/password (app-issued JWT). Simplest.
+- **`keycloak`** — **SSO only**: all logins go through Keycloak (email verification, MFA, lockout);
+  the app's own password endpoints return 403. **Production default.**
+- **`hybrid`** — accepts both (only for migrating existing password users).
+
+Bring up Keycloak for a local SSO demo:
 ```bash
-# build the bridge (needs Go on the machine running Tally)
-cd bridge
-go build -o bin/bridge ./cmd/bridge
-./bin/bridge probe                 # verify the local Tally gateway is reachable
+docker compose -f infra/docker-compose.yml up -d keycloak    # realm auto-imported
 ```
+Then run the backend with:
+```
+TM_AUTH_MODE=keycloak
+TM_OIDC_ISSUER=http://localhost:8080/realms/tallymigration
+TM_OIDC_AUDIENCE=tallymigration-api
+TM_OIDC_WEB_CLIENT_ID=tallymigration-web
+```
+The login page then shows **Continue with SSO**. The dev realm ships **admin-only** access (you create
+users in the Keycloak console — no self-signup), no email verification, and a demo user
+`testuser@yavda.local` / `Test@12345`. Console: http://localhost:8080 (`admin` / `admin`, DEV ONLY).
 
-Then in the app: **Bridge** tab → *Generate key* → copy the `bridge run ...` command it shows and run
-it on the Tally machine. The bridge dials out to the backend's `/bridge/ws`, and a **Push to Tally**
-now relays through it. (Leave `TM_DIRECT_TALLY_PUSH` unset when using the bridge.)
+**Production**: import the hardened realm `infra/keycloak/realm-tallymigration-prod.json` and run
+Keycloak per `infra/docker-compose.keycloak-prod.yml`. Full checklist (MFA, TLS, secrets, adding
+users): [docs/AUTH-KEYCLOAK.md](docs/AUTH-KEYCLOAK.md).
 
 ---
 
 ## Running with real services (Postgres + Redis + MinIO)
-
 ```bash
-docker compose -f infra/docker-compose.yml up -d        # postgres:5432, redis:6379, minio:9100
-cp backend/.env.example backend/.env                    # then edit TM_JWT_SECRET, etc.
-
+docker compose -f infra/docker-compose.yml up -d      # postgres:5432, redis:6379, minio:9100, keycloak:8080
+cp backend/.env.example backend/.env                  # then edit secrets
 cd backend
-conda run -n tally alembic upgrade head                 # create schema (+ Postgres RLS)
-conda run -n tally uvicorn app.main:app                 # API (reads backend/.env)
-conda run -n tally taskiq worker app.workers.broker:broker app.workers.tasks   # background worker
+alembic upgrade head                                  # schema (+ Postgres RLS)
+uvicorn app.main:app                                  # API (reads backend/.env)
+taskiq worker app.workers.broker:broker app.workers.tasks   # background worker
 ```
-
-With `TM_BROKER_URL` set to Redis, validate/generate/push run on the worker (off the request path).
-`.env` also switches storage to MinIO and the DB to Postgres. See [backend/.env.example](backend/.env.example).
-
----
 
 ## Tests
-
 ```bash
-# backend (139 tests)
-conda run -n tally --cwd backend python -m pytest -q
-
-# bridge
-cd bridge && go test ./...
-
-# frontend (type-check + production build)
-cd frontend && npm run build
+cd backend && python -m pytest -q          # backend (231 tests) — run from backend/
+cd backend && python -m ruff check .       # lint
+cd frontend && npm run build               # type-check + prod build
+cd bridge && go vet ./... && go test ./... && go build ./...
 ```
 
----
-
 ## Configuration
-
 All backend settings are env vars prefixed `TM_` (e.g. `TM_DATABASE_URL`, `TM_BROKER_URL`,
-`TM_STORAGE_BACKEND`, `TM_JWT_SECRET`, `TM_DIRECT_TALLY_PUSH`). Full list + dev/prod values:
-[backend/.env.example](backend/.env.example). The frontend reads `VITE_API_BASE` (defaults to `/api`).
+`TM_STORAGE_BACKEND`, `TM_AUTH_MODE`, `TM_OIDC_ISSUER`, `TM_DIRECT_TALLY_PUSH`). Full list + dev/prod
+values: [backend/.env.example](backend/.env.example). Frontend reads `VITE_API_BASE` (defaults `/api`).
 
 ## Troubleshooting
-- **Frontend can't reach the API** → make sure the backend is on :8000, or run `TM_BACKEND=... npm run dev`.
-- **"No bridge connected" on push** → either connect a bridge (Bridge tab) or set `TM_DIRECT_TALLY_PUSH=true`.
-- **Push error "company does not exist"** → the Plan-step company must match the company currently open in Tally.
+- **Frontend can't reach the API** → backend must be on :8000, or run `TM_BACKEND=... npm run dev`.
+- **SSO "invalid scopes"** → the Keycloak realm is missing the `profile`/`email` client scopes; the
+  committed realm includes them — recreate the container to re-import.
+- **"No bridge connected" on push** → connect a bridge (Bridge tab) or set `TM_DIRECT_TALLY_PUSH=true`.
+- **Push "company does not exist"** → the Plan-step company must match the company open in Tally.
 - **Stock items rejected** → enable inventory in the Tally company (F11 → Maintain Inventory).

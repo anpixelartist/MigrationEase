@@ -213,6 +213,8 @@ def _build_stock_item(requestdata: etree._Element, item: StockItem) -> None:
     if item.parent and item.parent.strip().casefold() != PRIMARY_GROUP.casefold():
         _sub(el, "PARENT", item.parent)
     _sub(el, "BASEUNITS", item.base_units)  # the referenced Unit must pre-exist
+    if item.hsn_code:
+        _sub(el, "HSNCODE", item.hsn_code)  # canonical field 'hsn' -> Tally <HSNCODE>
     if item.category:
         _sub(el, "CATEGORY", item.category)
     if item.description:

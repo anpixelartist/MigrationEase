@@ -13,7 +13,11 @@ services:
       POSTGRES_PASSWORD: tally
       POSTGRES_DB: tallymigration
     ports: ["5432:5432"]
-    volumes: ["pgdata:/var/lib/postgresql/data"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # creates the non-owner tally_app role (needed for RLS to apply) on FIRST init of the
+      # volume; existing volume: psql -U tally -d tallymigration -f postgres-init/01-app-role.sql
+      - ./postgres-init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U tally"]
       interval: 5s
@@ -25,6 +29,24 @@ services:
     ports: ["6379:6379"]
     command: ["redis-server", "--appendonly", "yes"]
     volumes: ["redisdata:/data"]
+
+  # Self-hosted IAM (OIDC). Dev profile: start-dev + auto-import of the tallymigration realm
+  # (clients: tallymigration-web SPA/PKCE, example-m2m client-credentials). Admin console:
+  # http://localhost:8080 (admin / admin — DEV ONLY). Production: run `start` (not start-dev)
+  # behind TLS with KC_DB=postgres and a strong bootstrap password — see docs/AUTH-KEYCLOAK.md.
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin  # DEV ONLY — never ship this
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME: http://localhost:8080
+    ports: ["8080:8080"]
+    # Ephemeral H2 (no named volume): the realm re-imports on each start, so the demo is always
+    # clean. A root-owned named volume on /opt/keycloak/data/h2 makes Keycloak (non-root) crash.
+    volumes:
+      - ./keycloak/realm-tallymigration.json:/opt/keycloak/data/import/realm-tallymigration.json:ro
 
   minio:
     image: minio/minio

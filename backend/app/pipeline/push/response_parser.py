@@ -53,7 +53,12 @@ class ImportResult(BaseModel):
     @computed_field  # serialized into the push result so the UI can flag partial/failed imports
     @property
     def is_success(self) -> bool:
-        return self.errors == 0 and self.exceptions == 0 and not self.line_errors
+        return (
+            self.errors == 0
+            and self.exceptions == 0
+            and self.cancelled == 0
+            and not self.line_errors
+        )
 
 
 def _hardened_parser() -> etree.XMLParser:

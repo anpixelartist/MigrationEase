@@ -101,6 +101,7 @@ class StockItem(MasterBase):
     opening_qty: Decimal | None = None
     opening_rate: Decimal | None = None
     opening_value: Decimal | None = None
+    hsn_code: str | None = None  # emitted as <HSNCODE> when the user maps an HSN column
     gst_applicable: bool = False  # full GST RATEDETAILS deferred past the masters spine (plan §11.10)
 
 
@@ -156,6 +157,7 @@ class Voucher(BaseModel):
     narration: str | None = None
     reference: str | None = None  # document / voucher number (e.g. an invoice no.)
     party_ledger: str | None = None  # PARTYLEDGERNAME for invoice-style vouchers
+    party_gstin: str | None = None  # buyer GSTIN, if any — drives B2B (per-invoice) vs B2C (summary)
     guid: str | None = None
     master_id: str | None = None
     source_row: int | None = None  # the header (first) row this voucher came from

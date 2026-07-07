@@ -18,6 +18,11 @@ export interface TokenResponse {
   token_type: string;
   user: User;
 }
+export interface AuthConfig {
+  mode: "legacy" | "hybrid" | "keycloak";
+  issuer: string | null;
+  client_id: string | null;
+}
 
 export interface Job {
   id: string;
@@ -63,6 +68,21 @@ export interface MappingProposal {
   suggestions: FieldSuggestion[];
   unmapped_sources: string[];
   unmapped_required: string[];
+  /** Set when a saved org template matched the file and was overlaid onto the suggestions. */
+  applied_template?: string | null;
+  /** Constants carried by that template (target_field -> fixed value) for the UI to pre-fill. */
+  applied_constants?: Record<string, string>;
+}
+
+export interface MappingTemplate {
+  id: string;
+  name: string;
+  entity_type: EntityType;
+  mapping: Record<string, string>;
+  constants: Record<string, string>;
+  source_columns: string[];
+  builtin: boolean;
+  created_at: string | null;
 }
 
 export interface ErrorEnvelope {

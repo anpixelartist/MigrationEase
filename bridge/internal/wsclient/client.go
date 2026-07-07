@@ -10,6 +10,8 @@ import (
 	"fmt"
 	"io"
 	"math/rand"
+	"net/http"
+	"strings"
 	"time"
 
 	"github.com/coder/websocket"
@@ -22,21 +24,28 @@ import (
 const maxMessageBytes = 64 * 1024 * 1024 // generous cap for large master imports
 
 type Config struct {
-	RelayURL string // e.g. wss://relay.example.com/bridge/ws
-	APIKey   string // bk_...
-	Tally    *tally.Client
-	Company  string // active company (for heartbeats)
+	RelayURL    string // e.g. wss://relay.example.com/bridge/ws
+	APIKey      string // bk_...
+	Tally       *tally.Client
+	Company     string // active company (for heartbeats), and fallback target if the payload omits one
+	TestCompany string // sandbox gate: if set, REFUSE to push to any company except this one
 }
 
 // Run maintains a connection to the relay until ctx is cancelled, reconnecting with backoff+jitter.
 func Run(ctx context.Context, cfg Config) error {
 	backoff := time.Second
 	for ctx.Err() == nil {
+		started := time.Now()
 		if err := connectAndServe(ctx, cfg); err != nil && ctx.Err() == nil {
 			fmt.Println("bridge: connection lost:", err)
 		}
 		if ctx.Err() != nil {
 			return ctx.Err()
+		}
+		// a connection that held for a while was healthy — start the backoff over,
+		// so a drop after hours of uptime reconnects in ~1s instead of ~30s
+		if time.Since(started) > time.Minute {
+			backoff = time.Second
 		}
 		wait := backoff + time.Duration(rand.Int63n(int64(time.Second)))
 		select {
@@ -52,7 +61,10 @@ func Run(ctx context.Context, cfg Config) error {
 }
 
 func connectAndServe(ctx context.Context, cfg Config) error {
-	conn, _, err := websocket.Dial(ctx, cfg.RelayURL+"?key="+cfg.APIKey, nil)
+	// key travels in a header, not the URL — query strings land in proxy/access logs
+	header := http.Header{}
+	header.Set("Authorization", "Bearer "+cfg.APIKey)
+	conn, _, err := websocket.Dial(ctx, cfg.RelayURL, &websocket.DialOptions{HTTPHeader: header})
 	if err != nil {
 		return err
 	}
@@ -99,11 +111,38 @@ func buildEnvelopeShell(company string, reportName string, importDups string, in
 </ENVELOPE>`, reportName, company, dupsTag, string(innerXML)))
 }
 
+func extractSVCurrentCompany(b []byte) string {
+	const open, closeTag = "<SVCURRENTCOMPANY>", "</SVCURRENTCOMPANY>"
+	s := string(b)
+	i := strings.Index(s, open)
+	if i < 0 {
+		return ""
+	}
+	rest := s[i+len(open):]
+	j := strings.Index(rest, closeTag)
+	if j < 0 {
+		return ""
+	}
+	return strings.TrimSpace(rest[:j])
+}
+
 func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job protocol.PushJob) {
 	xmlBytes, err := base64.StdEncoding.DecodeString(job.XMLB64)
 	if err != nil {
 		_ = wsjson.Write(ctx, conn, protocol.JobError{Type: protocol.TypeJobError, JobID: job.JobID, Reason: "bad_payload"})
 		return
+	}
+
+	// Sandbox gate: when --test-company is set, refuse to import into anything else.
+	if cfg.TestCompany != "" {
+		target := extractSVCurrentCompany(xmlBytes)
+		if target == "" {
+			target = cfg.Company
+		}
+		if !strings.EqualFold(strings.TrimSpace(target), strings.TrimSpace(cfg.TestCompany)) {
+			_ = wsjson.Write(ctx, conn, protocol.JobError{Type: protocol.TypeJobError, JobID: job.JobID, Reason: "sandbox_blocked"})
+			return
+		}
 	}
 
 	decoder := xml.NewDecoder(bytes.NewReader(xmlBytes))
@@ -115,6 +154,10 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 	hasError := false
 	currentReportName := "All Masters" // Default assumption
 	currentImportDups := ""
+	// Honor the company the BACKEND selected (Plan step) via the payload's SVCURRENTCOMPANY; the
+	// CLI --company flag is only a fallback. Otherwise every push would land in the operator's
+	// flag/currently-open company regardless of what the user chose — a data-integrity bug.
+	currentCompany := cfg.Company
 
 	for {
 		t, err := decoder.Token()
@@ -132,11 +175,16 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 				if err := decoder.DecodeElement(&dups, &se); err == nil {
 					currentImportDups = dups
 				}
+			} else if se.Name.Local == "SVCURRENTCOMPANY" {
+				var co string
+				if err := decoder.DecodeElement(&co, &se); err == nil && strings.TrimSpace(co) != "" {
+					currentCompany = strings.TrimSpace(co)
+				}
 			} else if se.Name.Local == "REPORTNAME" {
 				var rName string
 				if err := decoder.DecodeElement(&rName, &se); err == nil {
 					if rName != currentReportName && count > 0 {
-						chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+						chunk := buildEnvelopeShell(currentCompany, currentReportName, currentImportDups, buffer.Bytes())
 						resp, postErr := cfg.Tally.Post(ctx, chunk)
 						if postErr != nil {
 							hasError = true
@@ -164,7 +212,7 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 				count++
 
 				if count >= 200 {
-					chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+					chunk := buildEnvelopeShell(currentCompany, currentReportName, currentImportDups, buffer.Bytes())
 					resp, postErr := cfg.Tally.Post(ctx, chunk)
 					if postErr != nil {
 						hasError = true
@@ -193,7 +241,7 @@ func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job proto
 
 	// Flush remaining buffer
 	if count > 0 {
-		chunk := buildEnvelopeShell(cfg.Company, currentReportName, currentImportDups, buffer.Bytes())
+		chunk := buildEnvelopeShell(currentCompany, currentReportName, currentImportDups, buffer.Bytes())
 		resp, postErr := cfg.Tally.Post(ctx, chunk)
 		if postErr != nil {
 			_ = wsjson.Write(ctx, conn, protocol.JobError{

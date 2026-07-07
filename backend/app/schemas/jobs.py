@@ -44,3 +44,7 @@ class ResolveRequest(BaseModel):
 class GenerateRequest(BaseModel):
     company: str | None = None
     cutover_date: str | None = None
+    # Consolidate B2C sales (no buyer GSTIN) into one summary voucher per day (GSTR-1 B2C-Others).
+    b2c_summary: bool = False
+    # Treat each row as a marketplace settlement -> multi-leg journal (Bank/Commission/Fees/TCS).
+    settlement_mode: bool = False

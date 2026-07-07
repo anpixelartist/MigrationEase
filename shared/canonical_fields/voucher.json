@@ -176,8 +176,78 @@
       "dtype": "string",
       "required": false,
       "unique": false,
-      "synonyms": ["home state", "origin state"],
+      "synonyms": ["home state", "origin state", "company state", "seller state"],
       "example": "Maharashtra"
+    },
+    {
+      "key": "gst_rate",
+      "label": "GST Rate (%)",
+      "tally_tag": null,
+      "dtype": "decimal",
+      "required": false,
+      "unique": false,
+      "synonyms": ["gst rate", "gst %", "tax rate", "gst", "tax %", "gst percent", "igst rate"],
+      "example": "18"
+    },
+    {
+      "key": "party_gstin",
+      "label": "Party GSTIN",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["gstin", "party gstin", "gst no", "gst number", "customer gstin", "buyer gstin", "gst registration"],
+      "example": "27ABCDE1234F1Z5"
+    },
+    {
+      "key": "hsn",
+      "label": "HSN/SAC",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["hsn", "hsn code", "sac", "hsn/sac", "hsn sac"],
+      "example": "61052010"
+    },
+    {
+      "key": "transaction_type",
+      "label": "Transaction Type",
+      "tally_tag": null,
+      "dtype": "string",
+      "required": false,
+      "unique": false,
+      "synonyms": ["transaction type", "financial status", "order type", "status", "kind", "sale type"],
+      "example": "sale"
+    },
+    {
+      "key": "commission",
+      "label": "Commission",
+      "tally_tag": null,
+      "dtype": "amount",
+      "required": false,
+      "unique": false,
+      "synonyms": ["commission", "marketplace commission", "seller fee", "referral fee"],
+      "example": "120.00"
+    },
+    {
+      "key": "marketplace_fee",
+      "label": "Fees",
+      "tally_tag": null,
+      "dtype": "amount",
+      "required": false,
+      "unique": false,
+      "synonyms": ["fees", "fee", "marketplace fee", "fulfillment fee", "shipping fee", "logistics fee", "closing fee"],
+      "example": "40.00"
+    },
+    {
+      "key": "tcs",
+      "label": "TCS",
+      "tally_tag": null,
+      "dtype": "amount",
+      "required": false,
+      "unique": false,
+      "synonyms": ["tcs", "tcs amount", "tax collected at source"],
+      "example": "10.00"
     }
   ]
 }

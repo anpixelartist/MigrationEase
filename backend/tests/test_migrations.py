@@ -25,5 +25,13 @@ def test_migrations_upgrade_head(tmp_path, monkeypatch):
     finally:
         engine.dispose()
 
-    assert {"organizations", "users", "memberships", "jobs", "bridges", "alembic_version"} <= tables
+    assert {
+        "organizations",
+        "users",
+        "memberships",
+        "jobs",
+        "bridges",
+        "service_accounts",
+        "alembic_version",
+    } <= tables
     get_settings.cache_clear()
