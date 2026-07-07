@@ -157,6 +157,7 @@ class Voucher(BaseModel):
     narration: str | None = None
     reference: str | None = None  # document / voucher number (e.g. an invoice no.)
     party_ledger: str | None = None  # PARTYLEDGERNAME for invoice-style vouchers
+    party_gstin: str | None = None  # buyer GSTIN, if any — drives B2B (per-invoice) vs B2C (summary)
     guid: str | None = None
     master_id: str | None = None
     source_row: int | None = None  # the header (first) row this voucher came from

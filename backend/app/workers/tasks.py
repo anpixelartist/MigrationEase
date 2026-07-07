@@ -71,11 +71,11 @@ async def validate_task(
 
 
 @broker.task
-async def generate_task(org_id: str, job_id: str, company: str | None = None, cutover_date: str | None = None) -> dict[str, Any]:
+async def generate_task(org_id: str, job_id: str, company: str | None = None, cutover_date: str | None = None, b2c_summary: bool = False, settlement_mode: bool = False) -> dict[str, Any]:
     def _run() -> dict[str, Any]:
         try:
             with get_db_store().lock(org_id, job_id) as job:
-                summary = svc.run_generation(job, company, cutover_date)
+                summary = svc.run_generation(job, company, cutover_date, b2c_summary=b2c_summary, settlement_mode=settlement_mode)
                 return _done(
                     {
                         "status": job.status.value,

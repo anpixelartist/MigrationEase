@@ -281,7 +281,7 @@ def run_resolution(job: Job, existing: list[dict[str, Any]] | None) -> Any:
     return verdicts
 
 
-def run_generation(job: Job, company: str | None, cutover_date: str | None = None) -> dict[str, Any]:
+def run_generation(job: Job, company: str | None, cutover_date: str | None = None, b2c_summary: bool = False, settlement_mode: bool = False) -> dict[str, Any]:
     job.require("generate")
     if job.mapped_df is None or job.validation is None:
         raise InvalidState("Map and validate before generating.")
@@ -293,7 +293,7 @@ def run_generation(job: Job, company: str | None, cutover_date: str | None = Non
         )
 
     if job.entity_type == EntityType.VOUCHER:
-        return _generate_vouchers(job, company, cutover_date)
+        return _generate_vouchers(job, company, cutover_date, b2c_summary=b2c_summary, settlement_mode=settlement_mode)
 
     verdict_by_row = {v.source_row: v for v in (job.resolution or [])}
     units: list[Unit] = []
@@ -358,12 +358,12 @@ def run_generation(job: Job, company: str | None, cutover_date: str | None = Non
     return {"generated": total, "held": held, "skipped": skipped, "errors": conv_errors, "bytes": len(xml)}
 
 
-def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None = None) -> dict[str, Any]:
+def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None = None, b2c_summary: bool = False, settlement_mode: bool = False) -> dict[str, Any]:
     """Group the mapped rows into balanced vouchers and build the Tally "Vouchers" envelope."""
     df = job.mapped_df
 
     opening_balances = {}
-    if cutover_date and "date" in df.columns:
+    if cutover_date and "date" in df.columns and not settlement_mode:
         from datetime import datetime
         try:
             cutover = datetime.strptime(cutover_date, "%Y-%m-%d").date()
@@ -405,7 +405,14 @@ def _generate_vouchers(job: Job, company: str | None, cutover_date: str | None =
         except ValueError:
             pass # ignore bad cutover date format
 
-    vouchers, conv_errors = rows_to_vouchers(df)
+    if settlement_mode:
+        from app.pipeline.voucher import settlement_rows_to_vouchers
+        vouchers, conv_errors = settlement_rows_to_vouchers(df)
+    else:
+        vouchers, conv_errors = rows_to_vouchers(df)
+    if b2c_summary:
+        from app.pipeline.voucher import aggregate_b2c_daily
+        vouchers = aggregate_b2c_daily(vouchers)
 
     ledgers = []
     from app.pipeline.entities import Ledger, TallyAction

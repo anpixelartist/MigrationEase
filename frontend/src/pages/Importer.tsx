@@ -66,6 +66,8 @@ export default function Importer() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [showGuide, setShowGuide] = useState(false);
+  const [b2cSummary, setB2cSummary] = useState(false);
+  const [settlementMode, setSettlementMode] = useState(false);
   const bridgeStatus = useBridgeStatus();
 
   useEffect(() => {
@@ -165,7 +167,8 @@ export default function Importer() {
     if (!jobId) return;
     setBusy(true); setErr(null);
     try {
-      const t = await api.enqueueGenerate(jobId, company || undefined, cutoverDate || undefined);
+      const t = await api.enqueueGenerate(jobId, company || undefined, cutoverDate || undefined,
+        { b2c_summary: b2cSummary, settlement_mode: settlementMode });
       const r = await pollTask<GenerateSummary>(jobId, t.task_id);
       if (r.state === "error") { fail(new ApiError(r.problem!)); return; }
       setGen(r.result!);
@@ -428,6 +431,20 @@ export default function Importer() {
                 {gen ? "Regenerate" : "Generate Tally XML"}
               </Button>
             </div>
+            {entity === "voucher" && (
+              <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${T.line}`, display: "flex", flexDirection: "column", gap: 9 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: T.faint, textTransform: "uppercase", letterSpacing: ".04em" }}>E-commerce options</div>
+                <label style={{ display: "flex", gap: 9, alignItems: "flex-start", fontSize: 13, cursor: "pointer" }}>
+                  <input type="checkbox" checked={b2cSummary} disabled={settlementMode} onChange={(e) => setB2cSummary(e.target.checked)} style={{ marginTop: 2 }} />
+                  <span><b>B2C daily summary</b> — consolidate retail sales (no buyer GSTIN) into one summary voucher per day (GSTR-1 B2C-Others). B2B invoices with a GSTIN stay itemised.</span>
+                </label>
+                <label style={{ display: "flex", gap: 9, alignItems: "flex-start", fontSize: 13, cursor: "pointer" }}>
+                  <input type="checkbox" checked={settlementMode} disabled={b2cSummary} onChange={(e) => setSettlementMode(e.target.checked)} style={{ marginTop: 2 }} />
+                  <span><b>Marketplace settlement mode</b> — treat each row as a settlement and build a multi-leg journal (Bank + Commission + Fees + TCS = gross). Map Commission/Fees/TCS columns.</span>
+                </label>
+                <div style={{ fontSize: 12, color: T.faint }}>GST is computed automatically when you map a <b>GST Rate</b> column plus Shipping/Home State (or a party GSTIN) — Output CGST/SGST for intra-state, IGST for inter-state. Refund/return rows become Credit Notes.</div>
+              </div>
+            )}
           </div>
 
           {gen && (

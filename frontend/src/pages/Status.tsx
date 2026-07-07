@@ -38,8 +38,9 @@ const SECTIONS: Section[] = [
       { name: "Direct push (same machine)", level: "live", note: "Backend POSTs XML to the Tally gateway on :9000. Verified live." },
       { name: "Bridge relay (cloud → local Tally)", level: "live", note: "Go agent dials out over WSS; cross-process delivery via Redis pub/sub with exactly-once claim." },
       { name: "Push idempotency", level: "live", note: "Atomic claim → 409 on repeat; final status pushed / pushed_partial / push_failed from Tally's response." },
-      { name: "Bridge chunking of large payloads", level: "partial", note: "Splits into ≤200-message batches, but no per-chunk progress and no LASTVCHID pre-fetch/sandbox gate yet." },
-      { name: "Real-time push progress bar", level: "planned", note: "Bridge emits one terminal result today; per-chunk WebSocket progress is not wired." },
+      { name: "Bridge chunking + sandbox gate", level: "live", note: "Splits into ≤200-message batches and honors the backend-selected company; an opt-in --test-company flag refuses pushes to any other company." },
+      { name: "Real-time push progress bar", level: "planned", note: "Bridge emits one terminal result today; per-chunk WebSocket progress is the next increment." },
+      { name: "Bridge LASTVCHID pre-fetch idempotency", level: "planned", note: "Backend push-claim idempotency is live; querying Tally for existing vouchers needs export TDLs this Tally build rejects." },
     ],
   },
   {
@@ -52,13 +53,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    title: "GST / e-commerce engine (PRD)",
+    title: "GST / e-commerce engine",
     items: [
-      { name: "Place-of-supply IGST vs CGST/SGST", level: "partial", note: "A heuristic split on ledger names + shipping/home state; not a rate/HSN-driven tax engine." },
-      { name: "B2B/B2C split & daily summaries", level: "planned", note: "Not implemented — GSTIN exists only as a ledger field." },
-      { name: "Marketplace settlement journals", level: "planned", note: "Commission/fees/TCS/bank multi-leg routing not implemented." },
-      { name: "Refunds → Credit Notes", level: "planned", note: "No negative-total/refund detection or voucher-type switch." },
-      { name: "HSN/SAC enrichment lookup", level: "planned", note: "HSN pass-through emits now; SKU→HSN enrichment is future work." },
+      { name: "Place-of-supply IGST vs CGST/SGST", level: "live", note: "Rate-driven engine: maps a GST Rate + Shipping/Home State (or party GSTIN) to Output CGST/SGST (intra) or IGST (inter), with exact paisa rounding. 12 unit tests." },
+      { name: "B2B vs B2C daily summaries", level: "live", note: "B2B invoices (valid GSTIN) stay itemised; B2C sales collapse into one summary voucher per day (GSTR-1 B2C-Others). Opt-in on the Plan step." },
+      { name: "Marketplace settlement journals", level: "live", note: "Settlement mode expands each row into a multi-leg journal: Bank(net) + Commission + Fees + TCS = Marketplace(gross). Opt-in on the Plan step." },
+      { name: "Refunds → Credit Notes", level: "live", note: "A refund/return row auto-becomes a Credit Note — the sale's legs are reversed and the order id kept in the narration." },
+      { name: "HSN/SAC code emission", level: "live", note: "A mapped HSN column is written as <HSNCODE> on stock items and available on voucher lines." },
+      { name: "HSN/SAC enrichment lookup", level: "planned", note: "Emission works; a saved SKU→HSN auto-fill map is the next increment." },
     ],
   },
 ];

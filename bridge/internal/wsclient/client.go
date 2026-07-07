@@ -24,10 +24,11 @@ import (
 const maxMessageBytes = 64 * 1024 * 1024 // generous cap for large master imports
 
 type Config struct {
-	RelayURL string // e.g. wss://relay.example.com/bridge/ws
-	APIKey   string // bk_...
-	Tally    *tally.Client
-	Company  string // active company (for heartbeats)
+	RelayURL    string // e.g. wss://relay.example.com/bridge/ws
+	APIKey      string // bk_...
+	Tally       *tally.Client
+	Company     string // active company (for heartbeats), and fallback target if the payload omits one
+	TestCompany string // sandbox gate: if set, REFUSE to push to any company except this one
 }
 
 // Run maintains a connection to the relay until ctx is cancelled, reconnecting with backoff+jitter.
@@ -110,11 +111,38 @@ func buildEnvelopeShell(company string, reportName string, importDups string, in
 </ENVELOPE>`, reportName, company, dupsTag, string(innerXML)))
 }
 
+func extractSVCurrentCompany(b []byte) string {
+	const open, closeTag = "<SVCURRENTCOMPANY>", "</SVCURRENTCOMPANY>"
+	s := string(b)
+	i := strings.Index(s, open)
+	if i < 0 {
+		return ""
+	}
+	rest := s[i+len(open):]
+	j := strings.Index(rest, closeTag)
+	if j < 0 {
+		return ""
+	}
+	return strings.TrimSpace(rest[:j])
+}
+
 func handlePush(ctx context.Context, conn *websocket.Conn, cfg Config, job protocol.PushJob) {
 	xmlBytes, err := base64.StdEncoding.DecodeString(job.XMLB64)
 	if err != nil {
 		_ = wsjson.Write(ctx, conn, protocol.JobError{Type: protocol.TypeJobError, JobID: job.JobID, Reason: "bad_payload"})
 		return
+	}
+
+	// Sandbox gate: when --test-company is set, refuse to import into anything else.
+	if cfg.TestCompany != "" {
+		target := extractSVCurrentCompany(xmlBytes)
+		if target == "" {
+			target = cfg.Company
+		}
+		if !strings.EqualFold(strings.TrimSpace(target), strings.TrimSpace(cfg.TestCompany)) {
+			_ = wsjson.Write(ctx, conn, protocol.JobError{Type: protocol.TypeJobError, JobID: job.JobID, Reason: "sandbox_blocked"})
+			return
+		}
 	}
 
 	decoder := xml.NewDecoder(bytes.NewReader(xmlBytes))
