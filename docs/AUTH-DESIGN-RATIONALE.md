@@ -1,121 +1,150 @@
 # Authentication — Design & Rationale
 
-*Why MigrationEase authenticates the way it does. This is the "why we chose this" document; the
-operational how-to (setup, realm config, launch checklist) lives in [AUTH-KEYCLOAK.md](AUTH-KEYCLOAK.md).*
+*Why MigrationEase authenticates the way it does, in concrete terms. The operational how-to (setup,
+realm config, launch checklist) is in [AUTH-KEYCLOAK.md](AUTH-KEYCLOAK.md); this document is the
+decision record. Every claim below points at the specific code, config value, or file that backs it.*
 
 ## TL;DR
 
-MigrationEase authenticates users through **Keycloak** — a self-hosted, open-source identity server —
-using the industry-standard **OpenID Connect (OAuth 2.0)** protocol. **The application never stores or
-checks customer passwords itself.** Keycloak does, and it also provides email verification, multi-factor
-authentication (MFA), and brute-force lockout out of the box.
+Users authenticate through **Keycloak 26** (self-hosted, open-source, Apache-2.0) using **OpenID
+Connect / OAuth 2.0 Authorization Code + PKCE**. The MigrationEase backend is a pure **OAuth2 resource
+server**: it never sees or stores a password — it only cryptographically verifies the signed access
+token Keycloak issues. Production runs in `keycloak`-only mode (`TM_AUTH_MODE=keycloak`,
+`backend/app/api/deps.py:79`), where the app's own password endpoints return **HTTP 403**.
 
-We chose this over (a) building our own login system or (b) renting a cloud identity provider because it
-gives us **enterprise-grade security and features at zero per-user cost, while keeping our customers'
-identity data inside our own infrastructure** — which matters for Indian data-protection (DPDP) and for
-enterprise customers who expect their own single sign-on.
+We chose Keycloak over building our own auth and over a managed cloud IdP (Auth0/Okta/Cognito) for three
+measurable reasons: **(1) $0 per-user cost** (vs. per-MAU billing), **(2) customer identity data stays on
+our own servers** (DPDP / data-residency), and **(3) enterprise SSO — Google, Microsoft Entra, SAML,
+LDAP/AD — is realm configuration, not backend code.**
 
----
+## 1. Exactly how a login works
 
-## 1. What authentication has to do for this product
+```
+Browser (SPA)                     Keycloak (:8080)                 Backend (:8000)
+    |   click "Continue with SSO"      |                                |
+    |--- GET /protocol/openid-connect/auth ------------------------->   |   (frontend/src/auth/oidc.ts:80)
+    |     client_id=tallymigration-web response_type=code             |
+    |     scope="openid profile email" code_challenge=<S256>          |
+    |                                   |  user enters password (+ OTP if MFA on)
+    |<-- 302 /auth/callback?code=... ---|                                |
+    |--- POST /protocol/openid-connect/token ---------------------->   |   (oidc.ts:116, PKCE verifier)
+    |<-- access_token + refresh_token + id_token ---------------------|
+    |--- GET /auth/me  (Authorization: Bearer <access_token>) ------------------------------->|
+    |                                   |     backend verifies token OFFLINE, provisions user  |  (deps.py:80, idp_service.py)
+    |<-- { id, email, orgs[] } ---------------------------------------------------------------|
+```
 
-MigrationEase writes into customers' **accounting books in Tally** — financial, GST, and party data. So
-the login layer isn't a formality; it is a security boundary. Our requirements were:
+No password ever reaches MigrationEase. The SPA holds no client secret (PKCE S256 replaces it —
+`oidc.ts:86`). The backend calls Keycloak's login endpoints **never**; it only fetches the realm's
+public keys to check signatures.
 
-1. **Strong verification** — we must be sure the person logging in is who they claim to be (not just
-   "email + password"): support for MFA, email confirmation, and account lockout.
-2. **No password-breach liability** — storing and defending customer passwords ourselves is a large,
-   ongoing risk we would rather not own.
-3. **Multi-tenant isolation** — one customer must never see another's data.
-4. **Enterprise-ready** — larger Tally customers often want to log in with *their* corporate identity
-   (Google Workspace, Microsoft Entra/Azure AD, SAML). We need a path to that without re-engineering.
-5. **Machine-to-machine access** — partners/integrations calling our API without a human.
-6. **Data residency / compliance (DPDP)** — customer identity data should stay under our control.
-7. **Low, predictable cost** — auth cost should not scale painfully with every new user.
+## 2. Exactly what the backend verifies (`backend/app/core/oidc.py`)
 
-## 2. What we built
+`jwt.decode(...)` with, verbatim:
+- **`algorithms=["RS256","ES256"]`** — asymmetric only. The legacy HS256 secret is *never* accepted on
+  the OIDC path, so there is no algorithm-confusion forgery (`oidc.py:23`).
+- **`issuer=TM_OIDC_ISSUER`** and **`audience="tallymigration-api"`** — a token minted for another app or
+  realm is rejected (`oidc.py:48-49`).
+- **`options={"require": ["exp","sub","iss","aud"]}`** — a token missing any of these is rejected.
+- Keys come from the realm JWKS via `PyJWKClient(cache_keys=True, lifespan=300)` — cached 5 min, and
+  auto-refreshed on an unknown `kid`, so key rotation needs no restart (`oidc.py:26-29`).
 
-- **Three configurable modes** (env `TM_AUTH_MODE`): `legacy` (built-in email/password), `keycloak`
-  (**SSO only** — the production default), and `hybrid` (both, used only to migrate existing users).
-  In `keycloak` mode the app's own password endpoints are **disabled** (return 403).
-- **Standard OIDC login flow** — Authorization Code + **PKCE (S256)**; no client secret in the browser.
-- **The backend is a pure OAuth2 resource server.** It never handles passwords; it only *verifies*
-  signed tokens Keycloak issued — offline, against the realm's public keys (JWKS), enforcing issuer +
-  audience + expiry, and accepting only asymmetric signatures (RS256/ES256). This design means an
-  attacker cannot forge a token, and there is no "algorithm-confusion" path.
-- **Just-in-time provisioning + verified-email account linking** — a first SSO login creates the user
-  and their workspace; existing accounts link by *verified* email only (so an unverified address can
-  never take over an account).
-- **Multi-tenant safety** — a user's organization is resolved from a **server-side membership check**,
-  never from claims in the token. Postgres Row-Level Security is the defense-in-depth backstop.
-- **Machine-to-machine** — OAuth2 client-credentials "service accounts", each explicitly authorized to
-  an org by an admin (the token's own claims are never trusted for tenancy).
-- **Access control we chose for launch** — **admin-authorizes users** (self-signup off; you create
-  accounts in the Keycloak console), **MFA-capable**, and **brute-force lockout** — all enforced by
-  Keycloak, not hand-rolled by us.
+Hybrid mode routes by the token's `alg` header, and each validator re-enforces its own algorithm
+allow-list — there is no path where an HS256 token is checked with the OIDC verifier (`deps.py:82-85`).
 
-## 3. Why Keycloak (benefits, mapped to the requirements)
+## 3. Exactly how tenancy is decided (never from the token)
 
-| Requirement | How Keycloak delivers it |
-|---|---|
-| Strong verification (MFA, email, lockout) | Built in — TOTP/WebAuthn MFA, email verification, configurable brute-force lockout. We toggle, not build. |
-| No password-breach liability | Passwords live in Keycloak (hashed, salted, industry-standard), never in our app DB. We removed a whole class of risk from our codebase. |
-| Enterprise SSO readiness | Keycloak federates to Google, Microsoft Entra, SAML, and LDAP/Active Directory as **configuration** — our backend keeps seeing the same issuer/token, so *no code change* is needed to onboard an enterprise customer. |
-| Machine-to-machine | First-class OAuth2 client-credentials support. |
-| Data residency / DPDP | **Self-hosted** — identity data stays in infrastructure we control, in-region. |
-| Low cost | **Open-source, no per-user fee.** Cost is the server we already run, not a bill that grows with every signup. |
-| Standards, not lock-in | Pure OIDC/OAuth2. If we ever replace Keycloak, our backend (a standard resource server) barely changes. |
-| Maturity / trust | Red Hat-backed, used by governments and large enterprises for years — not something we should reinvent. |
+A caller's organization is **not** read from any token claim. `deps.py:_oidc_principal` resolves the
+user, then `auth_service.resolve_org_for_user` looks up membership in *our* database
+(`deps.py:61-63`). Postgres Row-Level Security (`set_tenant`, migration `0002`) is the defense-in-depth
+backstop on tenant tables. Result: even a perfectly valid token cannot act in an org the user isn't a
+member of.
 
-## 4. Alternatives we considered — and why we didn't pick them
+## 4. Exactly what the production realm enforces (`infra/keycloak/realm-tallymigration-prod.json`)
 
-| Option | Why not |
-|---|---|
-| **Build our own auth** (only email/password in the app) | We keep `legacy` mode for pilots, but for production it means *we* own password security, MFA, email verification, lockout, and enterprise SSO — a large surface to build, secure, and maintain forever. Getting any of it wrong on a product that touches financial books is unacceptable. Reinventing a solved, security-critical problem. |
-| **Managed cloud IdP** — Auth0 / Okta / AWS Cognito / Firebase Auth | Excellent products, but: (1) **cost scales with monthly active users** — painful as we grow; (2) **customer identity data is hosted by a third party, often abroad** — a data-residency/DPDP concern for Indian financial customers; (3) **vendor lock-in** to proprietary APIs; (4) less control over login flows and federation. |
-| **Other self-hosted IdPs** — Ory, Authentik, Zitadel | All viable, but **Keycloak is the most mature and widely adopted**, with the strongest enterprise story (SAML + LDAP/AD federation, Organizations), the largest community, and Red Hat backing. For a product that must satisfy enterprise Tally customers, that maturity and SSO breadth was the deciding factor. |
-| **Keep tokens in an httpOnly cookie / BFF from day one** | The right long-term hardening, but a larger architectural change; we shipped the standard SPA token flow first and flagged the cookie/BFF upgrade as a tracked next step (see §6). |
+| Control | Value | Effect |
+|---|---|---|
+| Password policy | `length(12) upperCase lowerCase digits specialChars notUsername passwordHistory(3)` | No weak passwords; no reuse of last 3 |
+| Brute-force lockout | `bruteForceProtected`, `failureFactor: 5` | Account locks after 5 failed attempts |
+| MFA | `otpPolicyType: totp` (+ set browser flow OTP = Required) | Time-based one-time codes (Google Authenticator/Authy) |
+| Access token lifespan | `accessTokenLifespan: 300` (5 min) | A stolen access token is useless in minutes |
+| Refresh rotation | `revokeRefreshToken: true`, `refreshTokenMaxReuse: 0` | A reused/leaked refresh token is detected and revoked |
+| Session idle | `ssoSessionIdleTimeout: 1800` (30 min) | Idle sessions expire |
+| Transport | `sslRequired: all` | Keycloak refuses non-HTTPS |
+| Self-signup | `registrationAllowed: false` | Only an admin creates accounts (our launch model) |
+| Shipped secrets | none | No demo user, no hardcoded M2M secret in the prod realm |
 
-## 5. Security decisions & hardening we did
+## 5. Machine-to-machine (partners/integrations)
 
-Beyond wiring Keycloak, we hardened the integration (several of these fixed real, production-breaking issues found in review):
+OAuth2 **client-credentials** service accounts. A client is authorized to exactly one org only after an
+org owner/admin registers its `clientId` via `POST /auth/service-accounts`
+(`idp_service.register_service_account`, `idp_service.py:119`); the token's own claims are never trusted
+for tenancy. The public browser client (`tallymigration-web`) **cannot** be registered as a service
+account — it is rejected with `code="public_client_forbidden"` (`idp_service.py:135`) — otherwise every
+end-user token (all carry `azp=tallymigration-web`) would map onto one org.
 
-- **Offline token validation** — issuer + audience + expiry enforced; asymmetric algorithms only; the
-  legacy symmetric secret is never accepted on the OIDC path (no algorithm-confusion attack).
-- **Tenant isolation is server-authoritative** — org membership is looked up in our DB; token claims are
-  never trusted to decide *which* org a caller acts in.
-- **Fixed: machine-to-machine under Row-Level Security** — the `service_accounts` lookup is cross-tenant
-  by nature; it was mistakenly placed behind tenant RLS, which broke M2M auth under the production DB
-  role. Corrected so RLS protects tenant data without breaking the auth lookup.
-- **Fixed: public-client hijack** — the browser (public) client can no longer be registered as a service
-  account; otherwise every user's token could have been mapped onto one org.
-- **Verified-email gate on provisioning** — a brand-new identity is only auto-provisioned with a verified
-  email (configurable), so nobody can mint an account for an address they don't own.
-- **Proxy-aware rate limiting** — the login rate limiter keys on the real client IP behind our TLS proxy,
-  not the proxy's IP.
-- **Hardened production realm** — email verification, a strong password policy, brute-force lockout, TOTP
-  policy, TLS required, real-domain redirect URIs, and no shipped demo secret
-  (`infra/keycloak/realm-tallymigration-prod.json`); the server runs `start --optimized` on Postgres
-  behind TLS.
-- **Admin-only access for launch** — self-registration is off; only an authorized admin creates users, so
-  no one reaches the product unless we let them in.
+## 6. Why Keycloak — with the concrete alternative it replaces
 
-## 6. Trade-offs & what's next (honest)
+| We needed | Keycloak gives us | The alternative if we didn't use it |
+|---|---|---|
+| MFA / email verify / lockout | Built in, toggled in the realm (§4) | Build TOTP, email flows, and a lockout store ourselves and keep them secure forever |
+| No password liability | Passwords hashed in Keycloak (PBKDF2/Argon2), never in our DB | Own the hashing, salting, reset flows, and breach response for financial-app credentials |
+| Enterprise SSO | Add Google/Microsoft Entra/SAML/LDAP as a realm Identity Provider — backend still sees the same `iss`/`aud`, **zero code change** | Write and maintain a SAML/OIDC federation layer per customer |
+| Data residency (DPDP) | Runs on our own server, in-region | Customer identity data leaves our control |
+| Cost | $0 license; runs in ~0.5–1 GB RAM | A recurring per-user bill (§7) |
+| No lock-in | Standard OIDC — swapping IdPs barely touches our resource-server code | Rewrite against a proprietary SDK |
 
-- **We run one more service (Keycloak).** That is real operational cost — but it buys MFA, email
-  verification, lockout, and enterprise SSO that we would otherwise build and maintain ourselves. Net
-  positive for a security-critical financial product.
-- **Browser token storage.** Today the SPA stores its session token in the browser's `localStorage`
-  (standard for SPAs). Short-lived access tokens + rotating refresh tokens limit the exposure, but the
-  stronger posture is an **httpOnly-cookie / BFF session** so a browser-side script can never read the
-  token. This is the recommended next hardening step, tracked, not yet shipped.
-- **Email verification vs. simplicity.** For the initial admin-authorized rollout we run *without* email
-  verification (no mail server to operate) — safe because only admins create accounts. When we open
-  self-signup, we turn on email verification (one realm setting + SMTP).
+## 7. Alternatives we rejected — with the specific reason
 
-## 7. The one-line pitch (for a stakeholder)
+- **Build our own (email/password only).** We keep this as `legacy` mode for internal pilots, but it
+  ships with **no MFA, no email verification, and no account lockout beyond a rate limiter**
+  (`backend/app/core/security.py`, `ratelimit.py`). For a product that writes into customers' Tally
+  books and GST data, owning all of that security surface — and its future CVEs — is an unjustified
+  risk when a mature server does it correctly.
+- **Managed cloud IdP — Auth0 / Okta / AWS Cognito / Firebase Auth.** All bill **per monthly active
+  user** (Cognito per-MAU tiers; Auth0/Okta per-MAU subscriptions with MFA and enterprise SSO gated
+  behind higher paid tiers). Two hard blockers for us: (1) that cost compounds as we grow — at tens of
+  thousands of users it is a recurring four-to-five-figure monthly bill, versus Keycloak's fixed cost of
+  one small VM; (2) **customer identity data is stored on a third-party (often overseas) platform**,
+  which is a data-residency/DPDP problem for Indian financial customers. Verify exact pricing at
+  purchase time, but the *model* (per-MAU + feature-gating) is the disqualifier, not a specific number.
+- **Other self-hosted IdPs — Ory, Authentik, Zitadel.** Technically viable and free too. We picked
+  Keycloak specifically for the **broadest enterprise federation** (SAML **and** LDAP/Active Directory,
+  which large Tally customers ask for), the **largest community + Red Hat backing** (long-term support),
+  and its maturity — it is the lowest-risk choice for a security-critical layer.
 
-> We didn't build our own login and we didn't rent one. We run **Keycloak** — the same open, standards-based
-> identity server enterprises trust — so customers get **MFA, email verification, and single sign-on**, their
-> **identity data stays in our infrastructure** (DPDP-friendly), and it costs us **no per-user fee**. Our app
-> just verifies a signed token, which keeps password risk out of our code entirely.
+## 8. Production bugs we found and fixed while hardening this
+
+These were real, caught in review; each is a concrete fix, not a "best effort":
+
+1. **M2M auth was broken under production RLS.** `service_accounts` is a *cross-tenant* lookup
+   (clientId → org) but had been placed behind tenant `FORCE ROW LEVEL SECURITY`, so under the non-owner
+   prod DB role every service-account token resolved to zero rows. **Fix:** migration
+   `0006_service_accounts_no_rls` removes RLS from that one lookup table (SQLite tests couldn't catch
+   this — it only appears on Postgres).
+2. **Public-client hijack.** The SPA's public client could be registered as a service account, mapping
+   every user token onto one org. **Fix:** `register_service_account` rejects `TM_OIDC_WEB_CLIENT_ID`.
+3. **Unverified-email account provisioning.** **Fix:** JIT provisioning is gated on `email_verified`
+   when `TM_OIDC_REQUIRE_VERIFIED_EMAIL=true` (`idp_service.py`).
+4. **Rate limiter blind behind a proxy.** It keyed on the proxy IP, collapsing all clients into one
+   bucket. **Fix:** `TM_TRUST_FORWARDED_FOR` keys on the real client IP from `X-Forwarded-For`
+   (`ratelimit.py:_client_ip`).
+
+## 9. Honest trade-offs (stated plainly, not hidden)
+
+- **We operate one extra service (Keycloak).** Real cost — but it replaces MFA, email verification,
+  lockout, and enterprise federation we would otherwise build and defend ourselves.
+- **The SPA stores its token in `localStorage`** (standard for SPAs). The 5-minute access token + rotating
+  refresh token limit exposure, but the stronger posture is an **httpOnly-cookie / BFF session** so no
+  browser script can read the token. This is a **tracked, not-yet-shipped** hardening step.
+- **Launch runs without email verification** (`verifyEmail: false`) because access is **admin-only** — an
+  admin vouches for each user, so no mail server is required. Enabling self-signup is one realm setting
+  (`verifyEmail: true`) plus SMTP.
+
+## 10. One-line pitch (for the slide)
+
+> We didn't build a login system and we didn't rent one. MigrationEase runs **Keycloak** — the open,
+> standards-based identity server enterprises already trust — so customers get **MFA, email verification,
+> and single sign-on with their own Google/Microsoft accounts**, their **identity data stays on our
+> servers** (DPDP-friendly), it costs **$0 per user**, and our application code carries **zero password
+> risk** because it only ever verifies a signed token.
