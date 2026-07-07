@@ -1,8 +1,8 @@
 {
   "realm": "tallymigration",
   "enabled": true,
-  "displayName": "TallyMigration",
-  "registrationAllowed": true,
+  "displayName": "MigrationEase",
+  "registrationAllowed": false,
   "registrationEmailAsUsername": true,
   "loginWithEmailAllowed": true,
   "duplicateEmailsAllowed": false,
@@ -95,6 +95,17 @@
       "fullScopeAllowed": false,
       "defaultClientScopes": ["profile", "email", "tallymigration-api"],
       "optionalClientScopes": []
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser@yavda.local",
+      "email": "testuser@yavda.local",
+      "firstName": "Test",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Test@12345", "temporary": false }]
     }
   ]
 }

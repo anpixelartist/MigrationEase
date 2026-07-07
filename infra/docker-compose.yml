@@ -43,9 +43,10 @@ services:
       KC_HTTP_ENABLED: "true"
       KC_HOSTNAME: http://localhost:8080
     ports: ["8080:8080"]
+    # Ephemeral H2 (no named volume): the realm re-imports on each start, so the demo is always
+    # clean. A root-owned named volume on /opt/keycloak/data/h2 makes Keycloak (non-root) crash.
     volumes:
       - ./keycloak/realm-tallymigration.json:/opt/keycloak/data/import/realm-tallymigration.json:ro
-      - keycloakdata:/opt/keycloak/data/h2
 
   minio:
     image: minio/minio
@@ -62,4 +63,3 @@ volumes:
   pgdata:
   redisdata:
   miniodata:
-  keycloakdata:
