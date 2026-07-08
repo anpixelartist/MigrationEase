@@ -5,6 +5,7 @@ import type {
   EntityType,
   GenerateSummary,
   MappingProposal,
+  MappingTemplate,
   ProfileSignals,
   PushResult,
   ValidationResult,
@@ -71,7 +72,14 @@ export default function Importer() {
   const [showSaveTemplate, setShowSaveTemplate] = useState(false);
   const [templateName, setTemplateName] = useState("");
   const [savingTemplate, setSavingTemplate] = useState(false);
+  const [templates, setTemplates] = useState<MappingTemplate[]>([]);
   const bridgeStatus = useBridgeStatus();
+
+  const loadTemplates = () =>
+    api.listTemplates(entity).then(setTemplates).catch(() => setTemplates([]));
+
+  // Refresh the saved-template list whenever the entity changes (so the picker shows the user's own).
+  useEffect(() => { loadTemplates(); setTemplate(""); }, [entity]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     localStorage.setItem("tm_company", company);
@@ -117,12 +125,19 @@ export default function Importer() {
       setProposal(p);
       const m: Record<string, string | null> = {};
       p.suggestions.forEach((s) => { m[s.target_field] = s.source_column; });
-      setMapping(m);
-      // A saved template that matched this file rides in via applied_constants — pre-fill them
-      // (user edits still win, so merge template constants UNDER any the user already set).
-      if (p.applied_constants && Object.keys(p.applied_constants).length) {
+      // If the user explicitly picked a template from the dropdown, apply its mapping/constants
+      // (only for columns actually present in this file). This overrides the fuzzy suggestions.
+      const picked = template ? templates.find((t) => t.id === template) : undefined;
+      if (picked) {
+        const cols = new Set((profile?.columns ?? []).map((c) => c.name));
+        Object.entries(picked.mapping).forEach(([field, col]) => { if (col && cols.has(col)) m[field] = col; });
+        setConstants(picked.constants || {});
+        toast.show(`Applied template “${picked.name}”`);
+      } else if (p.applied_constants && Object.keys(p.applied_constants).length) {
+        // Otherwise a saved template that auto-matched this file rides in via applied_constants.
         setConstants((c) => ({ ...p.applied_constants, ...c }));
       }
+      setMapping(m);
       setStep("map");
     } catch (e) { fail(e); } finally { setBusy(false); }
   };
@@ -139,8 +154,9 @@ export default function Importer() {
         constants: cleanConsts,
         source_columns: profile.columns.map((c) => c.name),
       });
-      toast.show(`Saved template “${saved.name}” — it'll auto-apply to matching ${entity} files next time`);
+      toast.show(`Saved template “${saved.name}” — find it under the template picker on the Upload step`);
       setShowSaveTemplate(false); setTemplateName("");
+      loadTemplates();  // so it appears in the Upload-step picker immediately
     } catch (e) { fail(e); } finally { setSavingTemplate(false); }
   };
 
@@ -151,7 +167,8 @@ export default function Importer() {
       const cleanConsts = Object.fromEntries(
         Object.entries(constants).filter(([, v]) => v.trim() !== ""),
       );
-      await api.postMapping(jobId, mapping, cleanConsts, template || undefined);
+      // Templates are applied client-side (see goMap), so send the resolved mapping/constants only.
+      await api.postMapping(jobId, mapping, cleanConsts);
       const t = await api.enqueueValidate(jobId);
       const r = await pollTask<ValidationResult>(jobId, t.task_id);
       if (r.state === "error") { fail(new ApiError(r.problem!)); return; }
@@ -242,7 +259,7 @@ export default function Importer() {
           </div>
 
           {/* Template-specific export help — only relevant once a source template is picked (e.g. Shopify). */}
-          {template === "shopify" && (
+          {templates.find((t) => t.id === template)?.name?.toLowerCase() === "shopify" && (
             <div style={{ ...card, padding: "14px 18px", background: "rgba(79,70,229,.04)", border: "1px solid rgba(79,70,229,.15)", marginBottom: 22 }}>
               <div style={{ fontSize: 13, fontWeight: 600, color: T.accent, marginBottom: 4 }}>Export Guide: Shopify</div>
               <div style={{ fontSize: 12.5, color: T.text, lineHeight: 1.5 }}>
@@ -265,10 +282,23 @@ export default function Importer() {
 
           <div style={{ display: "flex", gap: 14, marginBottom: 22 }}>
             <div style={{ flex: 1 }}>
-              <label style={{ fontSize: 12.5, fontWeight: 600, color: T.muted, display: "block", marginBottom: 6 }}>Pre-built Template</label>
+              <label style={{ fontSize: 12.5, fontWeight: 600, color: T.muted, display: "block", marginBottom: 6 }}>Mapping template</label>
               <select value={template} onChange={(e) => setTemplate(e.target.value)} style={input}>
-                <option value="">None (Manual Mapping)</option>
-                <option value="shopify">Shopify</option>
+                <option value="">None (auto-map / manual)</option>
+                {templates.some((t) => !t.builtin) && (
+                  <optgroup label="Your saved templates">
+                    {templates.filter((t) => !t.builtin).map((t) => (
+                      <option key={t.id} value={t.id}>{t.name}</option>
+                    ))}
+                  </optgroup>
+                )}
+                {templates.some((t) => t.builtin) && (
+                  <optgroup label="Built-in">
+                    {templates.filter((t) => t.builtin).map((t) => (
+                      <option key={t.id} value={t.id}>{t.name.charAt(0).toUpperCase() + t.name.slice(1)}</option>
+                    ))}
+                  </optgroup>
+                )}
               </select>
             </div>
             <div style={{ flex: 1 }}>
