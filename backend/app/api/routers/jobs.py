@@ -307,9 +307,10 @@ async def get_artifact(
         if job.xml is None:
             raise InvalidState("Generate the XML before downloading it.")
 
+        # <Company>_<YYYYMMDD_HHMM>_<Entity>.xml  e.g. Acme_Traders_20260708_1430_Ledger.xml
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M")
-        company_slug = "".join(c if c.isalnum() else "_" for c in (job.company or "Company"))
-        filename = f"{company_slug}_{job.entity_type.value.capitalize()}_{timestamp}.xml"
+        company_slug = "_".join("".join(c if c.isalnum() else " " for c in (job.company or "Company")).split())
+        filename = f"{company_slug}_{timestamp}_{job.entity_type.value.capitalize()}.xml"
 
         return Response(
             content=job.xml,

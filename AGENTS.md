@@ -1,8 +1,8 @@
 # AGENTS.md — MigrationEase
 
-Guidance for AI coding agents (and new developers) working in this repo. Product: **MigrationEase**,
-by **Yavda Analytics** — migrates CSV/Excel accounting data into **TallyPrime** via Tally's XML import,
-with auto column-mapping, validation, a GST/e-commerce voucher engine, and Keycloak SSO.
+Guidance for AI coding agents (and new developers) working in this repo. Product: **MigrationEase** —
+migrates CSV/Excel accounting data into **TallyPrime** via Tally's XML import, with auto column-mapping,
+validation, a GST/e-commerce voucher engine, and Keycloak SSO.
 
 > To just **run/demo the whole thing**, use the **`run-demo` skill** (`.claude/skills/run-demo/`) or
 > follow README.md. This file is the map + conventions.

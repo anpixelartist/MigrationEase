@@ -171,11 +171,15 @@ export async function pollTask<T>(jobId: string, taskId: string, opts?: { interv
   return { state: "error", problem: { type: "about:blank", title: "Timed out", status: 504, code: "task_timeout", detail: "The task did not finish in time.", errors: [] } };
 }
 
-/** Authenticated download of the generated XML artifact. */
-export async function downloadArtifact(jobId: string, filename: string): Promise<void> {
+/** Authenticated download of the generated XML artifact. Uses the server's
+ * Content-Disposition filename (Company_Timestamp_Entity.xml); `fallbackName` is only a safety net. */
+export async function downloadArtifact(jobId: string, fallbackName: string): Promise<void> {
   const token = tokenStore.get();
   const res = await fetch(api.artifactUrl(jobId), { headers: token ? { Authorization: `Bearer ${token}` } : {} });
   if (!res.ok) await parseError(res);
+  const cd = res.headers.get("Content-Disposition") || "";
+  const match = cd.match(/filename\*?=(?:UTF-8''|")?([^";]+)"?/i);
+  const filename = match ? decodeURIComponent(match[1]) : fallbackName;
   const blob = await res.blob();
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");

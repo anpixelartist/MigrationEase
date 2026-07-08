@@ -108,13 +108,13 @@
   ],
   "users": [
     {
-      "username": "testuser@yavda.local",
-      "email": "testuser@yavda.local",
-      "firstName": "Test",
+      "username": "demo@migrationease.local",
+      "email": "demo@migrationease.local",
+      "firstName": "Demo",
       "lastName": "User",
       "enabled": true,
       "emailVerified": true,
-      "credentials": [{ "type": "password", "value": "Test@12345", "temporary": false }]
+      "credentials": [{ "type": "password", "value": "Demo@12345", "temporary": false }]
     }
   ]
 }

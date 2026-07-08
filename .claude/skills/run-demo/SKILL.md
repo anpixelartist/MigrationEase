@@ -5,9 +5,9 @@ description: Bring up the full MigrationEase demo end-to-end (Keycloak SSO login
 
 # Run the MigrationEase demo
 
-MigrationEase (by Yavda Analytics) migrates CSV/Excel accounting data into TallyPrime. This skill
-starts the three pieces of the live demo — **Keycloak** (login server), the **backend** API, and the
-**frontend** — and hands back the exact URLs + credentials to show.
+MigrationEase migrates CSV/Excel accounting data into TallyPrime. This skill starts the three pieces of
+the live demo — **Keycloak** (login server), the **backend** API, and the **frontend** — and hands back
+the exact URLs + credentials to show.
 
 Run the long-lived processes in the **background** and verify each before moving on. Do NOT block on
 them. On Windows use PowerShell/Git-Bash; commands below are POSIX (Git-Bash) with Windows notes.
@@ -25,7 +25,7 @@ docker compose -f infra/docker-compose.yml up -d keycloak
 ```
 This imports `infra/keycloak/realm-tallymigration.json`, which already contains: the `profile`/`email`
 client scopes, **admin-only** access (no self-signup), no email verification, and a **demo user**
-`testuser@yavda.local` / `Test@12345`.
+`demo@migrationease.local` / `Demo@12345`.
 
 Wait until the realm is live (poll, ~30–60s):
 ```bash
@@ -67,7 +67,7 @@ The dev server proxies `/api` → the backend on :8000. Verify `http://localhost
 Tell the user, verbatim:
 
 - **App:** http://localhost:5173 — click **Continue with SSO** (there is no password box), sign in as
-  **`testuser@yavda.local` / `Test@12345`**, and walk the Import wizard (upload a CSV → map → validate
+  **`demo@migrationease.local` / `Demo@12345`**, and walk the Import wizard (upload a CSV → map → validate
   → generate → download/push to Tally).
 - **Add a user (the "authorize someone" flow):** Keycloak console **http://localhost:8080** →
   Administration Console → `admin` / `admin` → switch realm **master → tallymigration** → **Users** →

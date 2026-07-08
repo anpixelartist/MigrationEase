@@ -68,6 +68,9 @@ export default function Importer() {
   const [showGuide, setShowGuide] = useState(false);
   const [b2cSummary, setB2cSummary] = useState(false);
   const [settlementMode, setSettlementMode] = useState(false);
+  const [showSaveTemplate, setShowSaveTemplate] = useState(false);
+  const [templateName, setTemplateName] = useState("");
+  const [savingTemplate, setSavingTemplate] = useState(false);
   const bridgeStatus = useBridgeStatus();
 
   useEffect(() => {
@@ -124,23 +127,21 @@ export default function Importer() {
     } catch (e) { fail(e); } finally { setBusy(false); }
   };
 
-  const saveAsTemplate = async () => {
-    if (!jobId || !profile) return;
-    const name = window.prompt(
-      "Save this column mapping as a reusable template.\nNext time you import a file with these columns, it auto-maps.\n\nTemplate name:",
-    );
-    if (!name || !name.trim()) return;
+  const doSaveTemplate = async () => {
+    if (!jobId || !profile || !templateName.trim()) return;
+    setSavingTemplate(true); setErr(null);
     try {
       const cleanConsts = Object.fromEntries(Object.entries(constants).filter(([, v]) => v.trim() !== ""));
-      await api.saveTemplate({
-        name: name.trim(),
+      const saved = await api.saveTemplate({
+        name: templateName.trim(),
         entity_type: entity,
         mapping,
         constants: cleanConsts,
         source_columns: profile.columns.map((c) => c.name),
       });
-      toast.show(`Saved “${name.trim()}” — it'll auto-apply to matching ${entity} files next time`);
-    } catch (e) { fail(e); }
+      toast.show(`Saved template “${saved.name}” — it'll auto-apply to matching ${entity} files next time`);
+      setShowSaveTemplate(false); setTemplateName("");
+    } catch (e) { fail(e); } finally { setSavingTemplate(false); }
   };
 
   const runValidate = async () => {
@@ -336,13 +337,35 @@ export default function Importer() {
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
             <h1 style={h1}>Map columns to Tally fields</h1>
             <div style={{ display: "flex", gap: 8 }}>
-              <Button onClick={saveAsTemplate} disabled={mapAttention > 0}
+              <Button onClick={() => { setShowSaveTemplate((v) => !v); setTemplateName(""); }} disabled={mapAttention > 0}
                 title={mapAttention > 0 ? "Map the required fields first" : "Save this mapping to auto-apply on future imports"}>
                 💾 Save as template
               </Button>
               <Button onClick={() => setShowGuide(true)}>❓ Mapping help</Button>
             </div>
           </div>
+          {showSaveTemplate && (
+            <div style={{ ...card, padding: "14px 16px", marginBottom: 14, background: "rgba(79,70,229,.04)", border: `1px solid ${T.accent}33` }}>
+              <label style={{ fontSize: 12.5, fontWeight: 600, color: T.text, display: "block", marginBottom: 7 }}>
+                Name this template
+              </label>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                <input
+                  autoFocus
+                  value={templateName}
+                  onChange={(e) => setTemplateName(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") doSaveTemplate(); if (e.key === "Escape") setShowSaveTemplate(false); }}
+                  placeholder={`e.g. "Shopify orders" or "Zoho customers"`}
+                  style={{ ...input, maxWidth: 320, flex: 1 }}
+                />
+                <Button variant="primary" loading={savingTemplate} disabled={!templateName.trim()} onClick={doSaveTemplate}>Save template</Button>
+                <Button onClick={() => { setShowSaveTemplate(false); setTemplateName(""); }}>Cancel</Button>
+              </div>
+              <div style={{ fontSize: 12, color: T.faint, marginTop: 8 }}>
+                Saved under <b>your {entity} templates</b>. Next time you upload a file with these same columns, this mapping auto-applies.
+              </div>
+            </div>
+          )}
           {proposal.applied_template && (
             <div style={{ ...card, padding: "10px 14px", background: T.okBg, border: "1px solid rgba(34,197,94,.28)", marginBottom: 14, fontSize: 12.5, color: T.ok }}>
               ✓ Applied your saved template <b>“{proposal.applied_template}”</b> — these columns were auto-mapped from a previous import. Adjust anything below if needed.

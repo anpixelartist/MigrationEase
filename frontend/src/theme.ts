@@ -1,10 +1,9 @@
 import type { CSSProperties } from "react";
 
-// YAVDA brand. Primary is the petrol/teal blue from the YAVDA mark; brandDark is the deeper logo shade.
-export const BRAND = { name: "YAVDA", tagline: "Let Data be Your North Star" };
+// Neutral, organization-agnostic design tokens.
 export const T = {
-  accent: "#146d8a",   // YAVDA teal-blue — buttons, links, active nav, focus rings
-  accentDark: "#0e4f66",
+  accent: "#4f46e5",   // primary — buttons, links, active nav, focus rings
+  accentDark: "#3730a3",
   bg: "#f3f3f1",
   surface: "#ffffff",
   text: "#1c1c1a",

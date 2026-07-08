@@ -60,10 +60,10 @@ export default function Login() {
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
       <div className="fadeIn" style={{ width: 380, maxWidth: "100%" }}>
-        <div style={{ marginBottom: 22, textAlign: "center" }}>
-          <div style={{ fontWeight: 800, fontSize: 13, letterSpacing: ".22em", color: T.accent }}>YAVDA ANALYTICS</div>
-          <div style={{ fontWeight: 800, fontSize: 25, letterSpacing: "-.02em", color: T.text, marginTop: 7 }}>MigrationEase</div>
-          <div style={{ fontSize: 12.5, color: T.muted, marginTop: 5 }}>Let Data be Your North Star</div>
+        <div style={{ marginBottom: 22, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 40, borderRadius: 11, background: T.accent, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 21, fontWeight: 800 }}>M</div>
+          <div style={{ fontWeight: 800, fontSize: 24, letterSpacing: "-.02em", color: T.text }}>MigrationEase</div>
+          <div style={{ fontSize: 12.5, color: T.muted }}>CSV / Excel → Tally, made simple</div>
         </div>
 
         <form onSubmit={submit} style={{ ...card, padding: 26 }}>

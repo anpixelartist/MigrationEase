@@ -1,8 +1,7 @@
 # MigrationEase
 
-**by Yavda Analytics** — migrate accounting data from user-uploaded **CSV/Excel** into **TallyPrime**
-via Tally's XML import format, with auto column-mapping, validation, a GST/e-commerce voucher engine,
-and Single Sign-On.
+Migrate accounting data from user-uploaded **CSV/Excel** into **TallyPrime** via Tally's XML import
+format, with auto column-mapping, validation, a GST/e-commerce voucher engine, and Single Sign-On.
 
 - **Backend** — Python 3.12 / FastAPI: the 7-stage pipeline (parse → profile → map → validate →
   resolve → generate XML → push), multi-tenant orgs, async workers, object storage.
@@ -87,7 +86,7 @@ TM_OIDC_WEB_CLIENT_ID=tallymigration-web
 ```
 The login page then shows **Continue with SSO**. The dev realm ships **admin-only** access (you create
 users in the Keycloak console — no self-signup), no email verification, and a demo user
-`testuser@yavda.local` / `Test@12345`. Console: http://localhost:8080 (`admin` / `admin`, DEV ONLY).
+`demo@migrationease.local` / `Demo@12345`. Console: http://localhost:8080 (`admin` / `admin`, DEV ONLY).
 
 **Production**: import the hardened realm `infra/keycloak/realm-tallymigration-prod.json` and run
 Keycloak per `infra/docker-compose.keycloak-prod.yml`. Full checklist (MFA, TLS, secrets, adding
